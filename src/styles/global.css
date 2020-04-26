@@ -1,6 +1,5 @@
 html, body {
   background-color: white;
-
 }
 
 a {
@@ -92,7 +91,7 @@ hr {
 }
 
 #root {
-  width: 660px;
+  width: 700px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.5rem;
@@ -101,8 +100,8 @@ hr {
   padding-bottom: 3rem;
 
   color: #333;
-  font-family: Inter,system-ui,sans-serif;
-  font-size: 1.125rem;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
   line-height: 1.5;
   font-weight: 400;
 }

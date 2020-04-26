@@ -1,0 +1,15 @@
+.bio {
+  display: block;
+  padding-bottom: 48px;
+}
+
+.bio h1 {
+  margin: 0;
+  padding-bottom: 24px;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.bio p {
+  margin: 0;
+}

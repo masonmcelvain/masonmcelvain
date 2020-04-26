@@ -1,7 +1,8 @@
 import React from "react"
+import bioStyles from "./bio.module.css"
 
 export default () => (
-  <div>
+  <div className={bioStyles.bio}>
     <h1 id="name">Mason McElvain</h1>
     <p>Aspiring software engineer, avid surfer and swimmer, and nature lover. Studying computer science at <a
             href="https://www.calpoly.edu/"

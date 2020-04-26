@@ -1,5 +1,18 @@
 html, body {
   background-color: white;
+  margin: 0 0 0 0;
+}
+
+#root {
+  max-width: 700px;
+  margin: auto;
+  padding: 48px 24px 48px 24px;
+
+  color: #333;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 400;
 }
 
 a {
@@ -78,8 +91,9 @@ hr {
 }
 
 .category {
-  margin-top: 4rem;
+  margin-top: 0;
   margin-bottom: 2rem;
+  padding-top: 24px;
   padding-bottom: 0.5rem;
   font-size: 0.875rem;
   line-height: 1.25;
@@ -88,29 +102,4 @@ hr {
   letter-spacing: 1px;
   border-bottom: 1px solid;
   border-color: rgba(0,0,0,0.25);
-}
-
-#root {
-  width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-
-  color: #333;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 18px;
-  line-height: 1.5;
-  font-weight: 400;
-}
-
-#name {
-  display: block;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  font-size: 2rem;
-  font-weight: 600;
-  line-height: 1.25;
 }

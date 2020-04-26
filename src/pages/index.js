@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 
 const IndexPage = () => (
     <div id="root">
@@ -103,7 +102,7 @@ const IndexPage = () => (
 
       <hr />
       <p><a
-          href="https://github.com/masonmcelvain/masonmcelvain.com"
+          href="https://github.com/masonmcelvain/mason-mcelvain"
           target="_blank"
           rel="noopener noreferrer"
         >View Source</a></p>

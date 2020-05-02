@@ -10,6 +10,18 @@ const IndexPage = () => (
       <div>
         <h2 class="category">Projects</h2>
         <h3><a
+            href="https://nimbus.calpolycsai.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >CSAI Nimbus Chat</a></h3>
+        <p>A text-based interface to ask Nimbus questions about Cal Poly.</p>
+        <h3><a
+            href="https://www.csai.app/record"
+            target="_blank"
+            rel="noopener noreferrer"
+            >CSAI Recorder</a></h3>
+        <p>A web app for club members to train Nimbus, the AI chatbot.</p>
+        <h3><a
             href="https://github.com/masonmcelvain/meme-generator-react"
             target="_blank"
             rel="noopener noreferrer"

@@ -1,5 +1,5 @@
-# mason-mcelvain.netlify.app
-Here's the source code for [mason-mcelvain.netlify.app](http://mason-mcelvain.netlify.app/)
+# masonmcelvain.netlify.app
+Here's the source code for [masonmcelvain.netlify.app](http://masonmcelvain.netlify.app/)
 ## Local Development
 ```shell
 # Clone the repository

@@ -22,6 +22,12 @@ const IndexPage = () => (
             >CSAI Recorder</a></h3>
         <p>A web app for club members to train Nimbus, the AI chatbot.</p>
         <h3><a
+            href="https://speed-typing-mm.netlify.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Speed Typing Game</a></h3>
+        <p>A simple app that keeps your fingers limber.</p>
+        <h3><a
             href="https://github.com/masonmcelvain/meme-generator-react"
             target="_blank"
             rel="noopener noreferrer"

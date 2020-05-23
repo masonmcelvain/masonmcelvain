@@ -1,0 +1,103 @@
+.App {
+  background-color: white;
+  margin: 0 0 0 0;
+}
+
+#root {
+  max-width: 650px;
+  margin: auto;
+  padding: 48px 24px 48px 24px;
+
+  color: #333;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid;
+  border-color: rgba(0,0,0,0.25);
+  cursor: pointer;
+}
+
+@media(hover: hover) and (pointer: fine) {
+  a:hover {
+    background-color: rgb(175,245,245);
+  }
+}
+
+h3 {
+  display: block;
+  margin-top: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+p {
+  display: block;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+hr {
+  display: block;
+  unicode-bidi: isolate;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  overflow: hidden;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  border: 0;
+  height: 1px;
+  background-color: rgba(0,0,0,0.25);
+}
+
+ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  margin: 0;
+}
+
+ul::before {
+  content: "";
+}
+
+ul::after {
+  content: "";
+}
+
+li {
+  list-style-type: none;
+  font-weight: 400;
+}
+
+.interval {
+  display: inline;
+  float: right;
+}
+
+.category {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  padding-top: 24px;
+  padding-bottom: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid;
+  border-color: rgba(0,0,0,0.25);
+}

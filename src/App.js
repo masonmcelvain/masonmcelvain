@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 import Bio from './components/bio'
-import Category from './components/category'
+import ProjectListing from './components/ProjectListing'
 
 const App = () => (
     <div id="content">
@@ -10,30 +10,26 @@ const App = () => (
 
       <div>
         <h2 class="category">Projects</h2>
-        <h3><a
-            href="https://nimbus.calpolycsai.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            >CSAI Nimbus Chat</a></h3>
-        <p>A text-based interface to ask Nimbus questions about Cal Poly.</p>
-        <h3><a
-            href="https://www.csai.app/record"
-            target="_blank"
-            rel="noopener noreferrer"
-            >CSAI Recorder</a></h3>
-        <p>A web app for club members to train Nimbus, the AI chatbot.</p>
-        <h3><a
-            href="https://speed-typing-mm.netlify.app"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Speed Typing Game</a></h3>
-        <p>A simple app that keeps your fingers limber.</p>
-        <h3><a
-            href="https://github.com/masonmcelvain/meme-generator-react"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Meme Generator</a></h3>
-        <p>A simple react.js web app.</p>
+        <ProjectListing
+          link="https://nimbus.calpolycsai.com/"
+          heading="CSAI Nimbus Chat"
+          description="A text-based interface to ask Nimbus questions about Cal Poly."
+        />
+        <ProjectListing
+          link="https://www.csai.app/record"
+          heading="CSAI Recorder"
+          description="A web app for club members to train Nimbus to recognize its name."
+        />
+        <ProjectListing
+          link="https://github.com/calpoly-csai/nimbus-validator-app"
+          heading="CSAI Nimbus Validator"
+          description="An app for club members to validate phrases that Nimbus can understand."
+        />
+        <ProjectListing
+          link="https://speed-typing-mm.netlify.app"
+          heading="Speed Typing Game"
+          description="A simple app that keeps your fingers limber."
+        />
       </div>
 
       <div>

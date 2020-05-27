@@ -1,9 +1,9 @@
 import React from "react"
-import categoryStyles from "./ProjectListing.css"
+import "./ProjectListing.scss"
 
 export default function ProjectListing(props) {
   return (
-    <div className={categoryStyles.category}>
+    <div className="ProjectListing">
       <h3><a
               href={props.link}
               target="_blank"

@@ -33,11 +33,11 @@
       border-bottom: 1px solid;
       border-color: rgba(0,0,0,0.25);
       cursor: pointer;
+    }
 
-      @media(hover: hover) and (pointer: fine) {
-        :hover {
-          background-color: rgb(175,245,245);
-        }
+    @media(hover: hover) and (pointer: fine) {
+      a:hover {
+        background-color: rgb(175,245,245);
       }
     }
     

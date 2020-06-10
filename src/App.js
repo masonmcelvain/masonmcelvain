@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.scss';
 
-import Bio from './components/Bio/Bio'
-import ProjectListing from './components/ProjectListing/ProjectListing'
+import Bio from './components/Bio/Bio';
+import ProjectListing from './components/ProjectListing/ProjectListing';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -14,22 +15,27 @@ function App() {
           <h2 class="category">Projects</h2>
           <ProjectListing
             link="https://nimbus.calpolycsai.com/"
-            heading="CSAI Nimbus Chat"
+            title="CSAI Nimbus Chat"
             description="A text-based interface to ask Nimbus questions about Cal Poly."
           />
           <ProjectListing
             link="https://www.csai.app/record"
-            heading="CSAI Recorder"
+            title="CSAI Recorder"
             description="A web app for club members to train Nimbus to recognize its name."
           />
           <ProjectListing
             link="https://github.com/calpoly-csai/nimbus-validator-app"
-            heading="CSAI Nimbus Validator"
+            title="CSAI Nimbus Validator"
             description="An app for club members to validate phrases that Nimbus can understand."
           />
           <ProjectListing
+            link="https://github.com/masonmcelvain/leojgs"
+            title="Leo JG's Website"
+            description="Actively building a new website for the Leo Carrillo Junior Lifeguards."
+          />
+          <ProjectListing
             link="https://speed-typing-mm.netlify.app"
-            heading="Speed Typing Game"
+            title="Speed Typing Game"
             description="A simple app that keeps your fingers limber."
           />
         </div>
@@ -69,32 +75,8 @@ function App() {
           </p>
         </div>
 
-        <hr />
-        
-        <ul>
-            <li><a
-              href="https://github.com/masonmcelvain/mason-mcelvain"
-              target="_blank"
-              rel="noopener noreferrer">
-              View Source
-            </a></li>
-            <li><a
-              href="https://github.com/masonmcelvain"
-              target="_blank" rel="noopener noreferrer">
-              GitHub
-            </a></li>
-            <li><a
-              href="https://www.linkedin.com/in/masonmcelvain/"
-              target="_blank" rel="noopener noreferrer">
-              LinkedIn
-            </a></li>
-            <li><a
-              href="mailto:mmcelvai@calpoly.edu"
-              target="_blank" rel="noopener noreferrer">
-              Email
-            </a></li>
-          </ul>
-        </div>
+        <Footer />
+      </div>
     </div>
   )
 }

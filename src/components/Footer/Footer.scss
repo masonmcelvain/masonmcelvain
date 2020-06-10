@@ -1,0 +1,17 @@
+.Footer {
+  padding: 48px 0;
+  margin: 64px 0 0;
+  border-top: 1px solid rgba(0,0,0,0.25);
+
+  .links {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+
+    li {
+      list-style-type: none;
+    }
+  }
+}

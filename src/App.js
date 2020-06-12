@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.scss';
 
 import Bio from './components/Bio/Bio';
@@ -6,13 +6,19 @@ import ProjectListing from './components/ProjectListing/ProjectListing';
 import Footer from './components/Footer/Footer';
 
 function App() {
+  let [isDark, setIsDark] = useState(true);
+
+  let toggleTheme = () => {
+    setIsDark(prev => !prev);
+  }
+
   return (
     <div className="App">
       <div className="content">
-        <Bio />
+        <Bio toggleTheme={toggleTheme} isDark={isDark}/>
 
         <div>
-          <h2 class="category">Projects</h2>
+          <h2 className="category">Projects</h2>
           <ProjectListing
             link="https://nimbus.calpolycsai.com/"
             title="CSAI Nimbus Chat"
@@ -41,14 +47,14 @@ function App() {
         </div>
 
         <div>
-          <h2 class="category">Work & Leadership</h2>
+          <h2 className="category">Work & Leadership</h2>
           <h3><a
               href="https://www.calpolycsai.com/"
               target="_blank"
               rel="noopener noreferrer"
             >Web Developer, Cal Poly CSAI</a></h3>
           <p>Computer Science & Artificial Intelligence Club
-            <span class="timePeriod">Apr 2020 - present</span>
+            <span className="timePeriod">Apr 2020 - present</span>
           </p>
           <h3><a
               href="https://www.tedxsanluisobispo.com/"
@@ -56,14 +62,14 @@ function App() {
               rel="noopener noreferrer"
             >TEDxSanLuisObispo Administrator</a>
           </h3>
-          <p><span class="timePeriod">Apr 2020 - present</span></p>
+          <p><span className="timePeriod">Apr 2020 - present</span></p>
           <h3><a
               href="http://mcsla.org/"
               target="_blank"
               rel="noopener noreferrer"
             >Ocean Lifeguard & EMT</a></h3>
           <p>California State Parks, Los Angeles
-            <span class="timePeriod">Jun 2016 - present</span>
+            <span className="timePeriod">Jun 2016 - present</span>
           </p>
           <h3><a
             href="http://marchtriathlonseries.com/"
@@ -71,7 +77,7 @@ function App() {
             rel="noopener noreferrer"
             >MTS Triathlon Coordinator</a></h3>
           <p>Cal Poly Triathlon Team
-            <span class="timePeriod">Sep 2018 - Apr 2020</span>
+            <span className="timePeriod">Sep 2018 - Apr 2020</span>
           </p>
         </div>
 

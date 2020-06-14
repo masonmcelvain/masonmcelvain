@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Footer.scss';
+import {ThemeContext} from "../ThemeContext";
 
 export default function Footer() {
+  let {theme} = useContext(ThemeContext);
+
   return (
-    <div className="Footer">
+    <div className={`Footer ${theme}-theme`}>
       <ul className="links">
         <li><a
           href="https://github.com/masonmcelvain/mason-mcelvain"

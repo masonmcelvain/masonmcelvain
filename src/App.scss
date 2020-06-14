@@ -8,31 +8,58 @@ body,
   margin: 0;
   height: 100%;
   // Color Pallette for Dark Theme:
-  --darkGrey: #121212;
+  --darkText: white;
+  --darkBackground: #121212;
+  --darkPrimary: #bb86fc;
   // Color Pallette for Light Theme:
-  --primary: #bb86fc;
-  --secondary: #03dac5;
-  --shadow: #c3c7e2;
-  --text: #333333;
-  --accent: #030303;
-  --backdrop: #faf4ff;
+  --lightText: #333333;
+  --lightPrimary: #aff5f5;
 }
 
 .App {
-  background-color: whitesmoke;
   margin: 0;
+  &.light-theme {
+    background-color: whitesmoke;
+  }
+  &.dark-theme {
+    background-color: var(--darkBackground);
+  }
 
   .content {
     max-width: 650px;
     margin: auto;
     padding: 48px 24px 0 24px;
-    background-color: white;
     box-shadow: 0 0 30px 0px rgba(0, 0, 0, 0.212);
-    color: var(--text);
+    color: var(--lightText);
     font-family: 'Open Sans', sans-serif;
     font-size: 18px;
     line-height: 1.5;
     font-weight: 400;
+    
+    &.light-theme {
+      background-color: white;
+      color: var(--lightText);
+      a {
+        border-bottom: 1px solid rgba(0,0,0,0.25);
+      }
+      @media(hover: hover) and (pointer: fine) {
+        a:hover {
+          background-color: var(--lightPrimary);
+        }
+      }
+    }
+    &.dark-theme {
+      background-color: rgba(255, 255, 255, 0.16); // 24dp elevation overlay
+      color: var(--darkText);
+      a {
+        border-bottom: 1px solid rgba(255,255,255,0.25);
+      }
+      @media(hover: hover) and (pointer: fine) {
+        a:hover {
+          background-color: var(--darkPrimary);
+        }
+      }
+    }
 
     .category {
       margin-top: 0;
@@ -45,20 +72,18 @@ body,
       letter-spacing: 1px;
       border-bottom: 1px solid;
       border-color: rgba(0,0,0,0.25);
+      &.light-theme {
+        border-color: rgba(0,0,0,0.25);
+      }
+      &.dark-theme {
+        border-color: rgba(255, 255, 255, 0.25);
+      }
     }
 
     a {
       text-decoration: none;
       color: inherit;
-      border-bottom: 1px solid;
-      border-color: rgba(0,0,0,0.25);
       cursor: pointer;
-    }
-
-    @media(hover: hover) and (pointer: fine) {
-      a:hover {
-        background-color: #aff5f5;
-      }
     }
     
     h3 {

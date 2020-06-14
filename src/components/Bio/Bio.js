@@ -1,14 +1,16 @@
-import React from "react"
+import React, {useContext} from "react"
 import "./Bio.scss"
+import {ThemeContext} from "../ThemeContext";
 
-export default function Bio({ toggleTheme, isDark }) {
-  let iconName = isDark ? "sunny" : "moon";
+export default function Bio() {
+  let {theme, toggleTheme} = useContext(ThemeContext);
+  let iconName = (theme === "dark" ? "sunny" : "moon");
 
   return (
     <div className="Bio">
       <div className="name-container">
         <h1>Mason McElvain</h1>
-        <button className="icon-container" onClick={toggleTheme}>
+        <button className={`icon-container ${theme}-theme`} onClick={toggleTheme}>
           <ion-icon name={iconName}></ion-icon>
         </button>
       </div>

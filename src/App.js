@@ -1,24 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './App.scss';
 
 import Bio from './components/Bio/Bio';
 import ProjectListing from './components/ProjectListing/ProjectListing';
 import Footer from './components/Footer/Footer';
+import {ThemeContext} from './components/ThemeContext';
 
 function App() {
-  let [isDark, setIsDark] = useState(true);
-
-  let toggleTheme = () => {
-    setIsDark(prev => !prev);
-  }
+  let {theme} = useContext(ThemeContext);
 
   return (
-    <div className="App">
-      <div className="content">
-        <Bio toggleTheme={toggleTheme} isDark={isDark}/>
+    <div className={`App ${theme}-theme`}>
+      <div className={`content ${theme}-theme`}>
+        <Bio />
 
         <div>
-          <h2 className="category">Projects</h2>
+          <h2 className={`category ${theme}-theme`}>Projects</h2>
           <ProjectListing
             link="https://nimbus.calpolycsai.com/"
             title="CSAI Nimbus Chat"
@@ -47,7 +44,7 @@ function App() {
         </div>
 
         <div>
-          <h2 className="category">Work & Leadership</h2>
+          <h2 className={`category ${theme}-theme`}>Work & Leadership</h2>
           <h3><a
               href="https://www.calpolycsai.com/"
               target="_blank"

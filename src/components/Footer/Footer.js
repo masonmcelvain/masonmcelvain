@@ -22,7 +22,7 @@ export default function Footer({ theme }) {
           LinkedIn
         </a></li>
         <li><a
-          href="mailto:mmcelvai@calpoly.edu"
+          href="mailto:mason@masonmcelvain.dev"
           target="_blank" rel="noopener noreferrer">
           Email
         </a></li>

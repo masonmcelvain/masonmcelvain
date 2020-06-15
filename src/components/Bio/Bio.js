@@ -1,9 +1,7 @@
-import React, {useContext} from "react"
+import React from "react"
 import "./Bio.scss"
-import {ThemeContext} from "../ThemeContext";
 
-export default function Bio() {
-  let {theme, toggleTheme} = useContext(ThemeContext);
+export default function Bio({ theme, toggleTheme }) {
   let iconName = (theme === "dark" ? "sunny" : "moon");
 
   return (

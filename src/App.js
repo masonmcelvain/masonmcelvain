@@ -1,18 +1,32 @@
-import React, { useContext, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.scss';
 
 import Bio from './components/Bio/Bio';
 import ProjectListing from './components/ProjectListing/ProjectListing';
 import Footer from './components/Footer/Footer';
-import {ThemeContext} from './components/ThemeContext';
 
 function App() {
-  let {theme} = useContext(ThemeContext);
+  let [theme, setTheme] = useState("dark");
+
+  let toggleTheme = () => {
+    setTheme(prev => {
+      let newTheme = prev === "light" ? "dark" : "light";
+      let bkgd = getComputedStyle(document.body).getPropertyValue(`--${newTheme}Backdrop`);
+      document.body.style.backgroundColor = bkgd;
+      return newTheme;
+    });
+  }
+
+  useEffect(() => {
+    let bkgd = getComputedStyle(document.body).getPropertyValue(`--${theme}Backdrop`);
+    document.body.style.backgroundColor = bkgd;
+    return () => {document.body.style.backgroundColor = null};
+  });
 
   return (
     <div className={`App ${theme}-theme`}>
       <div className={`content ${theme}-theme`}>
-        <Bio />
+        <Bio theme={theme} toggleTheme={toggleTheme} />
 
         <div>
           <h2 className={`category ${theme}-theme`}>Projects</h2>
@@ -78,7 +92,7 @@ function App() {
           </p>
         </div>
 
-        <Footer />
+        <Footer theme={theme} />
       </div>
     </div>
   )

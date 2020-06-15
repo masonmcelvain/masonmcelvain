@@ -1,10 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './Footer.scss';
-import {ThemeContext} from "../ThemeContext";
 
-export default function Footer() {
-  let {theme} = useContext(ThemeContext);
-
+export default function Footer({ theme }) {
   return (
     <div className={`Footer ${theme}-theme`}>
       <ul className="links">

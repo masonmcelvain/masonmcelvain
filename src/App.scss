@@ -9,27 +9,32 @@ body,
   height: 100%;
   // Color Pallette for Dark Theme:
   --darkText: white;
-  --darkBackground: #121212;
+  --darkBackdrop: #121212;
+  --darkCenter: rgba(255, 255, 255, 0.16); // 24dp elevation overlay
   --darkPrimary: #bb86fc;
+  --darkShadow: rgba(255,255,255,0.25);
   // Color Pallette for Light Theme:
   --lightText: #333333;
+  --lightBackdrop: whitesmoke;
+  --lightCenter: white;
   --lightPrimary: #aff5f5;
+  --lightShadow: rgba(0,0,0,0.25);
 }
 
 .App {
   margin: 0;
   &.light-theme {
-    background-color: whitesmoke;
+    background-color: var(--lightBackdrop);
   }
   &.dark-theme {
-    background-color: var(--darkBackground);
+    background-color: var(--darkBackdrop);
   }
 
   .content {
     max-width: 650px;
     margin: auto;
     padding: 48px 24px 0 24px;
-    box-shadow: 0 0 30px 0px rgba(0, 0, 0, 0.212);
+    box-shadow: 0 0 30px 0px rgba(0,0,0,0.25);
     color: var(--lightText);
     font-family: 'Open Sans', sans-serif;
     font-size: 18px;
@@ -37,10 +42,10 @@ body,
     font-weight: 400;
     
     &.light-theme {
-      background-color: white;
+      background-color: var(--lightCenter);
       color: var(--lightText);
       a {
-        border-bottom: 1px solid rgba(0,0,0,0.25);
+        border-bottom: 1px solid var(--lightShadow);
       }
       @media(hover: hover) and (pointer: fine) {
         a:hover {
@@ -49,10 +54,10 @@ body,
       }
     }
     &.dark-theme {
-      background-color: rgba(255, 255, 255, 0.16); // 24dp elevation overlay
+      background-color: var(--darkCenter);
       color: var(--darkText);
       a {
-        border-bottom: 1px solid rgba(255,255,255,0.25);
+        border-bottom: 1px solid var(--darkShadow);
       }
       @media(hover: hover) and (pointer: fine) {
         a:hover {
@@ -73,10 +78,10 @@ body,
       border-bottom: 1px solid;
       border-color: rgba(0,0,0,0.25);
       &.light-theme {
-        border-color: rgba(0,0,0,0.25);
+        border-color: var(--lightShadow);
       }
       &.dark-theme {
-        border-color: rgba(255, 255, 255, 0.25);
+        border-color: var(--darkShadow);
       }
     }
 
@@ -104,19 +109,6 @@ body,
       font-weight: 400;
       margin-top: 0;
       margin-bottom: 1rem;
-    }
-    
-    hr {
-      display: block;
-      unicode-bidi: isolate;
-      margin-inline-start: auto;
-      margin-inline-end: auto;
-      overflow: hidden;
-      margin-top: 4rem;
-      margin-bottom: 4rem;
-      border: 0;
-      height: 1px;
-      background-color: rgba(0,0,0,0.25);
     }
     
     .timePeriod {

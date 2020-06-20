@@ -27,12 +27,6 @@
       border: none;
       opacity: 0.75;
       transition: opacity 0.3s ease;
-      &.light-theme {
-        color: var(--lightText);
-      }
-      &.dark-theme {
-        color: var(--darkText);
-      }
 
       @media(hover: hover) and (pointer: fine) {
         &:hover {

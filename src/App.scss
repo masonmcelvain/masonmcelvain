@@ -18,18 +18,12 @@ body,
   --lightBackdrop: whitesmoke;
   --lightCenter: white;
   --lightPrimary: #aff5f5;
-  --lightShadow: rgba(0,0,0,0.25);
+  --lightShadow: rgba(51,51,51,0.25);
 }
 
 .App {
   margin: 0;
   padding: 16px;
-  &.light-theme {
-    background-color: var(--lightBackdrop);
-  }
-  &.dark-theme {
-    background-color: var(--darkBackdrop);
-  }
 
   .content {
     max-width: 650px;
@@ -51,7 +45,7 @@ body,
       }
       @media(hover: hover) and (pointer: fine) {
         a:hover {
-          background-color: var(--lightPrimary);
+          border-bottom: 1px solid var(--lightText);
         }
       }
     }
@@ -63,7 +57,7 @@ body,
       }
       @media(hover: hover) and (pointer: fine) {
         a:hover {
-          background-color: var(--darkPrimary);
+          border-bottom: 1px solid var(--darkText);
         }
       }
     }
@@ -79,12 +73,6 @@ body,
       letter-spacing: 1px;
       border-bottom: 1px solid;
       border-color: rgba(0,0,0,0.25);
-      &.light-theme {
-        border-color: var(--lightShadow);
-      }
-      &.dark-theme {
-        border-color: var(--darkShadow);
-      }
     }
 
     a {

@@ -3,12 +3,13 @@ import "./Bio.scss"
 
 export default function Bio({ theme, toggleTheme }) {
   let iconName = (theme === "dark" ? "sunny" : "moon");
+  let iconTheme = { color: `var(--${theme}Text)`};
 
   return (
     <div className="Bio">
       <div className="name-container">
         <h1>Mason McElvain</h1>
-        <button className={`icon-container ${theme}-theme`} onClick={toggleTheme}>
+        <button className="icon-container" style={iconTheme} onClick={toggleTheme}>
           <ion-icon name={iconName}></ion-icon>
         </button>
       </div>

@@ -7,6 +7,8 @@ import Footer from './components/Footer/Footer';
 
 function App() {
   let [theme, setTheme] = useState("dark");
+  let appTheme = { "background-color": `var(--${theme}Backdrop)` };
+  let categoryTheme = { "border-color": `var(--${theme}Shadow)` };
 
   let toggleTheme = () => {
     setTheme(prev => {
@@ -24,12 +26,12 @@ function App() {
   });
 
   return (
-    <div className={`App ${theme}-theme`}>
+    <div className="App" style={appTheme}>
       <div className={`content ${theme}-theme`}>
         <Bio theme={theme} toggleTheme={toggleTheme} />
 
         <div>
-          <h2 className={`category ${theme}-theme`}>Projects</h2>
+          <h2 className="category" style={categoryTheme}>Projects</h2>
           <ProjectListing
             link="https://nimbus.calpolycsai.com/"
             title="CSAI Nimbus Chat"
@@ -58,7 +60,7 @@ function App() {
         </div>
 
         <div>
-          <h2 className={`category ${theme}-theme`}>Work & Leadership</h2>
+          <h2 className="category" style={categoryTheme}>Work & Leadership</h2>
           <h3><a
               href="https://www.calpolycsai.com/"
               target="_blank"

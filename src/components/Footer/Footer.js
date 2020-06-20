@@ -2,11 +2,13 @@ import React from 'react';
 import './Footer.scss';
 
 export default function Footer({ theme }) {
+  let footerTheme = { "border-top": `1px solid var(--${theme}Shadow)` };
+
   return (
-    <div className={`Footer ${theme}-theme`}>
+    <div className="Footer" style={footerTheme}>
       <ul className="links">
         <li><a
-          href="https://github.com/masonmcelvain/mason-mcelvain"
+          href="https://github.com/masonmcelvain/masonmcelvain"
           target="_blank"
           rel="noopener noreferrer">
           View Source

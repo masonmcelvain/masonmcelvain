@@ -23,15 +23,23 @@ $button-transition-duration: 300ms;
       margin: auto;
       margin-right: 0;
       padding: 0;
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       background-color: transparent;
       border: none;
-      opacity: 0.75;
-      transition: opacity $button-transition-duration ease;
+      border-radius: 6px;
+      opacity: 0.7;
+      transition: background-color $button-transition-duration,
+                  opacity $button-transition-duration;
 
       @media(hover: hover) and (pointer: fine) {
-        &:hover {
+        &.light:hover {
+          background-color: var(--lightShadow2);
+          opacity: 1;
+        }
+
+        &.dark:hover {
+          background-color: var(--darkShadow2);
           opacity: 1;
         }
       }

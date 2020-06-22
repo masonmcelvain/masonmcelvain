@@ -1,3 +1,6 @@
+$button-bounce: scale(0.98);
+$button-transition-duration: 300ms;
+
 .Bio {
   display: block;
   padding-bottom: 32px;
@@ -26,12 +29,21 @@
       background-color: transparent;
       border: none;
       opacity: 0.75;
-      transition: opacity 0.3s ease;
+      transition: opacity $button-transition-duration ease;
 
       @media(hover: hover) and (pointer: fine) {
         &:hover {
           opacity: 1;
         }
+      }
+
+      &:active {
+        transform: $button-bounce;
+        transition: none;
+      }
+
+      &:focus {
+        outline: none;
       }
 
       ion-icon {

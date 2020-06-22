@@ -9,7 +9,7 @@ export default function ProjectListing({ link, title, description}) {
               target="_blank"
               rel="noopener noreferrer"
               >{title}</a></h3>
-          <p>{description}</p>
+      <p>{description}</p>
     </div>
   )
 }

@@ -4,7 +4,10 @@ This site is deployed through [Netlify](https://www.netlify.com/) 🎉.
 
 ## Local Development
 
-1. In your local directory of choice, clone the repository with `git clone https://github.com/masonmcelvain/masonmcelvain.git`
+1. In your local directory of choice, clone the repository with
+```
+git clone https://github.com/masonmcelvain/masonmcelvain.git
+```
 
 2. Navigate to the project directory with `cd masonmcelvain`
 

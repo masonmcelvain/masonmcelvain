@@ -1,4 +1,5 @@
 import React from 'react';
+import {ReactComponent as MMLogo} from '../../assets/MM-logo.svg';
 import './Footer.scss';
 
 export default function Footer({ theme }) {
@@ -18,6 +19,7 @@ export default function Footer({ theme }) {
           target="_blank" rel="noopener noreferrer">
           GitHub
         </a></li>
+        <MMLogo className="logo"/>
         <li><a
           href="https://www.linkedin.com/in/masonmcelvain/"
           target="_blank" rel="noopener noreferrer">

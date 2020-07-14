@@ -1,14 +1,7 @@
-Welcome to my home site, a simple portfolio of my current projects and passions.
+Hi! I'm Mason, a lifelong learner, ocean & nature lover, and friend. Right now I study Computer Science at [Cal Poly](https://www.calpoly.edu/) 📚, class of 2022.
 
-This site is deployed through [Netlify](https://www.netlify.com/) 🎉.
+Feel free to check out my [home site](https://masonmcelvain.dev/) 🌴, a simple portfolio of my current projects and passions.
 
-## Local Development
+Big thanks to [Netlify](https://www.netlify.com/) for their deployment services 🎉.
 
-1. In your local directory of choice, clone the repository with
-```
-git clone https://github.com/masonmcelvain/masonmcelvain.git
-```
-
-2. Navigate to the project directory with `cd masonmcelvain`
-
-3. Execute `npm start` to run the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+My goals in life are to enjoy the present, put people first, be vulnerable, and make the world a little better.

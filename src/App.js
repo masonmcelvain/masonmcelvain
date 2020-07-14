@@ -48,11 +48,6 @@ function App() {
           description="An app for club members to validate phrases that Nimbus can understand."
         />
         <ProjectListing
-          link="https://github.com/masonmcelvain/leojgs"
-          title="Leo JG's Website"
-          description="Actively building a new website for the Leo Carrillo Junior Lifeguards."
-        />
-        <ProjectListing
           link="https://speed-typing-mm.netlify.app"
           title="Speed Typing Game"
           description="A simple app that keeps your fingers limber."

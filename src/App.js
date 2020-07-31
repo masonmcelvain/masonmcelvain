@@ -33,20 +33,26 @@ function App() {
 
         <h2 className="category" style={categoryTheme}>Projects</h2>
         <ProjectListing
-          link="https://nimbus.calpolycsai.com/"
-          title="CSAI Nimbus Chat"
-          description="A text-based interface to ask Nimbus questions about Cal Poly."
-        />
-        <ProjectListing
-          link="https://www.csai.app/record"
-          title="CSAI Recorder"
-          description="A web app for club members to train Nimbus to recognize its name."
-        />
-        <ProjectListing
           link="https://github.com/calpoly-csai/nimbus-validator-app"
-          title="CSAI Nimbus Validator"
-          description="An app for club members to validate phrases that Nimbus can understand."
+          title="CSAI Phrase Validator"
+          description="An app for club members to validate phrases that Nimbus, the club's AI Chatbot, can understand."
         />
+        <ProjectListing
+          link="https://github.com/calpoly-csai/"
+          title="Other CSAI Contributions"
+        >
+          <p>
+            Including <a href='https://nimbus.calpolycsai.com/' 
+            target='_blank' 
+            rel='noopener noreferrer'>Nimbus Chat</a>
+            , the <a href='https://github.com/calpoly-csai/api' 
+            target='_blank' 
+            rel='noopener noreferrer'>Nimbus API</a>
+            , and <a href='https://www.csai.app/record' 
+            target='_blank' 
+            rel='noopener noreferrer'>CSAI Recorder</a>
+          </p>
+        </ProjectListing>
         <ProjectListing
           link="https://speed-typing-mm.netlify.app"
           title="Speed Typing Game"
@@ -62,7 +68,7 @@ function App() {
         />
         <ExperienceListing
           link="https://www.tedxsanluisobispo.com/"
-          title="TEDxSanLuisObispo Administrator"
+          title="TEDxSanLuisObispo Admin & MC"
           description="TEDx Conference hosted at Cal Poly"
           timePeriod="Apr 2020 - present"
         />

@@ -3,11 +3,10 @@ import './Projects.scss';
 import ProjectListing from '../ProjectListing/ProjectListing';
 import Dropdown from '../Dropdown/Dropdown';
 
-import nimbusValidatorGif from '../../assets/nimbus_validator.gif';
-import nimbusChatGif from '../../assets/nimbus_chat.gif';
-
 export default function Projects({ theme }) {
   let categoryTheme = { borderColor: `var(--${theme}Shadow)` };
+  let nimbusValidatorGif = 'https://media.giphy.com/media/SX171AZcWmm7DiyT83/giphy.gif';
+  let nimbusChatGif = 'https://media.giphy.com/media/Piv6R2iqQ7OwhUUaQV/giphy.gif';
 
   return (
     <div className="Projects">

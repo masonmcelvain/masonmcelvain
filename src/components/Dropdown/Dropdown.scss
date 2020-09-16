@@ -1,12 +1,51 @@
+$button-bounce: scale(0.98);
+$button-transition-duration: 300ms;
+
 .Dropdown {
 
   .dropdownLine {
     display: flex;
     align-items: center;
-  
-    .chevronIcon {
+
+    .chevronButton {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
       margin-right: 10px;
-      cursor: pointer;
+      padding: 0;
+      background-color: transparent;
+      border: none;
+      border-radius: 6px;
+      opacity: 0.7;
+      transition: background-color $button-transition-duration,
+                  opacity $button-transition-duration;
+
+      @media(hover: hover) and (pointer: fine) {
+        &.light:hover {
+          background-color: var(--lightShadow2);
+          opacity: 1;
+        }
+
+        &.dark:hover {
+          background-color: var(--darkShadow2);
+          opacity: 1;
+        }
+      }
+
+      &:active {
+        transform: $button-bounce;
+        transition: none;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      .chevronIcon {
+        color: inherit;
+        cursor: pointer;
+      }
     }
   }
 

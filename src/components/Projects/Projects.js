@@ -5,7 +5,7 @@ import Dropdown from '../Dropdown/Dropdown';
 
 export default function Projects({ theme }) {
   let categoryTheme = { borderColor: `var(--${theme}Shadow)` };
-  let nimbusValidatorGif = 'https://media.giphy.com/media/SX171AZcWmm7DiyT83/giphy.gif';
+  let nimbusValidatorGif = 'https://media.giphy.com/media/6Zc3pEySruneZ6XY4I/giphy.gif';
   let nimbusChatGif = 'https://media.giphy.com/media/Piv6R2iqQ7OwhUUaQV/giphy.gif';
 
   return (

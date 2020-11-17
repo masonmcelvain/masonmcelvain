@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import './Dropdown.scss';
-
-import {ReactComponent as ChevronRight} from '../../assets/chevron-right.svg';
-import {ReactComponent as ChevronDown} from '../../assets/chevron-down.svg';
+import { ChevronRight, ChevronDown } from 'react-feather';
 
 export default function Dropdown({ link, name, image, theme }) {
   let [showGif, setShowGif] = useState(false);
@@ -13,8 +11,16 @@ export default function Dropdown({ link, name, image, theme }) {
   }
 
   let icon = showGif ?
-             <ChevronDown className="chevronIcon" onClick={toggleChevron}/> :
-             <ChevronRight className="chevronIcon"  onClick={toggleChevron}/>;
+            <ChevronDown
+              className="chevronIcon"
+              size={20}
+              onClick={toggleChevron}
+            /> :
+            <ChevronRight
+              className="chevronIcon" 
+              size={20} 
+              onClick={toggleChevron}
+            />;
 
   return (
     <div className="Dropdown">

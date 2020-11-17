@@ -17,38 +17,20 @@ export default function Projects({ theme }) {
         description="A web app for club members to validate phrases that Nimbus, the club's AI Chatbot, can understand."
       >
         <Dropdown
-          name="Demo (still in development)"
+          name="Demo"
           image={nimbusValidatorGif}
           theme={theme}
         />
       </ProjectListing>
       <ProjectListing
-        link="https://github.com/calpoly-csai/"
-        title="Other CSAI Contributions"
-      >
-      <div className="listItems">
-        <div className="noDropdown">
-          <a href='https://github.com/calpoly-csai/api' 
-          target='_blank' 
-          rel='noopener noreferrer'>Nimbus API</a>
-        </div>
-        <div className="noDropdown">
-          <a href='https://www.csai.app/record' 
-          target='_blank' 
-          rel='noopener noreferrer'>CSAI Recorder</a>
-        </div>
-        <Dropdown
-          link='https://nimbus.calpolycsai.com/'
-          name='Nimbus Chat'
-          image={nimbusChatGif}
-          theme={theme}
-        />
-      </div>
-      </ProjectListing>
+        link="https://wonderful-meninsky-341976.netlify.app/"
+        title="Swanton Chat Bot"
+        description="Mobile friendly tool to communicate with Swanton Ranch's chatbot."
+      />
       <ProjectListing
-        link="https://speed-typing-mm.netlify.app"
-        title="Speed Typing Game"
-        description="A simple app that keeps your fingers limber."
+        link="https://ifixit-grab-bag-mm.netlify.app/"
+        title="iFixit Grab Bag"
+        description="Create a collection of devices you own to easily find repair guides."
       />
     </div>
   );

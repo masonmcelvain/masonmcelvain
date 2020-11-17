@@ -1,12 +1,25 @@
-import React from 'react';
-import './Footer.scss';
+/** @jsx jsx */
+import { jsx, css } from '@emotion/react';
 
 export default function Footer({ themeColor }) {
-  let footerTheme = { borderTop: `1px solid var(--${themeColor}Shadow)` };
+
+  const footerStyle = (theme) => css`
+    padding: 48px 0;
+    margin: 64px 0 0;
+    border-top: 1px solid ${themeColor === "dark" ? theme.color.darkShadow : theme.color.lightShadow};
+  `;
+
+  const listOfLinksStyle = css`
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+  `;
 
   return (
-    <div className="Footer" style={footerTheme}>
-      <ul className="links">
+    <div css={footerStyle}>
+      <ul css={listOfLinksStyle}>
         <li><a
           href="https://github.com/masonmcelvain/masonmcelvain"
           target="_blank"

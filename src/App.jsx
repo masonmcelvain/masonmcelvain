@@ -4,12 +4,20 @@ import theme from "./theme.js";
 import { useState, useEffect } from 'react';
 
 import Bio from './components/Bio';
-import Projects from './components/Projects/Projects';
-import Experiences from './components/Experiences/Experiences';
-import Footer from './components/Footer/Footer';
+import Projects from './components/Projects';
+import Experiences from './components/Experiences';
+import Footer from './components/Footer';
+
+const STORAGE_THEME_KEY = 'grabBagUITheme';
 
 function App() {
-  let [themeColor, setThemeColor] = useState("dark");
+
+  // Set the initial page theme based on local storage. Defualt to dark theme.
+  let [themeColor, setThemeColor] = useState(
+    window.localStorage.getItem(STORAGE_THEME_KEY) ?
+    window.localStorage.getItem(STORAGE_THEME_KEY) :
+    "dark"
+  );
 
   const appTheme = (theme) => css`
     background-color: ${themeColor === "dark" ? theme.color.darkBackdrop : theme.color.lightBackdrop };
@@ -24,6 +32,7 @@ function App() {
     font-size: 18px;
     line-height: 1.5;
     border-radius: 8px;
+    
     // themed styles below
     color: ${themeColor === "dark" ? theme.color.darkText : theme.color.lightText};
     background-color: ${themeColor === "dark" ? theme.color.darkCenter : theme.color.lightCenter};
@@ -49,19 +58,11 @@ function App() {
     document.body.style.backgroundColor = themeColor === "dark" ? theme.color.darkBackdrop : theme.color.lightBackdrop;
 
     // Save the new theme in the window's local storage.
-    window.localStorage.setItem('grabBagUITheme', themeColor);
+    window.localStorage.setItem(STORAGE_THEME_KEY, themeColor);
 
     // Cleanup function to clear the background color of the page
     return () => {document.body.style.backgroundColor = null};
   }, [themeColor]);
-
-  /**
-   * Use the theme color in localStorage on page load, if it exists.
-   */
-  useEffect(() => {
-    let initialTheme = window.localStorage.getItem('grabBagUITheme');
-    setThemeColor( initialTheme ? initialTheme : "dark" );
-  }, []);
 
   return (
     <ThemeProvider theme={theme}>

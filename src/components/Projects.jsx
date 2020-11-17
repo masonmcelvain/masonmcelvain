@@ -1,15 +1,22 @@
-import React from 'react';
-import './Projects.scss';
-import ProjectListing from '../ProjectListing/ProjectListing';
-import Dropdown from '../Dropdown';
+/** @jsx jsx */
+import { jsx, css } from '@emotion/react';
+
+import ProjectListing from './ProjectListing';
+import Dropdown from './Dropdown';
 
 export default function Projects({ themeColor }) {
-  let categoryTheme = { borderColor: `var(--${themeColor}Shadow)` };
-  let nimbusValidatorGif = 'https://media.giphy.com/media/6Zc3pEySruneZ6XY4I/giphy.gif';
+  const gifURL = 'https://media.giphy.com/media/6Zc3pEySruneZ6XY4I/giphy.gif';
+
+  const categoryTitleStyle = (theme) => css`
+    ${theme.category}
+    border-color: ${themeColor === "dark" ? theme.color.darkShadow : theme.color.lightShadow};
+  `;
 
   return (
     <div className="Projects">
-      <h2 className="category" style={categoryTheme}>Projects</h2>
+      <h2 css={categoryTitleStyle}>
+        Projects
+      </h2>
       <ProjectListing
         link="https://github.com/calpoly-csai/nimbus-validator-app"
         title="CSAI Phrase Validator"
@@ -17,7 +24,7 @@ export default function Projects({ themeColor }) {
       >
         <Dropdown
           name="Demo"
-          image={nimbusValidatorGif}
+          image={gifURL}
           themeColor={themeColor}
         />
       </ProjectListing>

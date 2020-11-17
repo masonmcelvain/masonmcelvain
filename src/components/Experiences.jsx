@@ -1,13 +1,17 @@
-import React from 'react';
-import './Experiences.scss';
-import ExperienceListing from '../ExperienceListing/ExperienceListing';
+/** @jsx jsx */
+import { jsx, css } from '@emotion/react';
+import ExperienceListing from './ExperienceListing';
 
 export default function Experiences({ themeColor }) {
-  let categoryTheme = { borderColor: `var(--${themeColor}Shadow)` };
+  
+  const categoryTitleStyle = (theme) => css`
+    ${theme.category}
+    border-color: ${themeColor === "dark" ? theme.color.darkShadow : theme.color.lightShadow};
+  `;
 
   return (
     <div className="Experiences">
-      <h2 className="category" style={categoryTheme}>Work & Leadership</h2>
+      <h2 css={categoryTitleStyle}>Work & Leadership</h2>
       <ExperienceListing
         link="https://www.calpolycsai.com/"
         title="Web Developer, Cal Poly CSAI"

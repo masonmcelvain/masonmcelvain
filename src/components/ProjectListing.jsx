@@ -1,9 +1,11 @@
-import React from "react"
-import "./ProjectListing.scss"
+/** @jsx jsx */
+import { jsx, css } from '@emotion/react';
 
 export default function ProjectListing({ link, title, description, children }) {
+  const projectListingStyle = css` margin: 0 0 40px; `;
+
   return (
-    <div className="ProjectListing">
+    <div css={projectListingStyle}>
       <h3><a
               href={link}
               target="_blank"

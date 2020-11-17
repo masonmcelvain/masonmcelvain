@@ -35,6 +35,10 @@ p {
   font-size: 18px;
 }
 
+li {
+  list-style-type: none;
+}
+
 #app {
   margin: 0;
   padding: 16px;

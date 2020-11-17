@@ -2,8 +2,8 @@ import React from 'react';
 import './Experiences.scss';
 import ExperienceListing from '../ExperienceListing/ExperienceListing';
 
-export default function Experiences({ theme }) {
-  let categoryTheme = { borderColor: `var(--${theme}Shadow)` };
+export default function Experiences({ themeColor }) {
+  let categoryTheme = { borderColor: `var(--${themeColor}Shadow)` };
 
   return (
     <div className="Experiences">

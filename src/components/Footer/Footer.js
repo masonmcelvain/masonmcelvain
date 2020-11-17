@@ -1,8 +1,8 @@
 import React from 'react';
 import './Footer.scss';
 
-export default function Footer({ theme }) {
-  let footerTheme = { borderTop: `1px solid var(--${theme}Shadow)` };
+export default function Footer({ themeColor }) {
+  let footerTheme = { borderTop: `1px solid var(--${themeColor}Shadow)` };
 
   return (
     <div className="Footer" style={footerTheme}>

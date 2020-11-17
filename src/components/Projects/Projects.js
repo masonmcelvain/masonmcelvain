@@ -1,12 +1,11 @@
 import React from 'react';
 import './Projects.scss';
 import ProjectListing from '../ProjectListing/ProjectListing';
-import Dropdown from '../Dropdown/Dropdown';
+import Dropdown from '../Dropdown';
 
-export default function Projects({ theme }) {
-  let categoryTheme = { borderColor: `var(--${theme}Shadow)` };
+export default function Projects({ themeColor }) {
+  let categoryTheme = { borderColor: `var(--${themeColor}Shadow)` };
   let nimbusValidatorGif = 'https://media.giphy.com/media/6Zc3pEySruneZ6XY4I/giphy.gif';
-  let nimbusChatGif = 'https://media.giphy.com/media/Piv6R2iqQ7OwhUUaQV/giphy.gif';
 
   return (
     <div className="Projects">
@@ -19,7 +18,7 @@ export default function Projects({ theme }) {
         <Dropdown
           name="Demo"
           image={nimbusValidatorGif}
-          theme={theme}
+          themeColor={themeColor}
         />
       </ProjectListing>
       <ProjectListing

@@ -3,7 +3,7 @@ import { jsx, css } from '@emotion/react';
 import ExperienceListing from './ExperienceListing';
 
 export default function Experiences({ themeColor }) {
-  
+
   const categoryTitleStyle = (theme) => css`
     ${theme.category}
     border-color: ${themeColor === "dark" ? theme.color.darkShadow : theme.color.lightShadow};
@@ -12,6 +12,12 @@ export default function Experiences({ themeColor }) {
   return (
     <div className="Experiences">
       <h2 css={categoryTitleStyle}>Work & Leadership</h2>
+      <ExperienceListing
+        link="https://www.ifixit.com/User/3406834/Mason+McElvain"
+        title="Student Developer, iFixit"
+        description="Focusing on full stack web development"
+        timePeriod="Nov 2020 - present"
+      />
       <ExperienceListing
         link="https://www.calpolycsai.com/"
         title="Web Developer, Cal Poly CSAI"

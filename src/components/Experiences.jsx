@@ -22,13 +22,13 @@ export default function Experiences({ themeColor }) {
         link="https://www.calpolycsai.com/"
         title="Web Developer, Cal Poly CSAI"
         description="Computer Science & Artificial Intelligence Club"
-        timePeriod="Apr 2020 - present"
+        timePeriod="Apr 2020 - Apr 2021"
       />
       <ExperienceListing
         link="https://www.tedxsanluisobispo.com/"
         title="TEDxSanLuisObispo Admin & MC"
         description="TEDx Conference hosted at Cal Poly"
-        timePeriod="Apr 2020 - present"
+        timePeriod="Apr 2020 - May 2021"
       />
       <ExperienceListing
         link="http://mcsla.org/"

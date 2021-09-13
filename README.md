@@ -1,4 +1,4 @@
-Hi! I'm Mason, a lifelong learner, ocean & nature lover, and friend. Right now I study Computer Science at [Cal Poly](https://www.calpoly.edu/) 📚, class of 2022.
+Hi! I'm Mason, a lifelong learner, ocean & nature lover, and friend. Right now I study computer science at [Cal Poly](https://www.calpoly.edu/) 📚, class of 2022.
 
 Feel free to check out my [home site](https://masonmcelvain.com) 🌴, a simple portfolio of my current projects and passions.
 

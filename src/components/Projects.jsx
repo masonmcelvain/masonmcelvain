@@ -18,6 +18,11 @@ export default function Projects({ themeColor }) {
         Projects
       </h2>
       <ProjectListing
+        link="https://github.com/masonmcelvain/hop"
+        title="Hop"
+        description="An aesthetic bookmark manager as a Chrome extension."
+      />
+      <ProjectListing
         link="https://github.com/calpoly-csai/nimbus-validator-app"
         title="CSAI Phrase Validator"
         description="A web app for club members to validate phrases that Nimbus, the club's AI Chatbot, can understand."

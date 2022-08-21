@@ -12,7 +12,9 @@
       "dev": "next dev",
       "build": "next build",
       "start": "next start",
-      "lint": "next lint"
+      "lint": "next lint",
+      "format": "prettier --write .",
+      "type-check": "tsc --pretty --noEmit"
    },
    "dependencies": {
       "@chakra-ui/react": "^2.2.8",
@@ -26,6 +28,19 @@
    "devDependencies": {
       "@types/node": "^18.7.8",
       "@types/react": "^18.0.17",
+      "@typescript-eslint/eslint-plugin": "^5.33.1",
+      "@typescript-eslint/parser": "^5.33.1",
+      "eslint": "8.22.0",
+      "eslint-config-next": "12.2.5",
+      "eslint-config-prettier": "^8.5.0",
+      "husky": "^8.0.1",
+      "prettier": "2.7.1",
       "typescript": "^4.7.4"
+   },
+   "husky": {
+      "hooks": {
+         "pre-commit": "pnpm format && pnpm lint",
+         "pre-push": "pnpm type-check"
+      }
    }
 }

@@ -1,32 +1,27 @@
 {
-  "private": true,
-  "name": "cara",
-  "description": "Playful and Colorful One-Page portfolio featuring Parallax effects and animations",
-  "version": "0.2.11",
-  "author": "LekoArts <hello@lekoarts.de>",
-  "license": "0BSD",
-  "starter-name": "gatsby-starter-portfolio-cara",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "develop:cypress": "cross-env CYPRESS_SUPPORT=y yarn develop",
-    "build:cypress": "cross-env CYPRESS_SUPPORT=y yarn build",
-    "start": "gatsby develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean"
-  },
-  "dependencies": {
-    "@lekoarts/gatsby-theme-cara": "^3.0.0",
-    "@theme-ui/css": "^0.14.5",
-    "gatsby": "^4.0.0",
-    "gatsby-plugin-gatsby-cloud": "^4.0.0",
-    "gatsby-plugin-manifest": "^4.0.0",
-    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.22",
-    "npm": "^8.11.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
-  },
-  "devDependencies": {
-    "cross-env": "^7.0.3"
-  }
+   "name": "masonmcelvain",
+   "version": "2.0.0",
+   "license": "MIT",
+   "description": "Portfolio site for Mason McElvain",
+   "author": "Mason",
+   "repository": {
+      "type": "git",
+      "url": "https://github.com/masonmcelvain/masonmcelvain"
+   },
+   "scripts": {
+      "dev": "next dev",
+      "build": "next build",
+      "start": "next start",
+      "lint": "next lint"
+   },
+   "dependencies": {
+      "next": "^12.2.5",
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0"
+   },
+   "devDependencies": {
+      "@types/node": "^18.7.8",
+      "@types/react": "^18.0.17",
+      "typescript": "^4.7.4"
+   }
 }

@@ -1,12 +1,12 @@
 import { PageContentWrapper } from '@components/common/PageContentWrapper';
-import { Home } from '@templates/home';
+import { Hop } from '@templates/projects/hop';
 
-function HomePage() {
+function HopPage() {
    return (
       <PageContentWrapper>
-         <Home />
+         <Hop />
       </PageContentWrapper>
    );
 }
 
-export default HomePage;
+export default HopPage;

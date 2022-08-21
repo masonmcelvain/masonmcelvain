@@ -1,12 +1,12 @@
 import { PageContentWrapper } from '@components/common/PageContentWrapper';
-import { Home } from '@templates/home';
+import { CSAIValidator } from '@templates/projects/csai-validator';
 
-function HomePage() {
+function ValidatorPage() {
    return (
       <PageContentWrapper>
-         <Home />
+         <CSAIValidator />
       </PageContentWrapper>
    );
 }
 
-export default HomePage;
+export default ValidatorPage;

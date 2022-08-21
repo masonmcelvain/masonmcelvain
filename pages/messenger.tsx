@@ -1,12 +1,12 @@
 import { PageContentWrapper } from '@components/common/PageContentWrapper';
-import { Home } from '@templates/home';
+import { CSAIMessenger } from '@templates/projects/csai-messenger';
 
-function HomePage() {
+function MessengerPage() {
    return (
       <PageContentWrapper>
-         <Home />
+         <CSAIMessenger />
       </PageContentWrapper>
    );
 }
 
-export default HomePage;
+export default MessengerPage;

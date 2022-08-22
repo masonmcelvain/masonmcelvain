@@ -17,9 +17,17 @@
       "baseUrl": ".",
       "paths": {
          "@components/*": ["components/*"],
+         "@markdown/*": ["markdown/*"],
          "@templates/*": ["templates/*"]
       }
    },
-   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"],
+   "include": [
+      "next-env.d.ts",
+      "**/*.ts",
+      "**/*.tsx",
+      "**/*.js",
+      "**/*.mdx",
+      "next.config.mjs"
+   ],
    "exclude": ["node_modules", ".next"]
 }

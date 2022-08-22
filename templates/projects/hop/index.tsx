@@ -1,5 +1,11 @@
-import { Text } from '@chakra-ui/react';
+import { Heading } from '@chakra-ui/react';
+import { HopProse } from '@markdown/hop';
 
 export function Hop() {
-   return <Text>Hop Page</Text>;
+   return (
+      <>
+         <Heading>Hop</Heading>
+         <HopProse />
+      </>
+   );
 }

@@ -9,7 +9,7 @@ export function About() {
             Cal Poly with a degree in computer science in March 2022.
          </Text>
          <Heading as="h3" size="lg">
-            How silicon became my favorite element
+            How silicon became my favorite element 🧪
          </Heading>
          <Divider />
          <HistoryProse />

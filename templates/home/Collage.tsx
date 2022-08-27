@@ -54,6 +54,7 @@ export function Collage() {
                src={StackedMason}
                alt="Stacked images of Mason and a line drawn Mason"
                multiplier={2.04}
+               priority
             />
          </HStack>
          <HStack w="full" justify="space-between">

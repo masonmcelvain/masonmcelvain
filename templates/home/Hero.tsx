@@ -33,7 +33,6 @@ export function Hero() {
                   alt="Mason Climbing in Tuolomne Meadows"
                   layout="fill"
                   objectFit="cover"
-                  priority
                />
             </Box>
          </Flex>

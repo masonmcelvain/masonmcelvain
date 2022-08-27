@@ -1,4 +1,4 @@
-import NextMDX from '@next/mdx';
+import NextMDX from "@next/mdx";
 
 const withMDX = NextMDX({
    extension: /\.mdx?$/,
@@ -12,5 +12,5 @@ const withMDX = NextMDX({
 
 export default withMDX({
    // Append the default value with md extensions
-   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
 });

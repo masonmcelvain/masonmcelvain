@@ -18,7 +18,8 @@
       "paths": {
          "@components/*": ["components/*"],
          "@markdown/*": ["markdown/*"],
-         "@templates/*": ["templates/*"]
+         "@templates/*": ["templates/*"],
+         "@masonmcelvain/ui/*": ["packages/ui/*"]
       }
    },
    "include": [

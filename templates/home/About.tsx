@@ -9,7 +9,7 @@ export function About() {
             I&apos;m a 23 year old living in San Luis Obispo. I graduated from
             Cal Poly with a degree in computer science in March 2022.
          </Text>
-         <Heading as="h3" size="lg" mt={3}>
+         <Heading as="h3" size="lg" my={3}>
             How silicon became my favorite element 🧪
          </Heading>
          <Divider />

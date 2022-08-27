@@ -1,1 +1,1 @@
-export { default as HopProse } from './HopProse.mdx';
+export { default as HopProse } from "./HopProse.mdx";

@@ -1,6 +1,6 @@
-import { Divider, Heading, Text } from '@chakra-ui/react';
-import { MdxWrapper } from '@components/common/MdxWrapper';
-import { HistoryProse } from '@markdown/home';
+import { Divider, Heading, Text } from "@chakra-ui/react";
+import { MdxWrapper } from "@components/common/MdxWrapper";
+import { HistoryProse } from "@markdown/home";
 
 export function About() {
    return (

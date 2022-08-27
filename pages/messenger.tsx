@@ -1,5 +1,5 @@
-import { PageContentWrapper } from '@components/common/PageContentWrapper';
-import { CSAIMessenger } from '@templates/projects/csai-messenger';
+import { PageContentWrapper } from "@components/common/PageContentWrapper";
+import { CSAIMessenger } from "@templates/projects/csai-messenger";
 
 function MessengerPage() {
    return (

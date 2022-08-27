@@ -5,15 +5,15 @@ import {
    HeadingProps,
    useBreakpointValue,
    VStack,
-} from '@chakra-ui/react';
-import Image from 'next/image';
-import RockMason from '@assets/images/rock-mason.png';
+} from "@chakra-ui/react";
+import Image from "next/image";
+import RockMason from "@assets/images/rock-mason.png";
 
 export function Hero() {
    return (
       <>
          <Flex
-            direction={{ base: 'column', md: 'row' }}
+            direction={{ base: "column", md: "row" }}
             alignItems="center"
             justifyContent="space-between"
             px={{ base: 4, sm: 0, md: 4, lg: 4, xl: 16 }}
@@ -63,7 +63,7 @@ function TitleHeading({ children, ...props }: TitleProps) {
    return (
       <Heading
          as="h1"
-         size={{ base: 'lg', sm: 'xl', md: '2xl' }}
+         size={{ base: "lg", sm: "xl", md: "2xl" }}
          lineHeight={{ base: 1, md: 1.5 }}
          whiteSpace="nowrap"
          {...props}

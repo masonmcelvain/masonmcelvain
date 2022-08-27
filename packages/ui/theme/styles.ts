@@ -1,9 +1,9 @@
-import type { ThemeOverride } from '@chakra-ui/react';
+import type { ThemeOverride } from "@chakra-ui/react";
 
-export const styles: ThemeOverride['styles'] = {
+export const styles: ThemeOverride["styles"] = {
    global: {
       p: {
-         fontSize: '1.125rem',
+         fontSize: "1.125rem",
       },
    },
 };

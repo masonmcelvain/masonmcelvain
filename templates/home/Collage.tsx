@@ -1,16 +1,16 @@
-import Image, { ImageProps, StaticImageData } from 'next/image';
-import Anacapa from '@assets/images/anacapa.png';
-import GlacierMason from '@assets/images/glacier-mason.png';
-import IcelandMason from '@assets/images/iceland-mason.png';
-import Kelp from '@assets/images/kelp.png';
-import LifeguardMason from '@assets/images/lifeguard-mason.png';
-import Scorpion from '@assets/images/scorpion.png';
-import StackedMason from '@assets/images/stacked-mason.png';
-import Surf from '@assets/images/surf.png';
-import WhaleShark from '@assets/images/whale-shark.png';
-import BarefootMason from '@assets/images/barefoot-mason.png';
-import TedXMason from '@assets/images/tedx-mason.png';
-import CapitolReefMason from '@assets/images/capitol-reef-mason.png';
+import Image, { ImageProps, StaticImageData } from "next/image";
+import Anacapa from "@assets/images/anacapa.png";
+import GlacierMason from "@assets/images/glacier-mason.png";
+import IcelandMason from "@assets/images/iceland-mason.png";
+import Kelp from "@assets/images/kelp.png";
+import LifeguardMason from "@assets/images/lifeguard-mason.png";
+import Scorpion from "@assets/images/scorpion.png";
+import StackedMason from "@assets/images/stacked-mason.png";
+import Surf from "@assets/images/surf.png";
+import WhaleShark from "@assets/images/whale-shark.png";
+import BarefootMason from "@assets/images/barefoot-mason.png";
+import TedXMason from "@assets/images/tedx-mason.png";
+import CapitolReefMason from "@assets/images/capitol-reef-mason.png";
 import {
    Box,
    Center,
@@ -18,13 +18,13 @@ import {
    HStack,
    useBreakpointValue,
    VStack,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 
 const defaultH = 180;
 
 export function Collage() {
    return (
-      <VStack display={{ base: 'none', lg: 'flex' }} mb={20}>
+      <VStack display={{ base: "none", lg: "flex" }} mb={20}>
          <HStack w="full" justify="space-between">
             <VStack>
                <HStack w="full" justify="space-between">
@@ -99,7 +99,7 @@ export function Collage() {
 
 type StaticImageProps = Omit<
    ImageProps,
-   'src' | 'width' | 'height' | 'layout' | 'objectFit'
+   "src" | "width" | "height" | "layout" | "objectFit"
 > & {
    src: StaticImageData;
    alt: string;

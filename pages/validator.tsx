@@ -1,5 +1,5 @@
-import { PageContentWrapper } from '@components/common/PageContentWrapper';
-import { CSAIValidator } from '@templates/projects/csai-validator';
+import { PageContentWrapper } from "@components/common/PageContentWrapper";
+import { CSAIValidator } from "@templates/projects/csai-validator";
 
 function ValidatorPage() {
    return (

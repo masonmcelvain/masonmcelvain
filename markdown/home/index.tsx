@@ -1,1 +1,1 @@
-export { default as HistoryProse } from './HistoryProse.mdx';
+export { default as HistoryProse } from "./HistoryProse.mdx";

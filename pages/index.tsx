@@ -1,5 +1,5 @@
-import { PageContentWrapper } from '@components/common/PageContentWrapper';
-import { Home } from '@templates/home';
+import { PageContentWrapper } from "@components/common/PageContentWrapper";
+import { Home } from "@templates/home";
 
 function HomePage() {
    return (

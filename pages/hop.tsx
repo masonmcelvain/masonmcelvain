@@ -1,4 +1,4 @@
-import { PageContentWrapper } from "@ui/components/PageContentWrapper";
+import { PageContentWrapper } from "@ui/layout";
 import { Hop } from "@templates/projects/hop";
 
 function HopPage() {

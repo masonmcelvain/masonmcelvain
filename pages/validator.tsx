@@ -1,4 +1,4 @@
-import { PageContentWrapper } from "@ui/components/PageContentWrapper";
+import { PageContentWrapper } from "@ui/layout";
 import { CSAIValidator } from "@templates/projects/csai-validator";
 
 function ValidatorPage() {

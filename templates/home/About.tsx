@@ -1,7 +1,7 @@
 import { Center, Text } from "@chakra-ui/react";
-import { MdxWrapper } from "@ui/components/MdxWrapper";
+import { MdxWrapper } from "@ui/layout";
 import { HistoryProse } from "@markdown/home";
-import { SectionHeading } from "@ui/components/SectionHeading";
+import { SectionHeading } from "@ui/typography";
 import { SocialIconRow } from "@icons/social";
 
 export function About() {

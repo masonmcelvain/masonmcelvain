@@ -7,12 +7,12 @@ import { SocialIconRow } from "@icons/social";
 export function About() {
    return (
       <>
-         <Text my={8}>
+         <Text mt={8}>
             I&apos;m a 23 year old living in San Luis Obispo (he/him). I
             graduated from Cal Poly with a degree in computer science in March
             2022.
          </Text>
-         <Center>
+         <Center mt={8}>
             <SocialIconRow />
          </Center>
          <SectionHeading>

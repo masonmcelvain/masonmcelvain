@@ -5,7 +5,7 @@ import { TwitterIcon } from "./TwitterIcon";
 
 export function SocialIconRow(props: StackProps) {
    return (
-      <HStack gap={3} {...props}>
+      <HStack gap={8} {...props}>
          <EnvelopeIcon />
          <GithubIcon />
          <TwitterIcon />

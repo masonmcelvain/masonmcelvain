@@ -17,7 +17,7 @@ export function Hero() {
             alignItems="center"
             justifyContent="space-between"
             px={{ base: 4, sm: 0, md: 4, lg: 4, xl: 16 }}
-            my={3}
+            mt={8}
          >
             <Title />
             <Box
@@ -27,6 +27,7 @@ export function Hero() {
                h={{ base: 200, lg: 375 }}
                borderRadius="100%"
                overflow="hidden"
+               mt={8}
             >
                <Image
                   src={RockMason}
@@ -43,7 +44,7 @@ export function Hero() {
 function Title() {
    const isMobile = useBreakpointValue({ base: true, md: false }) || false;
    return isMobile ? (
-      <VStack alignItems="left" mb={3}>
+      <VStack alignItems="left">
          <TitleHeading>Hi, I&apos;m Mason.</TitleHeading>
          <TitleHeading>Full Stack Developer at iFixit.</TitleHeading>
       </VStack>

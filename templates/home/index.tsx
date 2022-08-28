@@ -12,7 +12,7 @@ export function Home() {
          <Hero />
          <About />
          <Work />
-         <Divider my={10} />
+         <Divider my={16} />
          <Collage />
          <MobileCollage />
          <MetaTitle addendum="Home" />

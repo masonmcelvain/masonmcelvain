@@ -19,6 +19,7 @@
          "@assets/*": ["assets/*"],
          "@markdown/*": ["markdown/*"],
          "@templates/*": ["templates/*"],
+         "@common/*": ["packages/common/*"],
          "@icons/*": ["packages/icons/*"],
          "@ui/*": ["packages/ui/*"]
       }

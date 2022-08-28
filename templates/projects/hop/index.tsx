@@ -1,6 +1,7 @@
 import { Heading } from "@chakra-ui/react";
 import { MdxWrapper } from "@ui/layout";
 import { HopProse } from "@markdown/hop";
+import { MetaTitle } from "@common/meta";
 
 export function Hop() {
    return (
@@ -9,6 +10,7 @@ export function Hop() {
          <MdxWrapper>
             <HopProse />
          </MdxWrapper>
+         <MetaTitle addendum="Hop" />
       </>
    );
 }

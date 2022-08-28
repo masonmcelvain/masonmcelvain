@@ -1,11 +1,10 @@
-import { Heading, Text } from "@chakra-ui/react";
+import { Text } from "@chakra-ui/react";
+import { SectionHeading } from "@ui/components/SectionHeading";
 
 export function Work() {
    return (
       <>
-         <Heading as="h3" size="lg" my={3}>
-            What I&apos;ve been working on 🛠️
-         </Heading>
+         <SectionHeading>What I&apos;ve been working on 🛠️</SectionHeading>
          <Text>
             A deeper dive into some of the projects and companies I&apos;ve
             devoted my time to.

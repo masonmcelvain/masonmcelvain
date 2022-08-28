@@ -17,10 +17,9 @@
       "baseUrl": ".",
       "paths": {
          "@assets/*": ["assets/*"],
-         "@components/*": ["components/*"],
          "@markdown/*": ["markdown/*"],
          "@templates/*": ["templates/*"],
-         "@masonmcelvain/ui/*": ["packages/ui/*"]
+         "@ui/*": ["packages/ui/*"]
       }
    },
    "include": [

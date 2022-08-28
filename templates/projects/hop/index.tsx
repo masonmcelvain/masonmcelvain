@@ -1,5 +1,5 @@
 import { Heading } from "@chakra-ui/react";
-import { MdxWrapper } from "@components/common/MdxWrapper";
+import { MdxWrapper } from "@ui/components/MdxWrapper";
 import { HopProse } from "@markdown/hop";
 
 export function Hop() {

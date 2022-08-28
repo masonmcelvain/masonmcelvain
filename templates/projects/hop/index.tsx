@@ -1,7 +1,7 @@
 import { Heading } from "@chakra-ui/react";
 import { MdxWrapper } from "@ui/layout";
 import { HopProse } from "@markdown/hop";
-import { MetaTitle } from "@common/meta";
+import { MetaTitle } from "@common/components";
 
 export function Hop() {
    return (

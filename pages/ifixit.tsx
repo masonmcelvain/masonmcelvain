@@ -1,12 +1,12 @@
 import { PageContentWrapper } from "@ui/layout";
-import { Hop } from "@templates/projects";
+import { IFixit } from "@templates/projects";
 
-function HopPage() {
+function iFixitPage() {
    return (
       <PageContentWrapper>
-         <Hop />
+         <IFixit />
       </PageContentWrapper>
    );
 }
 
-export default HopPage;
+export default iFixitPage;

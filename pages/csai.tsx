@@ -1,12 +1,12 @@
 import { PageContentWrapper } from "@ui/layout";
-import { Hop } from "@templates/projects";
+import { CSAI } from "@templates/projects";
 
-function HopPage() {
+function CSAIPage() {
    return (
       <PageContentWrapper>
-         <Hop />
+         <CSAI />
       </PageContentWrapper>
    );
 }
 
-export default HopPage;
+export default CSAIPage;

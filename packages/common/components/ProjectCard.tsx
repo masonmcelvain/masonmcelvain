@@ -42,7 +42,6 @@ export function ProjectCard({
    return (
       <NextLink href={href} passHref>
          <Link
-            isExternal
             _hover={{
                textDecor: "none",
             }}

@@ -12,9 +12,9 @@
       "dev": "next dev",
       "build": "next build",
       "start": "next start",
-      "lint": "next lint",
-      "lint:fix": "next lint --fix --file .",
-      "format": "pnpm lint:fix && prettier --write .",
+      "lint": "eslint .",
+      "lint:fix": "eslint . --fix .",
+      "format": "prettier --write .",
       "type-check": "tsc --pretty --noEmit"
    },
    "dependencies": {

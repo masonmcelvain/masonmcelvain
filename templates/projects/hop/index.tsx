@@ -1,11 +1,13 @@
 import { Heading } from "@chakra-ui/react";
 import { MdxWrapper } from "@ui/layout";
 import { HopProse } from "@markdown/hop";
-import { MetaTitle, WithProvidersProps } from "@common/components";
+import { WithProvidersProps } from "@common/components";
 import { NextPageWithLayout } from "@pages/_app";
-import { DefaultLayout } from "@layouts/default";
+import { DefaultLayout, WithLayoutProps } from "@layouts/default";
 
-type HopTemplateProps = WithProvidersProps<Record<string, never>>;
+type HopTemplateProps = WithProvidersProps<
+   WithLayoutProps<Record<string, never>>
+>;
 
 const HopTemplate: NextPageWithLayout<HopTemplateProps> = () => {
    return (
@@ -14,13 +16,12 @@ const HopTemplate: NextPageWithLayout<HopTemplateProps> = () => {
          <MdxWrapper>
             <HopProse />
          </MdxWrapper>
-         <MetaTitle addendum="Hop" />
       </>
    );
 };
 
 HopTemplate.getLayout = function getLayout(page) {
-   return <DefaultLayout>{page}</DefaultLayout>;
+   return <DefaultLayout titleAddendum="Hop">{page}</DefaultLayout>;
 };
 
 export default HopTemplate;

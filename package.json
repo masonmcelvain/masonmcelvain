@@ -23,11 +23,17 @@
       "@emotion/styled": "^11",
       "@mdx-js/loader": "^2.1.3",
       "@next/mdx": "^12.2.5",
+      "@mdx-js/react": "*",
+      "webpack": ">=4",
       "framer-motion": "^6",
       "next": "^12.2.5",
       "react": "^18.2.0",
       "react-dom": "^18.2.0",
       "react-icons": "^4.4.0"
+   },
+   "peerDependencies": {
+      "@mdx-js/react": "*",
+      "webpack": ">=4"
    },
    "devDependencies": {
       "@babel/core": "^7.0.0",

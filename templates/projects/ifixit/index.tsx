@@ -1,6 +1,6 @@
 import { Text } from "@chakra-ui/react";
 import { WithProvidersProps } from "@common/components";
-import { DefaultLayout, WithLayoutProps } from "@layouts/default";
+import { ProjectLayout, WithLayoutProps } from "@layouts/project";
 import { NextPageWithLayout } from "@pages/_app";
 
 type IFixitTemplateProps = WithProvidersProps<
@@ -12,7 +12,7 @@ const IFixitTemplate: NextPageWithLayout<IFixitTemplateProps> = () => {
 };
 
 IFixitTemplate.getLayout = function getLayout(page) {
-   return <DefaultLayout titleAddendum="iFixit">{page}</DefaultLayout>;
+   return <ProjectLayout title="iFixit">{page}</ProjectLayout>;
 };
 
 export default IFixitTemplate;

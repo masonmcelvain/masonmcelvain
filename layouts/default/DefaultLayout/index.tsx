@@ -4,14 +4,14 @@ import { Footer } from "./Footer";
 import { MetaTitle } from "./MetaTitle";
 
 export function DefaultLayout({
-   titleAddendum,
+   headTitleSuffix,
    children,
 }: React.PropsWithChildren<DefaultLayoutProps>) {
    return (
       <PageContentWrapper>
          {children}
          <Footer />
-         <MetaTitle addendum={titleAddendum} />
+         <MetaTitle addendum={headTitleSuffix} />
       </PageContentWrapper>
    );
 }

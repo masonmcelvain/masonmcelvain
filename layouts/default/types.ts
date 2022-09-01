@@ -1,5 +1,5 @@
 export interface DefaultLayoutProps {
-   titleAddendum?: string;
+   headTitleSuffix: string;
 }
 
 export type WithLayoutProps<T> = T & { layoutProps: DefaultLayoutProps };

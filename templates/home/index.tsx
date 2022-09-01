@@ -26,7 +26,7 @@ const HomeTemplate: NextPageWithLayout<HomeTemplateProps> = () => {
 };
 
 HomeTemplate.getLayout = function getLayout(page) {
-   return <DefaultLayout titleAddendum="Home">{page}</DefaultLayout>;
+   return <DefaultLayout headTitleSuffix="Home">{page}</DefaultLayout>;
 };
 
 export default HomeTemplate;

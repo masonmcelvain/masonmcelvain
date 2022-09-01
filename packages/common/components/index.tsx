@@ -1,3 +1,4 @@
+export * from "./AppProviders";
 export * from "./Footer";
 export * from "./MetaTitle";
 export * from "./ProjectGrid";

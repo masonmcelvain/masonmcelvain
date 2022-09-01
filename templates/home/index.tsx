@@ -1,12 +1,16 @@
 import { Divider } from "@chakra-ui/react";
-import { Footer, MetaTitle } from "@common/components";
+import { MetaTitle, WithProvidersProps } from "@common/components";
+import { DefaultLayout } from "@layouts/default";
+import { NextPageWithLayout } from "@pages/_app";
 import { About } from "./About";
 import { Collage } from "./Collage";
 import { Hero } from "./Hero";
 import { MobileCollage } from "./MobileCollage";
 import { Work } from "./Work";
 
-export function Home() {
+type HomeTemplateProps = WithProvidersProps<Record<string, never>>;
+
+const HomeTemplate: NextPageWithLayout<HomeTemplateProps> = () => {
    return (
       <>
          <Hero />
@@ -15,8 +19,13 @@ export function Home() {
          <Divider my={16} />
          <Collage />
          <MobileCollage />
-         <Footer />
          <MetaTitle addendum="Home" />
       </>
    );
-}
+};
+
+HomeTemplate.getLayout = function getLayout(page) {
+   return <DefaultLayout>{page}</DefaultLayout>;
+};
+
+export default HomeTemplate;

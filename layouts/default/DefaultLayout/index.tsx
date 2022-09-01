@@ -1,6 +1,7 @@
-import { Footer, MetaTitle } from "@common/components";
 import { PageContentWrapper } from "@ui/layout";
 import { DefaultLayoutProps } from "../types";
+import { Footer } from "./Footer";
+import { MetaTitle } from "./MetaTitle";
 
 export function DefaultLayout({
    titleAddendum,

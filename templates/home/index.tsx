@@ -1,5 +1,5 @@
 import { Divider } from "@chakra-ui/react";
-import { MetaTitle } from "@common/components";
+import { Footer, MetaTitle } from "@common/components";
 import { About } from "./About";
 import { Collage } from "./Collage";
 import { Hero } from "./Hero";
@@ -15,6 +15,7 @@ export function Home() {
          <Divider my={16} />
          <Collage />
          <MobileCollage />
+         <Footer />
          <MetaTitle addendum="Home" />
       </>
    );

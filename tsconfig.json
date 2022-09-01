@@ -18,6 +18,7 @@
       "paths": {
          "@assets/*": ["assets/*"],
          "@markdown/*": ["markdown/*"],
+         "@public/*": ["public/*"],
          "@templates/*": ["templates/*"],
          "@common/*": ["packages/common/*"],
          "@icons/*": ["packages/icons/*"],

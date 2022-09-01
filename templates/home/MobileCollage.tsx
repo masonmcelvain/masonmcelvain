@@ -15,7 +15,7 @@ import { Box, Heading, useBreakpointValue, VStack } from "@chakra-ui/react";
 
 export function MobileCollage() {
    return (
-      <Box display={{ lg: "none" }} mb={20}>
+      <Box display={{ lg: "none" }}>
          <Heading as="h4" size="lg">
             See you out there!
          </Heading>

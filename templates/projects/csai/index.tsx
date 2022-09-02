@@ -8,7 +8,7 @@ type CSAITemplateProps = WithProvidersProps<
 >;
 
 const CSAITemplate: NextPageWithLayout<CSAITemplateProps> = () => {
-   return <Text>CSAI Page</Text>;
+   return <Text>Content coming soon!</Text>;
 };
 
 CSAITemplate.getLayout = function getLayout(page) {

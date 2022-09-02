@@ -8,7 +8,7 @@ type IFixitTemplateProps = WithProvidersProps<
 >;
 
 const IFixitTemplate: NextPageWithLayout<IFixitTemplateProps> = () => {
-   return <Text>iFixit Page</Text>;
+   return <Text>Content coming soon!</Text>;
 };
 
 IFixitTemplate.getLayout = function getLayout(page) {

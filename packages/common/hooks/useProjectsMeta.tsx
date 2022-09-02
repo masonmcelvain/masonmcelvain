@@ -12,8 +12,8 @@ export function useProjectsMeta(): ProjectMeta[] {
          caption:
             "See, click, go! An icon-first browser extension for your favorite bookmarks.",
          href: "/hop",
-         gradientFrom: "#7928CA",
-         gradientTo: "#FF0080",
+         gradientFrom: "#d4145a",
+         gradientTo: "#fbb03b",
       },
       {
          src: iFixitProTechToolkit,
@@ -22,8 +22,8 @@ export function useProjectsMeta(): ProjectMeta[] {
          caption:
             "Join the repair revolution! Learn about my first job as a software engineer.",
          href: "/ifixit",
-         gradientFrom: "#d4145a",
-         gradientTo: "#fbb03b",
+         gradientFrom: "#222223",
+         gradientTo: "#0071ce",
       },
       {
          src: CSAIComposite,
@@ -35,15 +35,12 @@ export function useProjectsMeta(): ProjectMeta[] {
          gradientFrom: "#009245",
          gradientTo: "#fced21",
       },
-      // {
-      //    src: HopComposite,
-      //    alt: "Screenshot of the Hop browser extension",
-      //    title: "Hop",
-      //    caption:
-      //       "See, click, go! An icon-first browser extension for your favorite bookmarks.",
-      //    href: "/hop",
-      //    gradientFrom: "#d485ff",
-      //    gradientTo: "#00ffee",
-      // },
    ];
 }
+
+// Other unused colors:
+//    gradientFrom: "#7928CA",
+//    gradientTo: "#FF0080",
+
+//    gradientFrom: "#d485ff",
+//    gradientTo: "#00ffee",

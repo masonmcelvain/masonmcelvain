@@ -12,7 +12,16 @@ const CSAITemplate: NextPageWithLayout<CSAITemplateProps> = () => {
 };
 
 CSAITemplate.getLayout = function getLayout(page) {
-   return <ProjectLayout title="CSAI">{page}</ProjectLayout>;
+   return (
+      <ProjectLayout
+         title="CSAI"
+         ghUrl="https://github.com/calpoly-csai"
+         // ghColor="linear-gradient(to left top, #814fa0, #01bad7)"
+         ghColor="#6d73b0"
+      >
+         {page}
+      </ProjectLayout>
+   );
 };
 
 export default CSAITemplate;

@@ -4,8 +4,16 @@ import { BaseIcon } from "./BaseIcon";
 
 type GithubIconProps = IconProps & {
    url: string;
+   hoverColor?: string;
 };
 
-export function GithubIcon({ url, ...props }: GithubIconProps) {
-   return <BaseIcon as={FaGithub} url={url} hoverColor="#333" {...props} />;
+export function GithubIcon({ url, hoverColor, ...props }: GithubIconProps) {
+   return (
+      <BaseIcon
+         as={FaGithub}
+         url={url}
+         hoverColor={hoverColor ?? "#333"}
+         {...props}
+      />
+   );
 }

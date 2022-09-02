@@ -12,7 +12,15 @@ const IFixitTemplate: NextPageWithLayout<IFixitTemplateProps> = () => {
 };
 
 IFixitTemplate.getLayout = function getLayout(page) {
-   return <ProjectLayout title="iFixit">{page}</ProjectLayout>;
+   return (
+      <ProjectLayout
+         title="iFixit"
+         ghUrl="https://github.com/iFixit"
+         ghColor="#0071ce"
+      >
+         {page}
+      </ProjectLayout>
+   );
 };
 
 export default IFixitTemplate;

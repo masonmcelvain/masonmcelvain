@@ -19,7 +19,11 @@ const HopTemplate: NextPageWithLayout<HopTemplateProps> = () => {
 };
 
 HopTemplate.getLayout = function getLayout(page) {
-   return <ProjectLayout title="Hop">{page}</ProjectLayout>;
+   return (
+      <ProjectLayout title="Hop" ghUrl="https://github.com/masonmcelvain/hop">
+         {page}
+      </ProjectLayout>
+   );
 };
 
 export default HopTemplate;

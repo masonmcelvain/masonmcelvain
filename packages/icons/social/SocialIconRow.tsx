@@ -7,7 +7,7 @@ export function SocialIconRow(props: StackProps) {
    return (
       <HStack gap={8} {...props}>
          <EnvelopeIcon />
-         <GithubIcon />
+         <GithubIcon url="https://github.com/masonmcelvain" />
          <TwitterIcon />
       </HStack>
    );

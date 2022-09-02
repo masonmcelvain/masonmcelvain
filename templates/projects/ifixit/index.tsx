@@ -2,13 +2,18 @@ import { Text } from "@chakra-ui/react";
 import { WithProvidersProps } from "@common/components";
 import { ProjectLayout, WithLayoutProps } from "@layouts/project";
 import { NextPageWithLayout } from "@pages/_app";
+import { MdxWrapper } from "@ui/layout";
 
 type IFixitTemplateProps = WithProvidersProps<
    WithLayoutProps<Record<string, never>>
 >;
 
 const IFixitTemplate: NextPageWithLayout<IFixitTemplateProps> = () => {
-   return <Text>Content coming soon!</Text>;
+   return (
+      <MdxWrapper>
+         <Text>Content coming soon!</Text>
+      </MdxWrapper>
+   );
 };
 
 IFixitTemplate.getLayout = function getLayout(page) {

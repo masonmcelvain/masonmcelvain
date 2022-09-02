@@ -2,13 +2,18 @@ import { Text } from "@chakra-ui/react";
 import { WithProvidersProps } from "@common/components";
 import { ProjectLayout, WithLayoutProps } from "@layouts/project";
 import { NextPageWithLayout } from "@pages/_app";
+import { MdxWrapper } from "@ui/layout";
 
 type CSAITemplateProps = WithProvidersProps<
    WithLayoutProps<Record<string, never>>
 >;
 
 const CSAITemplate: NextPageWithLayout<CSAITemplateProps> = () => {
-   return <Text>Content coming soon!</Text>;
+   return (
+      <MdxWrapper>
+         <Text>Content coming soon!</Text>
+      </MdxWrapper>
+   );
 };
 
 CSAITemplate.getLayout = function getLayout(page) {

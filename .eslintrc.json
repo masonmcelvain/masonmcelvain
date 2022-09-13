@@ -10,6 +10,6 @@
       "arrow-parens": ["error", "always"],
       "arrow-spacing": ["error", { "before": true, "after": true }],
       "object-curly-spacing": ["error", "always"],
-      "quotes": ["error", "double"]
+      "quotes": ["error", "double", { "avoidEscape": true }]
    }
 }

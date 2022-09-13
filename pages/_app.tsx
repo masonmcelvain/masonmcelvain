@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { AppProps } from "next/app";
 import { ReactElement, ReactNode } from "react";
-import { AppProviders } from "@common/components";
+import { AppProviders, WithProvidersProps } from "@common/components";
 
 export type NextPageWithLayout<P = Record<string, unknown>, IP = P> = NextPage<
    P,
@@ -10,7 +10,9 @@ export type NextPageWithLayout<P = Record<string, unknown>, IP = P> = NextPage<
    getLayout?: (page: ReactElement) => ReactNode;
 };
 
-type AppPropsWithLayout = AppProps & {
+type AppPropsWithLayout = AppProps<
+   WithProvidersProps<Record<string, unknown>>
+> & {
    Component: NextPageWithLayout;
 };
 

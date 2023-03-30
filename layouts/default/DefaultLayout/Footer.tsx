@@ -9,7 +9,7 @@ type FooterProps = StackProps;
 export function Footer(props: FooterProps) {
    return (
       <HStack justify="space-between" px={8} my={16} {...props}>
-         <Link href="#">
+         <Link href="/">
             <Image
                src={Favicon}
                alt="Mason's initials (MM) in a circle"

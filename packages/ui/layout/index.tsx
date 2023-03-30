@@ -1,2 +1,1 @@
-export * from "./PageContentWrapper";
-export * from "./MdxWrapper";
+export * from "./Wrapper";

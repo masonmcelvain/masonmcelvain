@@ -32,8 +32,8 @@ export function Hero() {
                <Image
                   src={RockMason}
                   alt="Mason Climbing in Tuolomne Meadows"
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  object-fit="cover"
                   priority
                />
             </Box>

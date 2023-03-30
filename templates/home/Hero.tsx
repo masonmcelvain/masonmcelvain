@@ -1,11 +1,4 @@
-import {
-   Box,
-   Flex,
-   Heading,
-   HeadingProps,
-   useBreakpointValue,
-   VStack,
-} from "@chakra-ui/react";
+import { Box, Flex, Heading } from "@chakra-ui/react";
 import Image from "next/image";
 import RockMason from "@assets/images/rock-mason.png";
 
@@ -14,20 +7,28 @@ export function Hero() {
       <>
          <Flex
             direction={{ base: "column", md: "row" }}
+            width="full"
             alignItems="center"
             justifyContent="space-between"
-            px={{ base: 4, sm: 0, md: 4, lg: 4, xl: 16 }}
-            mt={8}
+            gap={{ base: 8, md: 16, xl: 32 }}
+            px={{ base: 4, lg: 8 }}
          >
-            <Title />
+            <Heading
+               as="h1"
+               size={{ base: "lg", sm: "xl", md: "2xl" }}
+               lineHeight={{ base: 1, md: 1.5 }}
+               flex="1 0 min-content"
+            >
+               Hi, I&apos;m Mason.
+               <br />
+               Full Stack Developer at iFixit.
+            </Heading>
             <Box
                position="relative"
-               display="block"
                w={{ base: 200, lg: 375 }}
                h={{ base: 200, lg: 375 }}
                borderRadius="100%"
                overflow="hidden"
-               mt={8}
             >
                <Image
                   src={RockMason}
@@ -39,37 +40,5 @@ export function Hero() {
             </Box>
          </Flex>
       </>
-   );
-}
-
-function Title() {
-   const isMobile = useBreakpointValue({ base: true, md: false }) || false;
-   return isMobile ? (
-      <VStack alignItems="left">
-         <TitleHeading>Hi, I&apos;m Mason.</TitleHeading>
-         <TitleHeading>Full Stack Developer at iFixit.</TitleHeading>
-      </VStack>
-   ) : (
-      <VStack alignItems="left">
-         <TitleHeading>Hi, I&apos;m Mason.</TitleHeading>
-         <TitleHeading>Full Stack Developer</TitleHeading>
-         <TitleHeading>at iFixit.</TitleHeading>
-      </VStack>
-   );
-}
-
-type TitleProps = React.PropsWithChildren & HeadingProps;
-
-function TitleHeading({ children, ...props }: TitleProps) {
-   return (
-      <Heading
-         as="h1"
-         size={{ base: "lg", sm: "xl", md: "2xl" }}
-         lineHeight={{ base: 1, md: 1.5 }}
-         whiteSpace="nowrap"
-         {...props}
-      >
-         {children}
-      </Heading>
    );
 }

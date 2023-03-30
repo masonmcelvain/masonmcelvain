@@ -1,5 +1,4 @@
-import { Center, Text } from "@chakra-ui/react";
-import { MdxWrapper } from "@ui/layout";
+import { Box, Center, Text } from "@chakra-ui/react";
 import { HistoryProse } from "@markdown/home";
 import { SectionHeading } from "@ui/typography";
 import { SocialIconRow } from "@icons/social";
@@ -18,9 +17,9 @@ export function About() {
          <SectionHeading>
             How silicon became my favorite element 🧪
          </SectionHeading>
-         <MdxWrapper>
+         <Box mt={8}>
             <HistoryProse />
-         </MdxWrapper>
+         </Box>
       </>
    );
 }

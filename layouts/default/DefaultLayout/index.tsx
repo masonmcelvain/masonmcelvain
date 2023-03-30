@@ -1,4 +1,4 @@
-import { PageContentWrapper } from "@ui/layout";
+import { Wrapper } from "@ui/layout";
 import { DefaultLayoutProps } from "../types";
 import { Footer } from "./Footer";
 import { MetaTitle } from "./MetaTitle";
@@ -8,10 +8,10 @@ export function DefaultLayout({
    children,
 }: React.PropsWithChildren<DefaultLayoutProps>) {
    return (
-      <PageContentWrapper>
+      <Wrapper>
          {children}
          <Footer />
          <MetaTitle addendum={headTitleSuffix} />
-      </PageContentWrapper>
+      </Wrapper>
    );
 }

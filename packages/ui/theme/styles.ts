@@ -5,5 +5,8 @@ export const styles: ThemeOverride["styles"] = {
       p: {
          fontSize: "1.125rem",
       },
+      li: {
+         fontSize: "1.125rem",
+      },
    },
 };

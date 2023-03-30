@@ -65,12 +65,7 @@ export function ProjectCard({
                      alignSelf="center"
                      overflow="hidden"
                   >
-                     <Image
-                        src={src}
-                        alt={alt}
-                        layout="fill"
-                        objectFit="cover"
-                     />
+                     <Image src={src} alt={alt} fill object-fit="cover" />
                   </Box>
                   <Heading color="white">{title}</Heading>
                   <Text color="white">{caption}</Text>

@@ -83,13 +83,7 @@ function StaticImage({ alt, src, ...props }: StaticImageProps) {
 
    return (
       <Box position="relative" w={w} h={h} mt={1}>
-         <Image
-            src={src}
-            alt={alt}
-            layout="fill"
-            objectFit="cover"
-            {...props}
-         />
+         <Image src={src} alt={alt} fill object-fit="cover" {...props} />
       </Box>
    );
 }

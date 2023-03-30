@@ -19,6 +19,7 @@
       "lint": "eslint .",
       "lint:fix": "eslint . --fix .",
       "format": "prettier --write .",
+      "prepare": "husky install",
       "type-check": "tsc --pretty"
    },
    "dependencies": {
@@ -42,8 +43,6 @@
    "devDependencies": {
       "@babel/core": "^7.0.0",
       "@chakra-ui/styled-system": "^2.0.0",
-      "@commitlint/cli": "^17.1.2",
-      "@commitlint/config-conventional": "^17.1.0",
       "@types/mdx": "^2.0.2",
       "@types/node": "^18.7.8",
       "@types/react": "^18.0.17",
@@ -53,7 +52,14 @@
       "eslint-config-next": "13.2.4",
       "eslint-config-prettier": "^8.5.0",
       "husky": "^8.0.1",
+      "lint-staged": "13.2.0",
       "prettier": "2.8.7",
       "typescript": "^5.0.0"
+   },
+   "lint-staged": {
+      "*": [
+         "eslint --fix",
+         "prettier --write --ignore-unknown"
+      ]
    }
 }

@@ -1,4 +1,5 @@
-import { Center, Icon, IconProps, Link } from "@chakra-ui/react";
+import { Center, Icon, IconProps } from "@chakra-ui/react";
+import Link from "next/link";
 import { IconType } from "react-icons";
 
 type BaseIconProps = IconProps & {
@@ -9,7 +10,7 @@ type BaseIconProps = IconProps & {
 
 export function BaseIcon({ as, url, hoverColor, ...props }: BaseIconProps) {
    return (
-      <Link href={url} isExternal>
+      <Link href={url} target="_blank">
          <Center>
             <Icon
                as={as}

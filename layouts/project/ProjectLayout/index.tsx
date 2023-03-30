@@ -12,7 +12,7 @@ export function ProjectLayout({
 }: React.PropsWithChildren<ProjectLayoutProps>) {
    return (
       <DefaultLayout headTitleSuffix={title} {...props}>
-         <HStack justify="flex-start" gap={8} mt={16}>
+         <HStack justify="flex-start" gap={8}>
             <Heading as="h1" size="2xl">
                {title}
             </Heading>

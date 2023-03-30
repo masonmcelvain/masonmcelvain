@@ -5,6 +5,7 @@ export function PageContentWrapper(props: BoxProps) {
    return (
       <Box
          w={{ base: "full", lg: "960px", xl: "1100px" }}
+         mt={{ base: 8, md: 16 }}
          mx="auto"
          px={{
             base: 4,

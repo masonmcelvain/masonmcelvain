@@ -33,7 +33,6 @@ export function MobileCollage() {
             <StaticImage
                src={StackedMason}
                alt="Stacked images of Mason and a line drawn Mason"
-               priority
             />
             <StaticImage
                src={CapitolReefMason}

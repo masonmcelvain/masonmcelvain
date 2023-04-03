@@ -23,38 +23,38 @@
       "type-check": "tsc --pretty"
    },
    "dependencies": {
-      "@chakra-ui/react": "^2.2.8",
-      "@emotion/react": "^11",
-      "@emotion/styled": "^11",
-      "@mdx-js/loader": "^2.1.3",
-      "@mdx-js/react": "*",
-      "@next/mdx": "^13.0.0",
-      "framer-motion": "^10.0.0",
+      "@chakra-ui/react": "2.5.5",
+      "@emotion/react": "11.10.6",
+      "@emotion/styled": "11.10.6",
+      "@mdx-js/loader": "2.3.0",
+      "@mdx-js/react": "2.3.0",
+      "@next/mdx": "13.2.4",
+      "framer-motion": "10.10.0",
       "next": "13.2.4",
       "react": "18.2.0",
       "react-dom": "18.2.0",
-      "react-icons": "^4.4.0",
-      "webpack": ">=4"
+      "react-icons": "4.8.0",
+      "webpack": "5.77.0"
    },
    "peerDependencies": {
-      "@mdx-js/react": "*",
-      "webpack": ">=4"
+      "@mdx-js/react": "2.3.0",
+      "webpack": "5.77.0"
    },
    "devDependencies": {
-      "@babel/core": "^7.0.0",
-      "@chakra-ui/styled-system": "^2.0.0",
-      "@types/mdx": "^2.0.2",
-      "@types/node": "^18.7.8",
+      "@babel/core": "7.21.4",
+      "@chakra-ui/styled-system": "2.8.0",
+      "@types/mdx": "2.0.4",
+      "@types/node": "18.15.11",
       "@types/react": "^18.0.17",
-      "@typescript-eslint/eslint-plugin": "^5.33.1",
-      "@typescript-eslint/parser": "^5.33.1",
+      "@typescript-eslint/eslint-plugin": "5.57.1",
+      "@typescript-eslint/parser": "5.57.1",
       "eslint": "8.37.0",
       "eslint-config-next": "13.2.4",
-      "eslint-config-prettier": "^8.5.0",
-      "husky": "^8.0.1",
+      "eslint-config-prettier": "8.8.0",
+      "husky": "8.0.3",
       "lint-staged": "13.2.0",
       "prettier": "2.8.7",
-      "typescript": "^5.0.0"
+      "typescript": "5.0.3"
    },
    "lint-staged": {
       "*": "prettier --write --ignore-unknown"

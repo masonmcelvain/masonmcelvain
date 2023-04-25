@@ -23,7 +23,7 @@
       "type-check": "tsc --pretty"
    },
    "dependencies": {
-      "@chakra-ui/react": "2.5.5",
+      "@chakra-ui/react": "2.6.0",
       "@emotion/react": "11.10.6",
       "@emotion/styled": "11.10.6",
       "@mdx-js/loader": "2.3.0",
@@ -42,7 +42,7 @@
    },
    "devDependencies": {
       "@babel/core": "7.21.4",
-      "@chakra-ui/styled-system": "2.8.0",
+      "@chakra-ui/styled-system": "2.9.0",
       "@types/mdx": "2.0.4",
       "@types/node": "18.16.0",
       "@types/react": "18.2.0",

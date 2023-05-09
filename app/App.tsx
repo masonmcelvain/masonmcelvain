@@ -1,7 +1,6 @@
 "use client";
 
 import { Divider } from "@chakra-ui/react";
-import { NextPageWithLayout } from "@pages/_app";
 
 import { About } from "./About";
 import { Collage } from "./Collage";
@@ -9,7 +8,7 @@ import { Hero } from "./Hero";
 import { MobileCollage } from "./MobileCollage";
 import { Work } from "./Work";
 
-const App: NextPageWithLayout = () => {
+export default function App() {
    return (
       <>
          <Hero />
@@ -20,6 +19,4 @@ const App: NextPageWithLayout = () => {
          <MobileCollage />
       </>
    );
-};
-
-export default App;
+}

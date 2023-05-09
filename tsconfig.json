@@ -19,7 +19,6 @@
          "@assets/*": ["assets/*"],
          "@helpers/*": ["helpers/*"],
          "@markdown/*": ["markdown/*"],
-         "@pages/*": ["pages/*"],
          "@common/*": ["packages/common/*"],
          "@icons/*": ["packages/icons/*"],
          "@ui/*": ["packages/ui/*"]

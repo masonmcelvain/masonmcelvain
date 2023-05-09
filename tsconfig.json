@@ -17,15 +17,17 @@
       "baseUrl": ".",
       "paths": {
          "@assets/*": ["assets/*"],
-         "@layouts/*": ["layouts/*"],
+         "@helpers/*": ["helpers/*"],
          "@markdown/*": ["markdown/*"],
-         "@pages/*": ["pages/*"],
-         "@public/*": ["public/*"],
-         "@templates/*": ["templates/*"],
          "@common/*": ["packages/common/*"],
          "@icons/*": ["packages/icons/*"],
          "@ui/*": ["packages/ui/*"]
-      }
+      },
+      "plugins": [
+         {
+            "name": "next"
+         }
+      ]
    },
    "include": [
       "next-env.d.ts",
@@ -33,7 +35,8 @@
       "**/*.tsx",
       "**/*.js",
       "**/*.mdx",
-      "next.config.mjs"
+      "next.config.mjs",
+      ".next/types/**/*.ts"
    ],
    "exclude": ["node_modules", ".next"]
 }

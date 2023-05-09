@@ -11,7 +11,7 @@ export function useProjectsMeta(): ProjectMeta[] {
          title: "Hop",
          caption:
             "See, click, go! An icon-first browser extension for your favorite bookmarks.",
-         href: "/hop",
+         href: "/code/hop",
          gradientFrom: "#d4145a",
          gradientTo: "#fbb03b",
       },
@@ -21,7 +21,7 @@ export function useProjectsMeta(): ProjectMeta[] {
          title: "iFixit",
          caption:
             "Join the repair revolution! Learn about my first job as a software engineer.",
-         href: "/ifixit",
+         href: "/code/ifixit",
          gradientFrom: "#222223",
          gradientTo: "#0071ce",
       },
@@ -31,7 +31,7 @@ export function useProjectsMeta(): ProjectMeta[] {
          title: "CSAI",
          caption:
             "The Cal Poly club where I sunk my roots into web development.",
-         href: "/csai",
+         href: "/code/csai",
          gradientFrom: "#009245",
          gradientTo: "#fced21",
       },

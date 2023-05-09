@@ -11,7 +11,7 @@ export function useProjectsMeta(): ProjectMeta[] {
          title: "Hop",
          caption:
             "See, click, go! An icon-first browser extension for your favorite bookmarks.",
-         href: "/hop",
+         href: "/code/hop",
          gradientFrom: "#d4145a",
          gradientTo: "#fbb03b",
       },

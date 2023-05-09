@@ -18,11 +18,9 @@
       "paths": {
          "@assets/*": ["assets/*"],
          "@helpers/*": ["helpers/*"],
-         "@layouts/*": ["layouts/*"],
          "@markdown/*": ["markdown/*"],
          "@pages/*": ["pages/*"],
          "@public/*": ["public/*"],
-         "@templates/*": ["templates/*"],
          "@common/*": ["packages/common/*"],
          "@icons/*": ["packages/icons/*"],
          "@ui/*": ["packages/ui/*"]

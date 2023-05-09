@@ -21,7 +21,7 @@ export function useProjectsMeta(): ProjectMeta[] {
          title: "iFixit",
          caption:
             "Join the repair revolution! Learn about my first job as a software engineer.",
-         href: "/ifixit",
+         href: "/code/ifixit",
          gradientFrom: "#222223",
          gradientTo: "#0071ce",
       },

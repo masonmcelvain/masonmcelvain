@@ -7,7 +7,7 @@ export function About() {
    return (
       <>
          <Text mt={8}>
-            I&apos;m a 23 year old living in San Luis Obispo (he/him). I
+            I&apos;m a 24 year old living in San Luis Obispo (he/him). I
             graduated from Cal Poly with a degree in computer science in March
             2022.
          </Text>

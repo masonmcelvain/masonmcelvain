@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { HStack, StackProps } from "@chakra-ui/react";
 import { SocialIconRow } from "@icons/social";
-import Favicon from "@public/favicon/android-chrome-512x512.png";
+import Favicon from "./icon.svg";
 
 type FooterProps = StackProps;
 

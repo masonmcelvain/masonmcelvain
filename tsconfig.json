@@ -20,7 +20,6 @@
          "@helpers/*": ["helpers/*"],
          "@markdown/*": ["markdown/*"],
          "@pages/*": ["pages/*"],
-         "@public/*": ["public/*"],
          "@common/*": ["packages/common/*"],
          "@icons/*": ["packages/icons/*"],
          "@ui/*": ["packages/ui/*"]

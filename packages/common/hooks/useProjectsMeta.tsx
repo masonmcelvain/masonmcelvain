@@ -31,7 +31,7 @@ export function useProjectsMeta(): ProjectMeta[] {
          title: "CSAI",
          caption:
             "The Cal Poly club where I sunk my roots into web development.",
-         href: "/csai",
+         href: "/code/csai",
          gradientFrom: "#009245",
          gradientTo: "#fced21",
       },

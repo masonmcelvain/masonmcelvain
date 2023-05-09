@@ -17,6 +17,7 @@
       "baseUrl": ".",
       "paths": {
          "@assets/*": ["assets/*"],
+         "@helpers/*": ["helpers/*"],
          "@layouts/*": ["layouts/*"],
          "@markdown/*": ["markdown/*"],
          "@pages/*": ["pages/*"],
@@ -25,7 +26,12 @@
          "@common/*": ["packages/common/*"],
          "@icons/*": ["packages/icons/*"],
          "@ui/*": ["packages/ui/*"]
-      }
+      },
+      "plugins": [
+         {
+            "name": "next"
+         }
+      ]
    },
    "include": [
       "next-env.d.ts",
@@ -33,7 +39,8 @@
       "**/*.tsx",
       "**/*.js",
       "**/*.mdx",
-      "next.config.mjs"
+      "next.config.mjs",
+      ".next/types/**/*.ts"
    ],
    "exclude": ["node_modules", ".next"]
 }

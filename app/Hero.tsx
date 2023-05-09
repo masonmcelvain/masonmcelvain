@@ -1,6 +1,7 @@
-import { Box, Flex, Heading } from "@chakra-ui/react";
 import Image from "next/image";
+
 import RockMason from "@assets/images/rock-mason.png";
+import { Box, Flex, Heading } from "@chakra-ui/react";
 
 export function Hero() {
    return (

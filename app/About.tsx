@@ -1,7 +1,7 @@
 import { Box, Center, Text } from "@chakra-ui/react";
+import { SocialIconRow } from "@icons/social";
 import { HistoryProse } from "@markdown/home";
 import { SectionHeading } from "@ui/typography";
-import { SocialIconRow } from "@icons/social";
 
 export function About() {
    return (

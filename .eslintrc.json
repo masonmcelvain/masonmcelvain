@@ -9,6 +9,16 @@
    "rules": {
       "arrow-parens": ["error", "always"],
       "arrow-spacing": ["error", { "before": true, "after": true }],
+      "@typescript-eslint/no-unused-vars": [
+         "warn",
+         {
+            "argsIgnorePattern": "^_",
+            "caughtErrorsIgnorePattern": "^_",
+            "destructuredArrayIgnorePattern": "^_",
+            "ignoreRestSiblings": true,
+            "varsIgnorePattern": "^_"
+         }
+      ],
       "object-curly-spacing": ["error", "always"],
       "quotes": ["error", "double", { "avoidEscape": true }]
    }

@@ -42,7 +42,7 @@
       "webpack": "5.88.2"
    },
    "devDependencies": {
-      "@babel/core": "7.22.17",
+      "@babel/core": "7.22.19",
       "@chakra-ui/styled-system": "2.9.1",
       "@types/mdx": "2.0.7",
       "@types/node": "18.17.15",

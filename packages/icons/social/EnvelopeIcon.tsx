@@ -6,7 +6,7 @@ export function EnvelopeIcon() {
       <BaseIcon
          as={FaEnvelope}
          url="mailto:masonmcelvain@gmail.com"
-         hoverColor="#f15bb5"
+         color="#f15bb5"
       />
    );
 }

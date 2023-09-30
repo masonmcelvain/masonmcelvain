@@ -1,3 +1,4 @@
+import MountainProjectLogo from "@assets/images/mountain-project-logo.png";
 import { Box } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,7 +18,7 @@ export function MountainProjectIcon() {
          >
             <Image
                alt="Mason on Mountain Project"
-               src="https://lh3.googleusercontent.com/drive-viewer/AK7aPaCTGHNVVx5V2BRX78sRQjGSkkR49dgQ9vvt_PX7wgB1uHE7DvL-cI5GX1Yc0F7nUsW4Ha9zyY3piegQwbLjGSN_OWi8iw=w1920-h1058"
+               src={MountainProjectLogo}
                width="31"
                height="31"
                priority

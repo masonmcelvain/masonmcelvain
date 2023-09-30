@@ -1,25 +1,23 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import Image, { ImageProps, StaticImageData } from "next/image";
+import { PropsWithChildren } from "react";
 
-type CaptionedImageProps = {
+type CaptionedImageProps = PropsWithChildren<{
    src: StaticImageData;
-   alt?: string;
-   caption: string;
+   alt: string;
    imageProps: ImageProps;
-};
+}>;
 
 export function CaptionedImage({
+   children,
    src,
    alt,
-   caption,
    ...imageProps
 }: CaptionedImageProps) {
    return (
       <Box textAlign="center">
-         <Image src={src} alt={alt ?? caption} {...imageProps} />
-         <Text mt={2} fontSize="sm" color="gray.500">
-            {caption}
-         </Text>
+         <Image src={src} alt={alt} {...imageProps} />
+         {children}
       </Box>
    );
 }

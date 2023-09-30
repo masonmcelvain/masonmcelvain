@@ -1,7 +1,7 @@
 import { Center } from "@chakra-ui/react";
 import ChromeApplet from "@assets/images/chrome-applet.png";
 import HopComposite from "@assets/images/hop-composite.png";
-import { CaptionedImage } from "@ui/media";
+import { CaptionText, CaptionedImage } from "@ui/media";
 import Image from "next/image";
 
 Hop is a browser extension that stores your top bookmarks in a visually pleasing
@@ -12,9 +12,12 @@ and [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/hop).
 <Center>
    <CaptionedImage
       src={HopComposite}
-      caption="Hop's primary view on the left and edit mode on the right."
+      alt="Hop's primary view on the left and edit mode on the right."
       priority
-   />
+   >
+      {/* prettier-ignore */}
+      <CaptionText>Hop's primary view on the left and edit mode on the right.</CaptionText>
+   </CaptionedImage>
 </Center>
 
 <br />
@@ -29,8 +32,11 @@ it had at least two problems:
 <Center mt={6}>
    <CaptionedImage
       src={ChromeApplet}
-      caption="The Chrome bookmark applet that inspired Hop."
-   />
+      alt="The Chrome bookmark applet that inspired Hop."
+   >
+      {/* prettier-ignore */}
+      <CaptionText>The Chrome bookmark applet that inspired Hop.</CaptionText>
+   </CaptionedImage>
 </Center>
 
 <br />

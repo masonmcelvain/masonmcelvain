@@ -1,3 +1,5 @@
+"use client";
+
 import Image, { ImageProps, StaticImageData } from "next/image";
 
 import Anacapa from "@assets/images/anacapa.png";

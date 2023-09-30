@@ -1,7 +1,3 @@
-"use client";
-
-import { Divider } from "@chakra-ui/react";
-
 import { About } from "./About";
 import { Collage } from "./Collage";
 import { Hero } from "./Hero";
@@ -14,7 +10,7 @@ export default function App() {
          <Hero />
          <About />
          <Work />
-         <Divider my={16} />
+         <hr aria-orientation="horizontal" className="my-16 opacity-60" />
          <Collage />
          <MobileCollage />
       </div>

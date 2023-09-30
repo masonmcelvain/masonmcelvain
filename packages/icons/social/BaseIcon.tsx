@@ -1,3 +1,5 @@
+"use client";
+
 import { Center, Icon, IconProps } from "@chakra-ui/react";
 import Link from "next/link";
 import { IconType } from "react-icons";

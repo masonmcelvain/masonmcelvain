@@ -1,7 +1,8 @@
 "use client";
 
-import { Box, Heading, HStack, Text } from "@chakra-ui/react";
+import { Box, Heading, HStack } from "@chakra-ui/react";
 import { ExternalLinkIcon, GithubIcon } from "@icons/social";
+import { IFixitProse } from "@markdown/ifixit";
 
 export default function iFixit() {
    return (
@@ -14,7 +15,7 @@ export default function iFixit() {
             <ExternalLinkIcon url="https://www.ifixit.com" color="#0071ce" />
          </HStack>
          <Box mt={8}>
-            <Text>Content coming soon!</Text>
+            <IFixitProse />
          </Box>
       </>
    );

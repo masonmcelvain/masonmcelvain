@@ -1,7 +1,7 @@
 "use client";
 
 import { Box, Heading, HStack } from "@chakra-ui/react";
-import { GithubIcon } from "@icons/social";
+import { ExternalLinkIcon, GithubIcon } from "@icons/social";
 import { HopProse } from "@markdown/hop";
 
 export default function HopPage() {
@@ -12,6 +12,7 @@ export default function HopPage() {
                Hop
             </Heading>
             <GithubIcon url="https://github.com/masonmcelvain/hop" />
+            <ExternalLinkIcon url="https://usehop.app" />
          </HStack>
          <Box>
             <HopProse />

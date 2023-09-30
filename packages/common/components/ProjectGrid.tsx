@@ -1,3 +1,5 @@
+"use-client";
+
 import { Grid, GridItem, GridItemProps } from "@chakra-ui/react";
 import { ProjectCard, ProjectCardProps } from "./ProjectCard";
 import * as React from "react";

@@ -1,5 +1,4 @@
 import MountainProjectLogo from "@assets/images/mountain-project-logo.png";
-import { Box } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,13 +8,7 @@ export function MountainProjectIcon() {
          href="https://www.mountainproject.com/user/201271324/mason-mcelvain"
          target="_blank"
       >
-         <Box
-            opacity={0.3}
-            _hover={{
-               opacity: 1,
-               transitionDuration: "0.2s",
-            }}
-         >
+         <div className="opacity-30 transition-opacity hover:opacity-100">
             <Image
                alt="Mason on Mountain Project"
                src={MountainProjectLogo}
@@ -23,7 +16,7 @@ export function MountainProjectIcon() {
                height="31"
                priority
             />
-         </Box>
+         </div>
       </Link>
    );
 }

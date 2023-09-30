@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 import RockMason from "@assets/images/rock-mason.png";

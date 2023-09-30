@@ -1,28 +1,18 @@
-import { Center, Icon, IconProps } from "@chakra-ui/react";
 import Link from "next/link";
 import { IconType } from "react-icons";
 
-type BaseIconProps = IconProps & {
-   as: IconType;
+type BaseIconProps = {
+   Icon: IconType;
+   color: string;
    url: string;
 };
 
-export function BaseIcon({ as, url, ...props }: BaseIconProps) {
+export function BaseIcon({ Icon, color, url }: BaseIconProps) {
    return (
       <Link href={url} target="_blank">
-         <Center>
-            <Icon
-               as={as}
-               w={8}
-               h={8}
-               opacity={0.3}
-               _hover={{
-                  opacity: 1,
-                  transitionDuration: "0.2s",
-               }}
-               {...props}
-            />
-         </Center>
+         <div className="opacity-30 transition-opacity hover:opacity-100">
+            <Icon className="h-8 w-8" color={color} />
+         </div>
       </Link>
    );
 }

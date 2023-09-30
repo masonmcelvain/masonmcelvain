@@ -1,14 +1,13 @@
-import { HStack, StackProps } from "@chakra-ui/react";
 import { EnvelopeIcon } from "./EnvelopeIcon";
 import { GithubIcon } from "./GithubIcon";
 import { MountainProjectIcon } from "./MountainProjectIcon";
 
-export function SocialIconRow(props: StackProps) {
+export function SocialIconRow() {
    return (
-      <HStack spacing={8} {...props}>
+      <div className="flex items-center space-x-8">
          <EnvelopeIcon />
          <GithubIcon url="https://github.com/masonmcelvain" />
          <MountainProjectIcon />
-      </HStack>
+      </div>
    );
 }

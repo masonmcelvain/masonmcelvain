@@ -1,5 +1,3 @@
-"use client";
-
 import { SocialIconRow } from "@icons/social";
 import { HistoryProse } from "@markdown/home";
 import { SectionHeading } from "@ui/typography";

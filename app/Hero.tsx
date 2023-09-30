@@ -1,38 +1,16 @@
-"use client";
-
-import Image from "next/image";
-
 import RockMason from "@assets/images/rock-mason.png";
-import { Box, Flex, Heading } from "@chakra-ui/react";
+import Image from "next/image";
 
 export function Hero() {
    return (
       <>
-         <Flex
-            direction={{ base: "column", md: "row" }}
-            width="full"
-            alignItems="center"
-            justifyContent="space-between"
-            gap={{ base: 8, md: 16, xl: 32 }}
-            px={{ base: 4, lg: 8 }}
-         >
-            <Heading
-               as="h1"
-               size={{ base: "lg", sm: "xl", md: "2xl" }}
-               lineHeight={{ base: 1, md: 1.5 }}
-               flex="1 0 min-content"
-            >
-               Hi, I&apos;m Mason.
-               <br />
-               Full Stack Developer at iFixit.
-            </Heading>
-            <Box
-               position="relative"
-               w={{ base: 200, lg: 375 }}
-               h={{ base: 200, lg: 375 }}
-               borderRadius="100%"
-               overflow="hidden"
-            >
+         <div className="flex w-full flex-col items-center justify-between gap-8 px-4 md:flex-row md:gap-16 lg:px-8 xl:gap-32">
+            <div className="flex flex-col md:space-y-4">
+               <H1>Hi, I&apos;m Mason.</H1>
+               <H1>Full Stack Developer</H1>
+               <H1>at iFixit.</H1>
+            </div>
+            <div className="relative h-[200px] w-[200px] overflow-hidden rounded-full lg:h-[375px] lg:w-[375px]">
                <Image
                   src={RockMason}
                   alt="Mason Climbing in Tuolomne Meadows"
@@ -40,8 +18,14 @@ export function Hero() {
                   object-fit="cover"
                   priority
                />
-            </Box>
-         </Flex>
+            </div>
+         </div>
       </>
+   );
+}
+
+function H1({ children }: React.PropsWithChildren) {
+   return (
+      <h1 className="text-2xl font-bold sm:text-3xl md:text-5xl">{children}</h1>
    );
 }

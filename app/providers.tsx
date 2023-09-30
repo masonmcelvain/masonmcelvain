@@ -1,33 +1,21 @@
 "use client";
 
 import { MDXComponents } from "mdx/types";
-
-import { CacheProvider } from "@chakra-ui/next-js";
-import {
-   ChakraProvider,
-   Link,
-   LinkProps,
-   ListItem,
-   ListItemProps,
-   Text,
-   UnorderedList,
-} from "@chakra-ui/react";
 import { MDXProvider } from "@mdx-js/react";
-import { theme } from "@ui/theme";
 
 const components: MDXComponents = {
-   a: (props: LinkProps) => <Link isExternal color="blue.600" {...props} />,
-   li: (props: ListItemProps) => <ListItem ml={4} {...props} />,
-   p: Text,
-   ul: UnorderedList,
+   a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
+      <a
+         target="_blank"
+         className="text-[#2b6cb0] hover:underline"
+         {...props}
+      />
+   ),
+   li: (props: React.LiHTMLAttributes<HTMLLIElement>) => (
+      <li className="ml-8 list-disc" {...props} />
+   ),
 };
 
 export function Providers({ children }: React.PropsWithChildren) {
-   return (
-      <CacheProvider>
-         <ChakraProvider theme={theme}>
-            <MDXProvider components={components}>{children}</MDXProvider>
-         </ChakraProvider>
-      </CacheProvider>
-   );
+   return <MDXProvider components={components}>{children}</MDXProvider>;
 }

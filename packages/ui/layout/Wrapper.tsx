@@ -1,18 +1,7 @@
-import { Box, BoxProps } from "@chakra-ui/react";
-import * as React from "react";
-
-export function Wrapper(props: BoxProps) {
+export function Wrapper({ children }: React.PropsWithChildren) {
    return (
-      <Box
-         w={{ base: "full", lg: "960px", xl: "1100px" }}
-         mt={{ base: 8, md: 16 }}
-         mx="auto"
-         px={{
-            base: 4,
-            sm: 6,
-            lg: 0,
-         }}
-         {...props}
-      />
+      <div className="mx-auto mt-8 w-full px-4 sm:px-6 md:mt-16 lg:w-[60rem] lg:px-0 xl:w-[68.75rem]">
+         {children}
+      </div>
    );
 }

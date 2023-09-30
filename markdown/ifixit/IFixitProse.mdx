@@ -1,7 +1,6 @@
 import IFixitCollectionPage from "@assets/images/ifixit-collection-page.png";
 import IFixitProductPage from "@assets/images/ifixit-product-page.png";
 import IFixitStorePage from "@assets/images/ifixit-store-page.png";
-import { VStack } from "@chakra-ui/react";
 import { CaptionText, CaptionedImage } from "@ui/media";
 import { ExternalLink } from "@ui/typography/markdown";
 
@@ -57,7 +56,7 @@ of course, is a team effort.
 
 <br />
 
-<VStack gap={8}>
+<div className="flex flex-col items-center space-y-8">
    <CaptionedImage
       src={IFixitStorePage}
       alt="iFixit's store page."
@@ -83,4 +82,4 @@ of course, is a team effort.
       {/* prettier-ignore */}
       <CaptionText>iFixit's <ExternalLink href="https://www.ifixit.com/products/essential-electronics-toolkit">product page.</ExternalLink></CaptionText>
    </CaptionedImage>
-</VStack>
+</div>

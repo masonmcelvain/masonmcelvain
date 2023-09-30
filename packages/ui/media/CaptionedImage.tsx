@@ -13,7 +13,7 @@ export function CaptionedImage({
    ...imageProps
 }: CaptionedImageProps) {
    return (
-      <div className="text-center">
+      <div className="flex flex-col items-center text-center">
          <Image src={src} alt={alt} {...imageProps} />
          {children}
       </div>

@@ -1,4 +1,3 @@
-import { Center } from "@chakra-ui/react";
 import ChromeApplet from "@assets/images/chrome-applet.png";
 import HopComposite from "@assets/images/hop-composite.png";
 import { CaptionText, CaptionedImage } from "@ui/media";
@@ -9,7 +8,7 @@ way. It's available on the [Google Web
 Store](https://chrome.google.com/webstore/detail/hop/djdlkcbfbdebfaoakhnoienanaakgccd)
 and [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/hop).
 
-<Center>
+<div className="flex items-center justify-center">
    <CaptionedImage
       src={HopComposite}
       alt="Hop's primary view on the left and edit mode on the right."
@@ -18,7 +17,7 @@ and [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/hop).
       {/* prettier-ignore */}
       <CaptionText>Hop's primary view on the left and edit mode on the right.</CaptionText>
    </CaptionedImage>
-</Center>
+</div>
 
 <br />
 
@@ -29,7 +28,7 @@ it had at least two problems:
 -  It was only on the homepage.
 -  I couldn't add new bookmarks to it.
 
-<Center mt={6}>
+<div className="mt-6 flex items-center justify-center">
    <CaptionedImage
       src={ChromeApplet}
       alt="The Chrome bookmark applet that inspired Hop."
@@ -37,7 +36,7 @@ it had at least two problems:
       {/* prettier-ignore */}
       <CaptionText>The Chrome bookmark applet that inspired Hop.</CaptionText>
    </CaptionedImage>
-</Center>
+</div>
 
 <br />
 

@@ -4,7 +4,7 @@ import { BaseIcon } from "./BaseIcon";
 export function EnvelopeIcon() {
    return (
       <BaseIcon
-         as={FaEnvelope}
+         Icon={FaEnvelope}
          url="mailto:masonmcelvain@gmail.com"
          color="#f15bb5"
       />

@@ -8,9 +8,9 @@ type ExternalLinkIconProps = {
 export function ExternalLinkIcon({ url, color }: ExternalLinkIconProps) {
    return (
       <BaseIcon
-         as={FaArrowUpRightFromSquare}
-         url={url}
+         Icon={FaArrowUpRightFromSquare}
          color={color ?? "black"}
+         url={url}
       />
    );
 }

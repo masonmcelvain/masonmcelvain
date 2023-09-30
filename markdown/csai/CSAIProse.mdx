@@ -1,4 +1,4 @@
-import { Link } from "@chakra-ui/react";
+import { Link, Text } from "@chakra-ui/react";
 import { CaptionedVideo } from "@ui/media";
 
 CSAI (Cal Poly Computer Science and Artificial Intelligence club) is where I
@@ -22,11 +22,9 @@ at first site ❤️.
 <br />
 
 <CaptionedVideo src="/assets/videos/csai-validator.webm">
-   <div>
-      The landing page of the&nbsp;{/* prettier-ignore */}
-      <Link href="https://reverent-davinci-cfec49.netlify.app/login" target="_blank" textDecoration="underline">CSAI data cleaning app.</Link>
-      Yea, that's CSS 😎
-   </div>
+   {/* prettier-ignore */}
+   <Text mt={2} fontSize="sm" color="gray.500">The landing page of the&nbsp;
+      <Link href="https://reverent-davinci-cfec49.netlify.app/login" target="_blank" textDecoration="underline">CSAI data cleaning app.</Link>Yea, that's CSS 😎</Text>
 </CaptionedVideo>
 
 <br />

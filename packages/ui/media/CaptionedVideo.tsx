@@ -6,7 +6,7 @@ type CaptionedVideoProps = React.PropsWithChildren<{
 
 export function CaptionedVideo({ children, src }: CaptionedVideoProps) {
    return (
-      <VStack justify="center">
+      <VStack justify="center" textAlign="center">
          <HStack width="full" justify="center">
             <video autoPlay loop width="768">
                <source src={src} />

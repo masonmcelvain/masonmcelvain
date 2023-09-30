@@ -15,7 +15,7 @@ export function CaptionedImage({
    ...imageProps
 }: CaptionedImageProps) {
    return (
-      <Box>
+      <Box textAlign="center">
          <Image src={src} alt={alt ?? caption} {...imageProps} />
          <Text mt={2} fontSize="sm" color="gray.500">
             {caption}

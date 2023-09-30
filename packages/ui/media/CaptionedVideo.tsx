@@ -8,7 +8,7 @@ export function CaptionedVideo({ children, src }: CaptionedVideoProps) {
    return (
       <VStack justify="center" textAlign="center">
          <HStack width="full" justify="center">
-            <video autoPlay loop width="768">
+            <video autoPlay loop playsInline width="768">
                <source src={src} />
             </video>
          </HStack>

@@ -19,7 +19,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
             projects.length % 2 && index === projects.length - 1;
          return isOddLastChild ? lastChildProps : {};
       },
-      [projects.length]
+      [projects.length],
    );
    return projects.length ? (
       <Grid

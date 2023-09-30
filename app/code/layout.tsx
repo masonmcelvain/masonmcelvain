@@ -1,11 +1,3 @@
-"use client";
-
-import { VStack } from "@chakra-ui/react";
-
 export default function CodeLayout({ children }: React.PropsWithChildren) {
-   return (
-      <VStack align="flex-start" gap={8}>
-         {children}
-      </VStack>
-   );
+   return <div className="flex flex-col items-start space-y-8">{children}</div>;
 }

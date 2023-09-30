@@ -1,13 +1,3 @@
-import { Heading, HeadingProps } from "@chakra-ui/react";
-
-type SectionHeadingProps = React.PropsWithChildren & HeadingProps;
-
-export function SectionHeading({ children, ...props }: SectionHeadingProps) {
-   return (
-      <>
-         <Heading as="h3" size="lg" {...props}>
-            {children}
-         </Heading>
-      </>
-   );
+export function SectionHeading({ children }: React.PropsWithChildren) {
+   return <h3 className="text-3xl font-bold">{children}</h3>;
 }

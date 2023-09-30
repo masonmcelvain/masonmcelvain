@@ -1,16 +1,18 @@
-import { Box, HStack, Text, VStack } from "@chakra-ui/react";
+import { HStack, Text, VStack } from "@chakra-ui/react";
 
 type CaptionedVideoProps = React.PropsWithChildren<{
-   src: string;
-   type: string;
+   mp4: string;
+   webm: string;
 }>;
 
-export function CaptionedVideo({ children, src, type }: CaptionedVideoProps) {
+export function CaptionedVideo({ children, mp4, webm }: CaptionedVideoProps) {
    return (
       <VStack justify="center" textAlign="center">
          <HStack width="full" justify="center">
             <video autoPlay loop playsInline width="768">
-               <source src={src} type={type} />
+               <source src={webm} type="video/webm" />
+               <source src={mp4} type="video/mp4" />
+               <Text>Your browser does not support the video tag 😕</Text>
             </video>
          </HStack>
          {children}

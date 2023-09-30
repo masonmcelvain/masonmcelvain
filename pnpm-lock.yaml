@@ -68,7 +68,7 @@ devDependencies:
     specifier: 6.7.3
     version: 6.7.3(eslint@8.50.0)(typescript@5.2.2)
   autoprefixer:
-    specifier: ^10.4.16
+    specifier: 10.4.16
     version: 10.4.16(postcss@8.4.31)
   eslint:
     specifier: 8.50.0
@@ -86,7 +86,7 @@ devDependencies:
     specifier: 14.0.1
     version: 14.0.1
   postcss:
-    specifier: ^8.4.31
+    specifier: 8.4.31
     version: 8.4.31
   prettier:
     specifier: 3.0.3
@@ -95,7 +95,7 @@ devDependencies:
     specifier: 0.5.4
     version: 0.5.4(prettier@3.0.3)
   tailwindcss:
-    specifier: ^3.3.3
+    specifier: 3.3.3
     version: 3.3.3
   typescript:
     specifier: 5.2.2

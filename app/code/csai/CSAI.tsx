@@ -1,5 +1,3 @@
-"use client";
-
 import { ProjectTemplate } from "@common/components";
 import { ExternalLinkIcon, GithubIcon } from "@icons/social";
 import { CSAIProse } from "@markdown/csai";

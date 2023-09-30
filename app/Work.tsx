@@ -7,7 +7,9 @@ export function Work() {
    const projects = useProjectsMeta();
    return (
       <>
-         <SectionHeading>What I&apos;ve been working on 🛠️</SectionHeading>
+         <SectionHeading mt={8}>
+            What I&apos;ve been working on 🛠️
+         </SectionHeading>
          <Text mt={8}>
             A deeper dive into some of the projects and teams I&apos;ve devoted
             my time to.

@@ -1,5 +1,3 @@
-"use client";
-
 import "./globals.css";
 import { Wrapper } from "@ui/layout";
 

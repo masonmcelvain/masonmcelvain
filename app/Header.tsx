@@ -1,17 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-
-import { HStack } from "@chakra-ui/react";
 import Favicon from "./icon.svg";
 
 export function Header() {
    return (
-      <HStack
-         width="full"
-         justify="space-between"
-         px={{ base: 0, md: 8 }}
-         mb={{ base: 8, md: 16 }}
-      >
+      <div className="mb-8 flex w-full items-center justify-between px-0 md:mb-16 md:px-8">
          <Link href="/">
             <Image
                src={Favicon}
@@ -20,11 +13,11 @@ export function Header() {
                height={64}
             />
          </Link>
-         <HStack gap={8}>
+         <div className="flex items-center space-x-8">
             <Link href="/code/hop">Hop</Link>
             <Link href="/code/ifixit">iFixit</Link>
             <Link href="/code/csai">CSAI</Link>
-         </HStack>
-      </HStack>
+         </div>
+      </div>
    );
 }

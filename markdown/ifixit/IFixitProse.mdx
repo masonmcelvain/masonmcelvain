@@ -1,8 +1,8 @@
 import IFixitCollectionPage from "@assets/images/ifixit-collection-page.png";
 import IFixitProductPage from "@assets/images/ifixit-product-page.png";
 import IFixitStorePage from "@assets/images/ifixit-store-page.png";
-import { Link, VStack } from "@chakra-ui/react";
 import { CaptionText, CaptionedImage } from "@ui/media";
+import { ExternalLink } from "@ui/typography/markdown";
 
 I've been building things with iFixit since November 2020. I started out as an
 intern while still in school, and happily accepted a full time position when I
@@ -56,7 +56,7 @@ of course, is a team effort.
 
 <br />
 
-<VStack gap={8}>
+<div className="flex flex-col items-center space-y-8">
    <CaptionedImage
       src={IFixitStorePage}
       alt="iFixit's store page."
@@ -64,7 +64,7 @@ of course, is a team effort.
       priority
    >
       {/* prettier-ignore */}
-      <CaptionText>iFixit's <Link href="https://www.ifixit.com/Store" isExternal>store page.</Link></CaptionText>
+      <CaptionText>iFixit's <ExternalLink href="https://www.ifixit.com/Store">store page.</ExternalLink></CaptionText>
    </CaptionedImage>
    <CaptionedImage
       src={IFixitCollectionPage}
@@ -72,7 +72,7 @@ of course, is a team effort.
       width="1024"
    >
       {/* prettier-ignore */}
-      <CaptionText>iFixit's <Link href="https://www.ifixit.com/Parts" isExternal>product collection page.</Link></CaptionText>
+      <CaptionText>iFixit's <ExternalLink href="https://www.ifixit.com/Parts">product collection page.</ExternalLink></CaptionText>
    </CaptionedImage>
    <CaptionedImage
       src={IFixitProductPage}
@@ -80,6 +80,6 @@ of course, is a team effort.
       width="1024"
    >
       {/* prettier-ignore */}
-      <CaptionText>iFixit's <Link href="https://www.ifixit.com/products/essential-electronics-toolkit" isExternal>product page.</Link></CaptionText>
+      <CaptionText>iFixit's <ExternalLink href="https://www.ifixit.com/products/essential-electronics-toolkit">product page.</ExternalLink></CaptionText>
    </CaptionedImage>
-</VStack>
+</div>

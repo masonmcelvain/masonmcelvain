@@ -1,8 +1,6 @@
-import { Box } from "@chakra-ui/react";
 import Image, { ImageProps, StaticImageData } from "next/image";
-import { PropsWithChildren } from "react";
 
-type CaptionedImageProps = PropsWithChildren<{
+type CaptionedImageProps = React.PropsWithChildren<{
    src: StaticImageData;
    alt: string;
    imageProps: ImageProps;
@@ -15,9 +13,9 @@ export function CaptionedImage({
    ...imageProps
 }: CaptionedImageProps) {
    return (
-      <Box textAlign="center">
+      <div className="flex flex-col items-center text-center">
          <Image src={src} alt={alt} {...imageProps} />
          {children}
-      </Box>
+      </div>
    );
 }

@@ -1,3 +1,5 @@
+"use client";
+
 import { MDXComponents } from "mdx/types";
 
 import { CacheProvider } from "@chakra-ui/next-js";

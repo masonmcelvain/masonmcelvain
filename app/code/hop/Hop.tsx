@@ -1,22 +1,14 @@
 "use client";
 
-import { Box, Heading, HStack } from "@chakra-ui/react";
+import { ProjectTemplate } from "@common/components";
 import { ExternalLinkIcon, GithubIcon } from "@icons/social";
 import { HopProse } from "@markdown/hop";
 
-export default function HopPage() {
+export default function Hop() {
    return (
-      <>
-         <HStack justify="flex-start" gap={8}>
-            <Heading as="h1" size="2xl">
-               Hop
-            </Heading>
-            <GithubIcon url="https://github.com/masonmcelvain/hop" />
-            <ExternalLinkIcon url="https://usehop.app" />
-         </HStack>
-         <Box>
-            <HopProse />
-         </Box>
-      </>
+      <ProjectTemplate title="Hop" MDX={HopProse}>
+         <GithubIcon url="https://github.com/masonmcelvain/hop" />
+         <ExternalLinkIcon url="https://usehop.app" />
+      </ProjectTemplate>
    );
 }

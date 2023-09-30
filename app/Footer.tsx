@@ -1,15 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { HStack, StackProps } from "@chakra-ui/react";
 import { SocialIconRow } from "@icons/social";
 import Favicon from "./icon.svg";
 
-type FooterProps = StackProps;
-
-export function Footer(props: FooterProps) {
+export function Footer() {
    return (
-      <HStack justify="space-between" px={8} my={16} {...props}>
+      <div className="my-16 flex items-center justify-between px-0 md:px-8">
          <Link href="/">
             <Image
                src={Favicon}
@@ -19,6 +16,6 @@ export function Footer(props: FooterProps) {
             />
          </Link>
          <SocialIconRow />
-      </HStack>
+      </div>
    );
 }

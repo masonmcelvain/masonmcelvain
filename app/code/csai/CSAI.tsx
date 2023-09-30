@@ -1,7 +1,7 @@
 "use client";
 
 import { Box, Heading, HStack, Text } from "@chakra-ui/react";
-import { GithubIcon } from "@icons/social";
+import { ExternalLinkIcon, GithubIcon } from "@icons/social";
 
 export default function CSAI() {
    return (
@@ -11,6 +11,7 @@ export default function CSAI() {
                Cal Poly Computer Science & Artificial Intelligence Club (CSAI)
             </Heading>
             <GithubIcon url="https://github.com/calpoly-csai" color="#6d73b0" />
+            <ExternalLinkIcon url="https://csaicalpoly.com" color="#6d73b0" />
          </HStack>
          <Box mt={8}>
             <Text>Content coming soon!</Text>

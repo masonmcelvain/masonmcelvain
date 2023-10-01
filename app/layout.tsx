@@ -1,7 +1,6 @@
 import "./globals.css";
 import { Wrapper } from "@ui/layout";
 import { Footer } from "./Footer";
-import { Providers } from "./providers";
 import { Header } from "./Header";
 
 type RootLayoutProps = {
@@ -17,13 +16,11 @@ export default async function RootLayout({
    return (
       <html lang="en">
          <body>
-            <Providers>
-               <Wrapper>
-                  <Header logoSrc={logoSrc} />
-                  {children}
-                  <Footer logoSrc={logoSrc} />
-               </Wrapper>
-            </Providers>
+            <Wrapper>
+               <Header logoSrc={logoSrc} />
+               {children}
+               <Footer logoSrc={logoSrc} />
+            </Wrapper>
          </body>
       </html>
    );

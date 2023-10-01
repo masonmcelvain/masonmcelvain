@@ -1,5 +1,5 @@
 import { SocialIconRow } from "@icons/social";
-import { HistoryProse } from "@markdown/home";
+import HistoryProse from "@markdown/HistoryProse.mdx";
 
 export function About() {
    return (

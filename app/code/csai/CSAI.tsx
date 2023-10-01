@@ -1,6 +1,6 @@
 import { ProjectTemplate } from "@common/components";
 import { ExternalLinkIcon, GithubIcon } from "@icons/social";
-import { CSAIProse } from "@markdown/csai";
+import CSAIProse from "@markdown/CSAIProse.mdx";
 
 export default function CSAI() {
    return (

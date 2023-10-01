@@ -1,6 +1,6 @@
 import { ProjectTemplate } from "@common/components";
 import { ExternalLinkIcon, GithubIcon } from "@icons/social";
-import { IFixitProse } from "@markdown/ifixit";
+import IFixitProse from "@markdown/IFixitProse.mdx";
 
 export default function iFixit() {
    return (

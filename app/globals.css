@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+   a {
+      @apply text-[#2b6cb0] hover:underline;
+   }
    h1 {
       @apply text-5xl font-bold;
    }
@@ -16,7 +19,7 @@
       @apply text-2xl font-bold;
    }
    li {
-      @apply text-lg;
+      @apply ml-8 list-disc text-lg;
    }
    p {
       @apply text-lg;

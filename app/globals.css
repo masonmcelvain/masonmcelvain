@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+   a {
+      @apply text-[#2b6cb0] hover:underline;
+   }
    h1 {
       @apply text-5xl font-bold;
    }

@@ -2,7 +2,6 @@ import IFixitCollectionPage from "@assets/images/ifixit-collection-page.png";
 import IFixitProductPage from "@assets/images/ifixit-product-page.png";
 import IFixitStorePage from "@assets/images/ifixit-store-page.png";
 import { CaptionText, CaptionedImage } from "@ui/media";
-import { ExternalLink } from "@ui/typography/markdown";
 
 I've been building things with iFixit since November 2020. I started out as an
 intern while still in school, and happily accepted a full time position when I
@@ -64,7 +63,7 @@ of course, is a team effort.
       priority
    >
       {/* prettier-ignore */}
-      <CaptionText>iFixit's <ExternalLink href="https://www.ifixit.com/Store">store page.</ExternalLink></CaptionText>
+      <CaptionText>iFixit's <a href="https://www.ifixit.com/Store" target="_blank">store page.</a></CaptionText>
    </CaptionedImage>
    <CaptionedImage
       src={IFixitCollectionPage}
@@ -72,7 +71,7 @@ of course, is a team effort.
       width="1024"
    >
       {/* prettier-ignore */}
-      <CaptionText>iFixit's <ExternalLink href="https://www.ifixit.com/Parts">product collection page.</ExternalLink></CaptionText>
+      <CaptionText>iFixit's <a href="https://www.ifixit.com/Parts" target="_blank">product collection page.</a></CaptionText>
    </CaptionedImage>
    <CaptionedImage
       src={IFixitProductPage}
@@ -80,6 +79,6 @@ of course, is a team effort.
       width="1024"
    >
       {/* prettier-ignore */}
-      <CaptionText>iFixit's <ExternalLink href="https://www.ifixit.com/products/essential-electronics-toolkit">product page.</ExternalLink></CaptionText>
+      <CaptionText>iFixit's <a href="https://www.ifixit.com/products/essential-electronics-toolkit" target="_blank">product page.</a></CaptionText>
    </CaptionedImage>
 </div>

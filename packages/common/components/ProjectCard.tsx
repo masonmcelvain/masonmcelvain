@@ -33,7 +33,9 @@ export function ProjectCard({
                      alt={alt}
                      fill
                      sizes="32rem"
-                     objectFit="contain"
+                     style={{
+                        objectFit: "contain",
+                     }}
                   />
                </div>
                <h2 className="text-white">{title}</h2>

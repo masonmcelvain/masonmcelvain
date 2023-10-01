@@ -36,7 +36,7 @@ export function ProjectCard({
                      objectFit="contain"
                   />
                </div>
-               <h2 className="text-4xl font-bold text-white">{title}</h2>
+               <h2 className="text-white">{title}</h2>
                <p className="text-white">{caption}</p>
             </div>
          </div>

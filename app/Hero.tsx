@@ -25,7 +25,5 @@ export function Hero() {
 }
 
 function H1({ children }: React.PropsWithChildren) {
-   return (
-      <h1 className="text-2xl font-bold sm:text-3xl md:text-5xl">{children}</h1>
-   );
+   return <h1 className="text-2xl sm:text-3xl md:text-5xl">{children}</h1>;
 }

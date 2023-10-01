@@ -1,6 +1,5 @@
 import { SocialIconRow } from "@icons/social";
 import { HistoryProse } from "@markdown/home";
-import { SectionHeading } from "@ui/typography";
 
 export function About() {
    return (
@@ -13,9 +12,7 @@ export function About() {
          <div className="flex items-center justify-center">
             <SocialIconRow />
          </div>
-         <SectionHeading>
-            How silicon became my favorite element 🧪
-         </SectionHeading>
+         <h3>How silicon became my favorite element 🧪</h3>
          <div>
             <HistoryProse />
          </div>

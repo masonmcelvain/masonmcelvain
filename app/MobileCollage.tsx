@@ -18,7 +18,7 @@ export function MobileCollage() {
    return (
       <div className="lg:hidden">
          <div className="flex w-full items-center justify-center">
-            <h4 className="text-3xl font-bold">See you out there!</h4>
+            <h3 className="text-3xl">See you out there!</h3>
          </div>
          <div className="mt-3 flex flex-col items-center space-y-2">
             <StaticImage

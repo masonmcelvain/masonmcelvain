@@ -1,4 +1,5 @@
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
+import type { StaticImageData } from "next/image";
 
 import Anacapa from "@assets/images/anacapa.png";
 import BarefootMason from "@assets/images/barefoot-mason.png";

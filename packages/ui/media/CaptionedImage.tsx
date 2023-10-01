@@ -1,4 +1,5 @@
-import Image, { ImageProps, StaticImageData } from "next/image";
+import Image from "next/image";
+import type { ImageProps, StaticImageData } from "next/image";
 
 type CaptionedImageProps = React.PropsWithChildren<{
    src: StaticImageData;

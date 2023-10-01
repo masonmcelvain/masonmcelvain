@@ -9,7 +9,7 @@ type RootLayoutProps = {
 
 export const dynamic = "force-dynamic";
 
-export default async function RootLayout({
+export default function RootLayout({
    children,
 }: React.PropsWithChildren<RootLayoutProps>) {
    const logoSrc = getRandomLogoPath();

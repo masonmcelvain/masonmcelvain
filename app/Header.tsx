@@ -4,7 +4,7 @@ import Link from "next/link";
 type HeaderProps = {
    logoSrc: string;
 };
-export async function Header({ logoSrc }: HeaderProps) {
+export function Header({ logoSrc }: HeaderProps) {
    return (
       <div className="mb-8 flex w-full items-center justify-between px-0 md:mb-16 md:px-8">
          <Link href="/">

@@ -1,6 +1,6 @@
 import { ProjectTemplate } from "@common/components";
 import { ExternalLinkIcon, GithubIcon } from "@icons/social";
-import { HopProse } from "@markdown/hop";
+import HopProse from "@markdown/HopProse.mdx";
 
 export default function Hop() {
    return (

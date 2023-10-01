@@ -1,13 +1,3 @@
-"use client";
-
-import {
-   Box,
-   Center,
-   Heading,
-   Text,
-   useBreakpointValue,
-   VStack,
-} from "@chakra-ui/react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
@@ -30,50 +20,25 @@ export function ProjectCard({
    gradientFrom,
    gradientTo,
 }: ProjectCardProps) {
-   const h =
-      useBreakpointValue({
-         base: 225,
-         sm: 275,
-         md: 300,
-         lg: 275,
-         xl: 300,
-      }) || 300;
-   const ratio = src.width / src.height;
-   const w = h * ratio;
    return (
       <Link href={href}>
-         <Center>
-            <Center
-               w={{
-                  base: w + 16,
-                  sm: w + 32,
-                  md: w + 80,
-                  lg: w + 56,
-                  xl: w + 80,
-               }}
-               bgGradient={`linear(to-tl, ${gradientFrom}, ${gradientTo})`}
-               py={8}
-               borderRadius="base"
-               _hover={{
-                  transform: "translateY(-2px)",
-               }}
-               transitionDuration="200ms"
-            >
-               <VStack align="flex-start" gap={4} w={w}>
-                  <Box
-                     position="relative"
-                     w={w}
-                     h={h}
-                     alignSelf="center"
-                     overflow="hidden"
-                  >
-                     <Image src={src} alt={alt} fill object-fit="cover" />
-                  </Box>
-                  <Heading color="white">{title}</Heading>
-                  <Text color="white">{caption}</Text>
-               </VStack>
-            </Center>
-         </Center>
+         <div
+            className={`mx-auto w-[22rem] rounded bg-gradient-to-tl p-8 transition-transform hover:-translate-y-0.5 sm:w-[28rem] md:w-[30rem] xl:w-[32rem] ${gradientFrom} ${gradientTo}`}
+         >
+            <div className="flex flex-col justify-start space-y-4">
+               <div className="relative flex h-[225px] justify-center sm:h-[275px] md:h-[300px] lg:h-[275px] xl:h-[300px]">
+                  <Image
+                     src={src}
+                     alt={alt}
+                     fill
+                     sizes="32rem"
+                     objectFit="contain"
+                  />
+               </div>
+               <h2 className="text-4xl font-bold text-white">{title}</h2>
+               <p className="text-white">{caption}</p>
+            </div>
+         </div>
       </Link>
    );
 }

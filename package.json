@@ -35,7 +35,6 @@
       "@mdx-js/react": "2.3.0"
    },
    "devDependencies": {
-      "@babel/core": "7.22.20",
       "@types/mdx": "2.0.8",
       "@types/node": "18.17.19",
       "@types/react": "18.2.23",

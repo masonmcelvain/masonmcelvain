@@ -1,6 +1,5 @@
-"use client";
-
-import Image, { ImageProps, StaticImageData } from "next/image";
+import Image from "next/image";
+import type { StaticImageData } from "next/image";
 
 import Anacapa from "@assets/images/anacapa.png";
 import BarefootMason from "@assets/images/barefoot-mason.png";
@@ -14,34 +13,22 @@ import StackedMason from "@assets/images/stacked-mason.png";
 import Surf from "@assets/images/surf.png";
 import TedXMason from "@assets/images/tedx-mason.png";
 import WhaleShark from "@assets/images/whale-shark.png";
-import {
-   Box,
-   Center,
-   Heading,
-   HStack,
-   useBreakpointValue,
-   VStack,
-} from "@chakra-ui/react";
-
-const defaultH = 180;
 
 export function Collage() {
    return (
-      <VStack display={{ base: "none", lg: "flex" }} mb={20}>
-         <HStack w="full" justify="space-between">
-            <VStack>
-               <HStack w="full" justify="space-between">
-                  <Center w="50%">
-                     <Heading as="h4" size="lg">
-                        See you out there!
-                     </Heading>
-                  </Center>
+      <div className="mb-20 hidden flex-col items-center space-y-2 lg:flex">
+         <div className="flex w-full items-center justify-between space-x-2">
+            <div className="flex flex-col items-center space-y-2">
+               <div className="flex w-full items-center justify-between space-x-2">
+                  <div className="flex w-1/2 items-center justify-center">
+                     <h3>See you out there!</h3>
+                  </div>
                   <StaticImage
                      src={Kelp}
                      alt="Aerial view of Mason kayaking in a kelp forest"
                   />
-               </HStack>
-               <HStack w="full" justify="space-between">
+               </div>
+               <div className="flex w-full items-center justify-between space-x-2">
                   <StaticImage
                      src={LifeguardMason}
                      alt="Mason lifeguarding at Sycamore Cove"
@@ -51,15 +38,16 @@ export function Collage() {
                      alt="Mason in a cave in Iceland"
                   />
                   <StaticImage src={Surf} alt="Mason surfing in Oxnard CA" />
-               </HStack>
-            </VStack>
+               </div>
+            </div>
             <StaticImage
                src={StackedMason}
                alt="Stacked images of Mason and a line drawn Mason"
-               multiplier={2.04}
+               lgH="lg:h-[367.2px]"
+               xlH="xl:h-[428.4px]"
             />
-         </HStack>
-         <HStack w="full" justify="space-between">
+         </div>
+         <div className="flex w-full items-center justify-between space-x-2">
             <StaticImage
                src={GlacierMason}
                alt="Mason on a glacier in Iceland"
@@ -68,25 +56,28 @@ export function Collage() {
                src={CapitolReefMason}
                alt="Mason hiking in Capitol Reef"
             />
-            <VStack>
+            <div className="flex flex-col items-center space-y-2">
                <StaticImage
                   src={Anacapa}
                   alt="Anacapa Arch Rock"
-                  multiplier={0.375}
+                  lgH="lg:h-[67.5px]"
+                  xlH="xl:h-[78.75px]"
                />
-               <HStack>
+               <div className="flex items-center space-x-2">
                   <StaticImage
                      src={Scorpion}
                      alt="A scorpion in Baja California"
-                     multiplier={0.58}
+                     lgH="lg:h-[104.4px]"
+                     xlH="xl:h-[121.8px]"
                   />
                   <StaticImage
                      src={WhaleShark}
                      alt="A whale shark in Baja California"
-                     multiplier={0.58}
+                     lgH="lg:h-[104.4px]"
+                     xlH="xl:h-[121.8px]"
                   />
-               </HStack>
-            </VStack>
+               </div>
+            </div>
             <StaticImage
                src={BarefootMason}
                alt="Mason west of Capitol Reef, Utah"
@@ -95,32 +86,35 @@ export function Collage() {
                src={TedXMason}
                alt="Mason posing for TEDx San Luis Obispo"
             />
-         </HStack>
-      </VStack>
+         </div>
+      </div>
    );
 }
 
-type StaticImageProps = Omit<
-   ImageProps,
-   "src" | "width" | "height" | "layout" | "objectFit"
-> & {
+type StaticImageProps = {
    src: StaticImageData;
    alt: string;
-   multiplier?: number;
+   lgH?: string;
+   xlH?: string;
 };
 
-function StaticImage({ alt, src, multiplier = 1, ...props }: StaticImageProps) {
-   const h =
-      useBreakpointValue({
-         lg: multiplier * defaultH,
-         xl: multiplier * (defaultH + 30),
-      }) || defaultH;
-   const ratio = src.width / src.height;
-   const w = h * ratio - 1;
-
+function StaticImage({
+   alt,
+   src,
+   lgH = "lg:h-[180px]",
+   xlH = "xl:h-[210px]",
+}: StaticImageProps) {
    return (
-      <Box position="relative" w={w} h={h} m="0.5px">
-         <Image src={src} alt={alt} fill object-fit="cover" {...props} />
-      </Box>
+      <div className={`relative m-[0.5px] ${lgH} ${xlH}`}>
+         <Image
+            src={src}
+            alt={alt}
+            style={{
+               width: "auto",
+               height: "100%",
+            }}
+            sizes="500px"
+         />
+      </div>
    );
 }

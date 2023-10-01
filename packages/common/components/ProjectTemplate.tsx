@@ -10,7 +10,7 @@ export function ProjectTemplate({
    return (
       <>
          <div className="flex items-center justify-start space-x-8">
-            <h1 className="text-5xl font-bold">{title}</h1>
+            <h1>{title}</h1>
             {children}
          </div>
          <div>

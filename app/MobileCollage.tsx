@@ -1,6 +1,5 @@
-"use client";
-
-import Image, { ImageProps, StaticImageData } from "next/image";
+import Image from "next/image";
+import type { StaticImageData } from "next/image";
 
 import Anacapa from "@assets/images/anacapa.png";
 import BarefootMason from "@assets/images/barefoot-mason.png";
@@ -14,15 +13,14 @@ import StackedMason from "@assets/images/stacked-mason.png";
 import Surf from "@assets/images/surf.png";
 import TedXMason from "@assets/images/tedx-mason.png";
 import WhaleShark from "@assets/images/whale-shark.png";
-import { Box, Heading, useBreakpointValue, VStack } from "@chakra-ui/react";
 
 export function MobileCollage() {
    return (
-      <Box display={{ lg: "none" }}>
-         <Heading as="h4" size="lg">
-            See you out there!
-         </Heading>
-         <VStack mt={3}>
+      <div className="lg:hidden">
+         <div className="flex w-full items-center justify-center">
+            <h3 className="text-3xl">See you out there!</h3>
+         </div>
+         <div className="mt-3 flex flex-col items-center space-y-2">
             <StaticImage
                src={Kelp}
                alt="Aerial view of Mason kayaking in a kelp forest"
@@ -59,33 +57,28 @@ export function MobileCollage() {
                src={TedXMason}
                alt="Mason posing for TEDx San Luis Obispo"
             />
-         </VStack>
-      </Box>
+         </div>
+      </div>
    );
 }
 
-type StaticImageProps = Omit<
-   ImageProps,
-   "src" | "width" | "height" | "layout" | "objectFit"
-> & {
-   src: StaticImageData;
+type StaticImageProps = {
    alt: string;
+   src: StaticImageData;
 };
 
-function StaticImage({ alt, src, ...props }: StaticImageProps) {
-   const defaultW = 350;
-   const w =
-      useBreakpointValue({
-         base: defaultW,
-         sm: defaultW + 125,
-         md: defaultW + 350,
-      }) || defaultW;
-   const ratio = src.height / src.width;
-   const h = w * ratio - 1;
-
+function StaticImage({ alt, src }: StaticImageProps) {
    return (
-      <Box position="relative" w={w} h={h} mt={1}>
-         <Image src={src} alt={alt} fill object-fit="cover" {...props} />
-      </Box>
+      <div className="relative mt-1 w-[350px] sm:w-[475px] md:w-[700px]">
+         <Image
+            src={src}
+            alt={alt}
+            style={{
+               width: "100%",
+               height: "auto",
+            }}
+            sizes="(max-width: 640px) 350px, (max-width: 768px) 475px, 700px"
+         />
+      </div>
    );
 }

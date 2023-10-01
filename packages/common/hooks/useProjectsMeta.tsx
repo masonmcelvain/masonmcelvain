@@ -12,8 +12,8 @@ export function useProjectsMeta(): ProjectMeta[] {
          caption:
             "See, click, go! An icon-first browser extension for your favorite bookmarks.",
          href: "/code/hop",
-         gradientFrom: "#d4145a",
-         gradientTo: "#fbb03b",
+         gradientFrom: "from-[#d4145a]",
+         gradientTo: "to-[#fbb03b]",
       },
       {
          src: iFixitProTechToolkit,
@@ -22,8 +22,8 @@ export function useProjectsMeta(): ProjectMeta[] {
          caption:
             "Join the repair revolution! Learn about my first job as a software engineer.",
          href: "/code/ifixit",
-         gradientFrom: "#222223",
-         gradientTo: "#0071ce",
+         gradientFrom: "from-[#222223]",
+         gradientTo: "to-[#0071ce]",
       },
       {
          src: CSAIComposite,
@@ -32,8 +32,8 @@ export function useProjectsMeta(): ProjectMeta[] {
          caption:
             "The Cal Poly club where I sunk my roots into web development.",
          href: "/code/csai",
-         gradientFrom: "#009245",
-         gradientTo: "#fced21",
+         gradientFrom: "from-[#009245]",
+         gradientTo: "to-[#fced21]",
       },
    ];
 }

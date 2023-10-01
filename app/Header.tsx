@@ -24,22 +24,13 @@ export function Header({ logoSrc }: HeaderProps) {
             </div>
          </Link>
          <div className="flex items-center space-x-8">
-            <Link
-               className="text-xl font-semibold text-black hover:no-underline"
-               href="/code/hop"
-            >
+            <Link className="text-xl font-semibold" href="/code/hop">
                Hop
             </Link>
-            <Link
-               className="text-xl font-semibold text-black hover:no-underline"
-               href="/code/ifixit"
-            >
+            <Link className="text-xl font-semibold" href="/code/ifixit">
                iFixit
             </Link>
-            <Link
-               className="text-xl font-semibold text-black hover:no-underline"
-               href="/code/csai"
-            >
+            <Link className="text-xl font-semibold" href="/code/csai">
                CSAI
             </Link>
          </div>

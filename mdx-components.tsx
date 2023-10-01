@@ -10,6 +10,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
    return {
       // Allows customizing built-in components, e.g. to add styling.
       // h1: ({ children }) => <h1 style={{ fontSize: "100px" }}>{children}</h1>,
+      a: ({ children, ...props }) => (
+         <a style={{ color: "#2b6cb0" }} target="_blank" {...props}>
+            {children}
+         </a>
+      ),
       ...components,
    };
 }

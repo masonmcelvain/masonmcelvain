@@ -1,6 +1,5 @@
-"use client";
-
-import Image, { ImageProps, StaticImageData } from "next/image";
+import Image from "next/image";
+import type { StaticImageData } from "next/image";
 
 import Anacapa from "@assets/images/anacapa.png";
 import BarefootMason from "@assets/images/barefoot-mason.png";
@@ -14,9 +13,6 @@ import StackedMason from "@assets/images/stacked-mason.png";
 import Surf from "@assets/images/surf.png";
 import TedXMason from "@assets/images/tedx-mason.png";
 import WhaleShark from "@assets/images/whale-shark.png";
-import { Box, useBreakpointValue } from "@chakra-ui/react";
-
-const defaultH = 180;
 
 export function Collage() {
    return (
@@ -47,7 +43,8 @@ export function Collage() {
             <StaticImage
                src={StackedMason}
                alt="Stacked images of Mason and a line drawn Mason"
-               multiplier={2.04}
+               lgH="lg:h-[367.2px]"
+               xlH="xl:h-[428.4px]"
             />
          </div>
          <div className="flex w-full items-center justify-between space-x-2">
@@ -63,18 +60,21 @@ export function Collage() {
                <StaticImage
                   src={Anacapa}
                   alt="Anacapa Arch Rock"
-                  multiplier={0.375}
+                  lgH="lg:h-[67.5px]"
+                  xlH="xl:h-[78.75px]"
                />
                <div className="flex items-center space-x-2">
                   <StaticImage
                      src={Scorpion}
                      alt="A scorpion in Baja California"
-                     multiplier={0.58}
+                     lgH="lg:h-[104.4px]"
+                     xlH="xl:h-[121.8px]"
                   />
                   <StaticImage
                      src={WhaleShark}
                      alt="A whale shark in Baja California"
-                     multiplier={0.58}
+                     lgH="lg:h-[104.4px]"
+                     xlH="xl:h-[121.8px]"
                   />
                </div>
             </div>
@@ -91,27 +91,30 @@ export function Collage() {
    );
 }
 
-type StaticImageProps = Omit<
-   ImageProps,
-   "src" | "width" | "height" | "layout" | "objectFit"
-> & {
+type StaticImageProps = {
    src: StaticImageData;
    alt: string;
-   multiplier?: number;
+   lgH?: string;
+   xlH?: string;
 };
 
-function StaticImage({ alt, src, multiplier = 1, ...props }: StaticImageProps) {
-   const h =
-      useBreakpointValue({
-         lg: multiplier * defaultH,
-         xl: multiplier * (defaultH + 30),
-      }) || defaultH;
-   const ratio = src.width / src.height;
-   const w = h * ratio - 1;
-
+function StaticImage({
+   alt,
+   src,
+   lgH = "lg:h-[180px]",
+   xlH = "xl:h-[210px]",
+}: StaticImageProps) {
    return (
-      <Box position="relative" w={w} h={h} m="0.5px">
-         <Image src={src} alt={alt} fill object-fit="cover" {...props} />
-      </Box>
+      <div className={`relative m-[0.5px] ${lgH} ${xlH}`}>
+         <Image
+            src={src}
+            alt={alt}
+            style={{
+               width: "auto",
+               height: "100%",
+            }}
+            sizes="500px"
+         />
+      </div>
    );
 }

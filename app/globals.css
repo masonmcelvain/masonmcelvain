@@ -16,7 +16,7 @@
       @apply text-2xl font-bold;
    }
    li {
-      @apply text-lg;
+      @apply ml-8 list-disc text-lg;
    }
    p {
       @apply text-lg;

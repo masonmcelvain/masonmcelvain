@@ -11,9 +11,6 @@ const components: MDXComponents = {
          {...props}
       />
    ),
-   li: (props: React.LiHTMLAttributes<HTMLLIElement>) => (
-      <li className="ml-8 list-disc" {...props} />
-   ),
 };
 
 export function Providers({ children }: React.PropsWithChildren) {

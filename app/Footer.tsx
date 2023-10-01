@@ -1,19 +1,27 @@
+import { SocialIconRow } from "@icons/social";
 import Image from "next/image";
 import Link from "next/link";
 
-import { SocialIconRow } from "@icons/social";
-import Favicon from "./icon.svg";
-
-export function Footer() {
+type FooterProps = {
+   logoSrc: string;
+};
+export function Footer({ logoSrc }: FooterProps) {
    return (
-      <div className="my-16 flex items-center justify-between px-0 md:px-8">
+      <div className="my-8 flex items-center justify-between px-0 md:my-16 md:px-8">
          <Link href="/">
-            <Image
-               src={Favicon}
-               alt="Mason's initials (MM) in a circle"
-               width={64}
-               height={64}
-            />
+            <div className="h-[6rem] w-[6rem] lg:h-[8rem] lg:w-[8rem]">
+               <Image
+                  src={logoSrc}
+                  alt="Website logo"
+                  sizes="(max-width: 1024px) 6rem, 8rem"
+                  style={{
+                     width: "100%",
+                     height: "auto",
+                  }}
+                  width={128}
+                  height={128}
+               />
+            </div>
          </Link>
          <SocialIconRow />
       </div>

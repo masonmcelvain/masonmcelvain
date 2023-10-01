@@ -8,7 +8,7 @@ export function MountainProjectIcon() {
          href="https://www.mountainproject.com/user/201271324/mason-mcelvain"
          target="_blank"
       >
-         <div className="opacity-30 transition-opacity hover:opacity-100">
+         <div className="opacity-100 transition-opacity hover:opacity-100 lg:opacity-30">
             <Image
                alt="Mason on Mountain Project"
                src={MountainProjectLogo}

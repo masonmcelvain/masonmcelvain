@@ -32,9 +32,6 @@ dependencies:
   react-icons:
     specifier: 4.11.0
     version: 4.11.0(react@18.2.0)
-  webpack:
-    specifier: 5.88.2
-    version: 5.88.2
 
 devDependencies:
   '@babel/core':

@@ -1,6 +1,3 @@
-"use-client";
-
-import { Grid, GridItem, GridItemProps } from "@chakra-ui/react";
 import { ProjectCard, ProjectCardProps } from "./ProjectCard";
 import * as React from "react";
 
@@ -9,33 +6,24 @@ type ProjectGridProps = {
 };
 
 export function ProjectGrid({ projects }: ProjectGridProps) {
-   const getLastChildProps = React.useCallback(
+   const lastChildClass = React.useCallback(
       (index: number) => {
-         const lastChildProps: GridItemProps = {
-            colStart: { base: undefined, lg: 2 },
-            colEnd: { base: undefined, lg: 4 },
-         };
          const isOddLastChild =
             projects.length % 2 && index === projects.length - 1;
-         return isOddLastChild ? lastChildProps : {};
+         return isOddLastChild ? "lg:col-start-2 lg:col-end-4" : "";
       },
       [projects.length],
    );
    return projects.length ? (
-      <Grid
-         templateColumns={{ base: "repeat(1, 1fr)", lg: "repeat(4, 1fr)" }}
-         gap={8}
-         mt={12}
-      >
+      <div className="mt-12 grid grid-cols-[repeat(1,1fr)] gap-8 lg:grid-cols-[repeat(4,1fr)]">
          {projects.map((props, index) => (
-            <GridItem
+            <div
                key={index}
-               colSpan={{ base: 1, lg: 2 }}
-               {...getLastChildProps(index)}
+               className={`col-span-1 lg:col-span-2 ${lastChildClass(index)}`}
             >
                <ProjectCard {...props} />
-            </GridItem>
+            </div>
          ))}
-      </Grid>
+      </div>
    ) : null;
 }

@@ -1,7 +1,5 @@
-import { Metadata } from "next";
+import { getMetadata } from "@data/metadata";
+import type { Metadata } from "next";
 
-import { getBaseMetadata } from "@helpers/app/metadata";
-
-export const metadata: Metadata = getBaseMetadata({ suffix: "iFixit" });
-
+export const metadata: Metadata = getMetadata({ suffix: "iFixit" });
 export { default } from "./iFixit";

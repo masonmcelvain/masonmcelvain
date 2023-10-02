@@ -1,5 +1,5 @@
-import { getBaseMetadata } from "@helpers/app/metadata";
-import { Metadata } from "next";
+import { getMetadata } from "@data/metadata";
+import type { Metadata } from "next";
 
-export const metadata: Metadata = getBaseMetadata({ suffix: "Home" });
+export const metadata: Metadata = getMetadata({ suffix: "Home" });
 export { default } from "./App";

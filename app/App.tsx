@@ -1,3 +1,5 @@
+import { ProjectGrid } from "@common/components";
+import projects from "@data/projects";
 import { About } from "./About";
 import { Collage } from "./Collage";
 import { Hero } from "./Hero";
@@ -9,7 +11,10 @@ export default function App() {
       <div className="flex flex-col space-y-8">
          <Hero />
          <About />
-         <Work />
+         <>
+            <Work />
+            <ProjectGrid projects={projects} />
+         </>
          <hr aria-orientation="horizontal" className="my-16 opacity-60" />
          <Collage />
          <MobileCollage />

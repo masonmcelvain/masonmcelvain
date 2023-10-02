@@ -3,8 +3,8 @@ import Image from "next/image";
 
 export function Hero() {
    return (
-      <div className="flex w-full flex-col items-center justify-between gap-8 px-4 md:flex-row md:gap-16 lg:px-8 xl:gap-32">
-         <div className="flex flex-col md:space-y-4">
+      <div className="flex w-full flex-col items-center justify-between space-y-8 px-4 md:flex-row md:space-y-0">
+         <div className="flex flex-col md:space-y-2 lg:space-y-4">
             <H1>Hi, I&apos;m Mason.</H1>
             <H1>Full Stack Developer</H1>
             <H1>at iFixit.</H1>
@@ -23,5 +23,9 @@ export function Hero() {
 }
 
 function H1({ children }: React.PropsWithChildren) {
-   return <h1 className="text-2xl sm:text-3xl md:text-5xl">{children}</h1>;
+   return (
+      <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+         {children}
+      </h1>
+   );
 }

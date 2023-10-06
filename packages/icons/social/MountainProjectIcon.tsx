@@ -5,6 +5,7 @@ import Link from "next/link";
 export function MountainProjectIcon() {
    return (
       <Link
+         aria-label="Mason's Mountain Project profile"
          href="https://www.mountainproject.com/user/201271324/mason-mcelvain"
          target="_blank"
       >

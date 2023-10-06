@@ -5,8 +5,14 @@ import HopProse from "@markdown/HopProse.mdx";
 export default function Hop() {
    return (
       <ProjectTemplate title="Hop" MDX={HopProse}>
-         <GithubIcon url="https://github.com/masonmcelvain/hop" />
-         <ExternalLinkIcon url="https://usehop.app" />
+         <GithubIcon
+            ariaLabel="Hop's GitHub repository"
+            url="https://github.com/masonmcelvain/hop"
+         />
+         <ExternalLinkIcon
+            ariaLabel="Hop's landing page"
+            url="https://usehop.app"
+         />
       </ProjectTemplate>
    );
 }

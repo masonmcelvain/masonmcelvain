@@ -4,7 +4,7 @@ type CaptionedVideoProps = React.PropsWithChildren<{
 }>;
 export function CaptionedVideo({ children, mp4, webm }: CaptionedVideoProps) {
    return (
-      <div className="flex flex-col items-center text-center">
+      <div className="not-prose flex flex-col items-center text-center">
          <div className="flex w-full justify-center">
             <video autoPlay loop playsInline width="768">
                <source src={webm} type="video/webm" />

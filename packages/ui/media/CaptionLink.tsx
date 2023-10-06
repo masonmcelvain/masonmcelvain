@@ -3,7 +3,7 @@ type CaptionLinkProps = React.PropsWithChildren<{
 }>;
 export function CaptionLink({ children, href }: CaptionLinkProps) {
    return (
-      <a className="text-[#2b6cb0]" href={href} target="_blank">
+      <a className="text-blue-600 underline" href={href} target="_blank">
          {children}
       </a>
    );

@@ -6,7 +6,7 @@ type HeaderProps = {
 };
 export function Header({ logoSrc }: HeaderProps) {
    return (
-      <div className="mb-8 flex w-full items-center justify-between md:px-8">
+      <header className="mb-8 flex w-full items-center justify-between md:px-8">
          <Link href="/">
             <div className="h-[6rem] w-[6rem] lg:h-[8rem] lg:w-[8rem]">
                <Image
@@ -34,6 +34,6 @@ export function Header({ logoSrc }: HeaderProps) {
                CSAI
             </Link>
          </div>
-      </div>
+      </header>
    );
 }

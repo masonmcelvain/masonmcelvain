@@ -4,21 +4,18 @@
 
 @layer base {
    h1 {
-      @apply text-5xl font-bold;
+      @apply text-5xl font-bold text-gray-900;
    }
    h2 {
-      @apply text-4xl font-bold;
+      @apply text-4xl font-bold text-gray-900;
    }
    h3 {
-      @apply text-3xl font-bold;
+      @apply text-3xl font-bold text-gray-900;
    }
    h4 {
-      @apply text-2xl font-bold;
-   }
-   li {
-      @apply ml-8 list-disc text-lg;
+      @apply text-2xl font-bold text-gray-900;
    }
    p {
-      @apply text-lg;
+      @apply text-lg text-gray-700;
    }
 }

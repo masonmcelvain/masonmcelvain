@@ -6,7 +6,10 @@ export function SocialIconRow() {
    return (
       <div className="flex items-center space-x-8">
          <EnvelopeIcon />
-         <GithubIcon url="https://github.com/masonmcelvain" />
+         <GithubIcon
+            ariaLabel="Mason's GitHub profile"
+            url="https://github.com/masonmcelvain"
+         />
          <MountainProjectIcon />
       </div>
    );

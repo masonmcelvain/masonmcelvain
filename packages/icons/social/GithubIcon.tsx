@@ -1,6 +1,18 @@
 import { FaGithub } from "react-icons/fa";
 import { BaseIcon } from "./BaseIcon";
 
-export function GithubIcon({ color, url }: { color?: string; url: string }) {
-   return <BaseIcon Icon={FaGithub} color={color ?? "black"} url={url} />;
+type GithubIconProps = {
+   ariaLabel: string;
+   color?: string;
+   url: string;
+};
+export function GithubIcon({ ariaLabel, color, url }: GithubIconProps) {
+   return (
+      <BaseIcon
+         ariaLabel={ariaLabel}
+         Icon={FaGithub}
+         color={color ?? "black"}
+         url={url}
+      />
+   );
 }

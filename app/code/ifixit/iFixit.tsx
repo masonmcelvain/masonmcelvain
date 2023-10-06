@@ -5,8 +5,16 @@ import IFixitProse from "@markdown/IFixitProse.mdx";
 export default function iFixit() {
    return (
       <ProjectTemplate title="iFixit" MDX={IFixitProse}>
-         <GithubIcon url="https://github.com/iFixit" color="#0071ce" />
-         <ExternalLinkIcon url="https://www.ifixit.com" color="#0071ce" />
+         <GithubIcon
+            ariaLabel="iFixit's GitHub organization"
+            url="https://github.com/iFixit"
+            color="#0071ce"
+         />
+         <ExternalLinkIcon
+            ariaLabel="iFixit's website"
+            url="https://www.ifixit.com"
+            color="#0071ce"
+         />
       </ProjectTemplate>
    );
 }

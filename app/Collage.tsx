@@ -21,7 +21,7 @@ export function Collage() {
             <div className="flex flex-col items-center space-y-2">
                <div className="flex w-full items-center justify-between space-x-2">
                   <div className="flex w-1/2 items-center justify-center">
-                     <p className="text-3xl">See you out there!</p>
+                     <p className="text-3xl font-bold">See you out there!</p>
                   </div>
                   <StaticImage
                      src={Kelp}

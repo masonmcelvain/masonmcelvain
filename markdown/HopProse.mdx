@@ -8,9 +8,7 @@ way. It's available on the [Google Web
 Store](https://chrome.google.com/webstore/detail/hop/djdlkcbfbdebfaoakhnoienanaakgccd)
 and [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/hop).
 
-<br />
-
-<div className="flex items-center justify-center">
+<div className="not-prose flex items-center justify-center">
    <CaptionedImage
       src={HopComposite}
       alt="Hop's primary view on the left and edit mode on the right."
@@ -21,8 +19,6 @@ and [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/hop).
    </CaptionedImage>
 </div>
 
-<br />
-
 I was inspired to build Hop when I discovered an applet on Chrome that organized
 links to a bunch of different Google apps. I thought it was a lovely interface, but
 it had at least two problems:
@@ -30,7 +26,7 @@ it had at least two problems:
 -  It was only on the homepage.
 -  I couldn't add new bookmarks to it.
 
-<div className="mt-6 flex items-center justify-center">
+<div className="not-prose mt-6 flex items-center justify-center">
    <CaptionedImage
       src={ChromeApplet}
       alt="The Chrome bookmark applet that inspired Hop."
@@ -40,12 +36,8 @@ it had at least two problems:
    </CaptionedImage>
 </div>
 
-<br />
-
 I set out to make a browser extension that organized my apps in the same way _and_
 had the additional features I wanted.
-
-<br />
 
 Just to get the app up and running, I had to learn how to use a bundler (first
 [Webpack](https://webpack.js.org), then [esbuild](https://esbuild.github.io)) to
@@ -53,15 +45,11 @@ transform my favorite web development tools (e.g. [React](https://react.dev),
 [Typescript](https://www.typescriptlang.org), [Chakra](https://chakra-ui.com))
 to a file structure that Chrome's extension engine could understand.
 
-<br />
-
 My next challenge was to give the user the ability to sort the links via drag and
 drop. I used a React library called [React DnD](https://react-dnd.github.io/react-dnd/about)
 to create a grid of drop targets that each bookmark could be dragged into. I learned
 about the subtle complexity of resorting items smoothly every time the user hovers
 over a drop target with an item in drag.
-
-<br />
 
 When I ported the extension to Firefox, I ran into unexpected memory constraints
 that forced me to restructure the app's memory model. Firefox exposes favicons as
@@ -70,8 +58,6 @@ would exceed this limit, which would have been an unreasonable shortcoming for a
 bookmark extension. So instead of storing a list of bookmark objects, I refactored
 the app to store a list of bookmark object IDs and then store each bookmark object
 as an independent item.
-
-<br />
 
 In the end, I produced a beautiful open-source extension with all the desired features,
 and it now helps a handful of users and I navigate the web every day.

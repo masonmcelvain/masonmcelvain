@@ -13,9 +13,9 @@ export function ProjectTemplate({
             <h1>{title}</h1>
             {children}
          </div>
-         <div>
+         <article className="prose prose-lg max-w-none prose-a:text-blue-600 prose-ul:text-lg">
             <MDX />
-         </div>
+         </article>
       </>
    );
 }

@@ -12,7 +12,7 @@ export function About() {
          <div className="flex items-center justify-center">
             <SocialIconRow />
          </div>
-         <h3>How silicon became my favorite element 🧪</h3>
+         <h2>How silicon became my favorite element 🧪</h2>
          <div className="prose prose-lg max-w-none prose-a:text-blue-600">
             <HistoryProse />
          </div>

@@ -7,6 +7,5 @@ export function getMetadata({ suffix }: MetadataProps): Metadata {
    return {
       description: "Mason's website",
       title: `Mason McElvain - ${suffix}`,
-      themeColor: "#ffffff",
    };
 }

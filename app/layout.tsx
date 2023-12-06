@@ -1,6 +1,7 @@
 import { Wrapper } from "@ui/layout";
 import { Viewport } from "next";
 import "./globals.css";
+import { APP_ORIGIN } from "./env";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 
@@ -8,12 +9,10 @@ type RootLayoutProps = {
    headTitleSuffix: string;
 };
 
-export const dynamic = "force-dynamic";
-
-export default function RootLayout({
+export default async function RootLayout({
    children,
 }: React.PropsWithChildren<RootLayoutProps>) {
-   const logoSrc = getRandomLogoPath();
+   const logoSrc = await fetchLogoSrc();
    return (
       <html lang="en">
          <body>
@@ -27,12 +26,21 @@ export default function RootLayout({
    );
 }
 
+async function fetchLogoSrc() {
+   const endpoint = new URL("api/logo", APP_ORIGIN);
+   const res = await fetch(endpoint, { cache: "no-store" });
+   if (!res.ok) {
+      console.error(`Failed to fetch logo from ${endpoint.href}`);
+      return "";
+   }
+   try {
+      return (await res.json()) as string;
+   } catch (err) {
+      console.error(`Failed to parse logo json from ${endpoint.href}`);
+      return "";
+   }
+}
+
 export const viewport: Viewport = {
    themeColor: "white",
 };
-
-function getRandomLogoPath() {
-   const max = 24;
-   const int = Math.floor(Math.random() * max + 1);
-   return `/assets/images/logos/logo-${int}.png`;
-}

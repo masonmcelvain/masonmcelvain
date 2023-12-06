@@ -1,5 +1,6 @@
-import "./globals.css";
 import { Wrapper } from "@ui/layout";
+import { Viewport } from "next";
+import "./globals.css";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 
@@ -25,6 +26,10 @@ export default function RootLayout({
       </html>
    );
 }
+
+export const viewport: Viewport = {
+   themeColor: "white",
+};
 
 function getRandomLogoPath() {
    const max = 24;

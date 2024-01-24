@@ -21,8 +21,9 @@ export function ProjectCard({
    gradientFrom,
    gradientTo,
 }: ProjectCardProps) {
+   const target = href.startsWith("http") ? "_blank" : undefined;
    return (
-      <Link href={href}>
+      <Link href={href} target={target}>
          <div
             className={`mx-auto w-[22rem] rounded bg-gradient-to-tl p-8 transition-transform hover:-translate-y-0.5 sm:w-[28rem] md:w-[30rem] xl:w-[32rem] ${gradientFrom} ${gradientTo}`}
          >

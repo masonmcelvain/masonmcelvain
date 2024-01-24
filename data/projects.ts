@@ -1,6 +1,7 @@
 import HopComposite from "@assets/images/hop-composite.png";
 import iFixitProTechToolkit from "@assets/images/ifixit-pro-tech-toolkit.png";
 import CSAIComposite from "@assets/images/csai-composite.png";
+import SecretSanta from "@assets/images/secret-santa.png";
 import type { ProjectCardProps } from "@common/components";
 
 const projects: ProjectCardProps[] = [
@@ -25,6 +26,15 @@ const projects: ProjectCardProps[] = [
       gradientTo: "to-[#0071ce]",
    },
    {
+      src: SecretSanta,
+      alt: "Bust of Santa Claus dressed as a spy.",
+      title: "Simple Secret Santa",
+      caption: "The fastest way to play Secret Santa with remote friends.",
+      href: "https://www.simple-secret-santa.com/",
+      gradientFrom: "from-[#7928ca]",
+      gradientTo: "to-[#ff0080]",
+   },
+   {
       src: CSAIComposite,
       alt: "Collage of CSAI Nimbus apps",
       title: "CSAI",
@@ -37,8 +47,5 @@ const projects: ProjectCardProps[] = [
 export default projects;
 
 // Other unused colors:
-//    gradientFrom: "#7928CA",
-//    gradientTo: "#FF0080",
-
 //    gradientFrom: "#d485ff",
 //    gradientTo: "#00ffee",

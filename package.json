@@ -10,7 +10,7 @@
    },
    "packageManager": "pnpm@8.15.1",
    "engines": {
-      "node": "20.11.0"
+      "node": "20.11.1"
    },
    "scripts": {
       "dev": "next dev",
@@ -37,7 +37,7 @@
    "devDependencies": {
       "@tailwindcss/typography": "0.5.10",
       "@types/mdx": "2.0.11",
-      "@types/node": "20.11.17",
+      "@types/node": "20.11.19",
       "@types/react": "18.2.56",
       "@typescript-eslint/eslint-plugin": "6.21.0",
       "@typescript-eslint/parser": "6.21.0",

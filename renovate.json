@@ -5,6 +5,10 @@
       {
          "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
          "automerge": true
+      },
+      {
+         "matchPackageNames": ["next"],
+         "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-canary\\.(?<build>\\d+)?$"
       }
    ],
    "rangeStrategy": "pin",

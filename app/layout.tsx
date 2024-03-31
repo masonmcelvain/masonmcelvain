@@ -8,8 +8,6 @@ type RootLayoutProps = {
    headTitleSuffix: string;
 };
 
-export const dynamic = "force-dynamic";
-
 export default function RootLayout({
    children,
 }: React.PropsWithChildren<RootLayoutProps>) {

@@ -36,7 +36,7 @@
    },
    "devDependencies": {
       "@tailwindcss/typography": "0.5.12",
-      "@types/mdx": "2.0.12",
+      "@types/mdx": "2.0.13",
       "@types/node": "20.12.5",
       "@types/react": "18.2.74",
       "@typescript-eslint/eslint-plugin": "7.5.0",

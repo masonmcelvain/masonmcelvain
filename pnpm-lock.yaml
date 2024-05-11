@@ -13,10 +13,10 @@ importers:
         version: 3.0.1(webpack@5.88.2)
       '@mdx-js/react':
         specifier: 3.0.1
-        version: 3.0.1(@types/react@18.3.1)(react@18.3.1)
+        version: 3.0.1(@types/react@18.3.2)(react@18.3.1)
       '@next/mdx':
         specifier: 14.2.3
-        version: 14.2.3(@mdx-js/loader@3.0.1(webpack@5.88.2))(@mdx-js/react@3.0.1(@types/react@18.3.1)(react@18.3.1))
+        version: 14.2.3(@mdx-js/loader@3.0.1(webpack@5.88.2))(@mdx-js/react@3.0.1(@types/react@18.3.2)(react@18.3.1))
       next:
         specifier: 14.3.0-canary.40
         version: 14.3.0-canary.40(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -40,8 +40,8 @@ importers:
         specifier: 20.12.8
         version: 20.12.8
       '@types/react':
-        specifier: 18.3.1
-        version: 18.3.1
+        specifier: 18.3.2
+        version: 18.3.2
       '@typescript-eslint/eslint-plugin':
         specifier: 7.8.0
         version: 7.8.0(@typescript-eslint/parser@7.8.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(typescript@5.4.5)
@@ -428,8 +428,8 @@ packages:
   '@types/prop-types@15.7.5':
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
 
-  '@types/react@18.3.1':
-    resolution: {integrity: sha512-V0kuGBX3+prX+DQ/7r2qsv1NsdfnCLnTgnRJ1pYnxykBhGMz+qj+box5lq7XsO5mtZsBqpjwwTu/7wszPfMBcw==}
+  '@types/react@18.3.2':
+    resolution: {integrity: sha512-Btgg89dAnqD4vV7R3hlwOxgqobUQKgx3MmrQRi0yYbs/P0ym8XozIAlkqVilPqHQwXs4e9Tf63rrCgl58BcO4w==}
 
   '@types/semver@7.5.8':
     resolution: {integrity: sha512-I8EUhyrgfLrcTkzV3TSsGyl1tSuPrEDzr0yd5m90UgNxQkyDXULk3b6MlQqTCpZpNtWe1K0hzclnZkTcLBe2UQ==}
@@ -2685,10 +2685,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@mdx-js/react@3.0.1(@types/react@18.3.1)(react@18.3.1)':
+  '@mdx-js/react@3.0.1(@types/react@18.3.2)(react@18.3.1)':
     dependencies:
       '@types/mdx': 2.0.13
-      '@types/react': 18.3.1
+      '@types/react': 18.3.2
       react: 18.3.1
 
   '@next/env@14.3.0-canary.40': {}
@@ -2697,12 +2697,12 @@ snapshots:
     dependencies:
       glob: 10.3.10
 
-  '@next/mdx@14.2.3(@mdx-js/loader@3.0.1(webpack@5.88.2))(@mdx-js/react@3.0.1(@types/react@18.3.1)(react@18.3.1))':
+  '@next/mdx@14.2.3(@mdx-js/loader@3.0.1(webpack@5.88.2))(@mdx-js/react@3.0.1(@types/react@18.3.2)(react@18.3.1))':
     dependencies:
       source-map: 0.7.4
     optionalDependencies:
       '@mdx-js/loader': 3.0.1(webpack@5.88.2)
-      '@mdx-js/react': 3.0.1(@types/react@18.3.1)(react@18.3.1)
+      '@mdx-js/react': 3.0.1(@types/react@18.3.2)(react@18.3.1)
 
   '@next/swc-darwin-arm64@14.3.0-canary.40':
     optional: true
@@ -2815,7 +2815,7 @@ snapshots:
 
   '@types/prop-types@15.7.5': {}
 
-  '@types/react@18.3.1':
+  '@types/react@18.3.2':
     dependencies:
       '@types/prop-types': 15.7.5
       csstype: 3.1.0

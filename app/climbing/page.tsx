@@ -1,31 +1,11 @@
 import { getMetadata } from "@data/metadata";
 import csvToJson from "csvtojson";
 import https from "https";
+import { type Tick, TicksSchema } from "@models/tick";
 import type { Metadata } from "next";
-import { z } from "zod";
 
 const MP_TICKS_URL =
    "https://www.mountainproject.com/user/201271324/mason-mcelvain/tick-export";
-
-const TickSchema = z.object({
-   Date: z.string(),
-   Route: z.string(),
-   Rating: z.string(),
-   Notes: z.string(),
-   URL: z.string(),
-   Pitches: z.number(),
-   Location: z.string(),
-   "Avg Stars": z.number(),
-   "Your Stars": z.number(),
-   Style: z.string(),
-   "Lead Style": z.string(),
-   "Route Type": z.string(),
-   "Your Rating": z.string(),
-   Length: z.union([z.number(), z.string()]),
-   "Rating Code": z.number(),
-});
-type Tick = z.infer<typeof TickSchema>;
-const TicksSchema = z.array(TickSchema);
 
 export const metadata: Metadata = getMetadata({ suffix: "Climbing" });
 

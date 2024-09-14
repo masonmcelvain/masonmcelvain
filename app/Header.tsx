@@ -25,6 +25,9 @@ export function Header({ logoSrc }: HeaderProps) {
             <Link className="text-xl font-semibold" href="/code/csai">
                CSAI
             </Link>
+            <Link className="text-xl font-semibold" href="/climbing">
+               Climbing
+            </Link>
          </div>
       </header>
    );

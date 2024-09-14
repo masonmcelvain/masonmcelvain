@@ -6,3 +6,5 @@
 
 # typescript
 /tsconfig.tsbuildinfo
+
+/.tmp/

@@ -1,9 +1,6 @@
 import { getMetadata } from "@data/metadata";
 import csvToJson from "csvtojson";
-import fs from "fs";
-import fsPromises from "fs/promises";
 import https from "https";
-import path from "path";
 import type { Metadata } from "next";
 import { z } from "zod";
 
@@ -44,48 +41,28 @@ function Tick({ tick }: { tick: Tick }) {
 }
 
 async function fetchTicks() {
-   const ticksFilePath = getTicksFilePath();
-   await downloadTicks(ticksFilePath);
+   const csvString = await getCsvString(MP_TICKS_URL);
    const json = await csvToJson({
       checkType: true,
       colParser: { Rating: "string", "Your Rating": "string", Route: "string" },
-   }).fromFile(ticksFilePath);
+   }).fromString(csvString);
    return TicksSchema.parse(json);
 }
 
-async function downloadTicks(ticksFilePath: string) {
-   const ticksDirectory = path.dirname(ticksFilePath);
-   ensureDirectoryExists(ticksDirectory);
-   await downloadFile(new URL(MP_TICKS_URL), ticksFilePath);
-}
-
-function getTicksFilePath() {
-   const directory = process.cwd() + "/.tmp";
-   const fileName = "tick-export.csv";
-   const importPath = path.join(directory, fileName);
-   return importPath;
-}
-
-function downloadFile(url: URL, dest: string) {
-   return new Promise((resolve, reject) => {
-      const file = fs.createWriteStream(dest);
+function getCsvString(url: string) {
+   return new Promise<string>((resolve, reject) => {
+      let contents = "";
       https
          .get(url, (response) => {
-            response.pipe(file);
-            file.on("finish", () => {
-               file.close();
-               resolve(true);
+            response.on("data", function (chunk) {
+               contents += chunk;
+            });
+            response.on("end", function () {
+               resolve(contents);
             });
          })
          .on("error", (error) => {
-            fs.unlink(dest, (err) => {
-               console.log("Couldn't delete file: ", err);
-            });
             reject(error);
          });
    });
-}
-
-async function ensureDirectoryExists(filePath: string): Promise<void> {
-   fsPromises.mkdir(filePath, { recursive: true });
 }

@@ -1,7 +1,8 @@
 import { getMetadata } from "@data/metadata";
+import { type Tick, TicksSchema } from "@models/tick";
+import { ExternalLinkIcon } from "@icons/social";
 import csvToJson from "csvtojson";
 import https from "https";
-import { type Tick, TicksSchema } from "@models/tick";
 import type { Metadata } from "next";
 
 const MP_TICKS_URL =
@@ -11,13 +12,47 @@ export const metadata: Metadata = getMetadata({ suffix: "Climbing" });
 
 export default async function Climbing() {
    const ticks = await fetchTicks();
-   return ticks.map((tick) => (
-      <Tick key={`${tick.Date} - ${tick.Route} - ${tick.Notes}`} tick={tick} />
-   ));
+   return (
+      <div className="mt-12 flex flex-col justify-start space-y-4">
+         {ticks.map((tick) => (
+            <Tick
+               key={`${tick.Date} - ${tick.Route} - ${tick.Notes}`}
+               tick={tick}
+            />
+         ))}
+      </div>
+   );
 }
 
 function Tick({ tick }: { tick: Tick }) {
-   return <pre>{JSON.stringify(tick, null, 2)}</pre>;
+   const date = new Date(tick.Date).toLocaleString("en-IE", {
+      timeZone: "UTC",
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+      weekday: "short",
+   });
+   return (
+      <div className="mx-auto flex w-[22rem] flex-col space-y-2 rounded bg-blue-100 p-8 sm:w-[28rem] md:w-[30rem] xl:w-[64rem]">
+         <div className="flex w-full items-center space-x-4">
+            <h2>
+               {date} - {tick.Route}
+            </h2>
+            <ExternalLinkIcon
+               ariaLabel={`Visit ${tick.Route} on Mountain Project`}
+               width="w-6"
+               height="h-8"
+               url={tick.URL}
+            />
+         </div>
+         <div>
+            <h3>{tick.Location}</h3>
+         </div>
+         <div>
+            <p>{tick.Notes}</p>
+         </div>
+      </div>
+   );
 }
 
 async function fetchTicks() {

@@ -2,6 +2,7 @@ import { getMetadata } from "@data/metadata";
 import { type Tick, TicksSchema } from "@models/tick";
 import { ExternalLinkIcon } from "@icons/social";
 import csvToJson from "csvtojson";
+import he from "he";
 import https from "https";
 import type { Metadata } from "next";
 
@@ -61,7 +62,12 @@ async function fetchTicks() {
       checkType: true,
       colParser: { Rating: "string", "Your Rating": "string", Route: "string" },
    }).fromString(csvString);
-   return TicksSchema.parse(json);
+   const encodedTicks = TicksSchema.parse(json);
+   const decodedTicks = encodedTicks.map((tick) => ({
+      ...tick,
+      Notes: he.decode(tick.Notes),
+   }));
+   return decodedTicks;
 }
 
 function getCsvString(url: string) {

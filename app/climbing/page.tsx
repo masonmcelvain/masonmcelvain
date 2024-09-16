@@ -1,19 +1,14 @@
 import { getMetadata } from "@data/metadata";
 import { unique } from "@helpers/type-helpers";
-import { type Tick, TicksSchema } from "@models/tick";
+import { type Tick } from "@models/tick";
 import { ExternalLinkIcon } from "@icons/social";
-import csvToJson from "csvtojson";
-import he from "he";
-import https from "https";
 import type { Metadata } from "next";
-
-const MP_TICKS_URL =
-   "https://www.mountainproject.com/user/201271324/mason-mcelvain/tick-export";
+import { getCachedTicks } from "./data";
 
 export const metadata: Metadata = getMetadata({ suffix: "Climbing" });
 
 export default async function Climbing() {
-   const ticks = await fetchTicks();
+   const ticks = await getCachedTicks();
    const ticksByDay = ticks.reduce(
       (acc, tick) => {
          acc[tick.Date] ??= [];
@@ -85,38 +80,6 @@ function TickRow({ tick, generalArea }: { tick: Tick; generalArea: string }) {
          <p>{tick.Notes}</p>
       </div>
    );
-}
-
-async function fetchTicks() {
-   const csvString = await getCsvString(MP_TICKS_URL);
-   const json = await csvToJson({
-      checkType: true,
-      colParser: { Rating: "string", "Your Rating": "string", Route: "string" },
-   }).fromString(csvString);
-   const encodedTicks = TicksSchema.parse(json);
-   const decodedTicks = encodedTicks.map((tick) => ({
-      ...tick,
-      Notes: he.decode(tick.Notes),
-   }));
-   return decodedTicks;
-}
-
-function getCsvString(url: string) {
-   return new Promise<string>((resolve, reject) => {
-      let contents = "";
-      https
-         .get(url, (response) => {
-            response.on("data", function (chunk) {
-               contents += chunk;
-            });
-            response.on("end", function () {
-               resolve(contents);
-            });
-         })
-         .on("error", (error) => {
-            reject(error);
-         });
-   });
 }
 
 function closestCommonSubArea(areas: string[]) {

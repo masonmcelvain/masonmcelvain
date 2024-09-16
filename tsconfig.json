@@ -18,6 +18,7 @@
       "paths": {
          "@assets/*": ["assets/*"],
          "@data/*": ["data/*"],
+         "@helpers/*": ["helpers/*"],
          "@markdown/*": ["markdown/*"],
          "@models/*": ["models/*"],
          "@common/*": ["packages/common/*"],

@@ -20,7 +20,7 @@
       "lint:fix": "eslint . --fix .",
       "format": "prettier --write .",
       "prepare": "husky",
-      "type-check": "tsc --pretty"
+      "typecheck": "tsc --pretty"
    },
    "dependencies": {
       "@mdx-js/loader": "3.0.1",

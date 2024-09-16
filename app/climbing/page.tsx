@@ -80,7 +80,7 @@ function TickRow({ tick, generalArea }: { tick: Tick; generalArea: string }) {
             />
          </div>
          {subArea ? (
-            <p className="text-sm italic text-slate-600">{subArea}</p>
+            <p className="text-sm italic text-gray-800">{subArea}</p>
          ) : null}
          <p>{tick.Notes}</p>
       </div>

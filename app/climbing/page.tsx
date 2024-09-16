@@ -37,7 +37,7 @@ function DayOut({ date, ticks }: { date: string; ticks: Tick[] }) {
    const areas = ticks.map((tick) => tick.Location).filter(unique);
    const generalArea = closestCommonSubArea(areas);
    return (
-      <div className="mx-auto flex w-[22rem] flex-col space-y-2 rounded bg-blue-100 p-8 sm:w-[28rem] md:w-[30rem] xl:w-[64rem]">
+      <div className="mx-auto flex w-[22rem] flex-col space-y-2 rounded bg-blue-50 p-8 sm:w-[28rem] md:w-[30rem] xl:w-[64rem]">
          <div className="flex flex-col space-y-4">
             <h2>{localizedDate}</h2>
             {generalArea ? <p>{generalArea}</p> : null}

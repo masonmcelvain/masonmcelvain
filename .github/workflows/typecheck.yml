@@ -13,4 +13,4 @@ jobs:
          - name: Install workspaces
            run: pnpm install
          - name: Check types
-           run: pnpm type-check
+           run: pnpm typecheck

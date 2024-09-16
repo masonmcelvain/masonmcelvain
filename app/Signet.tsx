@@ -1,6 +1,5 @@
 import { headers } from "next/headers";
 import Image from "next/image";
-import { Suspense } from "react";
 
 type SignetProps = {
    logoSrc: string;

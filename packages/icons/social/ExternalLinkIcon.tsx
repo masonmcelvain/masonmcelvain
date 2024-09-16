@@ -3,11 +3,15 @@ import { BaseIcon } from "./BaseIcon";
 
 type ExternalLinkIconProps = {
    ariaLabel: string;
+   width?: string;
+   height?: string;
    url: string;
    color?: string;
 };
 export function ExternalLinkIcon({
    ariaLabel,
+   width,
+   height,
    url,
    color,
 }: ExternalLinkIconProps) {
@@ -16,6 +20,8 @@ export function ExternalLinkIcon({
          ariaLabel={ariaLabel}
          Icon={FaArrowUpRightFromSquare}
          color={color ?? "black"}
+         width={width}
+         height={height}
          url={url}
       />
    );

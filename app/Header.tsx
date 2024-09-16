@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Suspense } from "react";
+import { MobileHeaderDropdown } from "./mobile-header-dropdown";
 import { Signet } from "./Signet";
 
 type HeaderProps = {
@@ -15,7 +16,7 @@ export function Header({ logoSrc }: HeaderProps) {
                </Suspense>
             </div>
          </Link>
-         <div className="flex items-center space-x-8">
+         <div className="hidden items-center space-x-8 sm:flex">
             <Link className="text-xl font-semibold" href="/code/hop">
                Hop
             </Link>
@@ -25,7 +26,31 @@ export function Header({ logoSrc }: HeaderProps) {
             <Link className="text-xl font-semibold" href="/code/csai">
                CSAI
             </Link>
+            <Link className="text-xl font-semibold" href="/climbing">
+               Climbing
+            </Link>
+         </div>
+         <div className="flex items-center space-x-2 sm:hidden">
+            <MobileHeaderDropdown links={codingLinks} title="Coding" />
+            <Link className="text-xl font-semibold" href="/climbing">
+               Climbing
+            </Link>
          </div>
       </header>
    );
 }
+
+const codingLinks = [
+   {
+      name: "Hop - Go places",
+      href: "/code/hop",
+   },
+   {
+      name: "iFixit - My work",
+      href: "/code/ifixit",
+   },
+   {
+      name: "CSAI - My beginnings",
+      href: "/code/csai",
+   },
+];

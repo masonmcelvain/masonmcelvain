@@ -30,7 +30,7 @@ const projects: ProjectCardProps[] = [
       alt: "Bust of Santa Claus dressed as a spy.",
       title: "Simple Secret Santa",
       caption: "The fastest way to play Secret Santa with remote friends.",
-      href: "https://www.simple-secret-santa.com/",
+      href: "https://simple-secret-santa.vercel.app/",
       gradientFrom: "from-[#7928ca]",
       gradientTo: "to-[#ff0080]",
    },

@@ -43,7 +43,7 @@
       "@tailwindcss/typography": "0.5.15",
       "@types/he": "1.2.3",
       "@types/mdx": "2.0.13",
-      "@types/node": "20.16.11",
+      "@types/node": "20.16.13",
       "@types/react": "18.3.11",
       "@typescript-eslint/eslint-plugin": "7.18.0",
       "@typescript-eslint/parser": "7.18.0",

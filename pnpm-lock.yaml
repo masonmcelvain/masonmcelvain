@@ -15,14 +15,14 @@ importers:
         specifier: 2.1.5
         version: 2.1.5(react@18.3.1)
       '@mdx-js/loader':
-        specifier: 3.0.1
-        version: 3.0.1(webpack@5.88.2)
+        specifier: 3.1.0
+        version: 3.1.0(webpack@5.88.2)
       '@mdx-js/react':
-        specifier: 3.0.1
-        version: 3.0.1(@types/react@18.3.11)(react@18.3.1)
+        specifier: 3.1.0
+        version: 3.1.0(@types/react@18.3.11)(react@18.3.1)
       '@next/mdx':
         specifier: 14.2.3
-        version: 14.2.3(@mdx-js/loader@3.0.1(webpack@5.88.2))(@mdx-js/react@3.0.1(@types/react@18.3.11)(react@18.3.1))
+        version: 14.2.3(@mdx-js/loader@3.1.0(webpack@5.88.2))(@mdx-js/react@3.1.0(@types/react@18.3.11)(react@18.3.1))
       csvtojson:
         specifier: 2.0.10
         version: 2.0.10
@@ -319,16 +319,19 @@ packages:
   '@jridgewell/trace-mapping@0.3.17':
     resolution: {integrity: sha512-MCNzAp77qzKca9+W/+I0+sEpaUnZoeasnghNeVc41VZCEKaCH73Vq3BZZ/SzWIgrqE4H4ceI+p+b6C0mHf9T4g==}
 
-  '@mdx-js/loader@3.0.1':
-    resolution: {integrity: sha512-YbYUt7YyEOdFxhyuCWmLKf5vKhID/hJAojEUnheJk4D8iYVLFQw+BAoBWru/dHGch1omtmZOPstsmKPyBF68Tw==}
+  '@mdx-js/loader@3.1.0':
+    resolution: {integrity: sha512-xU/lwKdOyfXtQGqn3VnJjlDrmKXEvMi1mgYxVmukEUtVycIz1nh7oQ40bKTd4cA7rLStqu0740pnhGYxGoqsCg==}
     peerDependencies:
       webpack: '>=5'
+    peerDependenciesMeta:
+      webpack:
+        optional: true
 
   '@mdx-js/mdx@3.0.0':
     resolution: {integrity: sha512-Icm0TBKBLYqroYbNW3BPnzMGn+7mwpQOK310aZ7+fkCtiU3aqv2cdcX+nd0Ydo3wI5Rx8bX2Z2QmGb/XcAClCw==}
 
-  '@mdx-js/react@3.0.1':
-    resolution: {integrity: sha512-9ZrPIU4MGf6et1m1ov3zKf+q9+deetI51zprKB1D/z3NOb+rUxxtEl3mCjW5wTGh6VhRdwPueh1oRzi6ezkA8A==}
+  '@mdx-js/react@3.1.0':
+    resolution: {integrity: sha512-QjHtSaoameoalGnKDT3FoIl4+9RwyTmo9ZJGBdLOks/YOiWHoRDI3PUwEzOE7kEmGcV3AFcp9K6dYu9rEuKLAQ==}
     peerDependencies:
       '@types/react': '>=16'
       react: '>=16'
@@ -2810,6 +2813,7 @@ snapshots:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.2
       '@jridgewell/trace-mapping': 0.3.17
+    optional: true
 
   '@jridgewell/sourcemap-codec@1.4.14': {}
 
@@ -2818,10 +2822,11 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
 
-  '@mdx-js/loader@3.0.1(webpack@5.88.2)':
+  '@mdx-js/loader@3.1.0(webpack@5.88.2)':
     dependencies:
       '@mdx-js/mdx': 3.0.0
       source-map: 0.7.4
+    optionalDependencies:
       webpack: 5.88.2
     transitivePeerDependencies:
       - supports-color
@@ -2854,7 +2859,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@mdx-js/react@3.0.1(@types/react@18.3.11)(react@18.3.1)':
+  '@mdx-js/react@3.1.0(@types/react@18.3.11)(react@18.3.1)':
     dependencies:
       '@types/mdx': 2.0.13
       '@types/react': 18.3.11
@@ -2866,12 +2871,12 @@ snapshots:
     dependencies:
       glob: 10.3.10
 
-  '@next/mdx@14.2.3(@mdx-js/loader@3.0.1(webpack@5.88.2))(@mdx-js/react@3.0.1(@types/react@18.3.11)(react@18.3.1))':
+  '@next/mdx@14.2.3(@mdx-js/loader@3.1.0(webpack@5.88.2))(@mdx-js/react@3.1.0(@types/react@18.3.11)(react@18.3.1))':
     dependencies:
       source-map: 0.7.4
     optionalDependencies:
-      '@mdx-js/loader': 3.0.1(webpack@5.88.2)
-      '@mdx-js/react': 3.0.1(@types/react@18.3.11)(react@18.3.1)
+      '@mdx-js/loader': 3.1.0(webpack@5.88.2)
+      '@mdx-js/react': 3.1.0(@types/react@18.3.11)(react@18.3.1)
 
   '@next/swc-darwin-arm64@14.3.0-canary.59':
     optional: true
@@ -2998,11 +3003,13 @@ snapshots:
     dependencies:
       '@types/eslint': 8.4.6
       '@types/estree': 1.0.0
+    optional: true
 
   '@types/eslint@8.4.6':
     dependencies:
       '@types/estree': 1.0.0
       '@types/json-schema': 7.0.15
+    optional: true
 
   '@types/estree-jsx@1.0.0':
     dependencies:
@@ -3016,7 +3023,8 @@ snapshots:
 
   '@types/he@1.2.3': {}
 
-  '@types/json-schema@7.0.15': {}
+  '@types/json-schema@7.0.15':
+    optional: true
 
   '@types/json5@0.0.29': {}
 
@@ -3170,20 +3178,26 @@ snapshots:
     dependencies:
       '@webassemblyjs/helper-numbers': 1.11.5
       '@webassemblyjs/helper-wasm-bytecode': 1.11.5
+    optional: true
 
-  '@webassemblyjs/floating-point-hex-parser@1.11.5': {}
+  '@webassemblyjs/floating-point-hex-parser@1.11.5':
+    optional: true
 
-  '@webassemblyjs/helper-api-error@1.11.5': {}
+  '@webassemblyjs/helper-api-error@1.11.5':
+    optional: true
 
-  '@webassemblyjs/helper-buffer@1.11.5': {}
+  '@webassemblyjs/helper-buffer@1.11.5':
+    optional: true
 
   '@webassemblyjs/helper-numbers@1.11.5':
     dependencies:
       '@webassemblyjs/floating-point-hex-parser': 1.11.5
       '@webassemblyjs/helper-api-error': 1.11.5
       '@xtuc/long': 4.2.2
+    optional: true
 
-  '@webassemblyjs/helper-wasm-bytecode@1.11.5': {}
+  '@webassemblyjs/helper-wasm-bytecode@1.11.5':
+    optional: true
 
   '@webassemblyjs/helper-wasm-section@1.11.5':
     dependencies:
@@ -3191,16 +3205,20 @@ snapshots:
       '@webassemblyjs/helper-buffer': 1.11.5
       '@webassemblyjs/helper-wasm-bytecode': 1.11.5
       '@webassemblyjs/wasm-gen': 1.11.5
+    optional: true
 
   '@webassemblyjs/ieee754@1.11.5':
     dependencies:
       '@xtuc/ieee754': 1.2.0
+    optional: true
 
   '@webassemblyjs/leb128@1.11.5':
     dependencies:
       '@xtuc/long': 4.2.2
+    optional: true
 
-  '@webassemblyjs/utf8@1.11.5': {}
+  '@webassemblyjs/utf8@1.11.5':
+    optional: true
 
   '@webassemblyjs/wasm-edit@1.11.5':
     dependencies:
@@ -3212,6 +3230,7 @@ snapshots:
       '@webassemblyjs/wasm-opt': 1.11.5
       '@webassemblyjs/wasm-parser': 1.11.5
       '@webassemblyjs/wast-printer': 1.11.5
+    optional: true
 
   '@webassemblyjs/wasm-gen@1.11.5':
     dependencies:
@@ -3220,6 +3239,7 @@ snapshots:
       '@webassemblyjs/ieee754': 1.11.5
       '@webassemblyjs/leb128': 1.11.5
       '@webassemblyjs/utf8': 1.11.5
+    optional: true
 
   '@webassemblyjs/wasm-opt@1.11.5':
     dependencies:
@@ -3227,6 +3247,7 @@ snapshots:
       '@webassemblyjs/helper-buffer': 1.11.5
       '@webassemblyjs/wasm-gen': 1.11.5
       '@webassemblyjs/wasm-parser': 1.11.5
+    optional: true
 
   '@webassemblyjs/wasm-parser@1.11.5':
     dependencies:
@@ -3236,19 +3257,24 @@ snapshots:
       '@webassemblyjs/ieee754': 1.11.5
       '@webassemblyjs/leb128': 1.11.5
       '@webassemblyjs/utf8': 1.11.5
+    optional: true
 
   '@webassemblyjs/wast-printer@1.11.5':
     dependencies:
       '@webassemblyjs/ast': 1.11.5
       '@xtuc/long': 4.2.2
+    optional: true
 
-  '@xtuc/ieee754@1.2.0': {}
+  '@xtuc/ieee754@1.2.0':
+    optional: true
 
-  '@xtuc/long@4.2.2': {}
+  '@xtuc/long@4.2.2':
+    optional: true
 
   acorn-import-assertions@1.9.0(acorn@8.9.0):
     dependencies:
       acorn: 8.9.0
+    optional: true
 
   acorn-jsx@5.3.2(acorn@8.9.0):
     dependencies:
@@ -3259,6 +3285,7 @@ snapshots:
   ajv-keywords@3.5.2(ajv@6.12.6):
     dependencies:
       ajv: 6.12.6
+    optional: true
 
   ajv@6.12.6:
     dependencies:
@@ -3405,7 +3432,8 @@ snapshots:
       node-releases: 2.0.18
       update-browserslist-db: 1.1.0(browserslist@4.23.3)
 
-  buffer-from@1.1.2: {}
+  buffer-from@1.1.2:
+    optional: true
 
   busboy@1.6.0:
     dependencies:
@@ -3453,7 +3481,8 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
-  chrome-trace-event@1.0.3: {}
+  chrome-trace-event@1.0.3:
+    optional: true
 
   cli-cursor@5.0.0:
     dependencies:
@@ -3494,7 +3523,8 @@ snapshots:
 
   commander@12.1.0: {}
 
-  commander@2.20.3: {}
+  commander@2.20.3:
+    optional: true
 
   commander@4.1.1: {}
 
@@ -3647,7 +3677,8 @@ snapshots:
       iterator.prototype: 1.1.2
       safe-array-concat: 1.0.1
 
-  es-module-lexer@1.2.1: {}
+  es-module-lexer@1.2.1:
+    optional: true
 
   es-set-tostringtag@2.0.1:
     dependencies:
@@ -3798,6 +3829,7 @@ snapshots:
     dependencies:
       esrecurse: 4.3.0
       estraverse: 4.3.0
+    optional: true
 
   eslint-scope@7.2.2:
     dependencies:
@@ -3863,7 +3895,8 @@ snapshots:
     dependencies:
       estraverse: 5.3.0
 
-  estraverse@4.3.0: {}
+  estraverse@4.3.0:
+    optional: true
 
   estraverse@5.3.0: {}
 
@@ -3897,7 +3930,8 @@ snapshots:
 
   eventemitter3@5.0.1: {}
 
-  events@3.3.0: {}
+  events@3.3.0:
+    optional: true
 
   execa@8.0.1:
     dependencies:
@@ -4004,7 +4038,8 @@ snapshots:
     dependencies:
       is-glob: 4.0.3
 
-  glob-to-regexp@0.4.1: {}
+  glob-to-regexp@0.4.1:
+    optional: true
 
   glob@10.3.10:
     dependencies:
@@ -4310,6 +4345,7 @@ snapshots:
       '@types/node': 20.16.13
       merge-stream: 2.0.0
       supports-color: 8.1.1
+    optional: true
 
   jiti@1.21.0: {}
 
@@ -4319,7 +4355,8 @@ snapshots:
     dependencies:
       argparse: 2.0.1
 
-  json-parse-even-better-errors@2.3.1: {}
+  json-parse-even-better-errors@2.3.1:
+    optional: true
 
   json-schema-traverse@0.4.1: {}
 
@@ -4375,7 +4412,8 @@ snapshots:
       rfdc: 1.4.1
       wrap-ansi: 9.0.0
 
-  loader-runner@4.3.0: {}
+  loader-runner@4.3.0:
+    optional: true
 
   locate-path@6.0.0:
     dependencies:
@@ -4724,11 +4762,13 @@ snapshots:
       braces: 3.0.3
       picomatch: 2.3.1
 
-  mime-db@1.52.0: {}
+  mime-db@1.52.0:
+    optional: true
 
   mime-types@2.1.35:
     dependencies:
       mime-db: 1.52.0
+    optional: true
 
   mimic-fn@4.0.0: {}
 
@@ -4764,7 +4804,8 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
-  neo-async@2.6.2: {}
+  neo-async@2.6.2:
+    optional: true
 
   next@14.3.0-canary.59(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
@@ -5002,6 +5043,7 @@ snapshots:
   randombytes@2.1.0:
     dependencies:
       safe-buffer: 5.2.1
+    optional: true
 
   react-dom@18.3.1(react@18.3.1):
     dependencies:
@@ -5106,7 +5148,8 @@ snapshots:
       has-symbols: 1.0.3
       isarray: 2.0.5
 
-  safe-buffer@5.2.1: {}
+  safe-buffer@5.2.1:
+    optional: true
 
   safe-regex-test@1.0.0:
     dependencies:
@@ -5123,6 +5166,7 @@ snapshots:
       '@types/json-schema': 7.0.15
       ajv: 6.12.6
       ajv-keywords: 3.5.2(ajv@6.12.6)
+    optional: true
 
   semver@6.3.1: {}
 
@@ -5133,6 +5177,7 @@ snapshots:
   serialize-javascript@6.0.1:
     dependencies:
       randombytes: 2.1.0
+    optional: true
 
   set-function-name@2.0.1:
     dependencies:
@@ -5208,8 +5253,10 @@ snapshots:
     dependencies:
       buffer-from: 1.1.2
       source-map: 0.6.1
+    optional: true
 
-  source-map@0.6.1: {}
+  source-map@0.6.1:
+    optional: true
 
   source-map@0.7.4: {}
 
@@ -5315,6 +5362,7 @@ snapshots:
   supports-color@8.1.1:
     dependencies:
       has-flag: 4.0.0
+    optional: true
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
@@ -5362,6 +5410,7 @@ snapshots:
       serialize-javascript: 6.0.1
       terser: 5.16.9
       webpack: 5.88.2
+    optional: true
 
   terser@5.16.9:
     dependencies:
@@ -5369,6 +5418,7 @@ snapshots:
       acorn: 8.9.0
       commander: 2.20.3
       source-map-support: 0.5.21
+    optional: true
 
   text-table@0.2.0: {}
 
@@ -5521,8 +5571,10 @@ snapshots:
     dependencies:
       glob-to-regexp: 0.4.1
       graceful-fs: 4.2.11
+    optional: true
 
-  webpack-sources@3.2.3: {}
+  webpack-sources@3.2.3:
+    optional: true
 
   webpack@5.88.2:
     dependencies:
@@ -5554,6 +5606,7 @@ snapshots:
       - '@swc/core'
       - esbuild
       - uglify-js
+    optional: true
 
   which-boxed-primitive@1.0.2:
     dependencies:

@@ -21,8 +21,8 @@ importers:
         specifier: 3.1.0
         version: 3.1.0(@types/react@19.0.2)(react@19.0.0)
       '@next/mdx':
-        specifier: 14.2.20
-        version: 14.2.20(@mdx-js/loader@3.1.0(webpack@5.88.2))(@mdx-js/react@3.1.0(@types/react@19.0.2)(react@19.0.0))
+        specifier: 14.2.21
+        version: 14.2.21(@mdx-js/loader@3.1.0(webpack@5.88.2))(@mdx-js/react@3.1.0(@types/react@19.0.2)(react@19.0.0))
       csvtojson:
         specifier: 2.0.10
         version: 2.0.10
@@ -73,8 +73,8 @@ importers:
         specifier: 8.57.1
         version: 8.57.1
       eslint-config-next:
-        specifier: 14.2.20
-        version: 14.2.20(eslint@8.57.1)(typescript@5.7.2)
+        specifier: 14.2.21
+        version: 14.2.21(eslint@8.57.1)(typescript@5.7.2)
       eslint-config-prettier:
         specifier: 9.1.0
         version: 9.1.0(eslint@8.57.1)
@@ -331,11 +331,11 @@ packages:
   '@next/env@14.3.0-canary.87':
     resolution: {integrity: sha512-Bk3/oAQfnohIKzWdTJubBNbSw0xmmJxBJFndGmbWMZdY97GF4PjeFmMpuy1XZUqfq7HL2N1jYdRdPFqYXlHFAg==}
 
-  '@next/eslint-plugin-next@14.2.20':
-    resolution: {integrity: sha512-T0JRi706KLbvR1Uc46t56VtawbhR/igdBagzOrA7G+vv4rvjwnlu/Y4/Iq6X9TDVj5UZjyot4lUdkNd3V2kLhw==}
+  '@next/eslint-plugin-next@14.2.21':
+    resolution: {integrity: sha512-bxfiExnMkpwo4bBhCqnDhdgFyxSp6Xt6xu4Ne7En6MpgqwiER95Or+q1WDUDX4e888taeIAdPIAVaY+Wv0kiwQ==}
 
-  '@next/mdx@14.2.20':
-    resolution: {integrity: sha512-DBO56cbTq5WnW8USiFQY/uwdz4/8/rzxRBhJYMGPUOs2Kex1ZmooMcgM+5yjEGLr3zI3miVG/G+U1HeAyW0V/g==}
+  '@next/mdx@14.2.21':
+    resolution: {integrity: sha512-joVypjIbtRT889y48EiI/zCrE0zp1YS2PSon7igPo25aSC1jilErhTmZ+i41bAXWzpcndutFqYum0k3K9ANkiQ==}
     peerDependencies:
       '@mdx-js/loader': '>=0.15.0'
       '@mdx-js/react': '>=0.15.0'
@@ -1028,8 +1028,8 @@ packages:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
 
-  eslint-config-next@14.2.20:
-    resolution: {integrity: sha512-gHBvp4RDd51DAaDco7KiWFy731EwcItkDtGUaZH1EUXEnHCzsVRjMceT+b8aThjMLjOScz6Q27MGlePASvK4Aw==}
+  eslint-config-next@14.2.21:
+    resolution: {integrity: sha512-bi1Mn6LxWdQod9qvOBuhBhN4ZpBYH5DuyDunbZt6lye3zlohJyM0T5/oFokRPNl2Mqt3/+uwHxr8XKOkPe852A==}
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0
       typescript: '>=3.3.1'
@@ -1632,10 +1632,6 @@ packages:
     resolution: {integrity: sha512-/1clY/ui8CzjKFyjdvwPWJUYKiFVXG2I2cY0ssG7h4+hwk+XOIX7ZSG9Q7TW8TW3Kp3BUSqgFWBLgL4PJ+Blag==}
     engines: {node: 14 || >=16.14}
 
-  lru-cache@6.0.0:
-    resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
-    engines: {node: '>=10'}
-
   markdown-extensions@2.0.0:
     resolution: {integrity: sha512-o5vL7aDWatOTX8LzaS1WMoaoxIiLRQJuIKKe2wAw6IeULDHaqbiqiggmx+pKvZDb1Sj+pE46Sn1T7lCqfFtg1Q==}
     engines: {node: '>=16'}
@@ -2197,11 +2193,6 @@ packages:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
     hasBin: true
 
-  semver@7.6.0:
-    resolution: {integrity: sha512-EnwXhrlwXMk9gKu5/flx5sv/an57AkRplG3hTK68W7FRDN+k+OWBj65M7719OkA82XLBxrcX0KSHj+X5COhOVg==}
-    engines: {node: '>=10'}
-    hasBin: true
-
   semver@7.6.3:
     resolution: {integrity: sha512-oVekP1cKtI+CTDvHWYFUcMtsK/00wmAEfyqKfNdARm8u1wNVhSgaX7A8d4UuIlUI5e84iEwOhs7ZPYRmzU9U6A==}
     engines: {node: '>=10'}
@@ -2566,9 +2557,6 @@ packages:
   wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
 
-  yallist@4.0.0:
-    resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
-
   yaml@2.6.1:
     resolution: {integrity: sha512-7r0XPzioN/Q9kXBro/XPnA6kznR73DHq+GXh5ON7ZozRO6aMjbmiBuKste2wslTFkC5d1dw0GooOCepZXJ2SAg==}
     engines: {node: '>= 14'}
@@ -2824,11 +2812,11 @@ snapshots:
 
   '@next/env@14.3.0-canary.87': {}
 
-  '@next/eslint-plugin-next@14.2.20':
+  '@next/eslint-plugin-next@14.2.21':
     dependencies:
       glob: 10.3.10
 
-  '@next/mdx@14.2.20(@mdx-js/loader@3.1.0(webpack@5.88.2))(@mdx-js/react@3.1.0(@types/react@19.0.2)(react@19.0.0))':
+  '@next/mdx@14.2.21(@mdx-js/loader@3.1.0(webpack@5.88.2))(@mdx-js/react@3.1.0(@types/react@19.0.2)(react@19.0.0))':
     dependencies:
       source-map: 0.7.4
     optionalDependencies:
@@ -3059,11 +3047,11 @@ snapshots:
     dependencies:
       '@typescript-eslint/types': 7.18.0
       '@typescript-eslint/visitor-keys': 7.18.0
-      debug: 4.3.6
+      debug: 4.4.0
       globby: 11.1.0
       is-glob: 4.0.3
       minimatch: 9.0.4
-      semver: 7.6.0
+      semver: 7.6.3
       ts-api-utils: 1.3.0(typescript@5.7.2)
     optionalDependencies:
       typescript: 5.7.2
@@ -3616,9 +3604,9 @@ snapshots:
 
   escape-string-regexp@4.0.0: {}
 
-  eslint-config-next@14.2.20(eslint@8.57.1)(typescript@5.7.2):
+  eslint-config-next@14.2.21(eslint@8.57.1)(typescript@5.7.2):
     dependencies:
-      '@next/eslint-plugin-next': 14.2.20
+      '@next/eslint-plugin-next': 14.2.21
       '@rushstack/eslint-patch': 1.4.0
       '@typescript-eslint/eslint-plugin': 7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint@8.57.1)(typescript@5.7.2)
       '@typescript-eslint/parser': 7.18.0(eslint@8.57.1)(typescript@5.7.2)
@@ -3649,7 +3637,7 @@ snapshots:
 
   eslint-import-resolver-typescript@3.5.4(eslint-plugin-import@2.28.1)(eslint@8.57.1):
     dependencies:
-      debug: 4.3.6
+      debug: 4.4.0
       enhanced-resolve: 5.15.0
       eslint: 8.57.1
       eslint-plugin-import: 2.28.1(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint-import-resolver-typescript@3.5.4)(eslint@8.57.1)
@@ -4350,10 +4338,6 @@ snapshots:
 
   lru-cache@10.1.0: {}
 
-  lru-cache@6.0.0:
-    dependencies:
-      yallist: 4.0.0
-
   markdown-extensions@2.0.0: {}
 
   mdast-util-from-markdown@2.0.0:
@@ -4645,7 +4629,7 @@ snapshots:
   micromark@4.0.0:
     dependencies:
       '@types/debug': 4.1.7
-      debug: 4.3.6
+      debug: 4.4.0
       decode-named-character-reference: 1.0.2
       devlop: 1.1.0
       micromark-core-commonmark: 2.0.0
@@ -5068,12 +5052,7 @@ snapshots:
 
   semver@6.3.1: {}
 
-  semver@7.6.0:
-    dependencies:
-      lru-cache: 6.0.0
-
-  semver@7.6.3:
-    optional: true
+  semver@7.6.3: {}
 
   serialize-javascript@6.0.1:
     dependencies:
@@ -5568,8 +5547,6 @@ snapshots:
       strip-ansi: 7.1.0
 
   wrappy@1.0.2: {}
-
-  yallist@4.0.0: {}
 
   yaml@2.6.1: {}
 

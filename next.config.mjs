@@ -4,7 +4,6 @@ import NextMDX from "@next/mdx";
 const nextConfig = {
    experimental: {
       mdxRs: true,
-      ppr: true,
    },
    images: {
       remotePatterns: [

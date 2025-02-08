@@ -11,7 +11,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
          {projects.map((props, index) => (
             <div
                key={index}
-               className="col-span-1 lg:col-span-2 last:odd:lg:col-start-2 last:odd:lg:col-end-4"
+               className="col-span-1 lg:col-span-2 lg:last:odd:col-start-2 lg:last:odd:col-end-4"
             >
                <ProjectCard {...props} />
             </div>

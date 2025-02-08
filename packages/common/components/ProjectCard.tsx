@@ -25,7 +25,7 @@ export function ProjectCard({
    return (
       <Link href={href} target={target}>
          <div
-            className={`mx-auto w-[22rem] rounded bg-gradient-to-tl p-8 transition-transform hover:-translate-y-0.5 sm:w-[28rem] md:w-[30rem] xl:w-[32rem] ${gradientFrom} ${gradientTo}`}
+            className={`mx-auto w-[22rem] rounded-sm bg-linear-to-tl p-8 transition-transform hover:-translate-y-0.5 sm:w-[28rem] md:w-[30rem] xl:w-[32rem] ${gradientFrom} ${gradientTo}`}
          >
             <div className="flex flex-col justify-start space-y-4">
                <div className="relative flex h-[225px] justify-center sm:h-[275px] md:h-[300px] lg:h-[275px] xl:h-[300px]">

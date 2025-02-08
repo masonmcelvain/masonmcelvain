@@ -13,7 +13,7 @@ export function About() {
             <SocialIconRow />
          </div>
          <h2>How silicon became my favorite element 🧪</h2>
-         <div className="prose prose-lg max-w-none prose-a:text-blue-600">
+         <div className="prose prose-lg prose-a:text-blue-600 max-w-none">
             <HistoryProse />
          </div>
       </div>

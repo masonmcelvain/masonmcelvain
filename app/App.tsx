@@ -15,7 +15,7 @@ export default function App() {
             <Work />
             <ProjectGrid projects={projects} />
          </>
-         <hr aria-orientation="horizontal" className="my-16 border-black/20" />
+         <hr aria-orientation="horizontal" className="my-16 border-gray-200" />
          <Collage />
          <MobileCollage />
       </div>

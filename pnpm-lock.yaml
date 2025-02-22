@@ -19,10 +19,10 @@ importers:
         version: 3.1.0(webpack@5.88.2)
       '@mdx-js/react':
         specifier: 3.1.0
-        version: 3.1.0(@types/react@19.0.9)(react@19.0.0)
+        version: 3.1.0(@types/react@19.0.10)(react@19.0.0)
       '@next/mdx':
         specifier: 15.1.7
-        version: 15.1.7(@mdx-js/loader@3.1.0(webpack@5.88.2))(@mdx-js/react@3.1.0(@types/react@19.0.9)(react@19.0.0))
+        version: 15.1.7(@mdx-js/loader@3.1.0(webpack@5.88.2))(@mdx-js/react@3.1.0(@types/react@19.0.10)(react@19.0.0))
       csvtojson:
         specifier: 2.0.10
         version: 2.0.10
@@ -67,8 +67,8 @@ importers:
         specifier: 22.13.5
         version: 22.13.5
       '@types/react':
-        specifier: 19.0.9
-        version: 19.0.9
+        specifier: 19.0.10
+        version: 19.0.10
       '@typescript-eslint/eslint-plugin':
         specifier: 8.24.0
         version: 8.24.0(@typescript-eslint/parser@8.24.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3))(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
@@ -612,8 +612,8 @@ packages:
   '@types/node@22.13.5':
     resolution: {integrity: sha512-+lTU0PxZXn0Dr1NBtC7Y8cR21AJr87dLLU953CWA6pMxxv/UDc7jYAY90upcrie1nRcD6XNG5HOYEDtgW5TxAg==}
 
-  '@types/react@19.0.9':
-    resolution: {integrity: sha512-FedNTYgmMwSZmD1Sru/W1gJKuiYCN/3SuBkmZkcxX+FpO5zL76B22A9YNfAKg4HQO3Neh/30AiynP6BELdU0qQ==}
+  '@types/react@19.0.10':
+    resolution: {integrity: sha512-JuRQ9KXLEjaUNjTWpzuR231Z2WpIwczOkBEIvbHNCzQefFIT0L8IqE6NV6ULLyC1SI/i234JnDoMkfg+RjQj2g==}
 
   '@types/unist@2.0.6':
     resolution: {integrity: sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==}
@@ -2826,10 +2826,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@mdx-js/react@3.1.0(@types/react@19.0.9)(react@19.0.0)':
+  '@mdx-js/react@3.1.0(@types/react@19.0.10)(react@19.0.0)':
     dependencies:
       '@types/mdx': 2.0.13
-      '@types/react': 19.0.9
+      '@types/react': 19.0.10
       react: 19.0.0
 
   '@next/env@15.1.7': {}
@@ -2838,12 +2838,12 @@ snapshots:
     dependencies:
       fast-glob: 3.3.1
 
-  '@next/mdx@15.1.7(@mdx-js/loader@3.1.0(webpack@5.88.2))(@mdx-js/react@3.1.0(@types/react@19.0.9)(react@19.0.0))':
+  '@next/mdx@15.1.7(@mdx-js/loader@3.1.0(webpack@5.88.2))(@mdx-js/react@3.1.0(@types/react@19.0.10)(react@19.0.0))':
     dependencies:
       source-map: 0.7.4
     optionalDependencies:
       '@mdx-js/loader': 3.1.0(webpack@5.88.2)
-      '@mdx-js/react': 3.1.0(@types/react@19.0.9)(react@19.0.0)
+      '@mdx-js/react': 3.1.0(@types/react@19.0.10)(react@19.0.0)
 
   '@next/swc-darwin-arm64@15.1.7':
     optional: true
@@ -3070,7 +3070,7 @@ snapshots:
     dependencies:
       undici-types: 6.20.0
 
-  '@types/react@19.0.9':
+  '@types/react@19.0.10':
     dependencies:
       csstype: 3.1.0
 

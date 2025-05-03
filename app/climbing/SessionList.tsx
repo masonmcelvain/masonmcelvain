@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { type Tick } from "@models/tick";
 import { unique } from "@helpers/type-helpers";
 import { ExternalLinkIcon } from "@icons/social";
+import { PAGE_SIZE } from "./data";
 
 interface Session {
    date: string;
@@ -13,8 +14,6 @@ interface SessionListProps {
    initialSessions: Session[];
    initialHasMore: boolean;
 }
-
-const PAGE_SIZE = 20;
 
 export default function SessionList({
    initialSessions,

@@ -4,6 +4,8 @@ import he from "he";
 import https from "https";
 import { unstable_cache } from "next/cache";
 
+export const PAGE_SIZE = 20;
+
 const revalidate = 300;
 const MP_TICKS_URL =
    "https://www.mountainproject.com/user/201271324/mason-mcelvain/tick-export";

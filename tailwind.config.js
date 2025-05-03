@@ -6,9 +6,6 @@ module.exports = {
       "./markdown/**/*.{js,ts,jsx,tsx,mdx}",
       "./packages/**/*.{js,ts,jsx,tsx,mdx}",
    ],
-   future: {
-      hoverOnlyWhenSupported: true,
-   },
    theme: {
       extend: {},
       fontFamily: {

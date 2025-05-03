@@ -54,12 +54,9 @@ export function SessionList({
                <button
                   onClick={loadMore}
                   disabled={loading}
-                  className="group relative overflow-hidden rounded bg-gray-100 px-4 py-2 text-black transition-colors"
+                  className="rounded bg-black/5 px-4 py-2 transition-colors hover:bg-black/10 active:bg-black/15"
                >
-                  <span className="absolute inset-0 bg-black opacity-0 transition-opacity group-hover:opacity-5 group-active:opacity-10"></span>
-                  <span className="relative z-10">
-                     {loading ? "Loading..." : "Load more"}
-                  </span>
+                  {loading ? "Loading..." : "Load more"}
                </button>
             </div>
          )}

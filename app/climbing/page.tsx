@@ -1,7 +1,7 @@
 import { getMetadata } from "@data/metadata";
 import type { Metadata } from "next";
 import { getCachedSessions, PAGE_SIZE } from "./data";
-import SessionList from "./SessionList";
+import { SessionList } from "./SessionList";
 
 export const metadata: Metadata = getMetadata({ suffix: "Climbing" });
 

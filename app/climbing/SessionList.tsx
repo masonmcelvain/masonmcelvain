@@ -15,7 +15,7 @@ interface SessionListProps {
    initialHasMore: boolean;
 }
 
-export default function SessionList({
+export function SessionList({
    initialSessions,
    initialHasMore,
 }: SessionListProps) {

@@ -1,3 +1,4 @@
+import { unique } from "@helpers/type-helpers";
 import { TicksSchema, type Tick } from "@models/tick";
 import csvToJson from "csvtojson";
 import he from "he";
@@ -13,6 +14,7 @@ const MP_TICKS_URL =
 export interface Session {
    date: string;
    ticks: Tick[];
+   area: string;
 }
 export type Sessions = Session[];
 
@@ -27,7 +29,11 @@ export const getCachedSessions = unstable_cache(
       const sortedDates = Object.keys(ticksByDay).sort(
          (a, b) => new Date(b).getTime() - new Date(a).getTime(),
       );
-      return sortedDates.map((date) => ({ date, ticks: ticksByDay[date] }));
+      return sortedDates.map((date) => ({
+         date,
+         ticks: ticksByDay[date],
+         area: closestCommonSubArea(ticksByDay[date]),
+      }));
    },
    ["climbing-sessions"],
    { revalidate },
@@ -63,4 +69,21 @@ function getCsvString(url: string) {
             reject(error);
          });
    });
+}
+
+function closestCommonSubArea(ticks: Tick[]) {
+   const areas = ticks.map((tick) => tick.Location).filter(unique);
+   if (!areas[0] || areas.length === 1) {
+      return areas[0] || "";
+   }
+   const subAreas = areas.map((area) => area.split(" > "));
+   const firstAreaSubAreas = subAreas[0];
+   let i = 0;
+   while (
+      firstAreaSubAreas[i] &&
+      subAreas.every((a) => a[i] === firstAreaSubAreas[i])
+   ) {
+      i++;
+   }
+   return firstAreaSubAreas.slice(0, i).join(" > ");
 }

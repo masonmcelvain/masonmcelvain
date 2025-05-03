@@ -1,14 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import { type Tick } from "@models/tick";
-import { unique } from "@helpers/type-helpers";
 import { ExternalLinkIcon } from "@icons/social";
-import { PAGE_SIZE } from "./data";
-
-interface Session {
-   date: string;
-   ticks: Tick[];
-}
+import { PAGE_SIZE, type Session } from "./data";
 
 interface SessionListProps {
    initialSessions: Session[];
@@ -51,8 +45,8 @@ export function SessionList({
    return (
       <>
          <div className="flex flex-col justify-start space-y-4">
-            {sessions.map(({ date, ticks }) => (
-               <Session key={date} date={date} ticks={ticks} />
+            {sessions.map((session) => (
+               <SessionCard key={session.date} {...session} />
             ))}
          </div>
          {hasMore && (
@@ -70,7 +64,7 @@ export function SessionList({
    );
 }
 
-function Session({ date, ticks }: Session) {
+function SessionCard({ date, ticks, area }: Session) {
    const localizedDate = new Date(date).toLocaleString("en-IE", {
       timeZone: "UTC",
       day: "2-digit",
@@ -78,20 +72,18 @@ function Session({ date, ticks }: Session) {
       year: "numeric",
       weekday: "short",
    });
-   const areas = ticks.map((tick) => tick.Location).filter(unique);
-   const generalArea = closestCommonSubArea(areas);
 
    return (
       <div className="mx-auto flex w-[22rem] flex-col space-y-2 rounded-sm bg-blue-50 p-8 sm:w-[28rem] md:w-[30rem] xl:w-[64rem]">
          <div className="flex flex-col space-y-4">
             <h2>{localizedDate}</h2>
-            {generalArea && <p>{generalArea}</p>}
+            {area && <p>{area}</p>}
             <div className="flex flex-col space-y-4">
                {ticks.map((tick) => (
                   <TickRow
                      key={`${tick.Route} ${tick.Notes} ${tick["Lead Style"]}`}
                      tick={tick}
-                     generalArea={generalArea}
+                     area={area}
                   />
                ))}
             </div>
@@ -100,11 +92,9 @@ function Session({ date, ticks }: Session) {
    );
 }
 
-function TickRow({ tick, generalArea }: { tick: Tick; generalArea: string }) {
+function TickRow({ tick, area }: { tick: Tick; area: string }) {
    const subArea =
-      generalArea === tick.Location
-         ? null
-         : tick.Location.replace(`${generalArea} > `, "");
+      area === tick.Location ? null : tick.Location.replace(`${area} > `, "");
 
    return (
       <div className="flex flex-col">
@@ -124,20 +114,4 @@ function TickRow({ tick, generalArea }: { tick: Tick; generalArea: string }) {
          <p>{tick.Notes}</p>
       </div>
    );
-}
-
-function closestCommonSubArea(areas: string[]) {
-   if (!areas[0] || areas.length === 1) {
-      return areas[0] || "";
-   }
-   const subAreas = areas.map((area) => area.split(" > "));
-   const firstAreaSubAreas = subAreas[0];
-   let i = 0;
-   while (
-      firstAreaSubAreas[i] &&
-      subAreas.every((a) => a[i] === firstAreaSubAreas[i])
-   ) {
-      i++;
-   }
-   return firstAreaSubAreas.slice(0, i).join(" > ");
 }

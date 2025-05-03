@@ -1,20 +1,20 @@
 import { getMetadata } from "@data/metadata";
 import type { Metadata } from "next";
-import { getCachedTicks } from "./data";
-import DaysOutList from "./DaysOutList";
+import { getCachedSessions } from "./data";
+import SessionList from "./SessionList";
 
 export const metadata: Metadata = getMetadata({ suffix: "Climbing" });
 
 export default async function Climbing() {
-   const allDays = await getCachedTicks();
+   const allSessions = await getCachedSessions();
    const PAGE_SIZE = 20;
-   const initialDays = allDays.slice(0, PAGE_SIZE);
-   const initialHasMore = allDays.length > PAGE_SIZE;
+   const initialSessions = allSessions.slice(0, PAGE_SIZE);
+   const initialHasMore = allSessions.length > PAGE_SIZE;
 
    return (
       <div className="mt-12 flex flex-col justify-start space-y-4">
-         <DaysOutList
-            initialDays={initialDays}
+         <SessionList
+            initialSessions={initialSessions}
             initialHasMore={initialHasMore}
          />
       </div>

@@ -8,14 +8,14 @@ const revalidate = 300;
 const MP_TICKS_URL =
    "https://www.mountainproject.com/user/201271324/mason-mcelvain/tick-export";
 
-export interface DayOut {
+export interface Session {
    date: string;
    ticks: Tick[];
 }
-export type DaysOut = DayOut[];
+export type Sessions = Session[];
 
-export const getCachedTicks = unstable_cache(
-   async (): Promise<DaysOut> => {
+export const getCachedSessions = unstable_cache(
+   async (): Promise<Sessions> => {
       const ticks = await fetchTicks();
       const ticksByDay: Record<string, Tick[]> = {};
       for (const tick of ticks) {
@@ -27,7 +27,7 @@ export const getCachedTicks = unstable_cache(
       );
       return sortedDates.map((date) => ({ date, ticks: ticksByDay[date] }));
    },
-   ["climbing-days"],
+   ["climbing-sessions"],
    { revalidate },
 );
 

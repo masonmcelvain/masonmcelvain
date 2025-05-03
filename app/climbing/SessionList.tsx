@@ -4,23 +4,23 @@ import { type Tick } from "@models/tick";
 import { unique } from "@helpers/type-helpers";
 import { ExternalLinkIcon } from "@icons/social";
 
-interface DayOut {
+interface Session {
    date: string;
    ticks: Tick[];
 }
 
-interface DaysOutListProps {
-   initialDays: DayOut[];
+interface SessionListProps {
+   initialSessions: Session[];
    initialHasMore: boolean;
 }
 
 const PAGE_SIZE = 20;
 
-export default function DaysOutList({
-   initialDays,
+export default function SessionList({
+   initialSessions,
    initialHasMore,
-}: DaysOutListProps) {
-   const [days, setDays] = useState<DayOut[]>(initialDays);
+}: SessionListProps) {
+   const [sessions, setSessions] = useState<Session[]>(initialSessions);
    const [hasMore, setHasMore] = useState(initialHasMore);
    const [loading, setLoading] = useState(false);
 
@@ -28,7 +28,7 @@ export default function DaysOutList({
       if (!hasMore || loading) return;
       setLoading(true);
       try {
-         const page = days.length / PAGE_SIZE;
+         const page = sessions.length / PAGE_SIZE;
          const res = await fetch(
             `/api/climbing?page=${page}&size=${PAGE_SIZE}`,
             {
@@ -38,8 +38,9 @@ export default function DaysOutList({
          if (!res.ok) {
             throw new Error(`Failed to load more: ${res.status}`);
          }
-         const data: { days: DayOut[]; hasMore: boolean } = await res.json();
-         setDays((prev) => [...prev, ...data.days]);
+         const data: { sessions: Session[]; hasMore: boolean } =
+            await res.json();
+         setSessions((prev) => [...prev, ...data.sessions]);
          setHasMore(data.hasMore);
       } catch (error) {
          console.error(error);
@@ -51,8 +52,8 @@ export default function DaysOutList({
    return (
       <>
          <div className="flex flex-col justify-start space-y-4">
-            {days.map(({ date, ticks }) => (
-               <DayOutItem key={date} date={date} ticks={ticks} />
+            {sessions.map(({ date, ticks }) => (
+               <Session key={date} date={date} ticks={ticks} />
             ))}
          </div>
          {hasMore && (
@@ -70,7 +71,7 @@ export default function DaysOutList({
    );
 }
 
-function DayOutItem({ date, ticks }: DayOut) {
+function Session({ date, ticks }: Session) {
    const localizedDate = new Date(date).toLocaleString("en-IE", {
       timeZone: "UTC",
       day: "2-digit",

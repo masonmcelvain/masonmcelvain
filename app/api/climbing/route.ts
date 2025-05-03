@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { getCachedTicks } from "../../climbing/data";
+import { getCachedSessions } from "../../climbing/data";
 
 export async function GET(req: NextRequest) {
    const url = new URL(req.url);
@@ -8,12 +8,12 @@ export async function GET(req: NextRequest) {
    const page = parseInt(pageParam, 10);
    const size = parseInt(sizeParam, 10);
 
-   const allDays = await getCachedTicks();
-   const totalDays = allDays.length;
+   const allSessions = await getCachedSessions();
+   const totalSessions = allSessions.length;
    const start = page * size;
    const end = start + size;
-   const days = allDays.slice(start, end);
-   const hasMore = end < totalDays;
+   const sessions = allSessions.slice(start, end);
+   const hasMore = end < totalSessions;
 
-   return NextResponse.json({ days, hasMore });
+   return NextResponse.json({ sessions, hasMore });
 }

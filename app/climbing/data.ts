@@ -1,4 +1,4 @@
-import { TicksSchema } from "@models/tick";
+import { TicksSchema, type Tick } from "@models/tick";
 import csvToJson from "csvtojson";
 import he from "he";
 import https from "https";
@@ -8,9 +8,26 @@ const revalidate = 300;
 const MP_TICKS_URL =
    "https://www.mountainproject.com/user/201271324/mason-mcelvain/tick-export";
 
+export interface DayOut {
+   date: string;
+   ticks: Tick[];
+}
+export type DaysOut = DayOut[];
+
 export const getCachedTicks = unstable_cache(
-   async () => fetchTicks(),
-   ["climbing-ticks"],
+   async (): Promise<DaysOut> => {
+      const ticks = await fetchTicks();
+      const ticksByDay: Record<string, Tick[]> = {};
+      for (const tick of ticks) {
+         ticksByDay[tick.Date] ??= [];
+         ticksByDay[tick.Date].push(tick);
+      }
+      const sortedDates = Object.keys(ticksByDay).sort(
+         (a, b) => new Date(b).getTime() - new Date(a).getTime(),
+      );
+      return sortedDates.map((date) => ({ date, ticks: ticksByDay[date] }));
+   },
+   ["climbing-days"],
    { revalidate },
 );
 

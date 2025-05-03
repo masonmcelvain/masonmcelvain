@@ -58,7 +58,7 @@ export function SessionList({
                >
                   <span className="absolute inset-0 bg-black opacity-0 transition-opacity group-hover:opacity-5 group-active:opacity-10"></span>
                   <span className="relative z-10">
-                     {loading ? "Loading..." : "Load More"}
+                     {loading ? "Loading..." : "Load more"}
                   </span>
                </button>
             </div>

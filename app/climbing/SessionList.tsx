@@ -54,7 +54,7 @@ export function SessionList({
                <button
                   onClick={loadMore}
                   disabled={loading}
-                  className="rounded bg-black/5 px-4 py-2 transition-colors hover:bg-black/10 active:bg-black/15"
+                  className="rounded bg-gray-100 px-4 py-2 transition-colors hover:bg-gray-200 active:bg-gray-300"
                >
                   {loading ? "Loading..." : "Load more"}
                </button>

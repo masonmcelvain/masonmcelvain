@@ -7,7 +7,6 @@ import { unstable_cache } from "next/cache";
 
 export const PAGE_SIZE = 20;
 
-const revalidate = 300;
 const MP_TICKS_URL =
    "https://www.mountainproject.com/user/201271324/mason-mcelvain/tick-export";
 
@@ -36,7 +35,7 @@ export const getCachedSessions = unstable_cache(
       }));
    },
    ["climbing-sessions"],
-   { revalidate },
+   { revalidate: 3600 * 24 },
 );
 
 async function fetchTicks() {

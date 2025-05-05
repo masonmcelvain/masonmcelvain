@@ -51,12 +51,18 @@ export function SessionList({
    const sessionsToRender = data?.sessions ?? [];
    const totalPages = Math.ceil((data?.totalSessions ?? 0) / PAGE_SIZE);
 
-   const paginationRange =
-      page < 3
-         ? [0, 1, 2, 3, 4]
-         : page > totalPages - 4
-           ? [5, 4, 3, 2, 1].map((v) => totalPages - v)
-           : [-2, -1, 0, 1, 2].map((v) => page + v);
+   const paginationRange = (() => {
+      if (totalPages <= 5) {
+         return Array.from({ length: totalPages }, (_, i) => i);
+      }
+      if (page < 3) {
+         return Array.from({ length: 5 }, (_, i) => i);
+      }
+      if (page > totalPages - 4) {
+         return Array.from({ length: 5 }, (_, i) => totalPages - 5 + i);
+      }
+      return Array.from({ length: 5 }, (_, i) => page - 2 + i);
+   })();
 
    return (
       <>

@@ -48,17 +48,17 @@ export function SessionList({
                <SessionCard key={session.date} {...session} />
             ))}
          </div>
-         {hasMore && (
-            <div className="mt-4 flex justify-center">
-               <button
-                  onClick={loadMore}
-                  disabled={loading}
-                  className="cursor-pointer rounded bg-gray-100 px-4 py-2 transition-colors hover:bg-gray-200 active:bg-gray-300"
-               >
-                  {loading ? "Loading..." : "Load more"}
-               </button>
-            </div>
-         )}
+         <div
+            className={`mt-4 flex justify-center ${hasMore ? "" : "invisible"}`}
+         >
+            <button
+               onClick={loadMore}
+               disabled={loading}
+               className="cursor-pointer rounded bg-gray-100 px-4 py-2 transition-colors hover:bg-gray-200 active:bg-gray-300"
+            >
+               {loading ? "Loading..." : "Load more"}
+            </button>
+         </div>
       </>
    );
 }

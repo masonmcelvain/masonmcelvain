@@ -111,7 +111,7 @@ function NavMenu({
                <button
                   onClick={() => setPage((old) => Math.max(old - 1, 0))}
                   disabled={page === 0}
-                  className="mr-1 cursor-pointer rounded-lg bg-white px-2 py-2 text-gray-500 hover:not-disabled:bg-gray-100 hover:not-disabled:text-gray-700 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="mr-1 cursor-pointer rounded-lg bg-white p-2 text-gray-500 hover:not-disabled:bg-gray-100 hover:not-disabled:text-gray-700 disabled:cursor-not-allowed disabled:opacity-50"
                >
                   <FaAngleLeft />
                </button>
@@ -140,7 +140,7 @@ function NavMenu({
                      setPage((old) => Math.min(old + 1, totalPages - 1))
                   }
                   disabled={page === totalPages - 1}
-                  className="ml-1 cursor-pointer rounded-lg bg-white px-2 py-2 text-gray-500 hover:not-disabled:bg-gray-100 hover:not-disabled:text-gray-700 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="ml-1 cursor-pointer rounded-lg bg-white p-2 text-gray-500 hover:not-disabled:bg-gray-100 hover:not-disabled:text-gray-700 disabled:cursor-not-allowed disabled:opacity-50"
                >
                   <FaAngleRight />
                </button>

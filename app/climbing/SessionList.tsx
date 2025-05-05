@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { type Dispatch, type SetStateAction, useState } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import useSWR from "swr";
 
@@ -66,55 +66,87 @@ export function SessionList({
 
    return (
       <>
+         <NavMenu
+            className="mb-4"
+            page={page}
+            paginationRange={paginationRange}
+            setPage={setPage}
+            totalPages={totalPages}
+         />
          <div className="flex flex-col justify-start space-y-4">
             {sessionsToRender.map((session) => (
                <SessionCard key={session.date} {...session} />
             ))}
          </div>
-
-         <nav className="mt-4 flex justify-center">
-            <ul className="inline-flex -space-x-px">
-               <li>
-                  <button
-                     onClick={() => setPage((old) => Math.max(old - 1, 0))}
-                     disabled={page === 0}
-                     className="mr-1 cursor-pointer rounded-lg bg-white px-2 py-2 text-gray-500 hover:not-disabled:bg-gray-100 hover:not-disabled:text-gray-700 disabled:cursor-not-allowed disabled:opacity-50"
-                  >
-                     <FaAngleLeft />
-                  </button>
-               </li>
-               <span className={page < 3 ? "hidden" : "py-1 text-gray-500"}>
-                  ...
-               </span>
-               {paginationRange.map((index) => (
-                  <PaginationButton
-                     key={index}
-                     page={index}
-                     isCurrent={index === page}
-                     setPage={setPage}
-                  />
-               ))}
-               <span
-                  className={
-                     page > totalPages - 4 ? "hidden" : "py-1 text-gray-500"
-                  }
-               >
-                  ...
-               </span>
-               <li>
-                  <button
-                     onClick={() =>
-                        setPage((old) => Math.min(old + 1, totalPages - 1))
-                     }
-                     disabled={page === totalPages - 1}
-                     className="ml-1 cursor-pointer rounded-lg bg-white px-2 py-2 text-gray-500 hover:not-disabled:bg-gray-100 hover:not-disabled:text-gray-700 disabled:cursor-not-allowed disabled:opacity-50"
-                  >
-                     <FaAngleRight />
-                  </button>
-               </li>
-            </ul>
-         </nav>
+         <NavMenu
+            className="mt-4"
+            page={page}
+            paginationRange={paginationRange}
+            setPage={setPage}
+            totalPages={totalPages}
+         />
       </>
+   );
+}
+
+type NavMenuProps = {
+   className: string;
+   page: number;
+   paginationRange: number[];
+   setPage: Dispatch<SetStateAction<number>>;
+   totalPages: number;
+};
+
+function NavMenu({
+   className,
+   page,
+   paginationRange,
+   setPage,
+   totalPages,
+}: NavMenuProps) {
+   return (
+      <nav className={`${className} flex justify-center`}>
+         <ul className="inline-flex -space-x-px">
+            <li>
+               <button
+                  onClick={() => setPage((old) => Math.max(old - 1, 0))}
+                  disabled={page === 0}
+                  className="mr-1 cursor-pointer rounded-lg bg-white px-2 py-2 text-gray-500 hover:not-disabled:bg-gray-100 hover:not-disabled:text-gray-700 disabled:cursor-not-allowed disabled:opacity-50"
+               >
+                  <FaAngleLeft />
+               </button>
+            </li>
+            <span className={page < 3 ? "hidden" : "py-1 text-gray-500"}>
+               ...
+            </span>
+            {paginationRange.map((index) => (
+               <PaginationButton
+                  key={index}
+                  page={index}
+                  isCurrent={index === page}
+                  setPage={setPage}
+               />
+            ))}
+            <span
+               className={
+                  page > totalPages - 4 ? "hidden" : "py-1 text-gray-500"
+               }
+            >
+               ...
+            </span>
+            <li>
+               <button
+                  onClick={() =>
+                     setPage((old) => Math.min(old + 1, totalPages - 1))
+                  }
+                  disabled={page === totalPages - 1}
+                  className="ml-1 cursor-pointer rounded-lg bg-white px-2 py-2 text-gray-500 hover:not-disabled:bg-gray-100 hover:not-disabled:text-gray-700 disabled:cursor-not-allowed disabled:opacity-50"
+               >
+                  <FaAngleRight />
+               </button>
+            </li>
+         </ul>
+      </nav>
    );
 }
 

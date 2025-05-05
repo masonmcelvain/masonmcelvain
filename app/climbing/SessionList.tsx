@@ -34,15 +34,14 @@ export function SessionList({
    const { data, error } = useSWR<SessionsResponse>(
       `/api/climbing?page=${page}&size=${PAGE_SIZE}`,
       fetcher,
-      page === 0
-         ? {
-              fallbackData: {
-                 sessions: initialSessions,
-                 hasMore: initialTotalSessions > PAGE_SIZE,
-                 totalSessions: initialTotalSessions,
-              },
-           }
-         : {},
+      {
+         fallbackData: {
+            sessions: initialSessions,
+            hasMore: initialTotalSessions > PAGE_SIZE,
+            totalSessions: initialTotalSessions,
+         },
+         keepPreviousData: true,
+      },
    );
 
    if (error) {

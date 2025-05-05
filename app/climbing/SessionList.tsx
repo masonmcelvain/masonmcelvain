@@ -8,7 +8,6 @@ import { PAGE_SIZE, type Session } from "./data";
 
 type SessionsResponse = {
    sessions: Session[];
-   hasMore: boolean;
    totalSessions: number;
 };
 
@@ -37,7 +36,6 @@ export function SessionList({
       {
          fallbackData: {
             sessions: initialSessions,
-            hasMore: initialTotalSessions > PAGE_SIZE,
             totalSessions: initialTotalSessions,
          },
          keepPreviousData: true,

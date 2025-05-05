@@ -15,5 +15,5 @@ export async function GET(req: NextRequest) {
    const sessions = allSessions.slice(start, end);
    const hasMore = end < totalSessions;
 
-   return NextResponse.json({ sessions, hasMore });
+   return NextResponse.json({ sessions, hasMore, totalSessions });
 }

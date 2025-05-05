@@ -8,13 +8,13 @@ export const metadata: Metadata = getMetadata({ suffix: "Climbing" });
 export default async function Climbing() {
    const allSessions = await getCachedSessions();
    const initialSessions = allSessions.slice(0, PAGE_SIZE);
-   const initialHasMore = allSessions.length > PAGE_SIZE;
+   const initialTotalSessions = allSessions.length;
 
    return (
       <div className="mt-12 flex flex-col justify-start space-y-4">
          <SessionList
             initialSessions={initialSessions}
-            initialHasMore={initialHasMore}
+            initialTotalSessions={initialTotalSessions}
          />
       </div>
    );

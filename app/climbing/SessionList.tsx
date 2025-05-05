@@ -116,9 +116,7 @@ function NavMenu({
                   <FaAngleLeft />
                </button>
             </li>
-            <span className={page < 3 ? "hidden" : "py-1 text-gray-500"}>
-               ...
-            </span>
+            <li className={page < 3 ? "hidden" : "py-1 text-gray-500"}>...</li>
             {paginationRange.map((index) => (
                <PaginationButton
                   key={index}
@@ -127,13 +125,13 @@ function NavMenu({
                   setPage={setPage}
                />
             ))}
-            <span
+            <li
                className={
                   page > totalPages - 4 ? "hidden" : "py-1 text-gray-500"
                }
             >
                ...
-            </span>
+            </li>
             <li>
                <button
                   onClick={() =>

@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import useSWR from "swr";
 
 import { SessionCard } from "./components";
@@ -78,14 +79,12 @@ export function SessionList({
                   <button
                      onClick={() => setPage((old) => Math.max(old - 1, 0))}
                      disabled={page === 0}
-                     className="ml-0 cursor-pointer rounded-lg bg-white px-3 py-2 leading-tight text-gray-500 hover:not-disabled:bg-gray-100 hover:not-disabled:text-gray-700 disabled:cursor-not-allowed disabled:opacity-50"
+                     className="mr-1 cursor-pointer rounded-lg bg-white px-2 py-2 text-gray-500 hover:not-disabled:bg-gray-100 hover:not-disabled:text-gray-700 disabled:cursor-not-allowed disabled:opacity-50"
                   >
-                     Previous
+                     <FaAngleLeft />
                   </button>
                </li>
-               <span
-                  className={page < 3 ? "hidden" : "px-1 py-2 text-gray-500"}
-               >
+               <span className={page < 3 ? "hidden" : "py-1 text-gray-500"}>
                   ...
                </span>
                {paginationRange.map((index) => (
@@ -98,9 +97,7 @@ export function SessionList({
                ))}
                <span
                   className={
-                     page > totalPages - 4
-                        ? "hidden"
-                        : "px-1 py-2 text-gray-500"
+                     page > totalPages - 4 ? "hidden" : "py-1 text-gray-500"
                   }
                >
                   ...
@@ -111,9 +108,9 @@ export function SessionList({
                         setPage((old) => Math.min(old + 1, totalPages - 1))
                      }
                      disabled={page === totalPages - 1}
-                     className="cursor-pointer rounded-lg bg-white px-3 py-2 leading-tight text-gray-500 hover:not-disabled:bg-gray-100 hover:not-disabled:text-gray-700 disabled:cursor-not-allowed disabled:opacity-50"
+                     className="ml-1 cursor-pointer rounded-lg bg-white px-2 py-2 text-gray-500 hover:not-disabled:bg-gray-100 hover:not-disabled:text-gray-700 disabled:cursor-not-allowed disabled:opacity-50"
                   >
-                     Next
+                     <FaAngleRight />
                   </button>
                </li>
             </ul>
@@ -135,7 +132,7 @@ function PaginationButton({
       <li>
          <button
             onClick={() => setPage(page)}
-            className={`cursor-pointer rounded-lg px-3 py-2 leading-tight ${
+            className={`mx-1 min-w-9 cursor-pointer rounded-lg px-2 py-1 ${
                isCurrent
                   ? "bg-blue-50 text-blue-600"
                   : "bg-white text-gray-500 hover:bg-gray-100 hover:text-gray-700"

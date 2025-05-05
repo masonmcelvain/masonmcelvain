@@ -78,7 +78,7 @@ export function SessionList({
                   <button
                      onClick={() => setPage((old) => Math.max(old - 1, 0))}
                      disabled={page === 0}
-                     className="ml-0 cursor-pointer rounded-lg bg-white px-3 py-2 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 disabled:cursor-not-allowed disabled:opacity-50"
+                     className="ml-0 cursor-pointer rounded-lg bg-white px-3 py-2 leading-tight text-gray-500 hover:not-disabled:bg-gray-100 hover:not-disabled:text-gray-700 disabled:cursor-not-allowed disabled:opacity-50"
                   >
                      Previous
                   </button>
@@ -111,7 +111,7 @@ export function SessionList({
                         setPage((old) => Math.min(old + 1, totalPages - 1))
                      }
                      disabled={page === totalPages - 1}
-                     className="cursor-pointer rounded-lg bg-white px-3 py-2 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 disabled:cursor-not-allowed disabled:opacity-50"
+                     className="cursor-pointer rounded-lg bg-white px-3 py-2 leading-tight text-gray-500 hover:not-disabled:bg-gray-100 hover:not-disabled:text-gray-700 disabled:cursor-not-allowed disabled:opacity-50"
                   >
                      Next
                   </button>

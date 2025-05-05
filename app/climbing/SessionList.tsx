@@ -48,8 +48,10 @@ export function SessionList({
       return <div className="text-red-500">Error loading sessions.</div>;
    }
 
-   const sessionsToRender = data?.sessions ?? [];
-   const totalPages = Math.ceil((data?.totalSessions ?? 0) / PAGE_SIZE);
+   const sessionsToRender = data?.sessions ?? initialSessions;
+   const totalPages = Math.ceil(
+      (data?.totalSessions ?? initialTotalSessions) / PAGE_SIZE,
+   );
 
    const paginationRange = (() => {
       if (totalPages <= 5) {

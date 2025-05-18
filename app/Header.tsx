@@ -17,11 +17,11 @@ export function Header({ logoSrc }: HeaderProps) {
             </div>
          </Link>
          <div className="hidden items-center space-x-8 sm:flex">
-            <Link className="text-xl font-semibold" href="/code/hop">
-               Hop
-            </Link>
             <Link className="text-xl font-semibold" href="/code/ifixit">
                iFixit
+            </Link>
+            <Link className="text-xl font-semibold" href="/code/hop">
+               Hop
             </Link>
             <Link className="text-xl font-semibold" href="/code/csai">
                CSAI
@@ -42,12 +42,12 @@ export function Header({ logoSrc }: HeaderProps) {
 
 const codingLinks = [
    {
-      name: "Hop - Go places",
-      href: "/code/hop",
-   },
-   {
       name: "iFixit - My work",
       href: "/code/ifixit",
+   },
+   {
+      name: "Hop - Go places",
+      href: "/code/hop",
    },
    {
       name: "CSAI - My beginnings",

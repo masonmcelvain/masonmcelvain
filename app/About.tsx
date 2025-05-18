@@ -5,7 +5,7 @@ export function About() {
    return (
       <div className="flex flex-col space-y-8">
          <p>
-            I&apos;m a 25 year old living in Salt Lake City (he/him). I
+            I&apos;m a 26 year old living in Salt Lake City (he/him). I
             graduated from Cal Poly with a degree in computer science in March
             2022.
          </p>

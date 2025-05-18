@@ -6,16 +6,6 @@ import type { ProjectCardProps } from "@common/components";
 
 const projects: ProjectCardProps[] = [
    {
-      src: HopComposite,
-      alt: "Screenshots of the Hop browser extension",
-      title: "Hop",
-      caption:
-         "See, click, go! An icon-first browser extension for your favorite bookmarks.",
-      href: "/code/hop",
-      gradientFrom: "from-[#d4145a]",
-      gradientTo: "to-[#fbb03b]",
-   },
-   {
       src: iFixitProTechToolkit,
       alt: "Workbench spotlighting an iFixit Pro Tech Toolkit.",
       title: "iFixit",
@@ -24,6 +14,16 @@ const projects: ProjectCardProps[] = [
       href: "/code/ifixit",
       gradientFrom: "from-[#222223]",
       gradientTo: "to-[#0071ce]",
+   },
+   {
+      src: HopComposite,
+      alt: "Screenshots of the Hop browser extension",
+      title: "Hop",
+      caption:
+         "See, click, go! An icon-first browser extension for your favorite bookmarks.",
+      href: "/code/hop",
+      gradientFrom: "from-[#d4145a]",
+      gradientTo: "to-[#fbb03b]",
    },
    {
       src: SecretSanta,

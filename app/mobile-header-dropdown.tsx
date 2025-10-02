@@ -1,5 +1,5 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { Bars3Icon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 
 type Links = {
@@ -7,22 +7,12 @@ type Links = {
    href: string;
 };
 
-export function MobileHeaderDropdown({
-   links,
-   title,
-}: {
-   links: Links[];
-   title: string;
-}) {
+export function MobileHeaderDropdown({ links }: { links: Links[] }) {
    return (
       <Menu as="div" className="relative inline-block text-left">
          <div>
             <MenuButton className="inline-flex w-full items-center gap-x-1.5 bg-white px-3 py-2 text-xl font-semibold">
-               {title}
-               <ChevronDownIcon
-                  aria-hidden="true"
-                  className="-mr-1 h-5 w-5 text-gray-400"
-               />
+               <Bars3Icon aria-hidden="true" className="size-6 text-gray-400" />
             </MenuButton>
          </div>
 

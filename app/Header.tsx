@@ -26,15 +26,9 @@ export function Header({ logoSrc }: HeaderProps) {
             <Link className="text-xl font-semibold" href="/code/csai">
                CSAI
             </Link>
-            <Link className="text-xl font-semibold" href="/climbing">
-               Climbing
-            </Link>
          </div>
          <div className="flex items-center space-x-2 sm:hidden">
-            <MobileHeaderDropdown links={codingLinks} title="Coding" />
-            <Link className="text-xl font-semibold" href="/climbing">
-               Climbing
-            </Link>
+            <MobileHeaderDropdown links={codingLinks} />
          </div>
       </header>
    );

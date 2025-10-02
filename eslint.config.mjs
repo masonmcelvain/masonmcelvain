@@ -20,6 +20,7 @@ export default [
          "**/.next/*",
          ".husky/*",
          "**/pnpm-lock.yaml",
+         "next-env.d.ts",
       ],
    },
    ...compat.extends(

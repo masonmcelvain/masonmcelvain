@@ -2,7 +2,6 @@ import { ProjectGrid } from "@common/components";
 import projects from "@data/projects";
 import { Collage } from "./Collage";
 import { Hero } from "./Hero";
-import { MobileCollage } from "./MobileCollage";
 
 export default function App() {
    return (
@@ -18,7 +17,6 @@ export default function App() {
          <ProjectGrid projects={projects} />
          <hr aria-orientation="horizontal" className="my-16 border-gray-200" />
          <Collage />
-         <MobileCollage />
       </div>
    );
 }

@@ -7,7 +7,7 @@ type ProjectGridProps = {
 
 export function ProjectGrid({ projects }: ProjectGridProps) {
    return projects.length ? (
-      <div className="mt-12 grid grid-cols-[repeat(1,1fr)] gap-8 lg:grid-cols-[repeat(4,1fr)]">
+      <div className="grid grid-cols-[repeat(1,1fr)] gap-8 lg:grid-cols-[repeat(4,1fr)]">
          {projects.map((props, index) => (
             <div
                key={index}

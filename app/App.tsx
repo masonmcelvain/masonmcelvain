@@ -8,8 +8,10 @@ export default function App() {
       <div className="flex flex-col space-y-8">
          <Hero />
          <p>
-            Currently based in Salt Lake City. I graduated from Cal Poly San
-            Luis Obispo with a degree in computer science in March 2022.
+            Currently I&apos;m based in Salt Lake City. I graduated from Cal
+            Poly San Luis Obispo with a degree in computer science in March
+            2022. These days I build iFixit&apos;s e-commerce storefront and
+            tooling.
          </p>
          <h2 className="mb-12">What I&apos;ve been working on 🛠️</h2>
          <ProjectGrid projects={projects} />

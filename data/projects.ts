@@ -10,8 +10,8 @@ const projects: ProjectCardProps[] = [
       alt: "Workbench spotlighting an iFixit Pro Tech Toolkit.",
       title: "iFixit",
       caption:
-         "Join the repair revolution! Learn about my first job as a software engineer.",
-      href: "https://www.ifixit.com/",
+         "Join the repair revolution! My first job as a software engineer.",
+      href: "https://www.ifixit.com/Store/",
       gradientFrom: "from-[#222223]",
       gradientTo: "to-[#0071ce]",
    },

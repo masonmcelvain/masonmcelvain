@@ -1,4 +1,3 @@
-import { SocialIconRow } from "@icons/social";
 import HistoryProse from "@markdown/HistoryProse.mdx";
 
 export function About() {
@@ -9,9 +8,6 @@ export function About() {
             graduated from Cal Poly with a degree in computer science in March
             2022.
          </p>
-         <div className="flex items-center justify-center">
-            <SocialIconRow />
-         </div>
          <h2>How silicon became my favorite element 🧪</h2>
          <div className="prose prose-lg prose-a:text-blue-600 max-w-none">
             <HistoryProse />

@@ -11,7 +11,7 @@ const projects: ProjectCardProps[] = [
       title: "iFixit",
       caption:
          "Join the repair revolution! Learn about my first job as a software engineer.",
-      href: "/code/ifixit",
+      href: "https://www.ifixit.com/",
       gradientFrom: "from-[#222223]",
       gradientTo: "to-[#0071ce]",
    },
@@ -21,7 +21,7 @@ const projects: ProjectCardProps[] = [
       title: "Hop",
       caption:
          "See, click, go! An icon-first browser extension for your favorite bookmarks.",
-      href: "/code/hop",
+      href: "https://www.usehop.app/",
       gradientFrom: "from-[#d4145a]",
       gradientTo: "to-[#fbb03b]",
    },
@@ -39,7 +39,7 @@ const projects: ProjectCardProps[] = [
       alt: "Collage of CSAI Nimbus apps",
       title: "CSAI",
       caption: "The Cal Poly club where I sunk my roots into web development.",
-      href: "/code/csai",
+      href: "https://csaicalpoly.com/",
       gradientFrom: "from-[#009245]",
       gradientTo: "to-[#fced21]",
    },

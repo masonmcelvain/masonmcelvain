@@ -1,10 +1,5 @@
-import NextMDX from "@next/mdx";
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-   experimental: {
-      mdxRs: true,
-   },
    images: {
       remotePatterns: [
          {
@@ -17,8 +12,7 @@ const nextConfig = {
       ],
    },
    // Append the default value with md extensions
-   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+   pageExtensions: ["ts", "tsx", "js", "jsx"],
 };
 
-const withMDX = NextMDX();
-export default withMDX(nextConfig);
+export default nextConfig;

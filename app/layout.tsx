@@ -1,7 +1,7 @@
-import { Wrapper } from "@ui/layout";
 import { Viewport } from "next";
 import "./globals.css";
 import { Header, Footer } from "./header-footer";
+import { Wrapper } from "./wrapper";
 
 type RootLayoutProps = {
    headTitleSuffix: string;

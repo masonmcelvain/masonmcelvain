@@ -1,7 +1,7 @@
-import HopComposite from "@assets/images/hop-composite.png";
-import iFixitProTechToolkit from "@assets/images/ifixit-pro-tech-toolkit.png";
-import CSAIComposite from "@assets/images/csai-composite.png";
-import SecretSanta from "@assets/images/secret-santa.png";
+import HopComposite from "@public/images/hop-composite.png";
+import iFixitProTechToolkit from "@public/images/ifixit-pro-tech-toolkit.png";
+import CSAIComposite from "@public/images/csai-composite.png";
+import SecretSanta from "@public/images/secret-santa.png";
 import type { ProjectCardProps } from "@common/components";
 
 const projects: ProjectCardProps[] = [

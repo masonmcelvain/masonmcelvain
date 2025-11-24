@@ -32,5 +32,5 @@ export const viewport: Viewport = {
 function getRandomLogoPath() {
    const max = 24;
    const int = Math.floor(Math.random() * max + 1);
-   return `/assets/images/logos/logo-${int}.png`;
+   return `/images/logos/logo-${int}.png`;
 }

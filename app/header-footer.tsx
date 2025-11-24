@@ -29,7 +29,7 @@ function HeaderFooterContent({ logoSrc }: HeaderFooterProps) {
          <Link href="/">
             <div className="h-[6rem] w-[6rem] lg:h-[8rem] lg:w-[8rem]">
                <Suspense>
-                  <Signet logoSrc={logoSrc} priority />
+                  <Signet logoSrc={logoSrc} />
                </Suspense>
             </div>
          </Link>

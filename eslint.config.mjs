@@ -1,19 +1,11 @@
+import js from "@eslint/js";
+import nextPlugin from "eslint-config-next";
 import typescriptEslint from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import js from "@eslint/js";
-import { FlatCompat } from "@eslint/eslintrc";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-   baseDirectory: __dirname,
-   recommendedConfig: js.configs.recommended,
-   allConfig: js.configs.all,
-});
+import prettierConfig from "eslint-config-prettier";
 
 export default [
+   js.configs.recommended,
    {
       ignores: [
          "**/node_modules/*",
@@ -23,23 +15,17 @@ export default [
          "next-env.d.ts",
       ],
    },
-   ...compat.extends(
-      "next/core-web-vitals",
-      "plugin:@typescript-eslint/recommended",
-      "prettier",
-   ),
+   ...nextPlugin,
    {
       plugins: {
          "@typescript-eslint": typescriptEslint,
       },
-
       languageOptions: {
          parser: tsParser,
       },
-
       rules: {
+         ...typescriptEslint.configs.recommended.rules,
          "arrow-parens": ["error", "always"],
-
          "arrow-spacing": [
             "error",
             {
@@ -47,7 +33,6 @@ export default [
                after: true,
             },
          ],
-
          "@typescript-eslint/no-unused-vars": [
             "warn",
             {
@@ -58,9 +43,7 @@ export default [
                varsIgnorePattern: "^_",
             },
          ],
-
          "object-curly-spacing": ["error", "always"],
-
          quotes: [
             "error",
             "double",
@@ -70,4 +53,6 @@ export default [
          ],
       },
    },
+   // Prettier config should be last to override other formatting rules
+   prettierConfig,
 ];

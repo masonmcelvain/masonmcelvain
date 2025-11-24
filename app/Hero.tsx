@@ -1,5 +1,6 @@
 import RockMason from "@assets/images/rock-mason.png";
 import Image from "next/image";
+import type { PropsWithChildren } from "react";
 
 export function Hero() {
    return (
@@ -22,7 +23,7 @@ export function Hero() {
    );
 }
 
-function H1({ children }: React.PropsWithChildren) {
+function H1({ children }: PropsWithChildren) {
    return (
       <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
          {children}

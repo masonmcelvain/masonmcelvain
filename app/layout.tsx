@@ -1,4 +1,5 @@
 import { Viewport } from "next";
+import type { PropsWithChildren } from "react";
 import "./globals.css";
 import { Header, Footer } from "./header-footer";
 import { Wrapper } from "./wrapper";
@@ -9,7 +10,7 @@ type RootLayoutProps = {
 
 export default function RootLayout({
    children,
-}: React.PropsWithChildren<RootLayoutProps>) {
+}: PropsWithChildren<RootLayoutProps>) {
    const logoSrc = getRandomLogoPath();
    return (
       <html lang="en">

@@ -4,7 +4,7 @@ import typescriptEslint from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
 import prettierConfig from "eslint-config-prettier";
 
-export default [
+const config = [
    js.configs.recommended,
    {
       ignores: [
@@ -56,3 +56,5 @@ export default [
    // Prettier config should be last to override other formatting rules
    prettierConfig,
 ];
+
+export default config;

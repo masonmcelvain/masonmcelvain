@@ -1,6 +1,8 @@
-type ProjectTemplateProps = React.PropsWithChildren<{
+import type { FC, PropsWithChildren } from "react";
+
+type ProjectTemplateProps = PropsWithChildren<{
    title: string;
-   MDX: React.FC;
+   MDX: FC;
 }>;
 export function ProjectTemplate({
    children,

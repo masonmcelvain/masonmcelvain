@@ -1,17 +1,17 @@
 import Image from "next/image";
 import type { StaticImageData } from "next/image";
-import Anacapa from "@assets/images/anacapa.png";
-import BarefootMason from "@assets/images/barefoot-mason.png";
-import CapitolReefMason from "@assets/images/capitol-reef-mason.png";
-import GlacierMason from "@assets/images/glacier-mason.png";
-import IcelandMason from "@assets/images/iceland-mason.png";
-import Kelp from "@assets/images/kelp.png";
-import LifeguardMason from "@assets/images/lifeguard-mason.png";
-import Scorpion from "@assets/images/scorpion.png";
-import StackedMason from "@assets/images/stacked-mason.png";
-import Surf from "@assets/images/surf.png";
-import TedXMason from "@assets/images/tedx-mason.png";
-import WhaleShark from "@assets/images/whale-shark.png";
+import Anacapa from "@public/images/anacapa.png";
+import BarefootMason from "@public/images/barefoot-mason.png";
+import CapitolReefMason from "@public/images/capitol-reef-mason.png";
+import GlacierMason from "@public/images/glacier-mason.png";
+import IcelandMason from "@public/images/iceland-mason.png";
+import Kelp from "@public/images/kelp.png";
+import LifeguardMason from "@public/images/lifeguard-mason.png";
+import Scorpion from "@public/images/scorpion.png";
+import StackedMason from "@public/images/stacked-mason.png";
+import Surf from "@public/images/surf.png";
+import TedXMason from "@public/images/tedx-mason.png";
+import WhaleShark from "@public/images/whale-shark.png";
 
 type CollageImage = {
    src: StaticImageData;

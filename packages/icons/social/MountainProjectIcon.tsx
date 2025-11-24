@@ -1,4 +1,4 @@
-import MountainProjectLogo from "@assets/images/mountain-project-logo.png";
+import MountainProjectLogo from "@public/images/mountain-project-logo.png";
 import Image from "next/image";
 import Link from "next/link";
 

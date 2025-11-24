@@ -1,4 +1,4 @@
-import RockMason from "@assets/images/rock-mason.png";
+import RockMason from "@public/images/rock-mason.png";
 import Image from "next/image";
 import type { PropsWithChildren } from "react";
 

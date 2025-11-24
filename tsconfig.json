@@ -16,13 +16,13 @@
       "jsx": "react-jsx",
       "baseUrl": ".",
       "paths": {
-         "@assets/*": ["assets/*"],
          "@data/*": ["data/*"],
          "@helpers/*": ["helpers/*"],
          "@markdown/*": ["markdown/*"],
          "@models/*": ["models/*"],
          "@common/*": ["packages/common/*"],
          "@icons/*": ["packages/icons/*"],
+         "@public/*": ["public/*"],
          "@ui/*": ["packages/ui/*"]
       },
       "plugins": [

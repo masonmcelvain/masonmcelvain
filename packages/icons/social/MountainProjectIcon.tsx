@@ -12,10 +12,10 @@ export function MountainProjectIcon() {
          <div className="opacity-100 transition-opacity hover:opacity-100 lg:opacity-30">
             <Image
                alt="Mason on Mountain Project"
+               preload
                src={MountainProjectLogo}
                width="31"
                height="31"
-               priority
             />
          </div>
       </Link>

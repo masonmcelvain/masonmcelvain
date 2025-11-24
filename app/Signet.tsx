@@ -3,14 +3,14 @@ import Image from "next/image";
 
 type SignetProps = {
    logoSrc: string;
-   priority?: boolean;
 };
-export function Signet({ logoSrc, priority }: SignetProps) {
+export function Signet({ logoSrc }: SignetProps) {
    headers();
    return (
       <Image
          src={logoSrc}
          alt="Website logo"
+         preload
          sizes="(max-width: 1024px) 6rem, 8rem"
          style={{
             width: "100%",
@@ -18,7 +18,6 @@ export function Signet({ logoSrc, priority }: SignetProps) {
          }}
          width={128}
          height={128}
-         priority={priority}
       />
    );
 }

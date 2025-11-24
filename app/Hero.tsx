@@ -14,8 +14,8 @@ export function Hero() {
             <Image
                src={Ramen}
                alt="Enjoying ramen at Lone Peak"
+               preload
                title="Enjoying ramen at Lone Peak"
-               priority
             />
          </div>
       </div>

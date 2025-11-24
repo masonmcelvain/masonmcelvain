@@ -65,7 +65,7 @@ const images: CollageImage[] = [
    { src: LifeguardMason, alt: "Lifeguarding, Sycamore Cove" },
    { src: IcelandMason, alt: "Icelandic cave" },
    { src: Surf, alt: "Silver Strand, Oxnard" },
-   { src: StackedMason, alt: "Surfing Iceland by Wyatt McLean" },
+   { src: StackedMason, alt: "Iceland, illustration by Wyatt McLean" },
    { src: GlacierMason, alt: "Icelandic glacier" },
    { src: Anacapa, alt: "Anacapa arch rock" },
    {

@@ -1,4 +1,4 @@
-import RockMason from "@public/images/rock-mason.png";
+import Ramen from "@public/images/ramen.jpg";
 import Image from "next/image";
 import type { PropsWithChildren } from "react";
 
@@ -12,10 +12,9 @@ export function Hero() {
          </div>
          <div className="relative h-[200px] w-[200px] overflow-hidden rounded-full lg:h-[375px] lg:w-[375px]">
             <Image
-               src={RockMason}
-               alt="Mason Climbing in Tuolomne Meadows"
-               fill
-               object-fit="cover"
+               src={Ramen}
+               alt="Enjoying ramen at Lone Peak"
+               title="Enjoying ramen at Lone Peak"
                priority
             />
          </div>

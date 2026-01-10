@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getPostBySlug, getAllPostSlugs } from "@/lib/posts";
@@ -45,6 +46,16 @@ export default async function BlogPostPage({ params }: Props) {
                   day: "numeric",
                })}
             </time>
+            <div className="relative mt-6 aspect-video w-full overflow-hidden rounded-lg">
+               <Image
+                  src={post.image}
+                  alt={post.imageAlt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60rem, 68.75rem"
+                  priority
+               />
+            </div>
          </header>
          <div className="prose prose-lg prose-a:text-blue-600 max-w-none">
             <MDXRemote source={post.content} />

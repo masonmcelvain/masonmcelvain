@@ -8,6 +8,8 @@ export interface PostFrontmatter {
    title: string;
    date: string;
    description?: string;
+   image: string;
+   imageAlt: string;
 }
 
 export interface PostMeta extends PostFrontmatter {
@@ -33,6 +35,8 @@ export function getAllPosts(): PostMeta[] {
             title: data.title,
             date: data.date,
             description: data.description,
+            image: data.image,
+            imageAlt: data.imageAlt,
          };
       });
 
@@ -54,6 +58,8 @@ export function getPostBySlug(slug: string): Post | null {
       title: data.title,
       date: data.date,
       description: data.description,
+      image: data.image,
+      imageAlt: data.imageAlt,
       content,
    };
 }

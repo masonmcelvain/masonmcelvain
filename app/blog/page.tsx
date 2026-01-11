@@ -31,7 +31,7 @@ export default function BlogPage() {
                         />
                      </div>
                      <div className="flex-1">
-                        <h2 className="text-xl font-semibold text-gray-900 group-hover:text-blue-600">
+                        <h2 className="text-xl font-semibold text-gray-900">
                            {post.title}
                         </h2>
                         <time className="mt-1 block text-sm text-gray-500">

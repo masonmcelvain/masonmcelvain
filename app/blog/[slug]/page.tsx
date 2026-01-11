@@ -2,7 +2,12 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getPostBySlug, getAllPostSlugs } from "@/lib/posts";
+import { ImageWithCaption } from "@/components/ImageWithCaption";
 import type { Metadata } from "next";
+
+const mdxComponents = {
+   ImageWithCaption,
+};
 
 type Props = {
    params: Promise<{ slug: string }>;
@@ -46,19 +51,18 @@ export default async function BlogPostPage({ params }: Props) {
                   day: "numeric",
                })}
             </time>
-            <div className="relative mt-6 aspect-video w-full overflow-hidden rounded-lg">
-               <Image
-                  src={post.image}
-                  alt={post.imageAlt}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60rem, 68.75rem"
-                  priority
-               />
-            </div>
+            <Image
+               src={post.image}
+               alt={post.imageAlt}
+               width={0}
+               height={0}
+               sizes="100vw"
+               className="mt-6 h-auto max-h-[85vh] w-auto max-w-full rounded-lg lg:mx-auto"
+               priority
+            />
          </header>
          <div className="prose prose-lg prose-a:text-blue-600 max-w-none">
-            <MDXRemote source={post.content} />
+            <MDXRemote source={post.content} components={mdxComponents} />
          </div>
       </article>
    );

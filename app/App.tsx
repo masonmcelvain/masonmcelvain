@@ -1,5 +1,6 @@
 import { ProjectGrid } from "@common/components";
 import projects from "@data/projects";
+import { SocialIconRow } from "@/packages/icons/social";
 import { Collage } from "./Collage";
 import { Hero } from "./Hero";
 
@@ -13,6 +14,7 @@ export default function App() {
             2022. These days I build iFixit&apos;s e-commerce storefront and
             tooling.
          </p>
+         <SocialIconRow className="self-center sm:hidden" />
          <h2 className="mb-12">What I&apos;ve been working on 🛠️</h2>
          <ProjectGrid projects={projects} />
          <hr aria-orientation="horizontal" className="my-16 border-gray-200" />

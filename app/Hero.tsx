@@ -7,8 +7,8 @@ export function Hero() {
       <div className="flex w-full flex-col items-center justify-between space-y-8 px-4 md:flex-row md:space-y-0">
          <div className="flex flex-col md:space-y-2 lg:space-y-4">
             <H1>Hi, I&apos;m Mason.</H1>
-            <H1>Full Stack Developer</H1>
-            <H1>at iFixit.</H1>
+            <H1>Full stack developer</H1>
+            <H1>and rock climber.</H1>
          </div>
          <div className="relative h-[200px] w-[200px] overflow-hidden rounded-full lg:h-[375px] lg:w-[375px]">
             <Image

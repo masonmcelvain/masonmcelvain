@@ -16,6 +16,7 @@
       "jsx": "react-jsx",
       "baseUrl": ".",
       "paths": {
+         "@/*": ["./*"],
          "@data/*": ["data/*"],
          "@helpers/*": ["helpers/*"],
          "@markdown/*": ["markdown/*"],

@@ -1,10 +1,19 @@
 import HopComposite from "@public/images/hop-composite.png";
 import iFixitProTechToolkit from "@public/images/ifixit-pro-tech-toolkit.png";
 import CSAIComposite from "@public/images/csai-composite.png";
-import SecretSanta from "@public/images/secret-santa.png";
+import HotPot from "@/public/blog/red-rocks-25/hotpot.jpg";
 import type { ProjectCardProps } from "@common/components";
 
 const projects: ProjectCardProps[] = [
+   {
+      src: HotPot,
+      alt: "Friends gathered around a hot pot dinner",
+      title: "My blog",
+      caption: "A place for me to reflect on and share my climbing adventures.",
+      href: "/blog",
+      gradientFrom: "from-[#d4145a]",
+      gradientTo: "to-[#fbb03b]",
+   },
    {
       src: iFixitProTechToolkit,
       alt: "Workbench spotlighting an iFixit Pro Tech Toolkit.",
@@ -22,15 +31,6 @@ const projects: ProjectCardProps[] = [
       caption:
          "See, click, go! An icon-first browser extension for your favorite bookmarks.",
       href: "https://www.usehop.app/",
-      gradientFrom: "from-[#d4145a]",
-      gradientTo: "to-[#fbb03b]",
-   },
-   {
-      src: SecretSanta,
-      alt: "Bust of Santa Claus dressed as a spy.",
-      title: "Simple Secret Santa",
-      caption: "The fastest way to play Secret Santa with remote friends.",
-      href: "https://simple-secret-santa-mason-mcelvains-projects.vercel.app/",
       gradientFrom: "from-[#7928ca]",
       gradientTo: "to-[#ff0080]",
    },

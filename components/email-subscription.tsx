@@ -4,8 +4,6 @@ import { usePathname } from "next/navigation";
 import {
    type CSSProperties,
    type FormEvent,
-   type MouseEvent,
-   type TouchEvent,
    useEffect,
    useRef,
    useState,
@@ -40,8 +38,7 @@ export function EmailSubscription() {
       setMessage("");
    }, [pathname]);
 
-   function spawnStars(e?: MouseEvent | TouchEvent) {
-      e?.preventDefault();
+   function spawnStars() {
       if (!buttonRef.current) return;
 
       const buttonRect = buttonRef.current.getBoundingClientRect();
@@ -124,7 +121,6 @@ export function EmailSubscription() {
                type="submit"
                disabled={status === "loading"}
                onMouseUp={spawnStars}
-               onTouchEnd={spawnStars}
                className="shrink-0 cursor-pointer px-6 py-3 font-medium text-white transition-all duration-200 hover:scale-110 active:scale-125"
             >
                Subscribe

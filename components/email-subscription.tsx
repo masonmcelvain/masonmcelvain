@@ -1,6 +1,13 @@
 "use client";
 
-import { type CSSProperties, type FormEvent, useRef, useState } from "react";
+import {
+   type CSSProperties,
+   type FormEvent,
+   type MouseEvent,
+   type TouchEvent,
+   useRef,
+   useState,
+} from "react";
 import { FaStar } from "react-icons/fa";
 import { subscribe } from "@/app/actions/subscribe";
 import { cn } from "@/lib/utils";
@@ -22,27 +29,25 @@ export function EmailSubscription() {
    >("idle");
    const [message, setMessage] = useState("");
    const [stars, setStars] = useState<Star[]>([]);
-   const wrapperRef = useRef<HTMLDivElement>(null);
    const buttonRef = useRef<HTMLButtonElement>(null);
 
-   function spawnStars() {
-      if (!buttonRef.current || !wrapperRef.current) return;
+   function spawnStars(e?: MouseEvent | TouchEvent) {
+      e?.preventDefault();
+      if (!buttonRef.current) return;
 
       const buttonRect = buttonRef.current.getBoundingClientRect();
-      const wrapperRect = wrapperRef.current.getBoundingClientRect();
-
-      const buttonLeft = buttonRect.left - wrapperRect.left;
-      const buttonTop = buttonRect.top - wrapperRect.top;
-      const centerX = buttonRect.width / 2;
-      const centerY = buttonRect.height / 2;
+      const centerX = buttonRect.left + buttonRect.width / 2;
+      const centerY = buttonRect.top + buttonRect.height / 2;
 
       const newStars: Star[] = [];
       const starCount = 8;
 
       for (let i = 0; i < starCount; i++) {
          const angle = (i / starCount) * Math.PI * 2;
-         const x = buttonLeft + centerX + Math.cos(angle) * centerX;
-         const y = buttonTop + centerY + Math.sin(angle) * centerY;
+         const radiusX = buttonRect.width / 2;
+         const radiusY = buttonRect.height / 2;
+         const x = centerX + Math.cos(angle) * radiusX;
+         const y = centerY + Math.sin(angle) * radiusY;
 
          const dx = Math.cos(angle) * 60;
          const dy = Math.sin(angle) * 60;
@@ -76,7 +81,7 @@ export function EmailSubscription() {
    }
 
    return (
-      <div ref={wrapperRef} className="relative w-full max-w-md">
+      <div className="relative w-full max-w-md">
          <p className="mb-2 text-sm font-semibold text-gray-700">
             Want to stay in touch? Subscribe to my newsletter:
          </p>
@@ -106,7 +111,7 @@ export function EmailSubscription() {
          {stars.map((star) => (
             <span
                key={star.id}
-               className="animate-shoot pointer-events-none absolute text-amber-500"
+               className="animate-shoot pointer-events-none fixed text-amber-500"
                style={
                   {
                      left: star.x,

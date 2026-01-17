@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
+import { EmailSubscription } from "@/components/email-subscription";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -14,7 +15,10 @@ export default function BlogPage() {
    return (
       <>
          <h1>Blog</h1>
-         <ul className="mt-8 space-y-6">
+         <div className="mt-6">
+            <EmailSubscription />
+         </div>
+         <ul className="mt-4 space-y-6">
             {posts.map((post) => (
                <li key={post.slug}>
                   <Link

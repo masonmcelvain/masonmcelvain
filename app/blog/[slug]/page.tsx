@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getPostBySlug, getAllPostSlugs } from "@/lib/posts";
 import { ImageWithCaption } from "@/components/ImageWithCaption";
-import { EmailSubscription } from "@/components/email-subscription";
 import { KeyboardShortcutsLegend } from "@/components/KeyboardShortcutsLegend";
 import type { Metadata } from "next";
 
@@ -66,9 +65,6 @@ export default async function BlogPostPage({ params }: Props) {
          </header>
          <div className="prose prose-lg prose-a:text-blue-600 max-w-none">
             <MDXRemote source={post.content} components={mdxComponents} />
-         </div>
-         <div className="mt-12">
-            <EmailSubscription />
          </div>
       </article>
    );

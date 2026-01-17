@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const shortcuts = [
    { key: "j", label: "↓", description: "scroll down" },
@@ -12,6 +12,28 @@ const shortcuts = [
 const SCROLL_AMOUNT = 150;
 
 export function KeyboardShortcutsLegend() {
+   const [isDismissed, setIsDismissed] = useState(false);
+   const [isScrollable, setIsScrollable] = useState(false);
+
+   useEffect(() => {
+      function checkScrollable() {
+         setIsScrollable(
+            document.documentElement.scrollHeight > window.innerHeight,
+         );
+      }
+
+      checkScrollable();
+      window.addEventListener("resize", checkScrollable);
+
+      const observer = new MutationObserver(checkScrollable);
+      observer.observe(document.body, { childList: true, subtree: true });
+
+      return () => {
+         window.removeEventListener("resize", checkScrollable);
+         observer.disconnect();
+      };
+   }, []);
+
    useEffect(() => {
       function handleKeyDown(event: KeyboardEvent) {
          if (
@@ -44,8 +66,15 @@ export function KeyboardShortcutsLegend() {
       return () => window.removeEventListener("keydown", handleKeyDown);
    }, []);
 
+   if (isDismissed || !isScrollable) {
+      return null;
+   }
+
    return (
-      <div className="fixed top-1/2 right-6 z-50 hidden -translate-y-1/2 lg:block">
+      <div
+         className="fixed top-1/2 right-6 z-50 hidden -translate-y-1/2 cursor-pointer lg:block"
+         onClick={() => setIsDismissed(true)}
+      >
          <div className="rounded-lg border border-gray-200 bg-white/90 px-4 py-3 shadow-lg backdrop-blur-sm">
             <ul className="space-y-2 text-sm">
                {shortcuts.map(({ key, label }) => (

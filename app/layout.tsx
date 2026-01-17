@@ -3,6 +3,7 @@ import type { PropsWithChildren } from "react";
 import "./globals.css";
 import { Header, Footer } from "./header-footer";
 import { Wrapper } from "./wrapper";
+import { KeyboardShortcutsLegend } from "@/components/KeyboardShortcutsLegend";
 
 type RootLayoutProps = {
    headTitleSuffix: string;
@@ -15,6 +16,7 @@ export default function RootLayout({
    return (
       <html lang="en">
          <body>
+            <KeyboardShortcutsLegend />
             <Wrapper>
                <Header logoSrc={logoSrc} />
                {children}

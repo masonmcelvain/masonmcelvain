@@ -1,10 +1,12 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import {
    type CSSProperties,
    type FormEvent,
    type MouseEvent,
    type TouchEvent,
+   useEffect,
    useRef,
    useState,
 } from "react";
@@ -31,6 +33,12 @@ export function EmailSubscription() {
    const [stars, setStars] = useState<Star[]>([]);
    const buttonRef = useRef<HTMLButtonElement>(null);
    const clickTimestamps = useRef<number[]>([]);
+   const pathname = usePathname();
+
+   useEffect(() => {
+      setStatus("idle");
+      setMessage("");
+   }, [pathname]);
 
    function spawnStars(e?: MouseEvent | TouchEvent) {
       e?.preventDefault();

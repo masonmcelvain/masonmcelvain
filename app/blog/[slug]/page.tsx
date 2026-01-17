@@ -4,6 +4,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { getPostBySlug, getAllPostSlugs } from "@/lib/posts";
 import { ImageWithCaption } from "@/components/ImageWithCaption";
 import { EmailSubscription } from "@/components/email-subscription";
+import { KeyboardShortcutsLegend } from "@/components/KeyboardShortcutsLegend";
 import type { Metadata } from "next";
 
 const mdxComponents = {
@@ -43,6 +44,7 @@ export default async function BlogPostPage({ params }: Props) {
 
    return (
       <article>
+         <KeyboardShortcutsLegend />
          <header className="mb-8">
             <h1>{post.title}</h1>
             <time className="mt-2 block text-gray-500">

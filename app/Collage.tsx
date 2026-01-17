@@ -84,9 +84,9 @@ const images: CollageImage[] = [
 export function Collage() {
    return (
       <div className="mb-12">
-         <div className="mb-16 flex w-full items-center justify-center">
-            <p className="text-3xl font-bold">See you out there!</p>
-         </div>
+         <h2 className="mb-16 w-full text-center text-3xl font-bold">
+            Me in the wild
+         </h2>
          <div className="columns-1 gap-2 sm:columns-2 lg:columns-3">
             {images.map((image, index) => (
                <label
@@ -111,6 +111,9 @@ export function Collage() {
                </label>
             ))}
          </div>
+         <h2 className="mt-16 w-full text-center text-3xl font-bold">
+            See you out there!
+         </h2>
       </div>
    );
 }

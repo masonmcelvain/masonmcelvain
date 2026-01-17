@@ -1,6 +1,22 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+@theme {
+   --animate-shoot: shoot 0.6s ease-out forwards;
+
+   @keyframes shoot {
+      0% {
+         transform: translate(-50%, -50%) translate(0, 0) rotate(0deg) scale(1);
+         opacity: 1;
+      }
+      100% {
+         transform: translate(-50%, -50%) translate(var(--dx), var(--dy))
+            rotate(360deg) scale(0);
+         opacity: 0;
+      }
+   }
+}
+
 @layer base {
    h1 {
       @apply text-5xl font-bold text-gray-900;

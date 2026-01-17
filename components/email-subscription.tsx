@@ -30,6 +30,7 @@ export function EmailSubscription() {
    const [message, setMessage] = useState("");
    const [stars, setStars] = useState<Star[]>([]);
    const buttonRef = useRef<HTMLButtonElement>(null);
+   const clickTimestamps = useRef<number[]>([]);
 
    function spawnStars(e?: MouseEvent | TouchEvent) {
       e?.preventDefault();
@@ -66,6 +67,19 @@ export function EmailSubscription() {
 
    async function handleSubmit(e: FormEvent) {
       e.preventDefault();
+
+      const now = Date.now();
+      clickTimestamps.current.push(now);
+      clickTimestamps.current = clickTimestamps.current.filter(
+         (t) => now - t < 1000,
+      );
+
+      if (clickTimestamps.current.length >= 4) {
+         setStatus("error");
+         setMessage("You're silly");
+         return;
+      }
+
       setStatus("loading");
 
       const result = await subscribe(email);

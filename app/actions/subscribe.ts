@@ -17,6 +17,7 @@ export async function subscribe(
          {
             method: "POST",
             headers: {
+               "X-Buttondown-Collision-Behavior": "overwrite",
                Authorization: `Token ${BUTTONDOWN_API_KEY}`,
                "Content-Type": "application/json",
             },

@@ -1,8 +1,26 @@
 "use client";
 
-import { type FormEvent, useState } from "react";
+import {
+   type CSSProperties,
+   type FormEvent,
+   type MouseEvent,
+   type TouchEvent,
+   useRef,
+   useState,
+} from "react";
+import { FaStar } from "react-icons/fa";
 import { subscribe } from "@/app/actions/subscribe";
 import { cn } from "@/lib/utils";
+
+type Star = {
+   id: number;
+   x: number;
+   y: number;
+   dx: number;
+   dy: number;
+};
+
+let starId = 0;
 
 export function EmailSubscription() {
    const [email, setEmail] = useState("");
@@ -10,9 +28,58 @@ export function EmailSubscription() {
       "idle" | "loading" | "success" | "error"
    >("idle");
    const [message, setMessage] = useState("");
+   const [stars, setStars] = useState<Star[]>([]);
+   const buttonRef = useRef<HTMLButtonElement>(null);
+   const clickTimestamps = useRef<number[]>([]);
+
+   function spawnStars(e?: MouseEvent | TouchEvent) {
+      e?.preventDefault();
+      if (!buttonRef.current) return;
+
+      const buttonRect = buttonRef.current.getBoundingClientRect();
+      const centerX = buttonRect.left + buttonRect.width / 2;
+      const centerY = buttonRect.top + buttonRect.height / 2;
+
+      const newStars: Star[] = [];
+      const starCount = 8;
+
+      for (let i = 0; i < starCount; i++) {
+         const angle = (i / starCount) * Math.PI * 2;
+         const radiusX = buttonRect.width / 2;
+         const radiusY = buttonRect.height / 2;
+         const x = centerX + Math.cos(angle) * radiusX;
+         const y = centerY + Math.sin(angle) * radiusY;
+
+         const dx = Math.cos(angle) * 60;
+         const dy = Math.sin(angle) * 60;
+
+         newStars.push({ id: starId++, x, y, dx, dy });
+      }
+
+      setStars((prev) => [...prev, ...newStars]);
+
+      setTimeout(() => {
+         setStars((prev) =>
+            prev.filter((s) => !newStars.some((ns) => ns.id === s.id)),
+         );
+      }, 600);
+   }
 
    async function handleSubmit(e: FormEvent) {
       e.preventDefault();
+
+      const now = Date.now();
+      clickTimestamps.current.push(now);
+      clickTimestamps.current = clickTimestamps.current.filter(
+         (t) => now - t < 1000,
+      );
+
+      if (clickTimestamps.current.length >= 4) {
+         setStatus("error");
+         setMessage("You're silly");
+         return;
+      }
+
       setStatus("loading");
 
       const result = await subscribe(email);
@@ -28,7 +95,7 @@ export function EmailSubscription() {
    }
 
    return (
-      <div className="w-full max-w-md">
+      <div className="relative w-full max-w-md">
          <p className="mb-2 text-sm font-semibold text-gray-700">
             Want to stay in touch? Subscribe to my newsletter:
          </p>
@@ -45,13 +112,32 @@ export function EmailSubscription() {
                disabled={status === "loading"}
             />
             <button
+               ref={buttonRef}
                type="submit"
                disabled={status === "loading"}
-               className="shrink-0 cursor-pointer px-6 py-3 font-medium text-white transition-opacity hover:bg-white/10 disabled:bg-white/20"
+               onMouseUp={spawnStars}
+               onTouchEnd={spawnStars}
+               className="shrink-0 cursor-pointer px-6 py-3 font-medium text-white transition-all duration-200 hover:scale-110 active:scale-125"
             >
                Subscribe
             </button>
          </form>
+         {stars.map((star) => (
+            <span
+               key={star.id}
+               className="animate-shoot pointer-events-none fixed text-amber-500"
+               style={
+                  {
+                     left: star.x,
+                     top: star.y,
+                     "--dx": `${star.dx}px`,
+                     "--dy": `${star.dy}px`,
+                  } as CSSProperties
+               }
+            >
+               <FaStar className="h-3 w-3" />
+            </span>
+         ))}
          <p
             className={cn(
                "mt-2 min-h-[20px] text-sm font-semibold",

@@ -47,7 +47,7 @@ export function EmailSubscription() {
             <button
                type="submit"
                disabled={status === "loading"}
-               className="shrink-0 cursor-pointer px-6 py-3 font-medium text-white transition-opacity hover:bg-white/10 disabled:bg-white/20"
+               className="shrink-0 cursor-pointer px-6 py-3 font-medium text-white transition-all duration-200 hover:scale-110 active:scale-125"
             >
                Subscribe
             </button>

@@ -83,7 +83,7 @@ const images: CollageImage[] = [
 
 export function Collage() {
    return (
-      <div className="mb-12">
+      <div>
          <h2 className="mb-16 w-full text-center text-3xl font-bold">
             Me in the wild
          </h2>

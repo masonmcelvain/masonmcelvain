@@ -23,6 +23,7 @@ export function Header({ logoSrc }: HeaderFooterProps) {
 export function Footer({ logoSrc }: HeaderFooterProps) {
    return (
       <footer className="my-8 flex flex-col gap-6 px-0 md:my-16 md:px-8">
+         <hr aria-orientation="horizontal" className="my-8 border-gray-200" />
          <div className="lg:hidden">
             <EmailSubscription />
          </div>

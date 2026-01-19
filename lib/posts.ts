@@ -10,6 +10,7 @@ export interface PostFrontmatter {
    description?: string;
    image: string;
    imageAlt: string;
+   leadingImage: boolean;
 }
 
 export interface PostMeta extends PostFrontmatter {
@@ -37,6 +38,7 @@ export function getAllPosts(): PostMeta[] {
             description: data.description,
             image: data.image,
             imageAlt: data.imageAlt,
+            leadingImage: data.leadingImage ?? true,
          };
       });
 
@@ -60,6 +62,7 @@ export function getPostBySlug(slug: string): Post | null {
       description: data.description,
       image: data.image,
       imageAlt: data.imageAlt,
+      leadingImage: data.leadingImage ?? true,
       content,
    };
 }

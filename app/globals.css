@@ -2,7 +2,7 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-   --animate-shoot: shoot 0.6s ease-out forwards;
+   --animate-shoot: shoot 1s ease-out forwards;
 }
 
 @keyframes shoot {
@@ -12,7 +12,7 @@
    }
    100% {
       transform: translate(-50%, -50%) translate(var(--dx), var(--dy))
-         rotate(360deg) scale(0);
+         rotate(0deg) scale(0);
       opacity: 0;
    }
 }

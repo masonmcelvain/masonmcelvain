@@ -4,8 +4,7 @@ import { getAllPosts } from "@/lib/posts";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-   title: "Blog",
-   description: "Thoughts on software, climbing, and more.",
+   title: "Mason's blog",
 };
 
 export default function BlogPage() {
@@ -13,8 +12,8 @@ export default function BlogPage() {
 
    return (
       <>
-         <h1>Blog</h1>
-         <ul className="mt-4 space-y-6">
+         <h1>Mason&apos;s blog</h1>
+         <ul className="mt-8 space-y-6">
             {posts.map((post) => (
                <li key={post.slug}>
                   <Link

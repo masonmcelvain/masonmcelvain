@@ -67,7 +67,7 @@ export function EmailSubscription() {
          setStars((prev) =>
             prev.filter((s) => !newStars.some((ns) => ns.id === s.id)),
          );
-      }, 600);
+      }, 1000);
    }
 
    async function handleSubmit(e: FormEvent) {

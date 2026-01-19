@@ -15,7 +15,7 @@ export function ImageWithCaption({ src, alt, caption }: ImageWithCaptionProps) {
             width={0}
             height={0}
             sizes="100vw"
-            className="h-auto max-h-[85vh] w-auto max-w-full rounded-lg lg:mx-auto"
+            className="h-auto w-full max-w-full rounded-lg sm:mx-auto sm:max-h-[85vh] sm:w-auto"
          />
          <figcaption className="mt-2 text-center text-sm text-gray-500">
             {caption}

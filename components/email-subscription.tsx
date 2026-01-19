@@ -76,7 +76,7 @@ export function EmailSubscription() {
       const now = Date.now();
       clickTimestamps.current.push(now);
       clickTimestamps.current = clickTimestamps.current.filter(
-         (t) => now - t < 1000,
+         (t) => now - t < 2000,
       );
 
       if (clickTimestamps.current.length >= 4) {

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 type ImageWithCaptionProps = {
    src: string;
-   alt: string;
+   alt?: string;
    caption: string;
 };
 
@@ -11,7 +11,7 @@ export function ImageWithCaption({ src, alt, caption }: ImageWithCaptionProps) {
       <figure className="my-8">
          <Image
             src={src}
-            alt={alt}
+            alt={alt ?? caption}
             width={0}
             height={0}
             sizes="100vw"

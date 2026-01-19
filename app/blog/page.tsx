@@ -4,8 +4,7 @@ import { getAllPosts } from "@/lib/posts";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-   title: "Blog",
-   description: "Thoughts on software, climbing, and more.",
+   title: "Mason's blog",
 };
 
 export default function BlogPage() {

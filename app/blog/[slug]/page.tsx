@@ -58,7 +58,7 @@ export default async function BlogPostPage({ params }: Props) {
                   width={0}
                   height={0}
                   sizes="100vw"
-                  className="mt-6 h-auto max-h-[85vh] w-auto max-w-full rounded-lg lg:mx-auto"
+                  className="mt-6 h-auto w-full max-w-full rounded-lg sm:mx-auto sm:max-h-[85vh] sm:w-auto"
                   priority
                />
             )}

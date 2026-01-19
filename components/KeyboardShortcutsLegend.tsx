@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 const shortcuts = [
    { key: "j", label: "↓", description: "scroll down" },
@@ -10,18 +10,10 @@ const shortcuts = [
 ];
 
 const SCROLL_AMOUNT = 150;
-const SCROLL_SPEED = 1000; // pixels per second
-const MAX_SCROLL_AHEAD = 150; // max distance target can be ahead of current position
 
 export function KeyboardShortcutsLegend() {
    const [isDismissed, setIsDismissed] = useState(false);
    const [isScrollable, setIsScrollable] = useState(false);
-
-   const scrollAnimationRef = useRef<{
-      targetY: number;
-      lastTime: number | null;
-      animationId: number | null;
-   } | null>(null);
 
    useEffect(() => {
       function checkScrollable() {
@@ -43,60 +35,6 @@ export function KeyboardShortcutsLegend() {
    }, []);
 
    useEffect(() => {
-      function animateScroll(timestamp: number) {
-         const animation = scrollAnimationRef.current;
-         if (!animation) return;
-
-         if (animation.lastTime === null) {
-            animation.lastTime = timestamp;
-         }
-
-         const deltaTime = timestamp - animation.lastTime;
-         animation.lastTime = timestamp;
-
-         const currentScroll = window.scrollY;
-         const remaining = animation.targetY - currentScroll;
-         const direction = Math.sign(remaining);
-         const moveAmount = (SCROLL_SPEED * deltaTime) / 1000;
-
-         if (Math.abs(remaining) <= moveAmount) {
-            window.scrollTo(0, animation.targetY);
-            scrollAnimationRef.current = null;
-         } else {
-            window.scrollTo(0, currentScroll + direction * moveAmount);
-            animation.animationId = requestAnimationFrame(animateScroll);
-         }
-      }
-
-      function smoothScrollBy(delta: number) {
-         const maxScroll =
-            document.documentElement.scrollHeight - window.innerHeight;
-         const currentScroll = window.scrollY;
-
-         const currentTarget =
-            scrollAnimationRef.current?.targetY ?? currentScroll;
-         let newTarget = Math.max(
-            0,
-            Math.min(maxScroll, currentTarget + delta),
-         );
-
-         // Cap how far ahead the target can be from current position
-         const maxTarget = currentScroll + MAX_SCROLL_AHEAD;
-         const minTarget = currentScroll - MAX_SCROLL_AHEAD;
-         newTarget = Math.max(minTarget, Math.min(maxTarget, newTarget));
-         newTarget = Math.max(0, Math.min(maxScroll, newTarget));
-
-         if (scrollAnimationRef.current) {
-            scrollAnimationRef.current.targetY = newTarget;
-         } else {
-            scrollAnimationRef.current = {
-               targetY: newTarget,
-               lastTime: null,
-               animationId: requestAnimationFrame(animateScroll),
-            };
-         }
-      }
-
       function handleKeyDown(event: KeyboardEvent) {
          if (
             event.target instanceof HTMLInputElement ||
@@ -107,10 +45,10 @@ export function KeyboardShortcutsLegend() {
 
          switch (event.key) {
             case "j":
-               smoothScrollBy(SCROLL_AMOUNT);
+               window.scrollBy({ top: SCROLL_AMOUNT, behavior: "smooth" });
                break;
             case "k":
-               smoothScrollBy(-SCROLL_AMOUNT);
+               window.scrollBy({ top: -SCROLL_AMOUNT, behavior: "smooth" });
                break;
             case "g":
                window.scrollTo({ top: 0, behavior: "smooth" });
@@ -125,12 +63,7 @@ export function KeyboardShortcutsLegend() {
       }
 
       window.addEventListener("keydown", handleKeyDown);
-      return () => {
-         window.removeEventListener("keydown", handleKeyDown);
-         if (scrollAnimationRef.current?.animationId) {
-            cancelAnimationFrame(scrollAnimationRef.current.animationId);
-         }
-      };
+      return () => window.removeEventListener("keydown", handleKeyDown);
    }, []);
 
    if (isDismissed || !isScrollable) {

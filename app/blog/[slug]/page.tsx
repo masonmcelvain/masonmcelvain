@@ -51,15 +51,17 @@ export default async function BlogPostPage({ params }: Props) {
                   day: "numeric",
                })}
             </time>
-            <Image
-               src={post.image}
-               alt={post.imageAlt}
-               width={0}
-               height={0}
-               sizes="100vw"
-               className="mt-6 h-auto max-h-[85vh] w-auto max-w-full rounded-lg lg:mx-auto"
-               priority
-            />
+            {post.leadingImage && (
+               <Image
+                  src={post.image}
+                  alt={post.imageAlt}
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  className="mt-6 h-auto max-h-[85vh] w-auto max-w-full rounded-lg lg:mx-auto"
+                  priority
+               />
+            )}
          </header>
          <div className="prose prose-lg prose-a:text-blue-600 max-w-none">
             <MDXRemote source={post.content} components={mdxComponents} />

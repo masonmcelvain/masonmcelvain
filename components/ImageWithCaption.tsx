@@ -1,3 +1,4 @@
+import { mediaUrl } from "@/lib/media";
 import Image from "next/image";
 
 type ImageWithCaptionProps = {
@@ -10,7 +11,7 @@ export function ImageWithCaption({ src, alt, caption }: ImageWithCaptionProps) {
    return (
       <figure className="my-8">
          <Image
-            src={src}
+            src={mediaUrl(src)}
             alt={alt ?? caption}
             width={0}
             height={0}

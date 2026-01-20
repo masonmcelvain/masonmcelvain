@@ -7,12 +7,11 @@ on:
    pull_request:
    push:
       branches:
-         - main # change this if your default branch is named differently
+         - main
    workflow_dispatch:
 
 defaults:
    run:
-      # change this if your nextjs app does not live at the root of the repo
       working-directory: ./
 
 permissions:
@@ -24,24 +23,17 @@ jobs:
    analyze:
       runs-on: ubuntu-latest
       steps:
-         - uses: actions/checkout@v3
+         - uses: actions/checkout@v6
 
          - name: Install Node.js
-           uses: actions/setup-node@v3
+           uses: actions/setup-node@v6
            with:
-              node-version: 18
+              node-version-file: ".nvmrc"
 
-         - name: Install dependencies
-           uses: bahmutov/npm-install@v1
-
-         # If pnpm is used, you need to switch the previous step with the following one. pnpm does not create a package-lock.json
-         # so the step above will fail to pull dependencies
-         # - uses: pnpm/action-setup@v2
-         #   name: Install pnpm
-         #   id: pnpm-install
-         #   with:
-         #     version: 7
-         #     run_install: true
+         - name: Install PNPM
+           run: corepack enable && corepack prepare pnpm@10.4.0 --activate
+         - name: Install workspaces
+           run: pnpm install
 
          - name: Restore next build
            uses: actions/cache@v3
@@ -49,15 +41,11 @@ jobs:
            env:
               cache-name: cache-next-build
            with:
-              # if you use a custom build directory, replace all instances of `.next` in this file with your build directory
-              # ex: if your app builds to `dist`, replace `.next` with `dist`
               path: .next/cache
-              # change this if you prefer a more strict cache
               key: ${{ runner.os }}-build-${{ env.cache-name }}
 
          - name: Build next.js app
-           # change this if your site requires a custom build command
-           run: ./node_modules/.bin/next build
+           run: pnpm build
 
          # Here's the first place where next-bundle-analysis' own script is used
          # This step pulls the raw bundle stats for the current bundle
@@ -65,7 +53,7 @@ jobs:
            run: npx -p nextjs-bundle-analysis report
 
          - name: Upload bundle
-           uses: actions/upload-artifact@v3
+           uses: actions/upload-artifact@v6
            with:
               name: bundle
               path: .next/analyze/__bundle_analysis.json

@@ -65,7 +65,7 @@ jobs:
               workflow: nextjs_bundle_analysis.yml
               branch: ${{ github.event.pull_request.base.ref }}
               name: bundle
-              path: .next/analyze/base
+              path: .next/analyze/base/bundle
               if_no_artifact_found: warn
 
          # And here's the second place - this runs after we have both the current and

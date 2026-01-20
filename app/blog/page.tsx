@@ -50,6 +50,43 @@ export default function BlogPage() {
                </li>
             ))}
          </ul>
+         <div className="mt-16 flex flex-col gap-4">
+            <details>
+               <summary className="font-semibold">
+                  Why did you start blogging?
+               </summary>
+               <p>
+                  I started blogging to share my climbing adventures with people
+                  I love. It allows me to reflect on my experiences and share
+                  photos of places I&apos;ve been and folks I&apos;ve met.
+                  I&apos;ve also never really been on social media and as a
+                  result I&apos;ve always felt a little disconnected from my
+                  friends and family who I don&apos;t get to be with physically
+                  on a regular basis. I think social media does us a service in
+                  that way, however the benefit is offset by the insidious
+                  manipulation that all social media companies succumb to. I
+                  also have a self-deprecating habit of comparing myself to
+                  others on social media. So I started blogging to better
+                  connect with my friends and family on my own terms.
+               </p>
+            </details>
+            <details>
+               <summary className="font-semibold">
+                  What&apos;s wrong with social media?
+               </summary>
+               <p>
+                  Social media is an &quot;addiction for profit&quot; industry,
+                  in the same class of industries as nicotine, gambling, sugar,
+                  cannabis, and alcohol. The substances themselves are not
+                  necessarily bad and in fact are pleasurable and social for
+                  many, however corporations have a financial incentive to get
+                  you hooked so they can sell you more of those substances.
+                  Blogging is an act of rebellion against social media&apos;s
+                  addictive nature and a celebration of the peer-to-peer
+                  Internet that connects people in healthy ways.
+               </p>
+            </details>
+         </div>
       </>
    );
 }

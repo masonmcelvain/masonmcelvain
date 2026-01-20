@@ -59,5 +59,11 @@
    },
    "lint-staged": {
       "*": "prettier --write --ignore-unknown"
+   },
+   "nextBundleAnalysis": {
+      "budget": 358400,
+      "budgetPercentIncreaseRed": 20,
+      "minimumChangeThreshold": 0,
+      "showDetails": true
    }
 }

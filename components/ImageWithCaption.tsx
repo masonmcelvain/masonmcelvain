@@ -9,6 +9,7 @@ type ImageWithCaptionProps = {
    alt?: string;
    caption: string;
    landscape?: boolean;
+   priority?: boolean;
 };
 
 export function ImageWithCaption({
@@ -16,6 +17,7 @@ export function ImageWithCaption({
    alt,
    caption,
    landscape = false,
+   priority,
 }: ImageWithCaptionProps) {
    const [aspectRatio, setAspectRatio] = useState(landscape ? "4/3" : "3/4");
    return (
@@ -33,6 +35,7 @@ export function ImageWithCaption({
                   const img = e.currentTarget;
                   setAspectRatio(`${img.naturalWidth}/${img.naturalHeight}`);
                }}
+               priority={priority}
             />
          </div>
          <figcaption className="mt-2 text-center text-sm text-gray-500">

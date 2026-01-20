@@ -50,6 +50,12 @@ export default async function BlogPostPage({ params }: Props) {
                   day: "numeric",
                })}
             </time>
+            <ImageWithCaption
+               src={post.image}
+               caption={post.imageAlt}
+               landscape
+               priority
+            />
          </header>
          <div className="prose prose-lg prose-a:text-blue-600 max-w-none">
             <MDXRemote source={post.content} components={mdxComponents} />

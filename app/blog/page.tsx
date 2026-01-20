@@ -1,7 +1,8 @@
-import Image from "next/image";
-import Link from "next/link";
+import { mediaUrl } from "@/lib/media";
 import { getAllPosts } from "@/lib/posts";
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
    title: "Mason's blog",
@@ -22,7 +23,7 @@ export default function BlogPage() {
                   >
                      <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden rounded-md sm:w-48">
                         <Image
-                           src={post.image}
+                           src={mediaUrl(post.image)}
                            alt={post.imageAlt}
                            fill
                            className="object-cover"

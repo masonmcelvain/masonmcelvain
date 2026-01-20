@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getPostBySlug, getAllPostSlugs } from "@/lib/posts";
@@ -51,17 +50,12 @@ export default async function BlogPostPage({ params }: Props) {
                   day: "numeric",
                })}
             </time>
-            {post.leadingImage && (
-               <Image
-                  src={post.image}
-                  alt={post.imageAlt}
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                  className="mt-6 h-auto w-full max-w-full rounded-lg sm:mx-auto sm:max-h-[85vh] sm:w-auto"
-                  priority
-               />
-            )}
+            <ImageWithCaption
+               src={post.image}
+               caption={post.imageAlt}
+               landscape
+               priority
+            />
          </header>
          <div className="prose prose-lg prose-a:text-blue-600 max-w-none">
             <MDXRemote source={post.content} components={mdxComponents} />

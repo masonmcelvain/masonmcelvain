@@ -1,7 +1,7 @@
 import HopComposite from "@public/images/hop-composite.png";
 import iFixitProTechToolkit from "@public/images/ifixit-pro-tech-toolkit.png";
 import CSAIComposite from "@public/images/csai-composite.png";
-import HotPot from "@/public/blog/red-rocks-25/hotpot.jpg";
+import HotPot from "@/public/images/hotpot.jpg";
 import type { ProjectCardProps } from "@common/components";
 
 const projects: ProjectCardProps[] = [

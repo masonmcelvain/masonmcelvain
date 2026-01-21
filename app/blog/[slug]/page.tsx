@@ -2,10 +2,12 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getPostBySlug, getAllPostSlugs } from "@/lib/posts";
 import { ImageWithCaption } from "@/components/ImageWithCaption";
+import { VideoWithCaption } from "@/components/VideoWithCaption";
 import type { Metadata } from "next";
 
 const mdxComponents = {
    ImageWithCaption,
+   VideoWithCaption,
 };
 
 type Props = {

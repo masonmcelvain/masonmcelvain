@@ -53,6 +53,7 @@ export function VideoWithCaption({
                muted={muted}
                controls
                playsInline
+               preload="metadata"
             />
          </div>
          <figcaption className="mt-2 text-center text-sm text-gray-500">

@@ -5,18 +5,18 @@ import { useCallback, useState } from "react";
 
 type VideoWithCaptionProps = {
    src: string;
+   poster: string;
    caption: string;
    landscape?: boolean;
    muted?: boolean;
-   poster?: string;
 };
 
 export function VideoWithCaption({
    src,
+   poster,
    caption,
    landscape = false,
    muted = false,
-   poster,
 }: VideoWithCaptionProps) {
    const [aspectRatio, setAspectRatio] = useState(landscape ? "16/9" : "9/16");
 
@@ -48,7 +48,7 @@ export function VideoWithCaption({
             <video
                ref={videoRef}
                src={mediaUrl(src)}
-               poster={poster ? mediaUrl(poster) : undefined}
+               poster={mediaUrl(poster)}
                className="h-full w-full object-contain"
                muted={muted}
                controls

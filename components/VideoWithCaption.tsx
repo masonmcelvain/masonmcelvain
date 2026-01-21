@@ -8,6 +8,7 @@ type VideoWithCaptionProps = {
    caption: string;
    landscape?: boolean;
    muted?: boolean;
+   poster?: string;
 };
 
 export function VideoWithCaption({
@@ -15,6 +16,7 @@ export function VideoWithCaption({
    caption,
    landscape = false,
    muted = false,
+   poster,
 }: VideoWithCaptionProps) {
    const [aspectRatio, setAspectRatio] = useState(landscape ? "16/9" : "9/16");
 
@@ -46,6 +48,7 @@ export function VideoWithCaption({
             <video
                ref={videoRef}
                src={mediaUrl(src)}
+               poster={poster ? mediaUrl(poster) : undefined}
                className="h-full w-full object-contain"
                muted={muted}
                controls

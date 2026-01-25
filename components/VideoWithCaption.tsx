@@ -45,6 +45,7 @@ export function VideoWithCaption({
             className="not-prose relative w-full max-w-full overflow-hidden rounded-lg sm:mx-auto sm:max-h-[85vh] sm:w-auto"
             style={{ aspectRatio }}
          >
+            {/* eslint-disable-next-line jsx-a11y/media-has-caption -- No caption tracks available */}
             <video
                ref={videoRef}
                src={mediaUrl(src)}

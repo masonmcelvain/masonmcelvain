@@ -138,9 +138,11 @@ export function KeyboardShortcutsLegend() {
    }
 
    return (
-      <div
+      <button
+         type="button"
          className="fixed top-1/2 right-6 z-50 hidden -translate-y-1/2 cursor-pointer lg:block"
          onClick={() => setIsDismissed(true)}
+         aria-label="Dismiss keyboard shortcuts"
       >
          <div className="rounded-lg border border-gray-200 bg-white/90 px-4 py-3 shadow-lg backdrop-blur-sm">
             <ul className="space-y-2 text-sm">
@@ -154,6 +156,6 @@ export function KeyboardShortcutsLegend() {
                ))}
             </ul>
          </div>
-      </div>
+      </button>
    );
 }

@@ -4,7 +4,6 @@ import NextTopLoader from "nextjs-toploader";
 import type { PropsWithChildren } from "react";
 import "./globals.css";
 import { Header, Footer } from "./header-footer";
-import { Wrapper } from "./wrapper";
 
 type RootLayoutProps = {
    headTitleSuffix: string;
@@ -19,11 +18,11 @@ export default function RootLayout({
          <body>
             <NextTopLoader showSpinner={false} />
             <KeyboardShortcutsLegend />
-            <Wrapper>
+            <div className="mx-auto mt-2 w-full px-4 sm:px-6 md:mt-4 lg:w-[60rem] lg:px-0 xl:w-[68.75rem]">
                <Header logoSrc={logoSrc} />
                {children}
                <Footer logoSrc={logoSrc} />
-            </Wrapper>
+            </div>
          </body>
       </html>
    );

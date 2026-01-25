@@ -1,10 +1,13 @@
 import { SocialIconRow } from "@/packages/icons/social";
 import { ProjectGrid } from "@common/components";
-import { getMetadata } from "@data/metadata";
 import projects from "@data/projects";
 import type { Metadata } from "next";
 import { Collage } from "./Collage";
 import { Hero } from "./Hero";
+
+export const metadata: Metadata = {
+   title: "Mason McElvain - Home",
+};
 
 export default function Page() {
    return (
@@ -24,5 +27,3 @@ export default function Page() {
       </main>
    );
 }
-
-export const metadata: Metadata = getMetadata({ suffix: "Home" });

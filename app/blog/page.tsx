@@ -12,7 +12,7 @@ export default function BlogPage() {
    const posts = getAllPosts();
 
    return (
-      <>
+      <main>
          <h1>Mason&apos;s blog</h1>
          <ul className="mt-8 space-y-6">
             {posts.map((post) => (
@@ -88,6 +88,6 @@ export default function BlogPage() {
                </p>
             </details>
          </div>
-      </>
+      </main>
    );
 }

@@ -19,6 +19,7 @@ export function VideoWithCaption({
    muted = false,
 }: VideoWithCaptionProps) {
    const [aspectRatio, setAspectRatio] = useState(landscape ? "16/9" : "9/16");
+   const [hasPlayed, setHasPlayed] = useState(false);
 
    const updateAspectRatio = useCallback((video: HTMLVideoElement) => {
       if (video.videoWidth && video.videoHeight) {
@@ -35,6 +36,9 @@ export function VideoWithCaption({
          video.addEventListener("loadedmetadata", () =>
             updateAspectRatio(video),
          );
+         video.addEventListener("play", () => setHasPlayed(true), {
+            once: true,
+         });
       },
       [updateAspectRatio],
    );
@@ -45,11 +49,18 @@ export function VideoWithCaption({
             className="not-prose relative w-full max-w-full overflow-hidden rounded-lg sm:mx-auto sm:max-h-[85vh] sm:w-auto"
             style={{ aspectRatio }}
          >
+            {!hasPlayed && (
+               // eslint-disable-next-line @next/next/no-img-element
+               <img
+                  src={mediaUrl(poster)}
+                  alt=""
+                  className="pointer-events-none absolute inset-0 h-full w-full rounded-lg object-cover"
+               />
+            )}
             {/* eslint-disable-next-line jsx-a11y/media-has-caption -- No caption tracks available */}
             <video
                ref={videoRef}
                src={mediaUrl(src)}
-               poster={mediaUrl(poster)}
                className="h-full w-full object-contain"
                muted={muted}
                controls

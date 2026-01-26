@@ -66,10 +66,10 @@ export function VideoWithCaption({
                   <button
                      type="button"
                      onClick={handlePlayClick}
-                     className="absolute inset-0 flex cursor-pointer items-center justify-center"
+                     className="group absolute inset-0 flex items-center justify-center focus:outline-none"
                      aria-label="Play video"
                   >
-                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-black/35 backdrop-blur-lg">
+                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-black/35 ring-white/70 backdrop-blur-lg group-focus-visible:ring-2">
                         <svg
                            className="h-11 w-11 translate-x-0.5 text-white"
                            fill="currentColor"

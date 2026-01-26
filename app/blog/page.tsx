@@ -82,9 +82,8 @@ export default function BlogPage() {
                   necessarily bad and in fact are pleasurable and social for
                   many, however corporations have a financial incentive to get
                   you hooked so they can sell you more of those substances.
-                  Blogging is an act of rebellion against social media&apos;s
-                  addictive nature and a celebration of the peer-to-peer
-                  Internet that connects people in healthy ways.
+                  Blogging is a celebration of the peer-to-peer Internet that
+                  connects people in healthy ways.
                </p>
             </details>
          </div>

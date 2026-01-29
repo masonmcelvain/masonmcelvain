@@ -11,7 +11,7 @@ export function GithubIcon({ ariaLabel, color, url }: GithubIconProps) {
       <BaseIcon
          ariaLabel={ariaLabel}
          Icon={FaGithub}
-         color={color ?? "black"}
+         color={color ?? "currentColor"}
          url={url}
       />
    );

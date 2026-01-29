@@ -29,7 +29,10 @@ export default function RootLayout({
 }
 
 export const viewport: Viewport = {
-   themeColor: "white",
+   themeColor: [
+      { media: "(prefers-color-scheme: light)", color: "white" },
+      { media: "(prefers-color-scheme: dark)", color: "#030712" },
+   ],
 };
 
 function getRandomLogoPath() {

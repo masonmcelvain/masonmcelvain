@@ -101,7 +101,7 @@ export function EmailSubscription() {
 
    return (
       <div className="relative w-full max-w-md">
-         <p className="mb-2 text-sm font-semibold text-gray-700">
+         <p className="text-foreground-muted mb-2 text-sm font-semibold">
             Want to stay in touch? Subscribe to my newsletter:
          </p>
          <form
@@ -146,8 +146,8 @@ export function EmailSubscription() {
             className={cn(
                "mt-2 min-h-[20px] text-sm font-semibold",
                ["success", "error"].includes(status) || "invisible",
-               status === "success" && "text-green-600",
-               status === "error" && "text-red-500",
+               status === "success" && "text-green-600 dark:text-green-400",
+               status === "error" && "text-red-500 dark:text-red-400",
             )}
          >
             {message}

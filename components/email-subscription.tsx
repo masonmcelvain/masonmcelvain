@@ -147,7 +147,7 @@ export function EmailSubscription() {
                "mt-2 min-h-[20px] text-sm font-semibold",
                ["success", "error"].includes(status) || "invisible",
                status === "success" && "text-green-600 dark:text-green-400",
-               status === "error" && "text-red-500 dark:text-red-400",
+               status === "error" && "text-red-600 dark:text-red-400",
             )}
          >
             {message}

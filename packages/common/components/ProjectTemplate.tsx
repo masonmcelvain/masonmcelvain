@@ -15,7 +15,7 @@ export function ProjectTemplate({
             <h1>{title}</h1>
             {children}
          </div>
-         <article className="prose prose-lg prose-a:text-blue-600 prose-ul:text-lg max-w-none">
+         <article className="prose prose-lg prose-a:text-blue-600 dark:prose-invert dark:prose-a:text-blue-400 prose-ul:text-lg max-w-none">
             <MDX />
          </article>
       </>

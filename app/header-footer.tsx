@@ -13,7 +13,9 @@ export function Header({ logoSrc }: HeaderFooterProps) {
       <header className="mb-8 flex items-center justify-between px-0 md:px-8">
          <HeaderFooterContent logoSrc={logoSrc} />
          <div className="flex space-x-8 text-xl">
-            <Link href="/blog">Blog</Link>
+            <Link href="/blog" className="text-foreground">
+               Blog
+            </Link>
             <SocialIconRow className="hidden sm:flex" />
          </div>
       </header>
@@ -23,7 +25,7 @@ export function Header({ logoSrc }: HeaderFooterProps) {
 export function Footer({ logoSrc }: HeaderFooterProps) {
    return (
       <footer className="my-8 flex flex-col gap-6 px-0 md:my-16 md:px-8">
-         <hr aria-orientation="horizontal" className="my-8 border-gray-200" />
+         <hr aria-orientation="horizontal" className="border-border my-8" />
          <div className="lg:hidden">
             <EmailSubscription />
          </div>

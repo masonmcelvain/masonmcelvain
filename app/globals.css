@@ -3,6 +3,15 @@
 
 @theme {
    --animate-shoot: shoot 1s ease-out forwards;
+
+   --color-background: var(--bg);
+   --color-foreground: var(--fg);
+   --color-foreground-muted: var(--fg-muted);
+   --color-foreground-subtle: var(--fg-subtle);
+   --color-border: var(--border-color);
+   --color-border-hover: var(--border-hover-color);
+   --color-surface: var(--surface-color);
+   --color-surface-elevated: var(--surface-elevated-color);
 }
 
 @keyframes shoot {
@@ -18,13 +27,40 @@
 }
 
 @layer base {
+   :root {
+      --bg: white;
+      --fg: var(--color-gray-900);
+      --fg-muted: var(--color-gray-700);
+      --fg-subtle: var(--color-gray-500);
+      --border-color: var(--color-gray-200);
+      --border-hover-color: var(--color-gray-400);
+      --surface-color: var(--color-gray-100);
+      --surface-elevated-color: white;
+   }
+
+   @media (prefers-color-scheme: dark) {
+      :root {
+         --bg: var(--color-gray-950);
+         --fg: var(--color-gray-100);
+         --fg-muted: var(--color-gray-300);
+         --fg-subtle: var(--color-gray-400);
+         --border-color: var(--color-gray-800);
+         --border-hover-color: var(--color-gray-600);
+         --surface-color: var(--color-gray-900);
+         --surface-elevated-color: var(--color-gray-800);
+      }
+   }
+
+   html {
+      @apply bg-background;
+   }
    h1 {
-      @apply text-5xl font-bold text-gray-900;
+      @apply text-foreground text-5xl font-bold;
    }
    h2 {
-      @apply text-3xl font-bold text-gray-900;
+      @apply text-foreground text-3xl font-bold;
    }
    p {
-      @apply text-lg text-gray-700;
+      @apply text-foreground-muted text-lg;
    }
 }

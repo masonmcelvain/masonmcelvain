@@ -22,7 +22,7 @@ export function BaseIcon({
    const h = height ?? "h-8";
    return (
       <Link aria-label={ariaLabel} href={url} target="_blank">
-         <div className="opacity-100 transition-opacity hover:opacity-100 lg:opacity-30">
+         <div className="text-foreground opacity-100 transition-opacity hover:opacity-100 not-dark:lg:opacity-30 dark:hover:opacity-70">
             <Icon className={`${w} ${h}`} color={color} />
          </div>
       </Link>

@@ -93,7 +93,7 @@ export function VideoWithCaption({
                preload="metadata"
             />
          </div>
-         <figcaption className="mt-2 text-center text-sm text-gray-500">
+         <figcaption className="text-foreground-subtle mt-2 text-center text-sm">
             {caption}
          </figcaption>
       </figure>

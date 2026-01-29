@@ -144,14 +144,14 @@ export function KeyboardShortcutsLegend() {
          onClick={() => setIsDismissed(true)}
          aria-label="Dismiss keyboard shortcuts"
       >
-         <div className="rounded-lg border border-gray-200 bg-white/90 px-4 py-3 shadow-lg backdrop-blur-sm">
+         <div className="border-border bg-surface-elevated/90 rounded-lg border px-4 py-3 shadow-lg backdrop-blur-sm">
             <ul className="space-y-2 text-sm">
                {shortcuts.map(({ key, label }) => (
                   <li key={key} className="flex items-center gap-3">
-                     <kbd className="inline-flex h-6 w-6 items-center justify-center rounded border border-gray-300 bg-gray-100 font-mono text-xs font-medium text-gray-700">
+                     <kbd className="border-border bg-surface text-foreground-muted inline-flex h-6 w-6 items-center justify-center rounded border font-mono text-xs font-medium">
                         {key}
                      </kbd>
-                     <span className="text-gray-500">{label}</span>
+                     <span className="text-foreground-subtle">{label}</span>
                   </li>
                ))}
             </ul>

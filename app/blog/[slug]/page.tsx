@@ -45,7 +45,7 @@ export default async function BlogPostPage({ params }: Props) {
       <article>
          <header className="mb-8">
             <h1>{post.title}</h1>
-            <time className="mt-2 block text-gray-500">
+            <time className="text-foreground-subtle mt-2 block">
                {new Date(post.date).toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "long",
@@ -59,7 +59,7 @@ export default async function BlogPostPage({ params }: Props) {
                priority
             />
          </header>
-         <div className="prose prose-lg prose-a:text-blue-600 max-w-none">
+         <div className="prose prose-lg prose-a:text-blue-600 dark:prose-invert dark:prose-a:text-blue-400 max-w-none">
             <MDXRemote source={post.content} components={mdxComponents} />
          </div>
       </article>

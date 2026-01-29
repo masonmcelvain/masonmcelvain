@@ -22,7 +22,7 @@ export default function Page() {
          <SocialIconRow className="mb-12 self-center md:hidden" />
          <h2 className="mb-12 text-center">Me on the web</h2>
          <ProjectGrid projects={projects} />
-         <hr aria-orientation="horizontal" className="my-16 border-gray-200" />
+         <hr aria-orientation="horizontal" className="border-border my-16" />
          <Collage />
       </main>
    );

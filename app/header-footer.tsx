@@ -13,7 +13,9 @@ export function Header({ logoSrc }: HeaderFooterProps) {
       <header className="mb-8 flex items-center justify-between px-0 md:px-8">
          <HeaderFooterContent logoSrc={logoSrc} />
          <div className="flex space-x-8 text-xl">
-            <Link href="/blog">Blog</Link>
+            <Link href="/blog" className="text-foreground">
+               Blog
+            </Link>
             <SocialIconRow className="hidden sm:flex" />
          </div>
       </header>

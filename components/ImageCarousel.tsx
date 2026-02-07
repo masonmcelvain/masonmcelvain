@@ -150,7 +150,7 @@ export function ImageCarousel({
 
    return (
       <figure className="my-8">
-         <div className="not-prose relative overflow-hidden rounded-lg">
+         <div className="not-prose relative overflow-hidden">
             <div ref={emblaRef} className="overflow-hidden">
                <div className="flex touch-pan-y touch-pinch-zoom">
                   {images.map((src, index) => (
@@ -160,7 +160,7 @@ export function ImageCarousel({
                      >
                         <div
                            data-carousel-slide-inner
-                           className="relative mx-auto w-full max-w-full sm:max-h-[85vh] sm:w-auto"
+                           className="relative mx-auto w-full max-w-full overflow-hidden rounded-lg sm:max-h-[85vh] sm:w-auto"
                            style={{ aspectRatio: aspectRatios[index] }}
                         >
                            <Image

@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import {
    type CSSProperties,
-   type FormEvent,
+   type SubmitEvent,
    useEffect,
    useRef,
    useState,
@@ -70,7 +70,7 @@ export function EmailSubscription() {
       }, 1000);
    }
 
-   async function handleSubmit(e: FormEvent) {
+   async function handleSubmit(e: SubmitEvent<HTMLFormElement>) {
       e.preventDefault();
 
       const now = Date.now();

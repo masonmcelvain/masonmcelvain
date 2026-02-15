@@ -20,7 +20,8 @@
       "lint:fix": "eslint . --fix .",
       "format": "prettier --write .",
       "prepare": "husky",
-      "typecheck": "tsc --pretty"
+      "typecheck": "tsc --pretty",
+      "typegen": "next typegen"
    },
    "dependencies": {
       "@sentry/nextjs": "10.38.0",

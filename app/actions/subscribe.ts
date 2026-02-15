@@ -30,6 +30,12 @@ export async function subscribe(
          if (response.status === 400 && data.email) {
             return { success: false, error: data.email[0] };
          }
+         if (data.code === "subscriber_blocked") {
+            return {
+               success: false,
+               error: "Email blocked. Tell Mason and he'll fix it, sorry!",
+            };
+         }
          return {
             success: false,
             error: "Subscription failed. Please try again.",

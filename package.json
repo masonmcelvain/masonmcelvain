@@ -23,6 +23,7 @@
       "typecheck": "tsc --pretty"
    },
    "dependencies": {
+      "@sentry/nextjs": "10.38.0",
       "clsx": "2.1.1",
       "gray-matter": "4.0.3",
       "next": "16.1.6",

@@ -1,6 +1,7 @@
 "use server";
 
 import { BUTTONDOWN_API_KEY } from "@/config/env";
+import { captureException, captureMessage } from "@sentry/nextjs";
 
 type SubscribeResult = { success: true } | { success: false; error: string };
 
@@ -31,11 +32,24 @@ export async function subscribe(
             return { success: false, error: data.email[0] };
          }
          if (data.code === "subscriber_blocked") {
+            captureMessage("Subscriber blocked by firewall", {
+               extra: {
+                  data,
+                  email_address,
+               },
+            });
             return {
                success: false,
                error: "Email blocked. Tell Mason and he'll fix it, sorry!",
             };
          }
+         captureMessage("Unhandled subscription failure", {
+            extra: {
+               data,
+               email_address,
+            },
+            level: "warning",
+         });
          return {
             success: false,
             error: "Subscription failed. Please try again.",
@@ -43,7 +57,8 @@ export async function subscribe(
       }
 
       return { success: true };
-   } catch {
+   } catch (e) {
+      captureException(e);
       return {
          success: false,
          error: "Subscription failed. Please try again.",

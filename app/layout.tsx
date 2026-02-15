@@ -18,7 +18,7 @@ export default function RootLayout({
          <body>
             <NextTopLoader showSpinner={false} />
             <KeyboardShortcutsLegend />
-            <div className="mx-auto mt-2 w-full px-4 sm:px-6 md:mt-4 lg:w-[60rem] lg:px-0 xl:w-[68.75rem]">
+            <div className="mx-auto flex min-h-screen w-full flex-col px-4 pt-2 sm:px-6 md:pt-4 lg:w-[60rem] lg:px-0 xl:w-[68.75rem]">
                <Header logoSrc={logoSrc} />
                {children}
                <Footer logoSrc={logoSrc} />

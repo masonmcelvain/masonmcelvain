@@ -142,16 +142,23 @@ export function EmailSubscription() {
                <FaStar className="h-3 w-3" />
             </span>
          ))}
-         <p
-            className={cn(
-               "mt-2 min-h-[20px] text-sm font-semibold",
-               ["success", "error"].includes(status) || "invisible",
-               status === "success" && "text-green-600 dark:text-green-400",
-               status === "error" && "text-red-600 dark:text-red-400",
+         <div className="mt-2 min-h-[20px]">
+            {status === "loading" && (
+               <div className="h-5 w-5 animate-spin rounded-full border-2 border-gray-300 border-t-gray-700 dark:border-gray-600 dark:border-t-white" />
             )}
-         >
-            {message}
-         </p>
+            {(status === "success" || status === "error") && (
+               <p
+                  className={cn(
+                     "text-sm font-semibold",
+                     status === "success" &&
+                        "text-green-600 dark:text-green-400",
+                     status === "error" && "text-red-600 dark:text-red-400",
+                  )}
+               >
+                  {message}
+               </p>
+            )}
+         </div>
       </div>
    );
 }

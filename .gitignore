@@ -5,8 +5,12 @@
 
 # next.js
 /.next/
+next-env.d.ts
 
 # typescript
 /tsconfig.tsbuildinfo
 
 /.tmp/
+
+# Sentry Config File
+.env.sentry-build-plugin

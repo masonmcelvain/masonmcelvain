@@ -16,5 +16,7 @@ jobs:
            run: corepack enable && corepack prepare pnpm@10.4.0 --activate
          - name: Install workspaces
            run: pnpm install
+         - name: Generate types
+           run: pnpm typegen
          - name: Check types
            run: pnpm typecheck

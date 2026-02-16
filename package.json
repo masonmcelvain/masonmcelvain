@@ -20,13 +20,15 @@
       "lint:fix": "eslint . --fix .",
       "format": "prettier --write .",
       "prepare": "husky",
-      "typecheck": "tsc --pretty"
+      "typecheck": "tsc --pretty",
+      "typegen": "next typegen"
    },
    "dependencies": {
+      "@sentry/nextjs": "10.38.0",
       "clsx": "2.1.1",
       "gray-matter": "4.0.3",
       "next": "16.1.6",
-      "next-mdx-remote": "5.0.0",
+      "next-mdx-remote": "6.0.0",
       "nextjs-toploader": "3.9.17",
       "react": "19.2.4",
       "react-dom": "19.2.4",

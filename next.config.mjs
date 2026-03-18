@@ -1,6 +1,11 @@
 import { withSentryConfig } from "@sentry/nextjs";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+   experimental: {
+      serverActions: {
+         allowedOrigins: ["masonmcelvain.com", "www.masonmcelvain.com"],
+      },
+   },
    images: {
       remotePatterns: [
          {

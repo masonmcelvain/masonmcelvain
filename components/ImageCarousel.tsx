@@ -13,12 +13,13 @@ import {
 type CarouselImage = {
    src: string;
    orientation: "portrait" | "landscape";
+   caption?: string;
 };
 
 type ImageCarouselProps = {
    images: CarouselImage[];
    alt?: string;
-   caption: string;
+   caption?: string;
    priority?: boolean;
 };
 
@@ -30,6 +31,20 @@ export function ImageCarousel({
 }: ImageCarouselProps) {
    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
    const [selectedSnap, setSelectedSnap] = useState(0);
+   const hasPerImageCaptions = images.some((img) => img.caption);
+   const maxCaptionLines = Math.min(
+      Math.ceil(
+         Math.max(...images.map((img) => img.caption?.length ?? 0)) / 50,
+      ),
+      3,
+   );
+   const mobileMinHeight = (
+      {
+         1: "min-h-[1.25rem]",
+         2: "min-h-[2.5rem]",
+         3: "min-h-[3.75rem]",
+      } as Record<number, string>
+   )[maxCaptionLines];
 
    const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
    const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
@@ -73,7 +88,7 @@ export function ImageCarousel({
                         >
                            <Image
                               src={mediaUrl(img.src)}
-                              alt={alt ?? caption}
+                              alt={alt ?? img.caption ?? caption ?? ""}
                               fill
                               className="object-contain"
                               priority={priority && index === 0}
@@ -95,6 +110,15 @@ export function ImageCarousel({
             />
          </div>
 
+         {/* Per-image Caption */}
+         {hasPerImageCaptions && (
+            <p
+               className={`text-foreground-subtle mt-2 text-center text-sm ${mobileMinHeight} sm:min-h-[1.25rem]`}
+            >
+               {images[selectedSnap]?.caption}
+            </p>
+         )}
+
          {/* Pagination Dots */}
          <div className="mt-3 flex justify-center gap-2">
             {images.map((img, index) => (
@@ -112,9 +136,11 @@ export function ImageCarousel({
             ))}
          </div>
 
-         <figcaption className="text-foreground-subtle mt-2 text-center text-sm">
-            {caption}
-         </figcaption>
+         {caption && (
+            <figcaption className="text-foreground-subtle mt-2 text-center text-sm">
+               {caption}
+            </figcaption>
+         )}
       </figure>
    );
 }

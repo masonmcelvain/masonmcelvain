@@ -62,7 +62,11 @@ export default async function BlogPostPage({ params }: Props) {
             />
          </header>
          <div className="prose prose-lg prose-a:text-blue-600 dark:prose-invert dark:prose-a:text-blue-400 max-w-none">
-            <MDXRemote source={post.content} components={mdxComponents} />
+            <MDXRemote
+               source={post.content}
+               components={mdxComponents}
+               options={{ blockJS: false }}
+            />
          </div>
       </article>
    );

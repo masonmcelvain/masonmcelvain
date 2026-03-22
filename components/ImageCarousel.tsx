@@ -90,6 +90,7 @@ export function ImageCarousel({
                               src={mediaUrl(img.src)}
                               alt={alt ?? img.caption ?? caption ?? ""}
                               fill
+                              sizes="100vw"
                               className="object-contain"
                               priority={priority && index === 0}
                            />

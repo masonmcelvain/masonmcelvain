@@ -30,6 +30,7 @@ export function ImageWithCaption({
                src={mediaUrl(src)}
                alt={alt ?? caption}
                fill
+               sizes="(min-width: 1280px) 68.75rem, (min-width: 1024px) 60rem, 100vw"
                className="object-contain"
                onLoad={(e) => {
                   const img = e.currentTarget;

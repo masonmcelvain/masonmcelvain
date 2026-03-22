@@ -75,7 +75,7 @@ export function ImageCarousel({
                   {images.map((img, index) => (
                      <div
                         key={img.src}
-                        className="min-w-0 flex-[0_0_100%] pl-4 first:pl-0"
+                        className="min-w-0 flex-[0_0_100%] px-2"
                      >
                         <div
                            className="relative mx-auto w-full max-w-full sm:max-h-[85vh] sm:w-auto"

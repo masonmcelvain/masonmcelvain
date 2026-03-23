@@ -47,6 +47,11 @@ export default async function BlogPostPage({ params }: Props) {
       <article>
          <header className="mb-8">
             <h1>{post.title}</h1>
+            {post.description && (
+               <p className="text-foreground-subtle mt-2 text-lg">
+                  {post.description}
+               </p>
+            )}
             <time className="text-foreground-subtle mt-2 block">
                {new Date(post.date).toLocaleDateString("en-US", {
                   year: "numeric",

@@ -24,7 +24,7 @@
       "typegen": "next typegen"
    },
    "dependencies": {
-      "@sentry/nextjs": "10.49.0",
+      "@sentry/nextjs": "10.50.0",
       "clsx": "2.1.1",
       "embla-carousel-react": "8.6.0",
       "gray-matter": "4.0.3",

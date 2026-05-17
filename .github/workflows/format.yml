@@ -13,7 +13,7 @@ jobs:
            with:
               node-version-file: ".nvmrc"
          - name: Install PNPM
-           run: corepack enable && corepack prepare pnpm@10.4.0 --activate
+           run: corepack enable && corepack prepare pnpm@11.1.2 --activate
          - name: Install workspaces
            run: pnpm install
          - name: Run Prettier

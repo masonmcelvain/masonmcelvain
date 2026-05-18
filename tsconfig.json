@@ -1,7 +1,7 @@
 {
    "compilerOptions": {
-      "target": "es5",
-      "lib": ["dom", "dom.iterable", "esnext"],
+      "target": "es2022",
+      "lib": ["dom", "esnext"],
       "allowJs": true,
       "skipLibCheck": true,
       "strict": true,
@@ -14,17 +14,13 @@
       "resolveJsonModule": true,
       "isolatedModules": true,
       "jsx": "react-jsx",
-      "baseUrl": ".",
+      "types": ["node"],
       "paths": {
          "@/*": ["./*"],
-         "@data/*": ["data/*"],
-         "@helpers/*": ["helpers/*"],
-         "@markdown/*": ["markdown/*"],
-         "@models/*": ["models/*"],
-         "@common/*": ["packages/common/*"],
-         "@icons/*": ["packages/icons/*"],
-         "@public/*": ["public/*"],
-         "@ui/*": ["packages/ui/*"]
+         "@data/*": ["./data/*"],
+         "@common/*": ["./packages/common/*"],
+         "@icons/*": ["./packages/icons/*"],
+         "@public/*": ["./public/*"]
       },
       "plugins": [
          {

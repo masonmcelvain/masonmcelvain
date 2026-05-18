@@ -8,7 +8,7 @@
       "type": "git",
       "url": "https://github.com/masonmcelvain/masonmcelvain"
    },
-   "packageManager": "pnpm@10.33.4",
+   "packageManager": "pnpm@11.1.2",
    "engines": {
       "node": "24.15.0"
    },
@@ -24,7 +24,7 @@
       "typegen": "next typegen"
    },
    "dependencies": {
-      "@sentry/nextjs": "10.52.0",
+      "@sentry/nextjs": "10.53.1",
       "clsx": "2.1.1",
       "embla-carousel-react": "8.6.0",
       "gray-matter": "4.0.3",
@@ -40,7 +40,7 @@
       "@eslint/js": "9.39.4",
       "@tailwindcss/postcss": "4.3.0",
       "@tailwindcss/typography": "0.5.19",
-      "@types/node": "24.12.3",
+      "@types/node": "24.12.4",
       "@types/react": "19.2.14",
       "@typescript-eslint/eslint-plugin": "8.47.0",
       "@typescript-eslint/parser": "8.47.0",

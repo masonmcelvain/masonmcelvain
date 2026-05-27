@@ -13,6 +13,7 @@ const nextConfig = {
             hostname: "media.masonmcelvain.com",
          },
       ],
+      minimumCacheTTL: 31536000,
    },
 };
 

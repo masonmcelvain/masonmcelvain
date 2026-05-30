@@ -4,6 +4,10 @@
 @theme {
    --animate-shoot: shoot 1s ease-out forwards;
 
+   --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
+   --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+   --font-mono: var(--font-space-mono), ui-monospace, monospace;
+
    --color-background: var(--bg);
    --color-foreground: var(--fg);
    --color-foreground-muted: var(--fg-muted);
@@ -55,10 +59,10 @@
       @apply bg-background;
    }
    h1 {
-      @apply text-foreground text-5xl font-bold;
+      @apply text-foreground font-display text-5xl font-extrabold;
    }
    h2 {
-      @apply text-foreground text-3xl font-bold;
+      @apply text-foreground font-display text-3xl font-bold;
    }
    p {
       @apply text-foreground-muted text-lg;

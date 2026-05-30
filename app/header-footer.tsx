@@ -15,7 +15,7 @@ export function Header({ logoSrc }: HeaderFooterProps) {
          <div className="flex space-x-8 text-xl">
             <Link
                href="/blog"
-               className="text-foreground bg-[image:var(--rainbow)] bg-[length:0%_3px] bg-bottom bg-no-repeat font-semibold transition-[background-size] duration-300 hover:bg-[length:100%_3px] active:bg-[length:100%_3px]"
+               className="text-foreground bg-[image:var(--rainbow)] bg-[length:0%_3px] bg-bottom bg-no-repeat font-semibold transition-[background-size] duration-300 hover:bg-[length:100%_3px]"
             >
                Blog
             </Link>

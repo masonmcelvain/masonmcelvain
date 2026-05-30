@@ -105,7 +105,7 @@ export function Collage() {
                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                      title={image.title ?? image.alt}
                   />
-                  <div className="pointer-events-none absolute right-0 bottom-0 left-0 bg-black/75 px-3 py-2 text-sm text-white opacity-0 transition-opacity duration-200 peer-checked:opacity-100 md:peer-checked:opacity-0 md:hover:opacity-100">
+                  <div className="pointer-events-none absolute right-0 bottom-0 left-0 bg-black/75 px-3 py-2 text-sm text-white opacity-0 transition-opacity duration-300 peer-checked:opacity-100 md:peer-checked:opacity-0 md:hover:opacity-100">
                      {image.title ?? image.alt}
                   </div>
                </label>

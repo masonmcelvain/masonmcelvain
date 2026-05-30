@@ -127,7 +127,7 @@ export function ImageCarousel({
                   key={img.src}
                   type="button"
                   onClick={() => scrollTo(index)}
-                  className={`h-2 w-2 rounded-full transition-colors ${
+                  className={`h-2 w-2 rounded-full transition-colors duration-300 ${
                      index === selectedSnap
                         ? "bg-foreground"
                         : "bg-foreground/30"

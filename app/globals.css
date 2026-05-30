@@ -4,6 +4,10 @@
 @theme {
    --animate-shoot: shoot 1s ease-out forwards;
 
+   --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
+   --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+   --font-mono: var(--font-space-mono), ui-monospace, monospace;
+
    --color-background: var(--bg);
    --color-foreground: var(--fg);
    --color-foreground-muted: var(--fg-muted);
@@ -34,6 +38,16 @@
       --fg-subtle: var(--color-gray-500);
       --border-color: var(--color-gray-200);
       --border-hover-color: var(--color-gray-400);
+      --rainbow: linear-gradient(
+         to right,
+         #d4145a,
+         #ff2e7e,
+         #7b2ff7,
+         #2d6cff,
+         #00c2a8,
+         #00a14b,
+         #ffb23e
+      );
       --surface-color: var(--color-gray-100);
       --surface-elevated-color: white;
    }
@@ -55,10 +69,10 @@
       @apply bg-background;
    }
    h1 {
-      @apply text-foreground text-5xl font-bold;
+      @apply text-foreground font-display text-5xl font-extrabold;
    }
    h2 {
-      @apply text-foreground text-3xl font-bold;
+      @apply text-foreground font-display text-3xl font-bold;
    }
    p {
       @apply text-foreground-muted text-lg;

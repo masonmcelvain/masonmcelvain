@@ -100,7 +100,7 @@ jobs:
            id: fc
            with:
               issue-number: ${{ github.event.number }}
-              body-includes: "<!-- __NEXTJS_BUNDLE -->"
+              body-includes: "<!-- __NEXTJS_BUNDLE_masonmcelvain -->"
 
          - name: Create or Update Comment
            uses: peter-evans/create-or-update-comment@v5

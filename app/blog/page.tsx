@@ -19,9 +19,9 @@ export default function BlogPage() {
                <li key={post.slug}>
                   <Link
                      href={`/blog/${post.slug}`}
-                     className="group border-border hover:border-border-hover flex flex-col gap-4 rounded-lg border p-6 transition-colors sm:flex-row sm:items-start"
+                     className="group border-border hover:border-border-hover flex flex-col gap-4 rounded-lg border transition-colors sm:flex-row sm:items-start"
                   >
-                     <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden rounded-md sm:w-48">
+                     <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden rounded-tl-lg rounded-tr-lg sm:w-48 sm:rounded-tr-none sm:rounded-bl-lg">
                         <Image
                            src={mediaUrl(post.image)}
                            alt={post.imageAlt}

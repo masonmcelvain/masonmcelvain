@@ -65,5 +65,5 @@ export const viewport: Viewport = {
 function getRandomLogoPath() {
    const max = 21;
    const int = Math.floor(Math.random() * max + 1);
-   return `/images/logos/logo-${int}.png`;
+   return `/images/logos/logo-${int}.webp`;
 }

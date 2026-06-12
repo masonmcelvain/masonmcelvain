@@ -54,7 +54,8 @@
       "prettier": "3.8.3",
       "prettier-plugin-tailwindcss": "0.8.0",
       "tailwindcss": "4.3.0",
-      "typescript": "6.0.3"
+      "typescript": "6.0.3",
+      "vercel": "54.9.1"
    },
    "lint-staged": {
       "*": "prettier --write --ignore-unknown"

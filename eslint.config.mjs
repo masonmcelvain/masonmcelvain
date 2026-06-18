@@ -1,6 +1,5 @@
 import js from "@eslint/js";
 import typescriptEslint from "@typescript-eslint/eslint-plugin";
-import tsParser from "@typescript-eslint/parser";
 import nextPlugin from "eslint-config-next";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import prettierConfig from "eslint-config-prettier";
@@ -18,23 +17,12 @@ const config = [
    },
    ...nextPlugin,
    {
-      plugins: {
-         "@typescript-eslint": typescriptEslint,
-      },
-      languageOptions: {
-         parser: tsParser,
-      },
+      // eslint-config-next already registers the @typescript-eslint plugin and
+      // TypeScript parser for these files, so we only layer on the recommended
+      // rules here. Re-registering the plugin would redefine it and error.
+      files: ["**/*.ts", "**/*.tsx"],
       rules: {
          ...typescriptEslint.configs.recommended.rules,
-         ...jsxA11y.flatConfigs.recommended.rules,
-         "arrow-parens": ["error", "always"],
-         "arrow-spacing": [
-            "error",
-            {
-               before: true,
-               after: true,
-            },
-         ],
          "@typescript-eslint/no-unused-vars": [
             "warn",
             {
@@ -43,6 +31,19 @@ const config = [
                destructuredArrayIgnorePattern: "^_",
                ignoreRestSiblings: true,
                varsIgnorePattern: "^_",
+            },
+         ],
+      },
+   },
+   {
+      rules: {
+         ...jsxA11y.flatConfigs.recommended.rules,
+         "arrow-parens": ["error", "always"],
+         "arrow-spacing": [
+            "error",
+            {
+               before: true,
+               after: true,
             },
          ],
          "object-curly-spacing": ["error", "always"],

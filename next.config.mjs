@@ -15,6 +15,14 @@ const nextConfig = {
       ],
       minimumCacheTTL: 31536000,
    },
+   async rewrites() {
+      return [
+         {
+            source: "/share/netsuite-pipeline",
+            destination: "/share/netsuite-pipeline.html",
+         },
+      ];
+   },
 };
 
 export default withSentryConfig(nextConfig, {

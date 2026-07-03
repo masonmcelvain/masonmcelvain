@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NetSuite Sync — Tech Deep Dive</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0e1116;
+    --surface: #161b22;
+    --surface2: #1b222b;
+    --ink: #eef2f7;
+    --ink2: #a9b4c0;
+    --muted: #6e7a88;
+    --grid: #242c37;
+    --axis: #3a4553;
+    --accent: #3987e5;
+    --accent-ink: #7db4f0;
+    --accent-soft: rgba(57, 135, 229, 0.12);
+    --amber: #d9a13d;
+    --amber-soft: rgba(217, 161, 61, 0.10);
+    --green: #3fb950;
+    --line: rgba(255, 255, 255, 0.08);
+    --sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+    font-size: clamp(11px, 1.9vmin, 20px);
+  }
+  html, body { background: var(--bg); margin: 0; }
+  body { font-family: var(--sans); color: var(--ink); }
+
+  .deck { position: fixed; inset: 0; background: var(--bg); overflow: hidden; }
+
+  .slide {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: clamp(20px, 7vh, 70px) clamp(24px, 8vw, 130px);
+    box-sizing: border-box;
+    opacity: 0; visibility: hidden; transform: translateY(14px);
+    transition: opacity 0.32s ease, transform 0.32s ease, visibility 0s linear 0.32s;
+    overflow-y: auto;
+  }
+  .slide.active {
+    opacity: 1; visibility: visible; transform: none;
+    transition: opacity 0.32s ease, transform 0.32s ease, visibility 0s;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .slide, .slide.active { transition: none; transform: none; }
+    .cursor { animation: none !important; }
+  }
+
+  .eyebrow {
+    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--muted); margin: 0 0 1.1rem;
+  }
+  .eyebrow b { color: var(--accent-ink); font-weight: 600; }
+
+  h1 {
+    font-size: 3.6rem; line-height: 1.04; letter-spacing: -0.025em;
+    font-weight: 800; margin: 0 0 1.2rem; text-wrap: balance; max-width: 20ch;
+  }
+  h2 {
+    font-size: 2.35rem; line-height: 1.08; letter-spacing: -0.02em;
+    font-weight: 750; margin: 0 0 1.4rem; text-wrap: balance; max-width: 26ch;
+  }
+  .lede { font-size: 1.18rem; line-height: 1.55; color: var(--ink2); max-width: 62ch; margin: 0 0 1rem; }
+  .lede strong, li strong { color: var(--ink); font-weight: 650; }
+
+  ul.points { list-style: none; margin: 0.4rem 0 0; padding: 0; max-width: 66ch; }
+  ul.points li {
+    font-size: 1.06rem; line-height: 1.5; color: var(--ink2);
+    padding: 0.42rem 0 0.42rem 1.5rem; position: relative;
+  }
+  ul.points li::before {
+    content: "▸"; position: absolute; left: 0; color: var(--accent);
+    font-family: var(--mono); font-size: 0.9em; top: 0.55rem;
+  }
+
+  code, .code { font-family: var(--mono); }
+  .codeblock {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 1rem 1.2rem; font-family: var(--mono); font-size: 0.82rem;
+    line-height: 1.65; color: var(--ink2); overflow-x: auto; margin: 0.8rem 0;
+    white-space: pre;
+  }
+  .codeblock .kw { color: var(--accent-ink); }
+  .codeblock .str { color: var(--amber); }
+  .codeblock .cm { color: var(--muted); }
+  .inline-code {
+    font-family: var(--mono); font-size: 0.88em; color: var(--accent-ink);
+    background: var(--accent-soft); padding: 0.08em 0.4em; border-radius: 6px;
+  }
+
+  .callout {
+    display: flex; gap: 0.8rem; align-items: baseline;
+    background: var(--amber-soft); border: 1px solid rgba(217, 161, 61, 0.25);
+    border-radius: 12px; padding: 0.9rem 1.2rem; margin-top: 1.6rem; max-width: 66ch;
+  }
+  .callout .tag { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; color: var(--amber); white-space: nowrap; }
+  .callout p { margin: 0; font-size: 1rem; line-height: 1.5; color: var(--ink2); }
+
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.6rem; }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    padding: 1.2rem 1.4rem;
+  }
+  .card .tag {
+    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--accent-ink); display: block; margin-bottom: 0.55rem;
+  }
+  .card .tag.warn { color: var(--amber); }
+  .card h3 { margin: 0 0 0.5rem; font-size: 1.15rem; letter-spacing: -0.01em; }
+  .card p { margin: 0; font-size: 0.98rem; line-height: 1.52; color: var(--ink2); }
+  .card p + p { margin-top: 0.55rem; }
+
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4rem; align-items: start; }
+
+  /* flow diagram */
+  .flow { display: flex; align-items: center; gap: 0.9rem; margin: 1.4rem 0 0.4rem; flex-wrap: wrap; }
+  .node {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    padding: 1rem 1.3rem; min-width: 11rem;
+  }
+  .node .nt { font-weight: 700; font-size: 1.05rem; margin-bottom: 0.3rem; }
+  .node .nd { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); line-height: 1.6; }
+  .node.hot { border-color: rgba(57, 135, 229, 0.45); background: linear-gradient(180deg, var(--accent-soft), var(--surface)); }
+  .arr { font-family: var(--mono); color: var(--accent); font-size: 1.3rem; }
+
+  /* stat grid */
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem; }
+  .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 1.3rem 1.4rem; }
+  .stat .big { font-size: 2.15rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+  .stat .big .dim { color: var(--muted); font-weight: 600; }
+  .stat .big .up { color: var(--green); }
+  .stat .lab { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: 0.5rem; line-height: 1.6; }
+
+  /* terminal line on title */
+  .term {
+    font-family: var(--mono); font-size: 0.95rem; color: var(--ink2);
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+    padding: 0.8rem 1.1rem; display: inline-block; align-self: flex-start;
+    margin-top: 2.2rem; white-space: nowrap;
+  }
+  .term .prompt { color: var(--green); margin-right: 0.6em; }
+  .term .flag { color: var(--accent-ink); }
+  .cursor { display: inline-block; width: 0.55em; height: 1.15em; background: var(--accent); margin-left: 0.2em; animation: blink 1.1s steps(1) infinite; vertical-align: text-bottom; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* window diagram */
+  .track { margin: 1.6rem 0 0.4rem; max-width: 58rem; }
+  .track-bar { display: flex; gap: 2px; align-items: stretch; height: 2.6rem; }
+  .win {
+    flex: 1; background: var(--surface2); border: 1px solid var(--line); border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 0.62rem; color: var(--muted);
+  }
+  .win.done { background: var(--accent-soft); border-color: rgba(57, 135, 229, 0.3); color: var(--accent-ink); }
+  .win.now { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+  .track-labels { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 0.7rem; color: var(--muted); margin-top: 0.5rem; }
+
+  /* restlet payload diagram */
+  .payload { margin-top: 1.4rem; max-width: 60rem; }
+  .payload-row { margin-bottom: 1.5rem; }
+  .payload-row .plab { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.55rem; }
+  .payload-row .plab b { color: var(--ink); font-weight: 650; }
+  .blocks { display: flex; gap: 2px; align-items: center; }
+  .blk { height: 2.2rem; border-radius: 5px; background: var(--accent); opacity: 0.85; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 0.65rem; color: #fff; }
+  .blk.tiny { width: 1.05rem; background: var(--muted); opacity: 0.9; }
+  .blk.big { width: 5.25rem; }
+  .bsum { font-family: var(--mono); font-size: 0.85rem; color: var(--ink); margin-left: 0.8rem; white-space: nowrap; }
+  .bsum .up { color: var(--green); font-weight: 700; }
+
+  /* chart text */
+  .tick, .xlab, .vlab, .ptitle, .psub { font-family: var(--mono); fill: var(--muted); }
+  .tick { font-size: 11px; }
+  .xlab { font-size: 11px; }
+  .xlab-best { fill: var(--accent-ink); font-weight: 700; }
+  .vlab { font-size: 10.5px; }
+  .vlab-best { fill: var(--ink); font-weight: 700; font-size: 11.5px; }
+  .ptitle { font-family: var(--sans); fill: var(--ink); font-size: 14px; font-weight: 650; }
+  .psub { font-size: 10.5px; }
+  .figure { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 1.3rem 1.4rem 0.9rem; margin-top: 1rem; overflow-x: auto; }
+
+  .footline { margin-top: 1.8rem; font-family: var(--mono); font-size: 0.78rem; color: var(--muted); }
+  .footline b { color: var(--ink2); font-weight: 600; }
+
+  /* timeline chips */
+  .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.2rem; align-items: center; }
+  .chip {
+    font-family: var(--mono); font-size: 0.74rem; color: var(--ink2);
+    background: var(--surface); border: 1px solid var(--line); border-radius: 999px;
+    padding: 0.4rem 0.9rem;
+  }
+  .chip b { color: var(--accent-ink); font-weight: 600; }
+  .chip-arr { color: var(--accent); font-family: var(--mono); }
+
+  /* chrome */
+  .progress { position: fixed; left: 0; bottom: 0; height: 3px; background: var(--accent); width: 0; transition: width 0.25s ease; z-index: 10; }
+  .counter {
+    position: fixed; top: clamp(14px, 3vh, 26px); right: clamp(18px, 3vw, 34px);
+    font-family: var(--mono); font-size: 0.72rem; color: var(--muted); letter-spacing: 0.12em; z-index: 10;
+  }
+  .keys { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); margin-top: 2.6rem; }
+  .keys kbd {
+    font-family: var(--mono); background: var(--surface); border: 1px solid var(--line);
+    border-bottom-width: 2px; border-radius: 6px; padding: 0.12em 0.5em; color: var(--ink2); font-size: 0.95em;
+  }
+
+  @media (max-width: 820px) {
+    .split, .cards { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: 1fr 1fr; }
+    h1 { font-size: 2.6rem; }
+  }
+</style>
+
+<div class="deck" id="deck">
+
+  <!-- 1 · TITLE -->
+  <section class="slide">
+    <p class="eyebrow"><b>01</b> · TECH DEEP DIVE · MASON McELVAIN</p>
+    <h1>90 million rows out of a black box</h1>
+    <p class="lede">Rebuilding iFixit&rsquo;s NetSuite&nbsp;&rarr;&nbsp;MySQL data pipeline &mdash; and making a SaaS database we can&rsquo;t index or profile run <strong>10&ndash;30&times; faster</strong>.</p>
+    <div class="term"><span class="prompt">$</span>netsuite:pull <span class="flag">--table</span> TransactionLine <span class="flag">--all</span><span class="cursor"></span></div>
+    <p class="keys"><kbd>&rarr;</kbd> next &nbsp;·&nbsp; <kbd>&larr;</kbd> back &nbsp;·&nbsp; <kbd>F</kbd> fullscreen</p>
+  </section>
+
+  <!-- 2 · CONTEXT -->
+  <section class="slide">
+    <p class="eyebrow"><b>02</b> · CONTEXT</p>
+    <h2>NetSuite is the system of record. Analytics lives in MySQL.</h2>
+    <div class="flow">
+      <div class="node">
+        <div class="nt">NetSuite ERP</div>
+        <div class="nd">general ledger · inventory<br>sales &amp; purchase orders</div>
+      </div>
+      <div class="arr">&rarr;</div>
+      <div class="node hot">
+        <div class="nt">the pipeline</div>
+        <div class="nd">this talk</div>
+      </div>
+      <div class="arr">&rarr;</div>
+      <div class="node">
+        <div class="nt">MySQL <span class="inline-code">netsuite_sync</span></div>
+        <div class="nd">~45 tables + views</div>
+      </div>
+      <div class="arr">&rarr;</div>
+      <div class="node">
+        <div class="nt">Consumers</div>
+        <div class="nd">Metabase · analyst SQL<br>margin &amp; ROAS models</div>
+      </div>
+    </div>
+    <div class="callout">
+      <span class="tag">CONSTRAINT</span>
+      <p>NetSuite is a SaaS black box: <strong>no indexes, no EXPLAIN, no replica.</strong><br>Only rate-limited HTTP APIs.</p>
+    </div>
+  </section>
+
+  <!-- 3 · STARTING POINT -->
+  <section class="slide">
+    <p class="eyebrow"><b>03</b> · STARTING POINT</p>
+    <h2>The vendor connector didn&rsquo;t survive contact</h2>
+    <p class="lede">We started with <strong>CData Sync</strong>, an ETL tool built on NetSuite&rsquo;s REST API.</p>
+    <div class="cards">
+      <div class="card">
+        <span class="tag warn">SLOW</span>
+        <p>Record-at-a-time API semantics. Syncs measured in days, not hours.</p>
+      </div>
+      <div class="card">
+        <span class="tag warn">INCONSISTENT</span>
+        <p>Missed and duplicated rows undermined faith in the data.</p>
+      </div>
+      <div class="card">
+        <span class="tag warn">OPAQUE</span>
+        <p>When it broke, there was nothing to read and nothing to patch. Plus a license bill.</p>
+      </div>
+      <div class="card">
+        <span class="tag">DECISION</span>
+        <p>Build it in <strong>PHP, inside our monolith</strong> where cron, ORM, and migrations already live.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · BUILD V1 -->
+  <section class="slide">
+    <p class="eyebrow"><b>04</b> · BUILD V1</p>
+    <h2><span class="inline-code">netsuite:pull</span> &mdash; a declarative pull framework</h2>
+    <div class="split">
+      <div>
+        <div class="codeblock"><span class="kw">class</span> PullTransaction <span class="kw">extends</span> NetsuitePullTable {
+   <span class="cm">// SuiteQL column &rarr; MySQL column</span>
+   <span class="kw">const</span> NETSUITE_TO_DB_SCHEMA = [
+      <span class="str">'t.id'</span>         =&gt; <span class="str">'ID'</span>,
+      <span class="str">'t.trandate'</span>   =&gt; <span class="str">'Date'</span>,
+      <span class="cm">/* &hellip;the SELECT is generated from this map */</span>
+   ];
+   <span class="kw">const</span> NETSUITE_PRIMARY_KEYS = [<span class="str">'t.id'</span>];
+}</div>
+      </div>
+      <ul class="points">
+        <li><strong>~45 tables</strong>, sharing pagination, batched upserts, type-coercion, deletion.</li>
+        <li><strong>Cron tiers:</strong> every 5 min · nightly incremental · nightly full.</li>
+        <li><strong>Incremental updates:</strong> from <span class="inline-code">MAX(LastModifiedDate)</span>, minus a 60s overlap.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 5 · PAGINATION -->
+  <section class="slide">
+    <p class="eyebrow"><b>05</b> · FIRST HARD LESSON</p>
+    <h2>Keyset pagination beats OFFSET.</h2>
+    <div class="split">
+      <div>
+        <p class="lede">SuiteQL has <span class="inline-code">LIMIT/OFFSET</span> but shifted pages <strong>dropped rows</strong>.</p>
+        <div class="codeblock">WHERE  lastmodifieddate &gt; <span class="str">:cursor</span>
+ORDER  BY lastmodifieddate, id   <span class="cm">-- PK tiebreaker, always</span></div>
+      </div>
+      <ul class="points">
+        <li><strong>Idempotent:</strong> the 60s overlap re-reads boundaries; replaying a row is safe.</li>
+        <li><strong>Fail loud:</strong> report when a whole page shares one timestamp.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 6 · THE PIVOT -->
+  <section class="slide">
+    <p class="eyebrow"><b>06</b> · THE PIVOT</p>
+    <h2>Stop syncing answers. Sync the source.</h2>
+    <div class="cards">
+      <div class="card">
+        <span class="tag warn">BEFORE — SUMMARY TABLES</span>
+        <p>One bespoke SuiteQL join per business question.</p>
+      </div>
+      <div class="card">
+        <span class="tag">AFTER — SOURCE TABLES</span>
+        <p>Sync the raw tables once and <strong>answer questions</strong> with MySQL views.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · THE WALL -->
+  <section class="slide">
+    <p class="eyebrow"><b>07</b> · THE WALL</p>
+    <h2>~50M rows. 1 week syncs.</h2>
+    <p class="lede">Schema evolution was gated on sync speed.</p>
+    <div class="cards">
+      <div class="card">
+        <span class="tag warn">BOTTLENECK 1 — THE SORT</span>
+        <p>Keyset pagination needs <span class="inline-code">ORDER BY lastmodifieddate</span> &mdash; over an unbounded 42M-row set, NetSuite choked on the sort.</p>
+      </div>
+      <div class="card">
+        <span class="tag warn">BOTTLENECK 2 — THE TRANSPORT</span>
+        <p>The REST endpoint caps at <strong>1,000 rows per HTTP request</strong>. 42M rows = 42,000 sequential round trips, each paying OAuth + HTTP + queueing overhead.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · OPTIMIZATION 1 -->
+  <section class="slide">
+    <p class="eyebrow"><b>08</b> · OPTIMIZATION 1 — QUERY SHAPE</p>
+    <h2>Sliding date window: make the sort small</h2>
+    <p class="lede">Working theory: SuiteQL applies <strong>WHERE <em>before</em> ORDER BY</strong>. Bound every query to <span class="inline-code">modifiedDate &gt;= T AND modifiedDate &lt; T + interval</span> and NetSuite sorts a day&rsquo;s rows &mdash; not three years&rsquo;.</p>
+    <div class="track">
+      <div class="track-bar">
+        <div class="win done">✓</div><div class="win done">✓</div><div class="win done">✓</div><div class="win done">✓</div>
+        <div class="win now">1&nbsp;day&nbsp;sort</div>
+        <div class="win"></div><div class="win"></div><div class="win"></div><div class="win"></div><div class="win"></div><div class="win"></div><div class="win"></div>
+      </div>
+      <div class="track-labels"><span>epoch (per table, e.g. 2023-12-14)</span><span>window slides &rarr;</span><span>now()</span></div>
+    </div>
+  </section>
+
+  <!-- 9 · MEASURE -->
+  <section class="slide">
+    <p class="eyebrow"><b>09</b> · MEASURE, DON&rsquo;T GUESS</p>
+    <h2>+1 day wins everywhere (in dev)</h2>
+    <p class="lede" style="margin-bottom:0.2rem">Interval became a runtime flag (<span class="inline-code">--chunk-interval</span>) to iterate without deploys. Method: <strong>10-minute timed runs, six in parallel per table</strong>.</p>
+    <div class="figure">
+      <svg viewBox="0 0 950 246" role="img" aria-label="Records per second by chunk interval for three tables; plus one day is fastest in all three" style="width:100%;height:auto;display:block">
+      <line x1="40" x2="934" y1="140.4" y2="140.4" stroke="var(--grid)" stroke-width="1"/>
+      <text x="34" y="140.4" dy="3" text-anchor="end" class="tick">500</text>
+      <line x1="40" x2="934" y1="86.9" y2="86.9" stroke="var(--grid)" stroke-width="1"/>
+      <text x="34" y="86.9" dy="3" text-anchor="end" class="tick">1,000</text>
+      <text x="46" y="14" class="ptitle">Transaction</text>
+      <text x="46" y="30" class="psub">7.9M rows · rec/s</text>
+      <clipPath id="clip0"><rect x="44" y="44" width="252" height="150"/></clipPath>
+      <g clip-path="url(#clip0)"><rect x="46" y="54.7" width="26" height="145.3" rx="4" fill="var(--accent)" opacity="1"/><rect x="82" y="63.1" width="26" height="136.9" rx="4" fill="var(--accent)" opacity="0.42"/><rect x="118" y="63.1" width="26" height="136.9" rx="4" fill="var(--accent)" opacity="0.42"/><rect x="154" y="63.8" width="26" height="136.2" rx="4" fill="var(--accent)" opacity="0.42"/><rect x="190" y="66.8" width="26" height="133.2" rx="4" fill="var(--accent)" opacity="0.42"/><rect x="226" y="71.0" width="26" height="129.0" rx="4" fill="var(--accent)" opacity="0.42"/><rect x="262" y="75.4" width="26" height="124.6" rx="4" fill="var(--accent)" opacity="0.42"/></g>
+      <text x="59" y="48.7" text-anchor="middle" class="vlab vlab-best">1,300</text><text x="59" y="210" text-anchor="middle" class="xlab xlab-best">+1d</text><text x="95" y="57.1" text-anchor="middle" class="vlab">1,222</text><text x="95" y="210" text-anchor="middle" class="xlab">+2d</text><text x="131" y="57.1" text-anchor="middle" class="vlab">1,222</text><text x="131" y="210" text-anchor="middle" class="xlab">+3d</text><text x="167" y="57.8" text-anchor="middle" class="vlab">1,215</text><text x="167" y="210" text-anchor="middle" class="xlab">+4d</text><text x="203" y="60.8" text-anchor="middle" class="vlab">1,187</text><text x="203" y="210" text-anchor="middle" class="xlab">+5d</text><text x="239" y="65.0" text-anchor="middle" class="vlab">1,148</text><text x="239" y="210" text-anchor="middle" class="xlab">+6d</text><text x="275" y="69.4" text-anchor="middle" class="vlab">1,107</text><text x="275" y="210" text-anchor="middle" class="xlab">+1w</text>
+      <line x1="42" x2="292" y1="194" y2="194" stroke="var(--axis)" stroke-width="1.5"/>
+      <text x="366" y="14" class="ptitle">TransactionAccountingLine</text>
+      <text x="366" y="30" class="psub">41.9M rows · rec/s</text>
+      <clipPath id="clip1"><rect x="364" y="44" width="252" height="150"/></clipPath>
+      <g clip-path="url(#clip1)"><rect x="366" y="89.5" width="26" height="110.5" rx="4" fill="var(--accent)" opacity="1"/><rect x="402" y="101.0" width="26" height="99.0" rx="4" fill="var(--accent)" opacity="0.42"/><rect x="438" y="104.5" width="26" height="95.5" rx="4" fill="var(--accent)" opacity="0.42"/><rect x="474" y="111.2" width="26" height="88.8" rx="4" fill="var(--accent)" opacity="0.42"/><rect x="510" y="118.7" width="26" height="81.3" rx="4" fill="var(--accent)" opacity="0.42"/><rect x="546" y="123.8" width="26" height="76.2" rx="4" fill="var(--accent)" opacity="0.42"/><rect x="582" y="130.5" width="26" height="69.5" rx="4" fill="var(--accent)" opacity="0.42"/></g>
+      <text x="379" y="83.5" text-anchor="middle" class="vlab vlab-best">975</text><text x="379" y="210" text-anchor="middle" class="xlab xlab-best">+1d</text><text x="415" y="95.0" text-anchor="middle" class="vlab">868</text><text x="415" y="210" text-anchor="middle" class="xlab">+2d</text><text x="451" y="98.5" text-anchor="middle" class="vlab">835</text><text x="451" y="210" text-anchor="middle" class="xlab">+3d</text><text x="487" y="105.2" text-anchor="middle" class="vlab">773</text><text x="487" y="210" text-anchor="middle" class="xlab">+4d</text><text x="523" y="112.7" text-anchor="middle" class="vlab">703</text><text x="523" y="210" text-anchor="middle" class="xlab">+5d</text><text x="559" y="117.8" text-anchor="middle" class="vlab">655</text><text x="559" y="210" text-anchor="middle" class="xlab">+6d</text><text x="595" y="124.5" text-anchor="middle" class="vlab">593</text><text x="595" y="210" text-anchor="middle" class="xlab">+1w</text>
+      <line x1="362" x2="612" y1="194" y2="194" stroke="var(--axis)" stroke-width="1.5"/>
+      <text x="686" y="14" class="ptitle">TransactionLine</text>
+      <text x="686" y="30" class="psub">42.0M rows · rec/s</text>
+      <clipPath id="clip2"><rect x="684" y="44" width="252" height="150"/></clipPath>
+      <g clip-path="url(#clip2)"><rect x="686" y="101.6" width="26" height="98.4" rx="4" fill="var(--accent)" opacity="1"/><rect x="722" y="110.1" width="26" height="89.9" rx="4" fill="var(--accent)" opacity="0.42"/><rect x="758" y="116.1" width="26" height="83.9" rx="4" fill="var(--accent)" opacity="0.42"/><rect x="794" y="123.8" width="26" height="76.2" rx="4" fill="var(--accent)" opacity="0.42"/><rect x="830" y="130.8" width="26" height="69.2" rx="4" fill="var(--accent)" opacity="0.42"/><rect x="866" y="137.8" width="26" height="62.3" rx="4" fill="var(--accent)" opacity="0.42"/><rect x="902" y="143.4" width="26" height="56.6" rx="4" fill="var(--accent)" opacity="0.42"/></g>
+      <text x="699" y="95.6" text-anchor="middle" class="vlab vlab-best">862</text><text x="699" y="210" text-anchor="middle" class="xlab xlab-best">+1d</text><text x="735" y="104.1" text-anchor="middle" class="vlab">783</text><text x="735" y="210" text-anchor="middle" class="xlab">+2d</text><text x="771" y="110.1" text-anchor="middle" class="vlab">727</text><text x="771" y="210" text-anchor="middle" class="xlab">+3d</text><text x="807" y="117.8" text-anchor="middle" class="vlab">655</text><text x="807" y="210" text-anchor="middle" class="xlab">+4d</text><text x="843" y="124.8" text-anchor="middle" class="vlab">590</text><text x="843" y="210" text-anchor="middle" class="xlab">+5d</text><text x="879" y="131.8" text-anchor="middle" class="vlab">525</text><text x="879" y="210" text-anchor="middle" class="xlab">+6d</text><text x="915" y="137.4" text-anchor="middle" class="vlab">472</text><text x="915" y="210" text-anchor="middle" class="xlab">+1w</text>
+      <line x1="682" x2="932" y1="194" y2="194" stroke="var(--axis)" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <p class="footline">Monotonic across all three tables — up to <b>~1.8&times; from a WHERE clause</b>. Strong evidence for the sort-cost theory.</p>
+  </section>
+
+  <!-- 10 · PRODUCTION -->
+  <section class="slide">
+    <p class="eyebrow"><b>10</b> · PRODUCTION</p>
+    <h2>Prod disagreed &mdash; twice</h2>
+    <div class="cards">
+      <div class="card">
+        <span class="tag warn">THE STALL</span>
+        <h3>+1 day froze in prod</h3>
+        <p>Transaction stalled at <strong>24k records for 1.5 hours</strong>. Switching to +2 days: <strong>1M records in 10 minutes</strong>.</p>
+        <p>Black-box optimizer, different data distribution. The interval became a <strong>per-table knob</strong>, tuned empirically &mdash; not a global constant.</p>
+      </div>
+      <div class="card">
+        <span class="tag warn">THE OOM</span>
+        <h3>40M primary keys don&rsquo;t fit in RAM</h3>
+        <p>Full-sync delete tracking held every seen PK in an in-memory PHP set &mdash; OOM at ~40M rows.</p>
+        <p>Moved tracking to a <strong>MySQL temp table</strong>: stream PKs in, then <span class="inline-code">DELETE &hellip; JOIN</span> the leftovers. And raised the connection timeout to 12h &mdash; a silent reconnect would have silently dropped the temp table.</p>
+      </div>
+    </div>
+    <p class="footline">Every fix moved the bottleneck into our own process where we could progressively iterate.</p>
+  </section>
+
+  <!-- 11 · OPTIMIZATION 2 -->
+  <section class="slide">
+    <p class="eyebrow"><b>11</b> · OPTIMIZATION 2 — TRANSPORT</p>
+    <h2>Move the code to the data: a custom RESTlet</h2>
+    <p class="lede">NetSuite runs custom server-side JavaScript (SuiteScript). We deployed a <strong>~220-line RESTlet</strong> forked from open source, stripped to a single procedure.</p>
+    <div class="payload">
+      <div class="payload-row">
+        <div class="plab">Stock SuiteQL REST endpoint — <b>1,000 rows</b> / HTTP request</div>
+        <div class="blocks"><div class="blk tiny"></div></div>
+      </div>
+      <div class="payload-row">
+        <div class="plab">SuiteAPI RESTlet — batches ten 5,000-row pages server-side (<span class="inline-code">ROWNUM</span> windows)</div>
+        <div class="blocks">
+          <div class="blk big">5k</div><div class="blk big">5k</div><div class="blk big">5k</div><div class="blk big">5k</div><div class="blk big">5k</div><div class="blk big">5k</div><div class="blk big">5k</div><div class="blk big">5k</div><div class="blk big">5k</div><div class="blk big">5k</div>
+          <div class="bsum">= <span class="up">50,000 rows</span> / request</div>
+        </div>
+      </div>
+    </div>
+    <ul class="points">
+      <li><strong>50&times; fewer round trips</strong>; 3&ndash;30&times; throughput depending on the query.</li>
+      <li>Exposes <strong>governance telemetry</strong> (usage units) &mdash; we can see how hard we&rsquo;re pushing rate limits.</li>
+    </ul>
+  </section>
+
+  <!-- 12 · ROLLOUT -->
+  <section class="slide">
+    <p class="eyebrow"><b>12</b> · ROLLOUT</p>
+    <h2>Two clients, one interface, zero drama</h2>
+    <div class="flow">
+      <div class="node hot">
+        <div class="nt"><span class="inline-code">NetsuitePullQueryRunner</span></div>
+        <div class="nd">interface — chosen by DI container</div>
+      </div>
+      <div class="arr">&rarr;</div>
+      <div class="node">
+        <div class="nt">Legacy REST runner</div>
+        <div class="nd">1,000 rows / page<br>escape hatch: --rest-api</div>
+      </div>
+      <div class="arr">/</div>
+      <div class="node">
+        <div class="nt">SuiteAPI runner</div>
+        <div class="nd">50,000 rows / request<br>now the default</div>
+      </div>
+    </div>
+    <div class="chips">
+      <span class="chip"><b>Apr 30</b> new client merged</span><span class="chip-arr">&rarr;</span>
+      <span class="chip"><b>May 1</b> RESTlet pagination hardened</span><span class="chip-arr">&rarr;</span>
+      <span class="chip"><b>May 5</b> default flipped, old path kept</span>
+    </div>
+    <ul class="points" style="margin-top:1.4rem">
+      <li>A SuiteQL <strong>REPL command</strong> to interactively exercise either path beforehand.</li>
+      <li>Immediate dividend: <strong>SalesOrder went from nightly to every 5 minutes</strong> &mdash; freshness the business wanted but we couldn&rsquo;t afford before.</li>
+    </ul>
+  </section>
+
+  <!-- 13 · RESULTS -->
+  <section class="slide">
+    <p class="eyebrow"><b>13</b> · RESULTS</p>
+    <h2>The pipeline stopped being the constraint</h2>
+    <div class="stats">
+      <div class="stat"><div class="big"><span class="dim">1+ week &rarr;</span> <span class="up">overnight</span></div><div class="lab">full sync, 3 transaction tables in parallel</div></div>
+      <div class="stat"><div class="big">50&times;</div><div class="lab">payload per request<br>1,000 &rarr; 50,000 rows</div></div>
+      <div class="stat"><div class="big">3&ndash;30&times;</div><div class="lab">query throughput<br>via the RESTlet</div></div>
+      <div class="stat"><div class="big"><span class="dim">24h &rarr;</span> <span class="up">5 min</span></div><div class="lab">sales-order freshness</div></div>
+      <div class="stat"><div class="big">~92M</div><div class="lab">rows synced &amp; reconciled<br>across 3 source tables</div></div>
+      <div class="stat"><div class="big">$0</div><div class="lab">no new infrastructure —<br>same MySQL, same cron, license dropped</div></div>
+    </div>
+    <p class="footline">New-column backfills went from &ldquo;schedule a week and babysit it&rdquo; to routine.</p>
+  </section>
+
+  <!-- 14 · BUSINESS IMPACT -->
+  <section class="slide">
+    <p class="eyebrow"><b>14</b> · BUSINESS IMPACT</p>
+    <h2>Ledger truth, everywhere</h2>
+    <p class="lede"><span class="inline-code">netsuite_sync</span> became the single <strong>GL-accurate source for revenue, COGS, and gross margin</strong> &mdash; replacing an estimate that matched the ledger ~34% of the time.</p>
+    <ul class="points">
+      <li><strong>Margin dashboards</strong> per SKU / category / channel.</li>
+      <li><strong>Breakeven-ROAS analysis:</strong> revenue joined to Google &amp; Meta ad spend.</li>
+      <li><strong>Price-change impact:</strong> gross profit measured before/after every reprice.</li>
+      <li><strong>New-product performance</strong> and per-order unit economics.</li>
+    </ul>
+  </section>
+
+  <!-- 15 · TRADE-OFFS -->
+  <section class="slide">
+    <p class="eyebrow"><b>15</b> · TRADE-OFFS</p>
+    <h2>What I&rsquo;d defend, and what I&rsquo;d change</h2>
+    <div class="split">
+      <div>
+        <p class="eyebrow" style="margin-bottom:0.6rem"><b>DEFEND</b></p>
+        <ul class="points">
+          <li><strong>PHP + MySQL + cron</strong> at 20GB scale. The hard part was the NetSuite connector — which no vendor did well — not orchestration.</li>
+          <li><strong>No retry framework.</strong> Overlaps + a 5m schedule: the retry <em>is</em> the schedule.</li>
+          <li><strong>ELT:</strong> raw source tables + SQL views.</li>
+        </ul>
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom:0.6rem"><b>CHANGE</b></p>
+        <ul class="points">
+          <li>Benchmark in <strong>prod conditions</strong> sooner — dev extrapolation hid the prod stall.</li>
+          <li>Sync <strong>source tables from day one</strong>; summary tables were a detour.</li>
+          <li><strong>Checkpoint full syncs per window</strong> so failures resume automatically.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16 · CLOSE -->
+  <section class="slide">
+    <p class="eyebrow"><b>16</b> · CLOSE</p>
+    <h1>Questions?</h1>
+    <p class="lede">Constraints &rarr; measurement &rarr; leverage<br>Some ideas: black box benchmarking, the pagination model, the RESTlet, downstream analytics.</p>
+    <p class="footline">SuiteQL · PHP · MySQL · SuiteScript &nbsp;&nbsp;|&nbsp;&nbsp; Mason McElvain</p>
+  </section>
+
+</div>
+
+<div class="progress" id="progress"></div>
+<div class="counter" id="counter"></div>
+
+<script>
+  (function () {
+    var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+    var progress = document.getElementById('progress');
+    var counter = document.getElementById('counter');
+    var i = 0;
+
+    function go(n) {
+      i = Math.max(0, Math.min(slides.length - 1, n));
+      slides.forEach(function (s, j) {
+        s.classList.toggle('active', j === i);
+        if (j === i) s.scrollTop = 0;
+      });
+      counter.textContent = String(i + 1).padStart(2, '0') + ' / ' + slides.length;
+      progress.style.width = ((i + 1) / slides.length * 100) + '%';
+      if (history.replaceState) history.replaceState(null, '', '#' + (i + 1));
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      switch (e.key) {
+        case 'ArrowRight': case 'ArrowDown': case 'PageDown': case 'Enter': case ' ':
+          e.preventDefault(); go(e.shiftKey && e.key === ' ' ? i - 1 : i + 1); break;
+        case 'ArrowLeft': case 'ArrowUp': case 'PageUp': case 'Backspace':
+          e.preventDefault(); go(i - 1); break;
+        case 'Home': e.preventDefault(); go(0); break;
+        case 'End': e.preventDefault(); go(slides.length - 1); break;
+        case 'f': case 'F':
+          if (document.fullscreenElement) { document.exitFullscreen(); }
+          else if (document.documentElement.requestFullscreen) { document.documentElement.requestFullscreen(); }
+          break;
+      }
+    });
+
+    function fromHash() {
+      var n = parseInt((location.hash || '').replace('#', ''), 10);
+      go(isNaN(n) ? 0 : n - 1);
+    }
+    window.addEventListener('hashchange', fromHash);
+    fromHash();
+  })();
+</script>

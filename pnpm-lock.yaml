@@ -85,11 +85,11 @@ importers:
         specifier: 8.5.15
         version: 8.5.15
       prettier:
-        specifier: 3.8.4
-        version: 3.8.4
+        specifier: 3.9.0
+        version: 3.9.0
       prettier-plugin-tailwindcss:
         specifier: 0.8.0
-        version: 0.8.0(prettier@3.8.4)
+        version: 0.8.0(prettier@3.9.0)
       tailwindcss:
         specifier: 4.3.1
         version: 4.3.1
@@ -2363,9 +2363,6 @@ packages:
   es-module-lexer@1.5.0:
     resolution: {integrity: sha512-pqrTKmwEIgafsYZAGw9kszYzmagcE/n4dbgwGWLEXg7J4QFJVQRBld8j3Q3GNez79jzxZshq0bcT962QHOghjw==}
 
-  es-module-lexer@2.0.0:
-    resolution: {integrity: sha512-5POEcUuZybH7IdmGsD8wlf0AI55wMecM9rVBTI/qEAy2c1kTOm3DjFYjrBdI2K3BaJjJYfYFeRtM0t9ssnRuxw==}
-
   es-module-lexer@2.1.0:
     resolution: {integrity: sha512-n27zTYMjYu1aj4MjCWzSP7G9r75utsaoc8m61weK+W8JMBGGQybd43GstCXZ3WNmSFtGT9wi59qQTW6mhTR5LQ==}
 
@@ -3792,8 +3789,8 @@ packages:
       prettier-plugin-svelte:
         optional: true
 
-  prettier@3.8.4:
-    resolution: {integrity: sha512-N2MylSdi48+5N/6S5j+maeHbUSIzzZ5uOcX5Hm4QpV8Dkb1HFjfAKTKX6yNPJQD9AhcT3ifHNB66tWTTJDi11Q==}
+  prettier@3.9.0:
+    resolution: {integrity: sha512-LjIqSIC5VYLzs9WedVmJ2ljNAGnU+DteIClbahu4L/DBeWjZ6iT/k1lAYyu9JUh+1xINxWadaPw/Pl63y/agAw==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -6900,8 +6897,6 @@ snapshots:
 
   es-module-lexer@1.5.0: {}
 
-  es-module-lexer@2.0.0: {}
-
   es-module-lexer@2.1.0: {}
 
   es-object-atoms@1.1.1:
@@ -8621,11 +8616,11 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-tailwindcss@0.8.0(prettier@3.8.4):
+  prettier-plugin-tailwindcss@0.8.0(prettier@3.9.0):
     dependencies:
-      prettier: 3.8.4
+      prettier: 3.9.0
 
-  prettier@3.8.4: {}
+  prettier@3.9.0: {}
 
   pretty-ms@7.0.1:
     dependencies:
@@ -9551,7 +9546,7 @@ snapshots:
       browserslist: 4.28.1
       chrome-trace-event: 1.0.4
       enhanced-resolve: 5.21.6
-      es-module-lexer: 2.0.0
+      es-module-lexer: 2.1.0
       eslint-scope: 5.1.1
       events: 3.3.0
       glob-to-regexp: 0.4.1

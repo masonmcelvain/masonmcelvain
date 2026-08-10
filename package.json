@@ -27,6 +27,7 @@
       "@sentry/nextjs": "10.68.0",
       "clsx": "2.1.1",
       "embla-carousel-react": "8.6.0",
+      "github-slugger": "2.0.0",
       "gray-matter": "4.0.3",
       "next": "16.2.12",
       "next-mdx-remote": "6.0.0",
@@ -34,6 +35,7 @@
       "react": "19.2.8",
       "react-dom": "19.2.8",
       "react-icons": "5.7.0",
+      "rehype-slug": "6.0.0",
       "tailwind-merge": "3.6.0"
    },
    "devDependencies": {

@@ -1,8 +1,11 @@
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import rehypeSlug from "rehype-slug";
 import { getPostBySlug, getAllPostSlugs } from "@/lib/posts";
+import { extractToc } from "@/lib/toc";
 import { ImageCarousel } from "@/components/ImageCarousel";
 import { ImageWithCaption } from "@/components/ImageWithCaption";
+import { TableOfContents } from "@/components/TableOfContents";
 import { VideoWithCaption } from "@/components/VideoWithCaption";
 import type { Metadata } from "next";
 
@@ -43,6 +46,8 @@ export default async function BlogPostPage({ params }: Props) {
       notFound();
    }
 
+   const toc = extractToc(post.content);
+
    return (
       <article>
          <header className="mb-8">
@@ -66,13 +71,17 @@ export default async function BlogPostPage({ params }: Props) {
                priority
             />
          </header>
-         <div className="prose prose-lg prose-a:text-blue-600 dark:prose-invert dark:prose-a:text-blue-400 max-w-none">
+         <div className="prose prose-lg prose-a:text-blue-600 prose-headings:scroll-mt-6 dark:prose-invert dark:prose-a:text-blue-400 max-w-none">
             <MDXRemote
                source={post.content}
                components={mdxComponents}
-               options={{ blockJS: false }}
+               options={{
+                  blockJS: false,
+                  mdxOptions: { rehypePlugins: [rehypeSlug] },
+               }}
             />
          </div>
+         {toc.length >= 2 && <TableOfContents entries={toc} />}
       </article>
    );
 }

@@ -68,6 +68,11 @@
    html {
       @apply bg-background;
    }
+   @media (prefers-reduced-motion: no-preference) {
+      html {
+         scroll-behavior: smooth;
+      }
+   }
    h1 {
       @apply text-foreground font-display text-5xl font-extrabold;
    }

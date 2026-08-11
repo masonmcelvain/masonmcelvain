@@ -1,5 +1,5 @@
 import { type CSSProperties, type ReactNode } from "react";
-import { mediaUrl } from "@/lib/media";
+import { mediaUrl, videoAnchorId } from "@/lib/media";
 import { type Post } from "@/lib/posts";
 import { SITE_ORIGIN } from "./constants";
 
@@ -180,21 +180,24 @@ export function getEmailComponents(postUrl: string) {
          src: string;
          poster: string;
          caption: string;
-      }) => (
-         <EmailFigure
-            src={props.poster}
-            caption={props.caption}
-            href={postUrl}
-            captionSuffix={
-               <>
-                  {" "}
-                  <a href={postUrl} style={link}>
-                     Watch full video
-                  </a>
-               </>
-            }
-         />
-      ),
+      }) => {
+         const videoUrl = `${postUrl}#${videoAnchorId(props.src)}`;
+         return (
+            <EmailFigure
+               src={props.poster}
+               caption={props.caption}
+               href={videoUrl}
+               captionSuffix={
+                  <>
+                     {" "}
+                     <a href={videoUrl} style={link}>
+                        Watch full video
+                     </a>
+                  </>
+               }
+            />
+         );
+      },
       h2: (props: { children?: ReactNode }) => (
          <h2 style={{ ...heading, fontSize: "24px", margin: "32px 0 12px" }}>
             {props.children}

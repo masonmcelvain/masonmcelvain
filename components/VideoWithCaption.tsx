@@ -1,6 +1,6 @@
 "use client";
 
-import { mediaUrl } from "@/lib/media";
+import { mediaUrl, videoAnchorId } from "@/lib/media";
 import { useCallback, useRef, useState } from "react";
 
 type VideoWithCaptionProps = {
@@ -50,7 +50,7 @@ export function VideoWithCaption({
    }, []);
 
    return (
-      <figure className="my-8">
+      <figure id={videoAnchorId(src)} className="my-8 scroll-mt-6">
          <div
             className="not-prose relative w-full max-w-full overflow-hidden rounded-lg sm:mx-auto sm:max-h-[85vh] sm:w-auto"
             style={{ aspectRatio }}

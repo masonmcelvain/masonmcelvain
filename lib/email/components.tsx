@@ -99,7 +99,6 @@ type CarouselImage = {
 /**
  * Email variants of the MDX components used in blog posts, plus inline-styled
  * replacements for the markdown elements normally styled by Tailwind prose.
- * Everything must hold up without JavaScript or a stylesheet.
  */
 export function getEmailComponents(postUrl: string) {
    return {
@@ -110,31 +109,71 @@ export function getEmailComponents(postUrl: string) {
       }) => (
          <EmailFigure src={props.src} alt={props.alt} caption={props.caption} />
       ),
-      // Carousels aren't possible in email: show the first image and link to
-      // the full set on the site.
+      // No JS in email, so the carousel becomes a CSS scroll-snap strip:
+      // fixed-height images at natural widths, with the next photo peeking in
+      // from the right so it reads as scrollable. Clients that strip overflow
+      // (Outlook) stack the images vertically instead, and the caption links
+      // to the post as a further fallback.
       ImageCarousel: (props: {
          images: CarouselImage[];
          alt?: string;
          caption?: string;
       }) => {
+         const count = props.images.length;
          const first = props.images[0];
          if (!first) return null;
+         if (count === 1) {
+            return (
+               <EmailFigure
+                  src={first.src}
+                  alt={props.alt}
+                  caption={first.caption ?? props.caption}
+               />
+            );
+         }
          return (
-            <EmailFigure
-               src={first.src}
-               alt={props.alt}
-               caption={first.caption ?? props.caption}
-               captionSuffix={
-                  props.images.length > 1 && (
-                     <>
-                        {" "}
-                        <a href={postUrl} style={link}>
-                           See all {props.images.length} photos →
-                        </a>
-                     </>
-                  )
-               }
-            />
+            <figure style={{ margin: "32px 0" }}>
+               <div
+                  style={{
+                     overflowX: "auto",
+                     whiteSpace: "nowrap",
+                     scrollSnapType: "x mandatory",
+                     WebkitOverflowScrolling: "touch",
+                  }}
+               >
+                  {props.images.map((image, i) => (
+                     // eslint-disable-next-line @next/next/no-img-element
+                     <img
+                        key={image.src}
+                        src={emailImageUrl(image.src)}
+                        alt={
+                           image.caption ??
+                           props.alt ??
+                           `Photo ${i + 1} of ${count}`
+                        }
+                        height={320}
+                        style={{
+                           height: "320px",
+                           width: "auto",
+                           display: "inline-block",
+                           verticalAlign: "top",
+                           borderRadius: "8px",
+                           marginRight: i < count - 1 ? "8px" : 0,
+                           scrollSnapAlign: "start",
+                        }}
+                     />
+                  ))}
+               </div>
+               <figcaption style={caption}>
+                  {props.caption && <div>{props.caption}</div>}
+                  <div
+                     className="carousel-hint-desktop"
+                     style={{ display: "none" }}
+                  >
+                     Shift+Scroll for all {count} photos
+                  </div>
+               </figcaption>
+            </figure>
          );
       },
       // Video can't play in email: show the poster frame linking to the post.
@@ -236,6 +275,11 @@ export function PostEmail({ post, postUrl, children }: PostEmailProps) {
             <meta charSet="utf-8" />
             <meta name="viewport" content="width=device-width" />
             <title>{post.title}</title>
+            <style>{`
+               @media (min-width: 600px) {
+                  .carousel-hint-desktop { display: block !important; }
+               }
+            `}</style>
          </head>
          <body style={{ margin: 0, padding: 0, backgroundColor: "#ffffff" }}>
             {post.description && (

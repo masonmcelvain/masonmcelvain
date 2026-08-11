@@ -1,6 +1,7 @@
 "use server";
 
-import { BUTTONDOWN_API_KEY } from "@/config/env";
+import { Resend } from "resend";
+import { RESEND_API_KEY, RESEND_AUDIENCE_ID } from "@/config/env";
 import { captureException, captureMessage } from "@sentry/nextjs";
 
 type SubscribeResult = { success: true } | { success: false; error: string };
@@ -13,39 +14,20 @@ export async function subscribe(
    }
 
    try {
-      const response = await fetch(
-         "https://api.buttondown.email/v1/subscribers",
-         {
-            method: "POST",
-            headers: {
-               "X-Buttondown-Collision-Behavior": "overwrite",
-               Authorization: `Token ${BUTTONDOWN_API_KEY}`,
-               "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email_address }),
-         },
-      );
+      const resend = new Resend(RESEND_API_KEY);
+      const { error } = await resend.contacts.create({
+         email: email_address,
+         audienceId: RESEND_AUDIENCE_ID,
+         unsubscribed: false,
+      });
 
-      if (!response.ok) {
-         const data = await response.json();
-         if (response.status === 400 && data.email) {
-            return { success: false, error: data.email[0] };
-         }
-         if (data.code === "subscriber_blocked") {
-            captureMessage("Subscriber blocked by firewall", {
-               extra: {
-                  data,
-                  email_address,
-               },
-            });
-            return {
-               success: false,
-               error: "Email blocked. Tell Mason and he'll fix it, sorry!",
-            };
+      if (error) {
+         if (error.name === "validation_error") {
+            return { success: false, error: "Please enter a valid email" };
          }
          captureMessage("Unhandled subscription failure", {
             extra: {
-               data,
+               error,
                email_address,
             },
             level: "warning",

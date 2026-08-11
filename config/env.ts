@@ -1,6 +1,11 @@
-export const BUTTONDOWN_API_KEY = requireEnvVariable(
-   process.env.BUTTONDOWN_API_KEY,
-   "BUTTONDOWN_API_KEY",
+export const RESEND_API_KEY = requireEnvVariable(
+   process.env.RESEND_API_KEY,
+   "RESEND_API_KEY",
+);
+
+export const RESEND_AUDIENCE_ID = requireEnvVariable(
+   process.env.RESEND_AUDIENCE_ID,
+   "RESEND_AUDIENCE_ID",
 );
 
 function requireEnvVariable(

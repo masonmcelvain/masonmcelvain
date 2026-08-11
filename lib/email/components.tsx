@@ -230,6 +230,8 @@ export function PostEmail({ post, postUrl, children }: PostEmailProps) {
    });
    return (
       <html lang="en">
+         {/* eslint-disable-next-line @next/next/no-head-element -- this is a
+             standalone email document, not a Next.js page */}
          <head>
             <meta charSet="utf-8" />
             <meta name="viewport" content="width=device-width" />

@@ -1,5 +1,6 @@
+import { evaluate } from "@mdx-js/mdx";
 import { render } from "@react-email/render";
-import { compileMDX } from "next-mdx-remote/rsc";
+import * as jsxRuntime from "react/jsx-runtime";
 import { getPostBySlug, type Post } from "@/lib/posts";
 import { getEmailComponents, PostEmail } from "./components";
 import { SITE_ORIGIN } from "./constants";
@@ -25,15 +26,13 @@ export async function renderPostEmail(
    }
 
    const postUrl = `${SITE_ORIGIN}/blog/${slug}`;
-   const { content } = await compileMDX({
-      source: post.content,
-      components: getEmailComponents(postUrl),
-      options: { blockJS: false },
-   });
+   // Compile with @mdx-js/mdx directly (what next-mdx-remote wraps) so this
+   // also runs outside the Next.js bundler, e.g. in the bin/send-post script.
+   const { default: MdxContent } = await evaluate(post.content, jsxRuntime);
 
    const email = (
       <PostEmail post={post} postUrl={postUrl}>
-         {content}
+         <MdxContent components={getEmailComponents(postUrl)} />
       </PostEmail>
    );
    const [html, text] = await Promise.all([

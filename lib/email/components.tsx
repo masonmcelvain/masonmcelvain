@@ -176,7 +176,6 @@ export function getEmailComponents(postUrl: string) {
             </figure>
          );
       },
-      // Video can't play in email: show the poster frame linking to the post.
       VideoWithCaption: (props: {
          src: string;
          poster: string;
@@ -190,7 +189,7 @@ export function getEmailComponents(postUrl: string) {
                <>
                   {" "}
                   <a href={postUrl} style={link}>
-                     ▶ Watch on the site
+                     Watch full video
                   </a>
                </>
             }

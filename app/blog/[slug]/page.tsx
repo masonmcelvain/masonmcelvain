@@ -3,6 +3,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypeSlug from "rehype-slug";
 import { getPostBySlug, getAllPostSlugs } from "@/lib/posts";
 import { extractToc } from "@/lib/toc";
+import { headingLinkComponents } from "@/components/HeadingLink";
 import { ImageCarousel } from "@/components/ImageCarousel";
 import { ImageWithCaption } from "@/components/ImageWithCaption";
 import { TableOfContents } from "@/components/TableOfContents";
@@ -10,6 +11,7 @@ import { VideoWithCaption } from "@/components/VideoWithCaption";
 import type { Metadata } from "next";
 
 const mdxComponents = {
+   ...headingLinkComponents,
    ImageCarousel,
    ImageWithCaption,
    VideoWithCaption,

@@ -44,6 +44,10 @@ const BODY_WIDTH = 600;
 const MAX_FIGURE_HEIGHT = 640;
 const PHOTO_ASPECT = { portrait: 3 / 4, landscape: 4 / 3 };
 const VIDEO_ASPECT = { portrait: 9 / 16, landscape: 16 / 9 };
+const MOBILE_VIDEO_HEIGHT = 840;
+const MOBILE_VIDEO_WIDTH = Math.round(
+   MOBILE_VIDEO_HEIGHT * VIDEO_ASPECT.portrait,
+);
 const CAROUSEL_HEIGHT = 320;
 
 function figureWidth(aspectRatio: number) {
@@ -65,6 +69,7 @@ type EmailFigureProps = {
    captionSuffix?: ReactNode;
    href?: string;
    aspectRatio: number;
+   capOnMobile?: boolean;
 };
 
 function EmailFigure({
@@ -74,6 +79,7 @@ function EmailFigure({
    captionSuffix,
    href,
    aspectRatio,
+   capOnMobile = false,
 }: EmailFigureProps) {
    const width = figureWidth(aspectRatio);
    const image = (
@@ -82,7 +88,9 @@ function EmailFigure({
          src={emailImageUrl(src)}
          alt={alt ?? captionText ?? ""}
          width={width}
-         className="fit-viewport"
+         className={
+            capOnMobile ? "fit-viewport fit-viewport-mobile" : "fit-viewport"
+         }
          style={{
             width: "100%",
             maxWidth: `${width}px`,
@@ -224,6 +232,7 @@ export function getEmailComponents(postUrl: string) {
                      ? VIDEO_ASPECT.landscape
                      : VIDEO_ASPECT.portrait
                }
+               capOnMobile={!props.landscape}
                captionSuffix={
                   <>
                      {" "}
@@ -320,6 +329,7 @@ export function PostEmail({ post, postUrl, children }: PostEmailProps) {
                }
                @media (max-width: 599px) {
                   .fit-viewport { max-width: 100% !important; }
+                  .fit-viewport-mobile { max-width: ${MOBILE_VIDEO_WIDTH}px !important; }
                }
             `}</style>
          </head>

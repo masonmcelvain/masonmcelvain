@@ -9,10 +9,10 @@ importers:
   .:
     dependencies:
       '@mdx-js/mdx':
-        specifier: ^3.1.1
+        specifier: 3.1.1
         version: 3.1.1(supports-color@8.1.1)
       '@react-email/render':
-        specifier: ^2.1.0
+        specifier: 2.1.0
         version: 2.1.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@sentry/nextjs':
         specifier: 10.70.0
@@ -51,7 +51,7 @@ importers:
         specifier: 6.0.0
         version: 6.0.0
       resend:
-        specifier: ^6.20.0
+        specifier: 6.20.0
         version: 6.20.0(@react-email/render@2.1.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8))
       tailwind-merge:
         specifier: 3.6.0
@@ -109,7 +109,7 @@ importers:
         specifier: 4.3.3
         version: 4.3.3
       tsx:
-        specifier: ^4.23.5
+        specifier: 4.23.5
         version: 4.23.5
       typescript:
         specifier: 6.0.3

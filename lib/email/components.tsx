@@ -40,6 +40,20 @@ const caption: CSSProperties = {
    margin: "8px 0 0",
 };
 
+const BODY_WIDTH = 600;
+const MAX_FIGURE_HEIGHT = 640;
+const PHOTO_ASPECT = { portrait: 3 / 4, landscape: 4 / 3 };
+const VIDEO_ASPECT = { portrait: 9 / 16, landscape: 16 / 9 };
+const MOBILE_VIDEO_HEIGHT = 840;
+const MOBILE_VIDEO_WIDTH = Math.round(
+   MOBILE_VIDEO_HEIGHT * VIDEO_ASPECT.portrait,
+);
+const CAROUSEL_HEIGHT = 320;
+
+function figureWidth(aspectRatio: number) {
+   return Math.min(BODY_WIDTH, Math.round(MAX_FIGURE_HEIGHT * aspectRatio));
+}
+
 // Email clients don't run the Next.js image loader, so build optimizer URLs
 // by hand. w=1200 is 2x the 600px email width and must be one of the sizes
 // the optimizer allows (it's in Next's default deviceSizes).
@@ -54,6 +68,8 @@ type EmailFigureProps = {
    caption?: string;
    captionSuffix?: ReactNode;
    href?: string;
+   aspectRatio: number;
+   capOnMobile?: boolean;
 };
 
 function EmailFigure({
@@ -62,24 +78,38 @@ function EmailFigure({
    caption: captionText,
    captionSuffix,
    href,
+   aspectRatio,
+   capOnMobile = false,
 }: EmailFigureProps) {
+   const width = figureWidth(aspectRatio);
    const image = (
       // eslint-disable-next-line @next/next/no-img-element
       <img
          src={emailImageUrl(src)}
          alt={alt ?? captionText ?? ""}
-         width={600}
+         width={width}
+         className={
+            capOnMobile ? "fit-viewport fit-viewport-mobile" : "fit-viewport"
+         }
          style={{
             width: "100%",
+            maxWidth: `${width}px`,
             height: "auto",
             borderRadius: "8px",
             display: "block",
+            margin: "0 auto",
          }}
       />
    );
    return (
       <figure style={{ margin: "32px 0" }}>
-         {href ? <a href={href}>{image}</a> : image}
+         {href ? (
+            <a href={href} style={{ display: "block" }}>
+               {image}
+            </a>
+         ) : (
+            image
+         )}
          {(captionText || captionSuffix) && (
             <figcaption style={caption}>
                {captionText}
@@ -106,8 +136,16 @@ export function getEmailComponents(postUrl: string) {
          src: string;
          alt?: string;
          caption: string;
+         landscape?: boolean;
       }) => (
-         <EmailFigure src={props.src} alt={props.alt} caption={props.caption} />
+         <EmailFigure
+            src={props.src}
+            alt={props.alt}
+            caption={props.caption}
+            aspectRatio={
+               props.landscape ? PHOTO_ASPECT.landscape : PHOTO_ASPECT.portrait
+            }
+         />
       ),
       // No JS in email, so the carousel becomes a CSS scroll-snap strip:
       // fixed-height images at natural widths, with the next photo peeking in
@@ -128,6 +166,7 @@ export function getEmailComponents(postUrl: string) {
                   src={first.src}
                   alt={props.alt}
                   caption={first.caption ?? props.caption}
+                  aspectRatio={PHOTO_ASPECT[first.orientation]}
                />
             );
          }
@@ -151,9 +190,9 @@ export function getEmailComponents(postUrl: string) {
                            props.alt ??
                            `Photo ${i + 1} of ${count}`
                         }
-                        height={320}
+                        height={CAROUSEL_HEIGHT}
                         style={{
-                           height: "320px",
+                           height: `${CAROUSEL_HEIGHT}px`,
                            width: "auto",
                            display: "inline-block",
                            verticalAlign: "top",
@@ -180,6 +219,7 @@ export function getEmailComponents(postUrl: string) {
          src: string;
          poster: string;
          caption: string;
+         landscape?: boolean;
       }) => {
          const videoUrl = `${postUrl}#${videoAnchorId(props.src)}`;
          return (
@@ -187,6 +227,12 @@ export function getEmailComponents(postUrl: string) {
                src={props.poster}
                caption={props.caption}
                href={videoUrl}
+               aspectRatio={
+                  props.landscape
+                     ? VIDEO_ASPECT.landscape
+                     : VIDEO_ASPECT.portrait
+               }
+               capOnMobile={!props.landscape}
                captionSuffix={
                   <>
                      {" "}
@@ -281,6 +327,10 @@ export function PostEmail({ post, postUrl, children }: PostEmailProps) {
                @media (min-width: 600px) {
                   .carousel-hint-desktop { display: block !important; }
                }
+               @media (max-width: 599px) {
+                  .fit-viewport { max-width: 100% !important; }
+                  .fit-viewport-mobile { max-width: ${MOBILE_VIDEO_WIDTH}px !important; }
+               }
             `}</style>
          </head>
          <body style={{ margin: 0, padding: 0, backgroundColor: "#ffffff" }}>
@@ -326,7 +376,11 @@ export function PostEmail({ post, postUrl, children }: PostEmailProps) {
                      {post.description}
                   </p>
                )}
-               <EmailFigure src={post.image} caption={post.imageAlt} />
+               <EmailFigure
+                  src={post.image}
+                  caption={post.imageAlt}
+                  aspectRatio={PHOTO_ASPECT.landscape}
+               />
                {children}
                <hr
                   style={{

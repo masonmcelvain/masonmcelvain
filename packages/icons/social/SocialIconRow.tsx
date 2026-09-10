@@ -6,7 +6,7 @@ import { YouTubeIcon } from "./YouTubeIcon";
 
 export function SocialIconRow({ className }: { className?: string }) {
    return (
-      <div className={cn("flex items-center gap-4 sm:gap-8", className)}>
+      <div className={cn("flex items-center gap-8", className)}>
          <EnvelopeIcon />
          <GithubIcon
             ariaLabel="Mason's GitHub profile"

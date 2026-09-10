@@ -38,7 +38,7 @@ export function Footer({ logoSrc }: HeaderFooterProps) {
                <div className="hidden lg:block">
                   <EmailSubscription />
                </div>
-               <SocialIconRow />
+               <SocialIconRow className="gap-6 sm:gap-8" />
             </div>
          </div>
       </footer>

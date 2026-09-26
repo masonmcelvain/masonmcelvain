@@ -62,7 +62,7 @@
       "tailwindcss": "4.3.3",
       "tsx": "4.23.13",
       "typescript": "6.0.3",
-      "vercel": "59.16.0"
+      "vercel": "59.23.2"
    },
    "lint-staged": {
       "*": "prettier --write --ignore-unknown"

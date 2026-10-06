@@ -2,5 +2,11 @@
    "plugins": ["prettier-plugin-tailwindcss"],
    "printWidth": 80,
    "tabWidth": 3,
-   "endOfLine": "auto"
+   "endOfLine": "auto",
+   "overrides": [
+      {
+         "files": "pnpm-workspace.yaml",
+         "options": { "tabWidth": 2 }
+      }
+   ]
 }

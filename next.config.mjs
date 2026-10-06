@@ -11,6 +11,10 @@ const nextConfig = {
          {
             protocol: "https",
             hostname: "media.masonmcelvain.com",
+            pathname: "/**",
+            // The media host ignores query strings, so allowing them lets
+            // anyone mint unlimited cache keys (and cache writes) per image.
+            search: "",
          },
       ],
       minimumCacheTTL: 31536000,

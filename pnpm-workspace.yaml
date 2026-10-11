@@ -4,5 +4,5 @@ allowBuilds:
   sharp: true
 minimumReleaseAge: 10080
 minimumReleaseAgeExclude:
-  # Renovate security update: next@16.2.11 || 16.3.6
-  - next@16.2.11 || 16.3.6
+  # Renovate security update: next@16.2.11 || 16.3.6 || 16.3.8
+  - next@16.2.11 || 16.3.6 || 16.3.8

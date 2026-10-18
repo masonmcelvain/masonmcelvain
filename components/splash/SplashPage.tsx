@@ -103,7 +103,7 @@ export function SplashPage({ slug }: SplashPageProps) {
                      className="h-[225px] w-auto max-w-full object-contain sm:h-[300px]"
                   />
                </div>
-               <h1 className="mt-8">
+               <h1 className="mt-8 leading-tight">
                   {/* Inline span with cloned decoration so the accent rule
                       tracks each line when the title wraps. */}
                   <span className="bg-[linear-gradient(to_right,var(--accent-from),var(--accent-to))] box-decoration-clone bg-[length:100%_3px] bg-bottom bg-no-repeat pb-1">

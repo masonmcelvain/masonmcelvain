@@ -1,0 +1,146 @@
+---
+title: "What I learned building Hop"
+description: "Five years of a tiny browser extension: storage quotas, a Firefox port, a styling detour I undid in one evening, and a robot that does my chores."
+---
+
+Hop is a browser extension that turns your bookmarks into a grid of icons. Click the rabbit in your toolbar, see your favorite sites as pictures, click one, and you're there. See, click, go.
+
+I started it in April 2021 because the bookmarks bar is a row of tiny text, and I wanted something that felt more like an app launcher. It was called Launchpad until two days before it went live on the Chrome Web Store in October 2021, when it became Hop: a rabbit for a logo, and a little less generic.
+
+Today it runs in Chrome and Firefox, has 39 users on the Chrome Web Store, and a perfect 5.0 rating on Firefox Add-ons from a grand total of two people. It's small. It's also the project that taught me the most about shipping software that lives on someone else's computer.
+
+<Stats>
+   <Stat value="1,973" label="commits" />
+   <Stat value="1,307" label="by Renovate, not me" />
+   <Stat value="18" label="releases" />
+   <Stat value="39" label="Chrome users" />
+</Stats>
+
+## The idea and the launch
+
+The core of Hop hasn't changed since the first commit: a drag-and-drop grid of icon "cards." You add a link, Hop finds an icon for it, and you arrange the icons however you like. Within three days of starting I'd converted the whole thing to TypeScript, and it was built on Manifest V3, Chrome's newer extension format, from day one.
+
+Version 1.0.0 shipped on October 10, 2021. Version 1.1.0 shipped three days later, and its release notes admit that users would "most likely need to reinstall the app," re-adding all their links by hand. With an audience that small, I got away with it. The next few releases were all small details, like pre-filling the current tab when you add a link and letting Enter submit the form.
+
+Just over a week after launch, my friend Amber suggested letting people import their existing bookmarks so they don't have to add them one by one. It's a great idea. The issue is still open. Sorry, Amber.
+
+## The storage saga
+
+Browsers give extensions a place to save data, and a "sync" flavor of it that follows you to every computer you sign in on. That sounded perfect, so Hop used it. The catch is that sync storage is a very small shoebox with three separate rules, and Hop broke every one of them.
+
+First, the write limit: 120 writes per minute. Hop saved the grid on every hover while you dragged a card, so a few enthusiastic drags hit the limit. The fix was to save only when you drop the card.
+
+Second, the size limit per item: 8 KB. All my links lived under one key, which was fine in Chrome. Then the Firefox port revealed that Firefox hands back favicons as 1-2 KB base64 data URIs, so about six links blew the cap, and the save failed silently. I split storage into one key per link, plus an array to keep their order, with a migration that copied the old data over and deliberately left the original in place, "just in case there's a bug and we need to recover them again."
+
+Third, the total limit: 102 KB. Hop hit it at around eight bookmarks. At that point I gave up and moved links to `storage.local`, which allows 5 MB but doesn't sync. Only the light/dark preference still syncs. Later I added zod schemas so that anything weird read back from storage gets parsed safely instead of crashing the popup.
+
+<Callout title="What I learned">
+   Read the quotas before you pick a storage API, and assume limits fail
+   quietly. The fancy option (sync across devices) cost me three releases before
+   I traded it for the boring option that just works. And when you change how
+   data is stored, write a migration and keep the old copy around. Compare that
+   to version 1.1.0, where my migration plan was "please reinstall."
+</Callout>
+
+## Going cross-browser
+
+In spring 2022 I ported Hop to Firefox. To a user it's the same extension. Under the hood, "works in Chrome" turned out to mean very little.
+
+I used `webextension-polyfill` so the same `browser.*` calls run in both browsers, and the build produces two zips from one codebase, each with its own manifest. Then came the surprises: clicking a card opened two tabs in Firefox, drag-and-drop wouldn't sort until the drag ref moved to the top-level element, and Mozilla's add-on store rejected my zip because the manifest wasn't at its root. Firefox also stayed on Manifest V2 until Firefox 109 added V3 support, so for about a year the two versions didn't even share a manifest format.
+
+Chrome had its own surprise. I wanted a keyboard shortcut to open Hop, and `action.openPopup()` was documented as a stable API, but it didn't work. The shortcut ended up as a `commands` entry in the manifest instead (Alt+Shift+O). Later, I noticed the back button skipped the page you'd hopped away from, because updating a tab's URL doesn't add a history entry. Fixing that meant asking for the `history` permission and adding the entry myself.
+
+<Callout title="What I learned">
+   Test in every browser you ship to, and don't trust documentation over a quick
+   experiment. Most of Hop's real work after launch was small details like a
+   working back button, no white flash in dark mode, and a keyboard-only flow.
+   For a tool you open all the time, those details are the product.
+</Callout>
+
+## The stack I kept changing (and why I stopped)
+
+Hop's styling has been rewritten three times. It started with styled-components, moved to Chakra UI before launch, and then in October 2023 I started migrating to Tailwind. That migration went on for about 18 months, so the codebase carried two styling systems at once. In May 2025, in a single evening, I reverted Tailwind entirely and went back to Chakra.
+
+The rest of the stack moved too. State went from a React reducer to zustand. The bundler went from webpack to ts-loader to swc-loader to a small hand-written esbuild script, all within eight days in December 2022. Switching from npm to pnpm meant dropping Dependabot, which didn't support pnpm, for Renovate.
+
+<Callout title="What I learned">
+   A migration you never finish is worse than either end state. Reverting felt
+   like admitting defeat, but deleting Tailwind made the code simpler overnight.
+   For a project this size, picking a tool and leaving it alone is a feature.
+</Callout>
+
+## Keeping a side project alive
+
+Most of my Hop commits happened in 2021 through 2023. Since then, I mostly just keep it healthy, and a robot does most of that. Renovate opens dependency updates, merges the minor ones on weekends "to reduce noise," and has written 1,307 commits to my 643. A good chunk of mine are me merging its pull requests.
+
+That only works because of the tests. Playwright loads the real built extension into Chromium and drags cards in all four directions, so an automated update that breaks something gets caught before it reaches anyone. In 2026 I added a seven-day minimum release age in both pnpm and Renovate, so a freshly published malicious package can't sneak in automatically.
+
+<Callout title="What I learned">
+   Side projects survive on automation, not willpower. Tests that exercise the
+   real thing, plus a bot that keeps dependencies fresh, let Hop stay current
+   for years with an occasional evening of attention from me.
+</Callout>
+
+## Timeline
+
+<Timeline>
+   <TimelineItem date="Apr 2021" title="Launchpad">
+      First commit of a drag-and-drop icon grid, on Manifest V3 from day one.
+   </TimelineItem>
+   <TimelineItem date="Oct 2021" title="Hop launches">
+      Renamed to Hop and released on the Chrome Web Store, followed three days
+      later by a not-so-gentle storage change.
+   </TimelineItem>
+   <TimelineItem date="May 2022" title="Firefox port">
+      Version 1.1.4 brings Hop to Firefox Add-ons, and immediately exposes the
+      storage size limits.
+   </TimelineItem>
+   <TimelineItem date="Aug 2022" title="Goodbye, sync">
+      After hitting the 102 KB sync quota at around eight bookmarks, links move
+      to local storage.
+   </TimelineItem>
+   <TimelineItem date="Dec 2022" title="Tests and tooling">
+      Playwright tests against the real extension, zod for stored data, and
+      esbuild instead of webpack.
+   </TimelineItem>
+   <TimelineItem date="Apr 2023" title="Manifest V3 everywhere">
+      Firefox moves to Manifest V3 once Firefox 109 supports it.
+   </TimelineItem>
+   <TimelineItem date="May 2025" title="Back to Chakra">
+      Version 1.1.16 ships after Tailwind is reverted in a single evening.
+   </TimelineItem>
+   <TimelineItem date="May 2026" title="Supply-chain guard">
+      A seven-day minimum release age keeps brand-new packages out of automatic
+      updates.
+   </TimelineItem>
+</Timeline>
+
+## Links
+
+<LinkCards>
+   <LinkCard
+      href="https://usehop.app"
+      title="usehop.app"
+      description="The landing page, with install buttons and keyboard shortcuts."
+   />
+   <LinkCard
+      href="https://chromewebstore.google.com/detail/hop/djdlkcbfbdebfaoakhnoienanaakgccd"
+      title="Chrome Web Store"
+      description="Install Hop for Chrome."
+   />
+   <LinkCard
+      href="https://addons.mozilla.org/en-US/firefox/addon/hop/"
+      title="Firefox Add-ons"
+      description="Install Hop for Firefox."
+   />
+   <LinkCard
+      href="https://github.com/masonmcelvain/hop"
+      title="Source on GitHub"
+      description="The MIT-licensed code, issues, and tests."
+   />
+   <LinkCard
+      href="https://github.com/masonmcelvain/hop/releases"
+      title="Release notes"
+      description="Every version from 1.0.0 to 1.1.16."
+   />
+</LinkCards>

@@ -3,9 +3,9 @@ title: "What I learned building Hop"
 description: "Five years of a tiny browser extension: storage quotas, a Firefox port, a styling detour I undid in one evening, and a robot that does my chores."
 ---
 
-Hop is a browser extension that turns your bookmarks into a grid of icons. Click the rabbit in your toolbar, see your favorite sites as pictures, click one, and you're there. See, click, go.
+Hop is a browser extension that gives your favorite sites a grid of icons. Click the rabbit in your toolbar, see your favorite sites as pictures, click one, and you're there. See, click, go.
 
-I started it in April 2021 because the bookmarks bar is a row of tiny text, and I wanted something that felt more like an app launcher. It was called Launchpad until two days before it went live on the Chrome Web Store in October 2021, when it became Hop: a rabbit for a logo, and a little less generic.
+I started it in April 2021 because the bookmarks bar is a row of tiny text, and I wanted something that felt more like an app launcher. It was called Launchpad until the day before it went live on the Chrome Web Store in October 2021, when it became Hop: a rabbit for a logo, and a little less generic.
 
 Today it runs in Chrome and Firefox, has 39 users on the Chrome Web Store, and a perfect 5.0 rating on Firefox Add-ons from a grand total of two people. It's small. It's also the project that taught me the most about shipping software that lives on someone else's computer.
 
@@ -30,9 +30,9 @@ Browsers give extensions a place to save data, and a "sync" flavor of it that fo
 
 First, the write limit: 120 writes per minute. Hop saved the grid on every hover while you dragged a card, so a few enthusiastic drags hit the limit. The fix was to save only when you drop the card.
 
-Second, the size limit per item: 8 KB. All my links lived under one key, which was fine in Chrome. Then the Firefox port revealed that Firefox hands back favicons as 1-2 KB base64 data URIs, so about six links blew the cap, and the save failed silently. I split storage into one key per link, plus an array to keep their order, with a migration that copied the old data over and deliberately left the original in place, "just in case there's a bug and we need to recover them again."
+Second, the size limit per item: 8 KB. All my links lived under one key, which was fine in Chrome. Then the Firefox port revealed that Firefox hands back favicons as 1-2 KB base64 data URIs, so about six links blew the cap, and the save failed silently. I split storage into one key per link, plus an array to keep their order, with a migration that copied the old data over and deliberately left the original in place, "just in case there's a bug and we need to recover them again," as the commit message put it.
 
-Third, the total limit: 102 KB. Hop hit it at around eight bookmarks. At that point I gave up and moved links to `storage.local`, which allows 5 MB but doesn't sync. Only the light/dark preference still syncs. Later I added zod schemas so that anything weird read back from storage gets parsed safely instead of crashing the popup.
+Third, the total limit: 102 KB. Hop hit it at around eight bookmarks. At that point I gave up and moved links to `storage.local`, which allowed 5 MB at the time but doesn't sync. The light/dark preference stayed in sync storage for a few more months; by December 2022 it followed the links to local, and today nothing syncs. Later I added zod, a validation library, so that anything weird read back from storage gets checked instead of crashing the popup.
 
 <Callout title="What I learned">
    Read the quotas before you pick a storage API, and assume limits fail
@@ -46,7 +46,7 @@ Third, the total limit: 102 KB. Hop hit it at around eight bookmarks. At that po
 
 In spring 2022 I ported Hop to Firefox. To a user it's the same extension. Under the hood, "works in Chrome" turned out to mean very little.
 
-I used `webextension-polyfill` so the same `browser.*` calls run in both browsers, and the build produces two zips from one codebase, each with its own manifest. Then came the surprises: clicking a card opened two tabs in Firefox, drag-and-drop wouldn't sort until the drag ref moved to the top-level element, and Mozilla's add-on store rejected my zip because the manifest wasn't at its root. Firefox also stayed on Manifest V2 until Firefox 109 added V3 support, so for about a year the two versions didn't even share a manifest format.
+I used `webextension-polyfill` so the same `browser.*` calls run in both browsers, and the build produces two zips from one codebase, each with its own manifest. Then came the surprises: clicking a card opened two tabs in Firefox, drag-and-drop wouldn't sort until I pointed the drag handle at the whole card, and Mozilla's add-on store rejected my zip because the manifest wasn't at its root. Firefox also stayed on Manifest V2 until Firefox 109 added V3 support, so for about a year the two versions didn't even share a manifest format.
 
 Chrome had its own surprise. I wanted a keyboard shortcut to open Hop, and `action.openPopup()` was documented as a stable API, but it didn't work. The shortcut ended up as a `commands` entry in the manifest instead (Alt+Shift+O). Later, I noticed the back button skipped the page you'd hopped away from, because updating a tab's URL doesn't add a history entry. Fixing that meant asking for the `history` permission and adding the entry myself.
 
@@ -61,7 +61,7 @@ Chrome had its own surprise. I wanted a keyboard shortcut to open Hop, and `acti
 
 Hop's styling has been rewritten three times. It started with styled-components, moved to Chakra UI before launch, and then in October 2023 I started migrating to Tailwind. That migration went on for about 18 months, so the codebase carried two styling systems at once. In May 2025, in a single evening, I reverted Tailwind entirely and went back to Chakra.
 
-The rest of the stack moved too. State went from a React reducer to zustand. The bundler went from webpack to ts-loader to swc-loader to a small hand-written esbuild script, all within eight days in December 2022. Switching from npm to pnpm meant dropping Dependabot, which didn't support pnpm, for Renovate.
+The rest of the stack moved too. State went from a React reducer to zustand. The build went from webpack with Babel, to ts-loader, to swc-loader, to a small hand-written esbuild script, all within eight days in December 2022. Switching from npm to pnpm meant dropping Dependabot, which didn't support pnpm, for Renovate.
 
 <Callout title="What I learned">
    A migration you never finish is worse than either end state. Reverting felt
@@ -71,7 +71,7 @@ The rest of the stack moved too. State went from a React reducer to zustand. The
 
 ## Keeping a side project alive
 
-Most of my Hop commits happened in 2021 through 2023. Since then, I mostly just keep it healthy, and a robot does most of that. Renovate opens dependency updates, merges the minor ones on weekends "to reduce noise," and has written 1,307 commits to my 643. A good chunk of mine are me merging its pull requests.
+Most of my Hop commits happened in 2021 through 2023. Since then, I mostly just keep it healthy, and a robot does most of that. Renovate opens dependency updates, merges the minor and patch ones on weekends "to reduce noise," and has written 1,307 commits to my 643. A good chunk of mine are me merging its pull requests.
 
 That only works because of the tests. Playwright loads the real built extension into Chromium and drags cards in all four directions, so an automated update that breaks something gets caught before it reaches anyone. In 2026 I added a seven-day minimum release age in both pnpm and Renovate, so a freshly published malicious package can't sneak in automatically.
 

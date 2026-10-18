@@ -1,5 +1,5 @@
 import { KeyboardShortcutsLegend } from "@/components/KeyboardShortcutsLegend";
-import { Viewport } from "next";
+import { type Metadata, type Viewport } from "next";
 import {
    Bricolage_Grotesque,
    Hanken_Grotesk,
@@ -7,6 +7,7 @@ import {
 } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 import type { PropsWithChildren } from "react";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 import { Header, Footer } from "./header-footer";
 
@@ -54,6 +55,10 @@ export default function RootLayout({
       </html>
    );
 }
+
+export const metadata: Metadata = {
+   metadataBase: new URL(SITE_URL),
+};
 
 export const viewport: Viewport = {
    themeColor: [

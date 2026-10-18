@@ -1,32 +1,123 @@
 ---
-title: "iFixit"
-description: "Placeholder description for the iFixit page."
+title: "Almost six years at iFixit"
+description: "My first job as a software engineer: building the store behind the world's largest online repair community, from part-time student to full-time."
 ---
 
-Placeholder intro paragraph. The writer package replaces this file's body.
+iFixit calls itself the [world's largest online repair community](https://www.ifixit.com/Info). It publishes thousands of free repair guides, so you can swap your phone's battery yourself, and it sells the parts and tools you need to do it.
+
+I work on that store. For almost six years I've built the pages where you shop for a part, the checkout where you pay for it, and the plumbing that gets your order from a website to a warehouse. It's my first job as a software engineer, and so far my only one.
+
+It started with a take-home interview project in October 2020, while I was still a computer science student at Cal Poly. I joined that December, part-time.
 
 <Stats>
-   <Stat value="1,234" label="placeholder stat" />
-   <Stat value="5" label="years" />
-   <Stat value="3" label="things" />
+   <Stat value="2,268" label="pull requests" />
+   <Stat value="2,508" label="pull requests reviewed" />
+   <Stat value="600" label="issues filed" />
+   <Stat value="16" label="repos" />
 </Stats>
 
-## First section
+## How it started
 
-Some prose with an [external link](https://www.ifixit.com/) and an [internal link](/blog).
+The interview project was [iFixit Grab Bag](https://ifixit-grab-bag-mm.netlify.app/), a small React app I built in six days on iFixit's public API. You drag the devices you own into a "bag," it remembers them, and you can jump straight to their repair guides. The README signs off with "Thanks for your interest, happy hacking!"
+
+Five weeks later, on December 1, 2020, my first pull request merged. It removed an old Apps page that pointed to apps that no longer worked: one line added, 266 deleted. I didn't know it yet, but deleting things would become a theme.
+
+For my first year and a half I worked around classes, and you can read the school calendar in my history. A handful of pull requests a month during the quarter, a spike every summer, and just five in April 2022, my last spring at Cal Poly. After graduation I went full-time, and the line never came back down. The busiest month so far was October 2024, with 78.
+
+Two months in, I opened what is still my most-discussed pull request: 61 comments over 39 days, about what our records should do when someone removes an item from an order. Its QA section walked reviewers through creating a test order, editing it in Shopify, and checking the database by hand. It was a crash course in how a real team reviews code.
 
 <Callout title="What I learned">
-   Placeholder callout prose with *markdown* inside.
+   Write the pull request for the person reviewing it. Spell out what changed,
+   why, and exactly how to check it, and a long review stops being a fight and
+   starts being a conversation.
+</Callout>
+
+## Checkout and the order pipeline
+
+When you buy a part on ifixit.com, Shopify takes your payment, but iFixit also keeps its own records of orders, customers and inventory. Starting in 2021, I wrote much of the PHP that keeps the two in sync: webhooks and scheduled jobs that copy orders and customers across, handle edits, cancellations and returns, and admin dashboards and command-line tools for whoever has to fix things when they go sideways.
+
+Money code is unforgiving. In December 2021 I rewrote how we compute order subtotals, building them from each line's final price. The pull request notes that it "also corrects an off-by-one-cent bug" on percentage discounts for cancelled orders. One cent sounds harmless until the books have to balance.
+
+In 2023 iFixit started a Shopify checkout app, and it's since collected 221 of my pull requests. It asks EU business customers for a VAT ID, hides shipping methods that can't carry batteries, applies discounts for Pro customers, and reports what happened through web pixels for analytics. Much of that runs as Shopify Functions, small programs Shopify runs inside its own checkout. In April 2024 I wrote the same Function twice, once in JavaScript and once in Rust compiled to WebAssembly, in a pull request that was never meant to merge. It existed "to provide a medium for us to compare the toolchains."
+
+## The storefront
+
+In 2022 iFixit rebuilt its store pages, like [Parts](https://www.ifixit.com/Parts) and [Tools](https://www.ifixit.com/Tools), as a new site. For the technical folks: Next.js on Vercel, with Strapi as the CMS, Algolia for search, and Shopify's Storefront API for products and carts. The code is public as [react-commerce](https://github.com/iFixit/react-commerce). I started there in May 2022 and sent 108 pull requests that year, on search filters, SEO, analytics, and the hreflang tags that tell search engines which page is for which country.
+
+Not all of them went well. In October 2022 I shipped a middleware meant to hide our development sites from search engines, and it started hiding www.ifixit.com/Parts instead. I [reverted it the same day](https://github.com/iFixit/react-commerce/pull/778) with a one-line explanation, "This is noindexing www.ifixit.com/Parts, yikes!", and shipped the real fix the next day.
+
+By June 2023 the [Store](https://www.ifixit.com/Store) homepage was served by Next.js. In 2024 I built a Shopify cart package and a cart drawer that both the new site and the older PHP site share, so your cart looks the same no matter which half of ifixit.com you're on.
+
+## The great deletion
+
+Late in 2023, iFixit moved order management and inventory to NetSuite, an off-the-shelf business system. I wrote the code that sends our products and inventory to NetSuite, the sync that pulls its data back, and the cutover switch that handed orders over in November 2023.
+
+Then came the fun part. In January 2024 I opened about 30 pull requests whose titles start with "Delete," removing roughly 25,000 lines of in-house refunds, returns, payment capture, shipping webhooks and inventory tools. Some of it was code I'd helped build as a student. Watching it go felt less like loss and more like finally putting tools back in the drawer.
+
+<Callout title="Subtraction is progress">
+   The best code to maintain is code you no longer have. A migration isn't done
+   when the new system works. It's done when the old one is gone, and nobody has
+   to remember which of the two is telling the truth.
+</Callout>
+
+## Many countries, many languages
+
+iFixit sells in Europe, Australia and Canada from separate Shopify stores, and publishes in a dozen languages. My largest pull request by far was merging the [EU](https://eu.ifixit.com/) Pro store's theme back together in 2022: 70,940 lines added. My longest-running one, automatically publishing the EU stores, stayed open for 150 days in 2023 before it merged.
+
+Since then I've worked on VAT validation, hreflangs everywhere, a soft launch of the [Italian store](https://it.ifixit.com/Store) in May 2025, moving the storefront's text into translatable strings, and automating the flow of translations through Crowdin with a CI check for consistency. In 2026 I brought a single location picker into the site header, so you can choose your country and language in one place, along with a dashboard to watch it roll out.
+
+<Callout title="What I learned">
+   Every country is a new edge case. Currency, tax, and even the wording of a
+   warranty change at the border, so the job is less about translating text and
+   more about making the right rules easy to find.
+</Callout>
+
+## Reviewing more than I write
+
+I've reviewed 2,508 of my teammates' pull requests, more than the 2,268 I've opened. The number has grown every year, from 4 in my first December to 628 so far in 2026. Reviewing is how I learn the corners of the codebase I don't touch, and how I pay forward that 61-comment welcome.
+
+Not everything I write is code. In May 2026 I opened an RFC, a pull request with nothing in it but a markdown document, so the team could agree on how to decide which language and country to show a visitor before anyone wrote a line.
+
+For a couple of years a teammate sent me CSV files of compatibility data, which parts fit which devices, and I ran them through a script for them. In January 2026 I built an admin page so they could import them themselves. Lately I've been writing the rules that let AI coding agents work in our codebase the way we do.
+
+And I still make mistakes, in public. My pull request descriptions include "Oops," one honest ":facepalm:," and a redo of a change "I mistakenly merged then reverted."
+
+<Callout title="Make yourself unnecessary">
+   The most useful thing I can build for a teammate is often a tool that means
+   they don't need me. Fewer handoffs, fewer messages, and more time for the
+   work only people can do.
 </Callout>
 
 ## Timeline
 
 <Timeline>
-   <TimelineItem date="2020" title="Started">
-      Placeholder timeline prose.
+   <TimelineItem date="Oct 2020" title="Grab Bag">
+      An interview project on iFixit's public API, built in six days.
    </TimelineItem>
-   <TimelineItem date="2022" title="Shipped">
-      Placeholder timeline prose.
+   <TimelineItem date="Dec 2020" title="First pull request">
+      I join part-time and my first change deletes 266 lines.
+   </TimelineItem>
+   <TimelineItem date="Jan 2021" title="61 comments">
+      My most-discussed pull request teaches orders to handle removed items.
+   </TimelineItem>
+   <TimelineItem date="Dec 2021" title="One cent">
+      A subtotal rewrite fixes an off-by-one-cent bug on cancelled orders.
+   </TimelineItem>
+   <TimelineItem date="May 2022" title="Full-time and a new storefront">
+      I start on the Next.js store as school wraps up and work goes full-time.
+   </TimelineItem>
+   <TimelineItem date="Jun 2023" title="Store homepage">
+      The Store homepage moves to Next.js.
+   </TimelineItem>
+   <TimelineItem date="Jan 2024" title="The great deletion">
+      After the NetSuite cutover, about 30 pull requests remove roughly 25,000
+      lines.
+   </TimelineItem>
+   <TimelineItem date="May 2025" title="Italian store">
+      A soft launch of the Italian store.
+   </TimelineItem>
+   <TimelineItem date="Apr 2026" title="Location picker">
+      One place in the header to choose your country and language.
    </TimelineItem>
 </Timeline>
 
@@ -34,13 +125,33 @@ Some prose with an [external link](https://www.ifixit.com/) and an [internal lin
 
 <LinkCards>
    <LinkCard
-      href="https://www.ifixit.com/"
-      title="iFixit"
-      description="Placeholder link card."
+      href="https://www.ifixit.com/Info"
+      title="About iFixit"
+      description="The repair community, the free guides, and the mission."
    />
    <LinkCard
-      href="/blog"
-      title="My blog"
-      description="Placeholder internal link card."
+      href="https://www.ifixit.com/Store"
+      title="iFixit Store"
+      description="The storefront I work on every day."
+   />
+   <LinkCard
+      href="https://eu.ifixit.com/"
+      title="iFixit EU"
+      description="One of the regional stores, with VAT and local currency."
+   />
+   <LinkCard
+      href="https://github.com/iFixit/react-commerce"
+      title="react-commerce"
+      description="The public repo for the Next.js storefront, with 206 of my pull requests."
+   />
+   <LinkCard
+      href="https://github.com/masonmcelvain/ifixit-grab-bag"
+      title="iFixit Grab Bag"
+      description="The interview project that started it all."
+   />
+   <LinkCard
+      href="https://github.com/iFixit/pulldasher"
+      title="Pulldasher"
+      description="iFixit's open source pull request dashboard."
    />
 </LinkCards>

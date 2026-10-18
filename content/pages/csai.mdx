@@ -1,6 +1,6 @@
 ---
 title: "Where I learned the web"
-description: "Ten months in Cal Poly's CS and AI club: a campus chatbot, the app that cleaned its data, a ranch robot, a 3D tour, and the habits that got me a job."
+description: "Ten months in Cal Poly's CS and AI club: a campus chatbot, the app that cleaned its data, a ranch chatbot, a 3D tour, and the habits that got me a job."
 ---
 
 CSAI is the Cal Poly Computer Science and Artificial Intelligence club. When I joined, the club was building Nimbus, a voice assistant you could ask about Cal Poly: what a class's prerequisites are, when a professor holds office hours, how to reach a club. Think of a campus-only Alexa, built by students on weekends.
@@ -18,7 +18,7 @@ That little X turned into ten months of building web apps with other people, rev
 
 ## Nimbus, the campus voice assistant
 
-Nimbus was more than one app. There was a Raspberry Pi device in a custom case that woke up when you said "Nimbus," a web chat where you could type questions instead, and a recorder app where club members collected samples of people saying the wake word and wrote new question-and-answer pairs. The club even won a Google Cloud Platform educational grant to pay for the servers.
+Nimbus was more than one app. There was a Raspberry Pi device in a custom case that woke up when you said "Nimbus," a web chat where you could type questions instead, and a recorder app where anyone could record themselves saying the wake word and submit new question-and-answer pairs. The club even won a Google Cloud Platform educational grant to pay for the servers.
 
 For the technical folks: the backend was a Flask REST API over MySQL with SQLAlchemy, deployed to Google Compute Engine. The "AI" was a k-nearest-neighbors model that matched your question to the closest known question by sentence-embedding similarity, then looked up its answer. The chat and recorder were Vue 2 apps, and the recorder doubled as an installable PWA. My first few pull requests were small Vue changes to those two: the X button, eleven example questions, a help page with the recorder's tutorial video, and hover effects I tested on iOS so buttons wouldn't get stuck looking pressed.
 
@@ -31,21 +31,22 @@ The tricky part was a tiny template language. Phrases contained tokens like `[PR
 The stack was React 16 with Create React App, react-router, Firebase Auth, Sass and Emotion, deployed on Netlify. I also built the auth flow (sign-out, forgot password, pages you can only see when logged in), a login animation where scattered letters drift together on an easeInOutSine curve, and the production wiring. When John approved my biggest token PR, he wrote, "Awesome! I'll put together the auth logic and get the site out the door!" It went live that October.
 
 <Callout title="What learning looked like">
-   My pull requests from that summer read like a diary. One commit message
-   admits the previous fix "didn't actually fix the bug," explains the real
-   cause, and ends with "Phew." Another PR is a short essay on discovering that
-   React's `useState` setter queues an update instead of applying it, which is
-   why my state was stale. There's a "feel good" PR "after spending waaaay too
-   much time with regex," an issue titled "Safari doesn't like Regex
-   lookbehinds," and a section in one PR called "Indentation apologies." Writing
-   down what I'd learned, in public, is a habit I still have.
+   My pull requests from that year read like a diary. One commit message admits
+   the previous fix "didn't actually fix the bug," explains the real cause, and
+   ends with "Phew". Another PR is a short essay on discovering that React's
+   `useState` setter queues an update instead of applying it, which is why my
+   state was stale. There's a "feel good" PR "after spending waaaay too much
+   time with regex," my reply to an issue John filed, "Safari doesn't like Regex
+   lookbehinds," suggesting we tell users to avoid Safari for now, and a section
+   in one PR called "Indentation apologies." Writing down what I'd learned, in
+   public, is a habit I still have.
 </Callout>
 
-## Side quests: a ranch robot and a 3D tour
+## Side quests: a talking box for a ranch and a 3D tour
 
 The club had other projects, and I wandered into a few. Swanton Pacific Ranch, a Cal Poly ranch near Santa Cruz, wanted a chatbot to answer visitors' questions, running offline on weatherproofed Raspberry Pis with Rasa for language understanding and DeepSpeech for speech-to-text. I sent one Python pull request that logged what visitors asked to a CSV. Later I wired the ranch's React web chat, Poppy, to the real API. I didn't have push access, so the whole pull request description reads: "Alas, no permission to push _sigh_".
 
-In early 2021 the club started Argo, a virtual tour of campus for students stuck at home during COVID, built from 360° panoramas in React, TypeScript and three.js. My teammate Kalen and I tried converting the React components to TypeScript, hit a wall of unhelpful errors, and decided to type only the data modules. My last club pull request, a 753-line change, taught the renderer to read the JSON tour format the teams had agreed on. I'd drafted the first version of that format in an issue.
+Over the 2020–21 winter break the club started Argo, a virtual tour of campus for students stuck at home during COVID, built from 360° panoramas in React, TypeScript and three.js. My teammate Kalen and I tried converting the React components to TypeScript, hit a wall of unhelpful errors, and decided to type only the data modules. My last club pull request, which added about 750 lines, taught the renderer to read the JSON tour format the teams had agreed on. I'd drafted the first version of that format in a comment on the issue.
 
 <Callout title="Pragmatism beats purity">
    Adopting TypeScript halfway can feel like cheating. It isn't. We typed the
@@ -55,7 +56,7 @@ In early 2021 the club started Argo, a virtual tour of campus for students stuck
 
 ## What a club taught me about working with people
 
-My first auth pull request ended with "Not sure if this is best practice, so would appreciate input on that." John pointed me to Firebase's `onAuthStateChanged`, which also gave us automatic login, and I refactored it the same day. That loop of ask, learn, fix is most of what I know about code review.
+My first auth pull request ended with "Not sure if this is best practice, so would appreciate input on that." John pointed me to Firebase's `onAuthStateChanged`, which also gave us automatic login, and I had it refactored before his next look, a day later. That loop of ask, learn, fix is most of what I know about code review.
 
 Over the summer the reviews started going the other way. By the end I'd reviewed ten pull requests for teammates, on the validator, the API, the docs and the ranch chat. Going from "Nice work! Looks good to me" on my first validator PR to being the feature John was waiting on before launch was a big deal to me.
 

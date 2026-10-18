@@ -20,11 +20,11 @@ It started with a take-home interview project in October 2020, while I was still
 
 The interview project was [iFixit Grab Bag](https://ifixit-grab-bag-mm.netlify.app/), a small React app I built in six days on iFixit's public API. You drag the devices you own into a "bag," it remembers them, and you can jump straight to their repair guides. The README signs off with "Thanks for your interest, happy hacking!"
 
-Five weeks later, on December 1, 2020, my first pull request merged. It removed an old Apps page that pointed to apps that no longer worked: one line added, 266 deleted. I didn't know it yet, but deleting things would become a theme.
+Five weeks later, on December 1, 2020, I opened my first pull request. It removed an old Apps page that pointed to apps that no longer worked: one line added, 266 deleted. I didn't know it yet, but deleting things would become a theme.
 
-For my first year and a half I worked around classes, and you can read the school calendar in my history. A handful of pull requests a month during the quarter, a spike every summer, and just five in April 2022, my last spring at Cal Poly. After graduation I went full-time, and the line never came back down. The busiest month so far was October 2024, with 78.
+For my first year and a half I worked around classes, and you can read the school calendar in my history. A handful of pull requests a month during the quarter, a spike the summer I worked full-time hours, and just five in April 2022, my last spring at Cal Poly. After graduation I went full-time, and the pace never dropped back. The busiest month so far was October 2024, with 78.
 
-Two months in, I opened what is still my most-discussed pull request: 61 comments over 39 days, about what our records should do when someone removes an item from an order. Its QA section walked reviewers through creating a test order, editing it in Shopify, and checking the database by hand. It was a crash course in how a real team reviews code.
+Two months in, I opened what is still my most-discussed pull request: 61 comments over 39 days, about what our records should do when someone removes an item from an order. Its testing instructions walked reviewers through creating a test order, editing it in Shopify, and checking the database by hand. It was a crash course in how a real team reviews code.
 
 <Callout title="What I learned">
    Write the pull request for the person reviewing it. Spell out what changed,
@@ -46,13 +46,13 @@ In 2022 iFixit rebuilt its store pages, like [Parts](https://www.ifixit.com/Part
 
 Not all of them went well. In October 2022 I shipped a middleware meant to hide our development sites from search engines, and it started hiding www.ifixit.com/Parts instead. I [reverted it the same day](https://github.com/iFixit/react-commerce/pull/778) with a one-line explanation, "This is noindexing www.ifixit.com/Parts, yikes!", and shipped the real fix the next day.
 
-By June 2023 the [Store](https://www.ifixit.com/Store) homepage was served by Next.js. In 2024 I built a Shopify cart package and a cart drawer that both the new site and the older PHP site share, so your cart looks the same no matter which half of ifixit.com you're on.
+By June 2023 the [Store](https://www.ifixit.com/Store) homepage was served by Next.js. In 2024 I built a Shopify cart package and brought the Next.js site's cart drawer into the older PHP site, so your cart looks the same no matter which half of ifixit.com you're on.
 
 ## The great deletion
 
-Late in 2023, iFixit moved order management and inventory to NetSuite, an off-the-shelf business system. I wrote the code that sends our products and inventory to NetSuite, the sync that pulls its data back, and the cutover switch that handed orders over in November 2023.
+Late in 2023, iFixit moved order management and inventory to NetSuite, an off-the-shelf business system. I wrote the code that sends our products to NetSuite, the sync that pulls its inventory and orders back, and the cutover switch that handed orders over in November 2023.
 
-Then came the fun part. In January 2024 I opened about 30 pull requests whose titles start with "Delete," removing roughly 25,000 lines of in-house refunds, returns, payment capture, shipping webhooks and inventory tools. Some of it was code I'd helped build as a student. Watching it go felt less like loss and more like finally putting tools back in the drawer.
+Then came the fun part. In January 2024 I opened more than 20 pull requests whose titles start with "Delete," removing some 20,000 lines of in-house refunds, returns, payment capture, shipping webhooks and inventory tools. Some of it was code I'd helped build as a student. Watching it go felt less like loss and more like finally putting tools back in the drawer.
 
 <Callout title="Subtraction is progress">
    The best code to maintain is code you no longer have. A migration isn't done
@@ -62,7 +62,7 @@ Then came the fun part. In January 2024 I opened about 30 pull requests whose ti
 
 ## Many countries, many languages
 
-iFixit sells in Europe, Australia and Canada from separate Shopify stores, and publishes in a dozen languages. My largest pull request by far was merging the [EU](https://eu.ifixit.com/) Pro store's theme back together in 2022: 70,940 lines added. My longest-running one, automatically publishing the EU stores, stayed open for 150 days in 2023 before it merged.
+iFixit sells in Europe, Australia and Canada from separate Shopify stores, and publishes in a dozen languages. My largest pull request by far was catching the [EU](https://eu.ifixit.com/) Pro store's theme up with the main theme in 2022: 70,940 lines added. My longest-running one, automatically publishing the EU stores, stayed open for 150 days in 2023 before it merged.
 
 Since then I've worked on VAT validation, hreflangs everywhere, a soft launch of the [Italian store](https://it.ifixit.com/Store) in May 2025, moving the storefront's text into translatable strings, and automating the flow of translations through Crowdin with a CI check for consistency. In 2026 I brought a single location picker into the site header, so you can choose your country and language in one place, along with a dashboard to watch it roll out.
 
@@ -74,7 +74,7 @@ Since then I've worked on VAT validation, hreflangs everywhere, a soft launch of
 
 ## Reviewing more than I write
 
-I've reviewed 2,508 of my teammates' pull requests, more than the 2,268 I've opened. The number has grown every year, from 4 in my first December to 628 so far in 2026. Reviewing is how I learn the corners of the codebase I don't touch, and how I pay forward that 61-comment welcome.
+I've reviewed 2,508 of my teammates' pull requests, more than the 2,268 I've opened. It has climbed from 4 in my first December to 628 so far in 2026. Reviewing is how I learn the corners of the codebase I don't touch, and how I pay forward that 61-comment welcome.
 
 Not everything I write is code. In May 2026 I opened an RFC, a pull request with nothing in it but a markdown document, so the team could agree on how to decide which language and country to show a visitor before anyone wrote a line.
 
@@ -110,7 +110,7 @@ And I still make mistakes, in public. My pull request descriptions include "Oops
       The Store homepage moves to Next.js.
    </TimelineItem>
    <TimelineItem date="Jan 2024" title="The great deletion">
-      After the NetSuite cutover, about 30 pull requests remove roughly 25,000
+      After the NetSuite cutover, more than 20 pull requests remove some 20,000
       lines.
    </TimelineItem>
    <TimelineItem date="May 2025" title="Italian store">

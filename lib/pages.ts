@@ -39,10 +39,3 @@ export function getPageBySlug(slug: string): Page | null {
       content,
    };
 }
-
-export function getAllPageSlugs(): string[] {
-   const fileNames = fs.readdirSync(pagesDirectory);
-   return fileNames
-      .filter((fileName) => fileName.endsWith(".mdx"))
-      .map((fileName) => fileName.replace(/\.mdx$/, ""));
-}

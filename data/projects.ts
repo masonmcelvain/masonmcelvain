@@ -1,8 +1,18 @@
-import HopComposite from "@public/images/hop-composite.png";
-import iFixitProTechToolkit from "@public/images/ifixit-pro-tech-toolkit.png";
-import CSAIComposite from "@public/images/csai-composite.png";
 import HotPot from "@/public/images/hotpot.jpg";
 import type { ProjectCardProps } from "@common/components";
+import { splashPages, type SplashSlug } from "@data/splash";
+
+// The card shares its image and gradient with the splash page hero.
+function splashCard(slug: SplashSlug) {
+   const { heroImage, heroAlt, gradientFrom, gradientTo } = splashPages[slug];
+   return {
+      src: heroImage,
+      alt: heroAlt,
+      href: `/${slug}`,
+      gradientFrom,
+      gradientTo,
+   };
+}
 
 const projects: ProjectCardProps[] = [
    {
@@ -15,33 +25,21 @@ const projects: ProjectCardProps[] = [
       gradientTo: "to-[#fbb03b]",
    },
    {
-      src: iFixitProTechToolkit,
-      alt: "Workbench spotlighting an iFixit Pro Tech Toolkit.",
+      ...splashCard("ifixit"),
       title: "iFixit",
       caption:
          "Join the repair revolution! My first job as a software engineer.",
-      href: "/ifixit",
-      gradientFrom: "from-[#222223]",
-      gradientTo: "to-[#0071ce]",
    },
    {
-      src: HopComposite,
-      alt: "Screenshots of the Hop browser extension",
+      ...splashCard("hop"),
       title: "Hop",
       caption:
          "See, click, go! An icon-first browser extension for your favorite bookmarks.",
-      href: "/hop",
-      gradientFrom: "from-[#7928ca]",
-      gradientTo: "to-[#ff0080]",
    },
    {
-      src: CSAIComposite,
-      alt: "Collage of CSAI Nimbus apps",
+      ...splashCard("csai"),
       title: "CSAI",
       caption: "The Cal Poly club where I sunk my roots into web development.",
-      href: "/csai",
-      gradientFrom: "from-[#009245]",
-      gradientTo: "to-[#fced21]",
    },
 ];
 export default projects;

@@ -1,4 +1,3 @@
-import ChromeApplet from "@public/images/chrome-applet.png";
 import CSAIComposite from "@public/images/csai-composite.png";
 import HopComposite from "@public/images/hop-composite.png";
 import iFixitProTechToolkit from "@public/images/ifixit-pro-tech-toolkit.png";
@@ -44,14 +43,4 @@ export const splashPages: Record<SplashSlug, SplashConfig> = {
    },
 };
 
-export const splashSlugs: SplashSlug[] = ["ifixit", "hop", "csai"];
-
-/** Static images that splash page MDX can reference by key in `<Figure>`. */
-export const splashImages = {
-   "ifixit-pro-tech-toolkit": iFixitProTechToolkit,
-   "hop-composite": HopComposite,
-   "csai-composite": CSAIComposite,
-   "chrome-applet": ChromeApplet,
-} satisfies Record<string, StaticImageData>;
-
-export type SplashImageKey = keyof typeof splashImages;
+export const splashSlugs = Object.keys(splashPages) as SplashSlug[];

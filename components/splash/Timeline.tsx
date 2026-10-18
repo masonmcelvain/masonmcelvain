@@ -2,10 +2,12 @@ import { type PropsWithChildren } from "react";
 
 // The list stays inside the prose context so markdown children keep prose
 // styles (typography can't be re-enabled under `not-prose`). The list's own
-// prose styles are reset with utilities, which win over the prose layer.
+// prose styles are reset with utilities. Prose and utility rules tie on
+// specificity, so whichever Tailwind emits later wins; `!` forces the margin
+// resets that would otherwise lose to prose's ol/li margins.
 export function Timeline({ children }: PropsWithChildren) {
    return (
-      <ol className="border-border my-8 ml-3 flex list-none flex-col gap-8 border-l pl-6">
+      <ol className="border-border my-8! ml-3 flex list-none flex-col gap-8 border-l pl-6">
          {children}
       </ol>
    );
@@ -18,7 +20,7 @@ type TimelineItemProps = PropsWithChildren<{
 
 export function TimelineItem({ date, title, children }: TimelineItemProps) {
    return (
-      <li className="relative my-0 ps-0">
+      <li className="relative my-0! ps-0!">
          <span
             aria-hidden
             className="ring-background absolute top-1.5 -left-[calc(1.875rem+0.5px)] size-3 rounded-full bg-[linear-gradient(135deg,var(--accent-from),var(--accent-to))] ring-4"

@@ -99,6 +99,7 @@ export function SplashPage({ slug }: SplashPageProps) {
                      src={heroImage}
                      alt={heroAlt}
                      preload
+                     fetchPriority="high"
                      sizes="(min-width: 640px) 448px, 336px"
                      className="h-[225px] w-auto max-w-full object-contain sm:h-[300px]"
                   />

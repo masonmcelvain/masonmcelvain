@@ -170,8 +170,8 @@ importers:
         specifier: 3.1.1
         version: 3.1.1(supports-color@8.1.1)
       '@react-email/render':
-        specifier: 2.1.0
-        version: 2.1.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        specifier: 2.1.1
+        version: 2.1.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@sentry/nextjs':
         specifier: 10.76.2
         version: 10.76.2(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-trace-base@2.9.0(@opentelemetry/api@1.9.1))(next@16.3.8(@babel/core@7.28.5(supports-color@8.1.1))(@opentelemetry/api@1.9.1)(@types/node@24.19.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react@19.3.0)(supports-color@8.1.1)(webpack@5.105.2(esbuild@0.28.1))
@@ -210,7 +210,7 @@ importers:
         version: 6.0.0
       resend:
         specifier: 6.32.1
-        version: 6.32.1(@react-email/render@2.1.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0))
+        version: 6.32.1(@react-email/render@2.1.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0))
       tailwind-merge:
         specifier: 3.7.0
         version: 3.7.0
@@ -1430,8 +1430,8 @@ packages:
     resolution: {integrity: sha512-wfzX8kc1PMyUILA+1Z/EqoE4UCXGy0iRGMhPwdfae1+f0OXlLqCk+By+aMzgJBzR9AzS4CDizioG6Ss1gvAFJw==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
 
-  '@react-email/render@2.1.0':
-    resolution: {integrity: sha512-F+zE3O6d6sW6Aj2UjvZAA17R7tJKM7kcq2mgV6k4HCT8jeLLFaVP2txMtH1lgqYFRMZ0Gxsd37q2PRyiXLXXxA==}
+  '@react-email/render@2.1.1':
+    resolution: {integrity: sha512-DvVx4k6XjJ9cYBigd37+7SK2E89emUH32Lcn6COsMickQchXdvXa+ZA04BF7475Kg+8ikaIpus+zQYUwVVyjBg==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       react: ^18.0 || ^19.0 || ^19.0.0-rc
@@ -5887,7 +5887,7 @@ snapshots:
       tiny-glob: 0.2.9
       tslib: 2.8.1
 
-  '@react-email/render@2.1.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
+  '@react-email/render@2.1.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
     dependencies:
       entities: 4.5.0
       html-to-text: 9.0.5
@@ -9461,12 +9461,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  resend@6.32.1(@react-email/render@2.1.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0)):
+  resend@6.32.1(@react-email/render@2.1.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)):
     dependencies:
       postal-mime: 2.7.6
       standardwebhooks: 1.1.1
     optionalDependencies:
-      '@react-email/render': 2.1.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      '@react-email/render': 2.1.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
 
   resolve-from@4.0.0: {}
 

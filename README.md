@@ -1,6 +1,6 @@
 Hi! My name is Mason.
 
-I'm a full stack developer for Nordic Naturals. Previously I worked at [iFixit's](https://github.com/ifixit).
+I'm a full stack developer for Nordic Naturals. Previously I worked at [iFixit](https://github.com/ifixit).
 
 I graduated from [Cal Poly](https://www.calpoly.edu/) 📚, Computer Science class of 2022.
 

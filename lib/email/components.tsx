@@ -362,7 +362,7 @@ export function PostEmail({ post, postUrl, children }: PostEmailProps) {
                <p style={{ ...caption, textAlign: "left", margin: "0" }}>
                   {formattedDate} ·{" "}
                   <a href={postUrl} style={link}>
-                     Read on the site
+                     Read on my website
                   </a>
                </p>
                {post.description && (

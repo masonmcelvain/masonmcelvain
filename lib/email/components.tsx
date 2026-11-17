@@ -160,6 +160,7 @@ export function getEmailComponents(postUrl: string) {
          const count = props.images.length;
          const first = props.images[0];
          if (!first) return null;
+         const captionText = props.caption ?? first.caption;
          if (count === 1) {
             return (
                <EmailFigure
@@ -204,7 +205,7 @@ export function getEmailComponents(postUrl: string) {
                   ))}
                </div>
                <figcaption style={caption}>
-                  {props.caption && <div>{props.caption}</div>}
+                  {captionText && <div>{captionText}</div>}
                   <div
                      className="carousel-hint-desktop"
                      style={{ display: "none" }}

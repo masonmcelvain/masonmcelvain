@@ -1,13 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import {
-   type CSSProperties,
-   type SubmitEvent,
-   useEffect,
-   useRef,
-   useState,
-} from "react";
+import { type CSSProperties, type SubmitEvent, useRef, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { subscribe } from "@/app/actions/subscribe";
 import { cn } from "@/lib/utils";
@@ -32,11 +26,13 @@ export function EmailSubscription() {
    const buttonRef = useRef<HTMLButtonElement>(null);
    const clickTimestamps = useRef<number[]>([]);
    const pathname = usePathname();
+   const [prevPathname, setPrevPathname] = useState(pathname);
 
-   useEffect(() => {
+   if (pathname !== prevPathname) {
+      setPrevPathname(pathname);
       setStatus("idle");
       setMessage("");
-   }, [pathname]);
+   }
 
    function spawnStars() {
       if (!buttonRef.current) return;

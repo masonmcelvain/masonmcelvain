@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 UPLOAD_DIR="${1:?Usage: $0 <local-directory> <remote-directory>}"
 REMOTE_DIR="${2:?Usage: $0 <local-directory> <remote-directory>}"
 BUCKET="masonmcelvain-media"

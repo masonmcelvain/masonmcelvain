@@ -1,4 +1,4 @@
-import { withSentryConfig } from "@sentry/nextjs";
+import { withSentryConfig } from "@sentry/nextjs/config";
 
 // The image cache key is the raw source URL, but the media host serves the
 // same object for many spellings of it (any query string, `%66` for `f`).
